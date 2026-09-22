@@ -2445,6 +2445,9 @@
 [**`rireturn`**](opcodes/rireturn.md)`()`<br>
 
 
+`iresult = `[**`setoption`**](opcodes/setoption.md)`(engine, Soptions)`<br>
+
+
 `iStatus = `[**`splice`**](opcodes/splice.md)`(voice, anchor, iMode)`<br>
 
 

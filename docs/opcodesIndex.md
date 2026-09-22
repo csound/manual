@@ -179,6 +179,15 @@
 | [reverb](opcodes/reverb.md) | [reverbsc](opcodes/reverbsc.md) | [rewindscore](opcodes/rewindscore.md) | [rezzy](opcodes/rezzy.md) | [rfft](opcodes/rfft.md) |
 | [rifft](opcodes/rifft.md) | [rigoto](opcodes/rigoto.md) | [rireturn](opcodes/rireturn.md) | [rms](opcodes/rms.md) | [rnd31](opcodes/rnd31.md) |
 | [rnd](opcodes/rnd.md) | [rndseed](opcodes/rndseed.md) | [round](opcodes/round.md) | [rspline](opcodes/rspline.md) | [rtclock](opcodes/rtclock.md) |
+| [s16b14](opcodes/s16b14.md) | [s32b14](opcodes/s32b14.md) | [samphold](opcodes/samphold.md) | [sandpaper](opcodes/sandpaper.md) | [scale2](opcodes/scale2.md) |
+| [scale](opcodes/scale.md) | [scalearray](opcodes/scalearray.md) | [scanhammer](opcodes/scanhammer.md) | [scanmap](opcodes/scanmap.md) | [scans](opcodes/scans.md) |
+| [scansmap](opcodes/scansmap.md) | [scantable](opcodes/scantable.md) | [scanu2](opcodes/scanu2.md) | [scanu](opcodes/scanu.md) | [schedkwhen](opcodes/schedkwhen.md) |
+| [schedkwhennamed](opcodes/schedkwhennamed.md) | [schedule](opcodes/schedule.md) | [schedulek](opcodes/schedulek.md) | [schedwhen](opcodes/schedwhen.md) | [scoreline](opcodes/scoreline.md) |
+| [scorelinei](opcodes/scoreline_i.md) | [seed](opcodes/seed.md) | [sekere](opcodes/sekere.md) | [select](opcodes/select.md) | [semitone](opcodes/semitone.md) |
+| [sense](opcodes/sense.md) | [sensekey](opcodes/sensekey.md) | [seqtime2](opcodes/seqtime2.md) | [seqtime](opcodes/seqtime.md) | [sequ](opcodes/sequencer.md) |
+| [serialbegin](opcodes/serialBegin.md) | [serialend](opcodes/serialEnd.md) | [serialflush](opcodes/serialFlush.md) | [serialprint](opcodes/serialPrint.md) | [serialread](opcodes/serialRead.md) |
+| [serialwrite](opcodes/serialWrite.md) | [serialwritei](opcodes/serialWrite_i.md) | [setcol](opcodes/setcol.md) | [setctrl](opcodes/setctrl.md) | [setksmps](opcodes/setksmps.md) |
+| [setoption](opcodes/setoption.md) | [setp](opcodes/setp.md) | [setrow](opcodes/setrow.md) | [setscorepos](opcodes/setscorepos.md) | [sfilist](opcodes/sfilist.md) |
 | [run](opcodes/run.md) | [s16b14](opcodes/s16b14.md) | [s32b14](opcodes/s32b14.md) | [samphold](opcodes/samphold.md) | [sandpaper](opcodes/sandpaper.md) |
 | [getcfg](opcodes/getcfg.md) | [getcol](opcodes/getcol.md) | [getftargs](opcodes/getftargs.md) | [getinstance](opcodes/getinstance.md) | [getp](opcodes/getp.md) |
 | [deltapn](opcodes/deltapn.md) | [deltapx](opcodes/deltapx.md) | [deltapxw](opcodes/deltapxw.md) | [denorm](opcodes/denorm.md) | [destroy](opcodes/destroy.md) |
