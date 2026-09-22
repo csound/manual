@@ -580,6 +580,8 @@ numeric or string values.<br>
 [midipitchbend](../opcodes/midipitchbend.md) - Gets a MIDI pitchbend value.<br>
 [midipolyaftertouch](../opcodes/midipolyaftertouch.md) - Gets a MIDI polyphonic aftertouch value.<br>
 [midiprogramchange](../opcodes/midiprogramchange.md) - Gets a MIDI program change value.<br>
+[midistop](../opcodes/midistop.md) - Intended to report incoming MIDI Stop messages at control rate.<br>
+[midistart](../opcodes/midistart.md) - Reports incoming MIDI Start messages at control rate.<br>
 [miditempo](../opcodes/miditempo.md) - Returns the current tempo at k-rate, of either the MIDI file (if available) or the score.<br>
 [midremot](../opcodes/midremot.md) - An opcode which can be used to implement a remote midi orchestra.<br>
 [min](../opcodes/min.md) - Produces a signal that is the minimum of any number of input signals.<br>
@@ -739,6 +741,7 @@ numeric or string values.<br>
 [peak](../opcodes/peak.md) - Maintains the output equal to the highest absolute value received.<br>
 [perf](../opcodes/perf.md) - Execute a performance pass on an instrument or opcode.<br>
 [pgmassign](../opcodes/pgmassign.md) - Assigns an instrument number to a specified MIDI program.<br>
+[pgmchn](../opcodes/pgmchn.md) - Reads MIDI Program Change messages and returns the program number and channel.<br>
 [phaser1](../opcodes/phaser1.md) - First-order allpass filters arranged in a series.<br>
 [phaser2](../opcodes/phaser2.md) - Second-order allpass filters arranged in a series.<br>
 [phasor](../opcodes/phasor.md) - Produce a normalized moving phase value.<br>

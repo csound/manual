@@ -3391,6 +3391,9 @@
 `pgmassign(ipgm, "insname"[, ichn])`<br>
 
 
+`kprogram, kchannel = `[**`pgmchn`**](opcodes/pgmchn.md)`([ichannel])`<br>
+
+
 `ires = `[**`polyaft`**](opcodes/polyaft.md)`(inote [, ilow] [, ihigh])`<br>
 `kres = polyaft(inote [, ilow] [, ihigh])`<br>
 
@@ -3567,6 +3570,10 @@
 
 
 `kcontinue = `[**`midicontinue`**](opcodes/midicontinue.md)`()`<br>
+
+
+`kstop = `[**`midistop`**](opcodes/midistop.md)`()`<br>
+`kstart = `[**`midistart`**](opcodes/midistart.md)`()`<br>
 
 
 [**`mrtmsg`**](opcodes/mrtmsg.md)`(imsgtype [, iport])`<br>
