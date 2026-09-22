@@ -10,6 +10,7 @@ The opcodes to use the software bus are:
 * [chna](../opcodes/chn.md)
 * [chnS](../opcodes/chn.md)
 * [chnclear](../opcodes/chnclear.md)
+* [chncleararray](../opcodes/chncleararray.md)
 * [chnexport](../opcodes/chnexport.md)
 * [chnget](../opcodes/chnget.md)
 * [chnmix](../opcodes/chnmix.md)
