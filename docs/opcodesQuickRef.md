@@ -3555,11 +3555,16 @@
 [**`mclock`**](opcodes/mclock.md)`(ifreq [, iport])`<br>
 
 
-`kcontinue = `[**`midicontinue`**](opcodes/midicontinue.md)`()`<br>
-`kpulse = `[**`midiclockin`**](opcodes/midiclockin.md)`()`<br>
 `kfreq = `[**`midiclockfreq`**](opcodes/midiclockfreq.md)`()`<br>
 
 
+`kpulse = `[**`midiclockin`**](opcodes/midiclockin.md)`()`<br>
+
+
+`kcontinue = `[**`midicontinue`**](opcodes/midicontinue.md)`()`<br>
+
+
+`kstop = `[**`midistop`**](opcodes/midistop.md)`()`<br>
 `kstart = `[**`midistart`**](opcodes/midistart.md)`()`<br>
 
 
