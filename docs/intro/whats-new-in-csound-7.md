@@ -148,7 +148,7 @@ endin
 
 Opcode objects may be invoked in loops, passed as parameters, have
 their init and perf functions executed, exist in arrays, etc. 
-For example, we can run an array of opcodes in parallel,
+The [run reference](../opcodes/run.md) explains initialization, performance and how arrays supply inputs to each object. For example, we can run an array of opcodes in parallel,
 
 ```csound-orc title="Array of opcodes in parallel"
 instr 1

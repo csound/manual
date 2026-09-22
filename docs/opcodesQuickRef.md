@@ -2352,6 +2352,10 @@
 `prealloc("insname", icount)`<br>
 
 
+`[xout1, ... =] `[**`run`**](opcodes/run.md)`(object, xin1, ...)`<br>
+`[xout1, ... =] run(objects, xin1, ...)`<br>
+
+
 [**`setp`**](opcodes/setp.md)`(ins:Instr,num:k,val:k)`<br>
 
 
