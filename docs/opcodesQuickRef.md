@@ -1216,6 +1216,12 @@
 [**`chnclear`**](opcodes/chnclear.md)`(Sname1[, Sname2,...])`<br>
 
 
+[**`chnclear_array`**](opcodes/chnclear_array.md)`(Sname1[, Sname2, ...])`<br>
+
+
+[**`chncleararray`**](opcodes/chncleararray.md)`(Sname1[, Sname2, ...])`<br>
+
+
 `gival = `[**`chnexport`**](opcodes/chnexport.md)`(Sname, imode[, itype, idflt, imin, imax])`<br>
 `gkval = chnexport(Sname, imode[, itype, idflt, imin, imax])`<br>
 `gaval = chnexport(Sname, imode)`<br>
@@ -2324,6 +2330,9 @@
 [**`exitnowk`**](opcodes/exitnowk.md)`(kStatus)`<br>
 
 
+`xvalue = `[**`getp`**](opcodes/getp.md)`(object, kindex)`<br>
+
+
 `active:b = `[**`isactive`**](opcodes/isactive.md)`(voice)`<br>
 `active:B = isactive(voice)`<br>
 
@@ -2347,6 +2356,10 @@
 
 [**`prealloc`**](opcodes/prealloc.md)`(insnum, icount)`<br>
 `prealloc("insname", icount)`<br>
+
+
+`[xout1, ... =] `[**`run`**](opcodes/run.md)`(object, xin1, ...)`<br>
+`[xout1, ... =] run(objects, xin1, ...)`<br>
 
 
 [**`setp`**](opcodes/setp.md)`(ins:Instr,num:k,val:k)`<br>
@@ -2383,6 +2396,9 @@
 `delete(engine)`<br>
 
 
+[**`destroy`**](opcodes/destroy.md)`(engine)`<br>
+
+
 `self:Instr = `[**`getinstance`**](opcodes/getinstance.md)`()`<br>
 
 
@@ -2412,6 +2428,9 @@
 `opcodeinfo(obj:Opcode)`<br>
 
 
+`definition:OpcodeDef = `[**`opcoderef`**](opcodes/opcoderef.md)`(Sname)`<br>
+
+
 [**`p`**](opcodes/p.md)`(x)`<br>
 
 
@@ -2432,7 +2451,13 @@
 [**`rireturn`**](opcodes/rireturn.md)`()`<br>
 
 
+`iresult = `[**`setoption`**](opcodes/setoption.md)`(engine, Soptions)`<br>
+
+
 `iStatus = `[**`splice`**](opcodes/splice.md)`(voice, anchor, iMode)`<br>
+
+
+`iresult = `[**`start`**](opcodes/start.md)`(engine)`<br>
 
 
 `Sname = `[**`str`**](opcodes/str.md)`(definition)`<br>
@@ -2740,6 +2765,12 @@
 `ifno = `[**`ftgentmp`**](opcodes/ftgentmp.md)`(ip1, ip2dummy, isize, igen, iarga, iargb, ...)`<br>
 
 
+`kunused = `[**`ftresize`**](opcodes/ftresize.md)`(kfn, ksize)`<br>
+
+
+`iunused = `[**`ftresizei`**](opcodes/ftresizei.md)`(ifn, isize)`<br>
+
+
 `Sdst = `[**`getftargs`**](opcodes/getftargs.md)`(iftno, ktrig)`<br>
 
 
@@ -2778,6 +2809,16 @@
 
 
 `karray = `[**`slicearray`**](opcodes/slicearray.md)`(kinarray, istart, iend [,istride])`<br>
+
+
+`iout[] = `[**`slicearray_i`**](opcodes/slicearray_i.md)`(iin[], istart, iend [, istride])`<br>
+`kout[] = slicearray_i(kin[], istart, iend [, istride])`<br>
+`Sout[] = slicearray_i(Sin[], istart, iend [, istride])`<br>
+
+
+`iout[] = `[**`slicearrayi`**](opcodes/slicearrayi.md)`(iin[], istart, iend [, istride])`<br>
+`kout[] = slicearrayi(kin[], istart, iend [, istride])`<br>
+`Sout[] = slicearrayi(Sin[], istart, iend [, istride])`<br>
 
 
 `ires = `[**`tableng`**](opcodes/tableng.md)`(ifn)`<br>
@@ -3048,6 +3089,9 @@
 
 
 [**`logbtwo`**](opcodes/logbtwo.md)`(x)  (init-rate or control-rate args only)`<br>
+
+
+`isize = `[**`nxtpow2`**](opcodes/nxtpow2.md)`(ivalue)`<br>
 
 
 [**`polar`**](opcodes/polar.md)`(var:Complex)`<br>
@@ -4475,6 +4519,9 @@
 
 `kout[] = `[**`pol2rect`**](opcodes/pol2rect.md)`(kin[])`<br>
 `kout[] = pol2rect(kmags[], kphs[])`<br>
+
+
+`kpower[] = `[**`pows`**](opcodes/pows.md)`(kspectrum[])`<br>
 
 
 `kout[] = `[**`r2c`**](opcodes/r2c.md)`(kin[])`<br>

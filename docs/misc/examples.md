@@ -398,6 +398,7 @@
 ### Signal I/O:Software Bus
 [**chnclear-modern.csd**](../opcodes/chnclear.md#examples)<br>
 [**chnclear.csd**](../opcodes/chnclear.md#examples)<br>
+[**chncleararray.csd**](../opcodes/chncleararray.md#examples)<br>
 [**chnget-modern.csd**](../opcodes/chnget.md#examples)<br>
 [**chnget.csd**](../opcodes/chnget.md#examples)<br>
 [**chnmix-modern.csd**](../opcodes/chnmix.md#examples)<br>
@@ -813,12 +814,14 @@
 [**cpuprc.csd**](../opcodes/cpuprc.md#examples)<br>
 [**exitnow.csd**](../opcodes/exitnow.md#examples)<br>
 [**exitnowk.csd**](../opcodes/exitnowk.md#examples)<br>
+[**getp.csd**](../opcodes/getp.md#examples)<br>
 [**instance-controls.csd**](../opcodes/isactive.md#examples)<br>
 [**isreleasing.csd**](../opcodes/isreleasing.md#examples)<br>
 [**maxalloc.csd**](../opcodes/maxalloc.md#examples)<br>
 [**instance-controls.csd**](../opcodes/pause.md#examples)<br>
 [**create.csd**](../opcodes/perf.md#examples)<br>
 [**prealloc.csd**](../opcodes/prealloc.md#examples)<br>
+[**opcode-object.csd**](../opcodes/run.md#examples)<br>
 [**instance-controls.csd**](../opcodes/setp.md#examples)<br>
 
 ### Instrument Control:Initialization and Reinitialization
@@ -827,6 +830,7 @@
 [**assign.csd**](../opcodes/assign.md#examples)<br>
 [**create.csd**](../opcodes/create.md#examples)<br>
 [**delete.csd**](../opcodes/delete.md#examples)<br>
+[**destroy.csd**](../opcodes/destroy.md#examples)<br>
 [**instance-controls.csd**](../opcodes/getinstance.md#examples)<br>
 [**init.csd**](../opcodes/init.md#examples)<br>
 [**create.csd**](../opcodes/init.md#examples)<br>
@@ -834,6 +838,7 @@
 [**instrument-names.csd**](../opcodes/nstrnum.md#examples)<br>
 [**nstrnum_nstrstr.csd**](../opcodes/nstrstr.md#examples)<br>
 [**opcodeinfo.csd**](../opcodes/opcodeinfo.md#examples)<br>
+[**opcoderef.csd**](../opcodes/opcoderef.md#examples)<br>
 [**p.csd**](../opcodes/p.md#examples)<br>
 [**passign.csd**](../opcodes/passign.md#examples)<br>
 [**pset.csd**](../opcodes/pset.md#examples)<br>
@@ -843,7 +848,9 @@
 [**musical/Reinit_Giordani-modern.csd**](../opcodes/reinit.md#examples)<br>
 [**musical/Reinit_Giordani.csd**](../opcodes/reinit.md#examples)<br>
 [**reinit.csd**](../opcodes/rireturn.md#examples)<br>
+[**setoption.csd**](../opcodes/setoption.md#examples)<br>
 [**splice.csd**](../opcodes/splice.md#examples)<br>
+[**start.csd**](../opcodes/start.md#examples)<br>
 [**instrument-names.csd**](../opcodes/str.md#examples)<br>
 [**tival.csd**](../opcodes/tival.md#examples)<br>
 
@@ -950,6 +957,8 @@
 [**ftgen.csd**](../opcodes/ftgen.md#examples)<br>
 [**ftgen-2.csd**](../opcodes/ftgen.md#examples)<br>
 [**ftgentmp.csd**](../opcodes/ftgentmp.md#examples)<br>
+[**ftresize.csd**](../opcodes/ftresize.md#examples)<br>
+[**ftresize.csd**](../opcodes/ftresizei.md#examples)<br>
 [**getftargs.csd**](../opcodes/getftargs.md#examples)<br>
 
 ### Table Control:Table Queries
@@ -966,6 +975,7 @@
 [**maparray.csd**](../opcodes/maparray.md#examples)<br>
 [**nsamp.csd**](../opcodes/nsamp.md#examples)<br>
 [**slicearray.csd**](../opcodes/slicearray.md#examples)<br>
+[**slicearrayi.csd**](../opcodes/slicearrayi.md#examples)<br>
 [**tableng.csd**](../opcodes/tableng.md#examples)<br>
 [**tabsum.csd**](../opcodes/tabsum.md#examples)<br>
 
@@ -1060,6 +1070,7 @@
 [**log10.csd**](../opcodes/log10.md#examples)<br>
 [**log2.csd**](../opcodes/log2.md#examples)<br>
 [**logbtwo.csd**](../opcodes/logbtwo.md#examples)<br>
+[**nxtpow2.csd**](../opcodes/nxtpow2.md#examples)<br>
 [**powoftwo.csd**](../opcodes/powoftwo.md#examples)<br>
 [**qinf.csd**](../opcodes/qinf.md#examples)<br>
 [**qnan.csd**](../opcodes/qnan.md#examples)<br>
@@ -1549,6 +1560,7 @@
 [**mags.csd**](../opcodes/mags.md#examples)<br>
 [**phs.csd**](../opcodes/phs.md#examples)<br>
 [**pol2rect.csd**](../opcodes/pol2rect.md#examples)<br>
+[**pows.csd**](../opcodes/pows.md#examples)<br>
 [**r2c.csd**](../opcodes/r2c.md#examples)<br>
 [**rect2pol.csd**](../opcodes/rect2pol.md#examples)<br>
 
