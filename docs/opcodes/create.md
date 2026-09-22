@@ -29,7 +29,7 @@ _code_ -- String containing Csound language code for an instrument.
 
 _instr_ -- compiled instrument definition.
 
-_opc_ -- opcode definition
+_opc_ -- opcode definition, supplied directly or looked up by name with [opcoderef](opcoderef.md)
 
 _overload_ -- (optional, defaults to 0) opcode overload (version) (see
 [opcodeinfo](../opcodes/opcodeinfo.md))
@@ -40,7 +40,7 @@ All forms run at initialization. The string form takes an instrument body withou
 
 `create(definition)` allocates an `Instr` instance without scheduling it. Use [init](init.md) to initialize it, then [perf](perf.md) to run it from the calling instrument. For an instance that Csound performs automatically, use [play](play.md) or [schedule](schedule.md).
 
-The `Opcode` form creates one object from the chosen overload. The array form creates a one-dimensional `Opcode[]` with `len` independent objects. Use a nonnegative integer for `len`. Creating an opcode object does not run its initialization or performance code. Use `run`, or separate `init` and `perf` calls, to execute it.
+The `Opcode` form creates one object from the chosen overload. The array form creates a one-dimensional `Opcode[]` with `len` independent objects. Use a nonnegative integer for `len`. Creating an opcode object does not run its initialization or performance code. Use [run](run.md), or separate [init](init.md) and [perf](perf.md) calls, to execute it.
 
 Arrange [delete](delete.md) in the owning instrument for cleanup. The [object guide](../orch/instrument-and-opcode-objects.md) explains lifetimes and gives examples of each form.
 
