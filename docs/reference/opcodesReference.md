@@ -234,6 +234,7 @@ transform.<br>
 [deltapx](../opcodes/deltapx.md) - Read from or write to a delay line with interpolation.<br>
 [deltapxw](../opcodes/deltapxw.md) - Mixes the input signal to a delay line.<br>
 [denorm](../opcodes/denorm.md) - Mixes low level (~1e-20 for floats, and ~1e-56 for doubles) noise to a list of a-rate signals.<br>
+[destroy](../opcodes/destroy.md) - Destroys an embedded Csound engine at initialization.<br>
 [diff](../opcodes/diff.md) - Modify a signal by differentiation.<br>
 [diodeladder](../opcodes/diode_ladder.md) - Zero-delay feedback implementation of a 4 pole (24 dB/oct) diode low-pass filter.<br>
 [directory](../opcodes/directory.md) - Reads a directory and outputs to a string array a list of file names.<br>
@@ -380,6 +381,7 @@ numeric or string values.<br>
 [getcol](../opcodes/getcol.md) - Gets a given column from a 2-dimensional array as a vector.<br>
 [getftargs](../opcodes/getftargs.md) - Fill a string variable with the arguments used to create a function table at k-rate.<br>
 [getinstance](../opcodes/getinstance.md) - Returns a reference to the current instrument instance.<br>
+[getp](../opcodes/getp.md) - Reads one output from an opcode object.<br>
 [getrow](../opcodes/getrow.md) - Gets a given row from a 2-dimensional array as a vector.<br>
 [getseed](../opcodes/getseed.md) - Reads the global seed value.<br>
 [gogobel](../opcodes/gogobel.md) - Audio output is a tone related to the striking of a cow bell or similar.<br>
@@ -640,6 +642,7 @@ numeric or string values.<br>
 [olabuffer](../opcodes/olabuffer.md) - Sum overlapping frames of audio as k-rate arrays and read as an audio signal.<br>
 [opcode](../opcodes/opcode.md) - Defines the start of user-defined opcode block.<br>
 [opcodeinfo](../opcodes/opcodeinfo.md) - Prints information on an opcode definition and its overloads.<br>
+[opcoderef](../opcodes/opcoderef.md) - Gets an opcode definition by name.<br>
 [oscbundle](../opcodes/OSCbundle.md) - Sends data to other processes using the OSC protocol by packing messages in a bundle.<br>
 [osccount](../opcodes/OSCcount.md) - Gives the Count of OSC messages currently unread but received by the current listeners.<br>
 [oscil1](../opcodes/oscil1.md) - Accesses table values by incremental sampling.<br>
@@ -881,6 +884,7 @@ numeric or string values.<br>
 [round](../opcodes/round.md) - Returns the integer value nearest to _x_.<br>
 [rspline](../opcodes/rspline.md) - Generate random spline curves.<br>
 [rtclock](../opcodes/rtclock.md) - Read the real time clock from the operating system.<br>
+[run](../opcodes/run.md) - Initializes and performs an opcode object or an array of opcode objects.<br>
 [s16b14](../opcodes/s16b14.md) - Creates a bank of 16 different 14-bit MIDI control message numbers.<br>
 [s32b14](../opcodes/s32b14.md) - Creates a bank of 32 different 14-bit MIDI control message numbers.<br>
 [samphold](../opcodes/samphold.md) - Performs a sample-and-hold operation on its input.<br>
@@ -921,6 +925,7 @@ numeric or string values.<br>
 [setcol](../opcodes/setcol.md) - Sets a given column of a 2-dimensional array from a vector.<br>
 [setctrl](../opcodes/setctrl.md) - Configurable slider controls for realtime user input.<br>
 [setksmps](../opcodes/setksmps.md) - Sets the local ksmps value in an instrument or user-defined opcode block.<br>
+[setoption](../opcodes/setoption.md) - Sets command-line options on an embedded Csound engine.<br>
 [setp](../opcodes/setp.md) - Set the value of an instrument parameter.<br>
 [setrow](../opcodes/setrow.md) - Sets a given row of a 2-dimensional array from a vector.<br>
 [setscorepos](../opcodes/setscorepos.md) - Sets the playback position of the current score performance to a given position.<br>

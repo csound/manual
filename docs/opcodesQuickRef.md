@@ -2324,6 +2324,9 @@
 [**`exitnowk`**](opcodes/exitnowk.md)`(kStatus)`<br>
 
 
+`xvalue = `[**`getp`**](opcodes/getp.md)`(object, kindex)`<br>
+
+
 `active:b = `[**`isactive`**](opcodes/isactive.md)`(voice)`<br>
 `active:B = isactive(voice)`<br>
 
@@ -2347,6 +2350,10 @@
 
 [**`prealloc`**](opcodes/prealloc.md)`(insnum, icount)`<br>
 `prealloc("insname", icount)`<br>
+
+
+`[xout1, ... =] `[**`run`**](opcodes/run.md)`(object, xin1, ...)`<br>
+`[xout1, ... =] run(objects, xin1, ...)`<br>
 
 
 [**`setp`**](opcodes/setp.md)`(ins:Instr,num:k,val:k)`<br>
@@ -2383,6 +2390,9 @@
 `delete(engine)`<br>
 
 
+[**`destroy`**](opcodes/destroy.md)`(engine)`<br>
+
+
 `self:Instr = `[**`getinstance`**](opcodes/getinstance.md)`()`<br>
 
 
@@ -2412,6 +2422,9 @@
 `opcodeinfo(obj:Opcode)`<br>
 
 
+`definition:OpcodeDef = `[**`opcoderef`**](opcodes/opcoderef.md)`(Sname)`<br>
+
+
 [**`p`**](opcodes/p.md)`(x)`<br>
 
 
@@ -2430,6 +2443,9 @@
 
 
 [**`rireturn`**](opcodes/rireturn.md)`()`<br>
+
+
+`iresult = `[**`setoption`**](opcodes/setoption.md)`(engine, Soptions)`<br>
 
 
 `iStatus = `[**`splice`**](opcodes/splice.md)`(voice, anchor, iMode)`<br>
