@@ -814,12 +814,14 @@
 [**cpuprc.csd**](../opcodes/cpuprc.md#examples)<br>
 [**exitnow.csd**](../opcodes/exitnow.md#examples)<br>
 [**exitnowk.csd**](../opcodes/exitnowk.md#examples)<br>
+[**getp.csd**](../opcodes/getp.md#examples)<br>
 [**instance-controls.csd**](../opcodes/isactive.md#examples)<br>
 [**isreleasing.csd**](../opcodes/isreleasing.md#examples)<br>
 [**maxalloc.csd**](../opcodes/maxalloc.md#examples)<br>
 [**instance-controls.csd**](../opcodes/pause.md#examples)<br>
 [**create.csd**](../opcodes/perf.md#examples)<br>
 [**prealloc.csd**](../opcodes/prealloc.md#examples)<br>
+[**opcode-object.csd**](../opcodes/run.md#examples)<br>
 [**instance-controls.csd**](../opcodes/setp.md#examples)<br>
 
 ### Instrument Control:Initialization and Reinitialization
@@ -828,6 +830,7 @@
 [**assign.csd**](../opcodes/assign.md#examples)<br>
 [**create.csd**](../opcodes/create.md#examples)<br>
 [**delete.csd**](../opcodes/delete.md#examples)<br>
+[**destroy.csd**](../opcodes/destroy.md#examples)<br>
 [**instance-controls.csd**](../opcodes/getinstance.md#examples)<br>
 [**init.csd**](../opcodes/init.md#examples)<br>
 [**create.csd**](../opcodes/init.md#examples)<br>
@@ -835,6 +838,7 @@
 [**instrument-names.csd**](../opcodes/nstrnum.md#examples)<br>
 [**nstrnum_nstrstr.csd**](../opcodes/nstrstr.md#examples)<br>
 [**opcodeinfo.csd**](../opcodes/opcodeinfo.md#examples)<br>
+[**opcoderef.csd**](../opcodes/opcoderef.md#examples)<br>
 [**p.csd**](../opcodes/p.md#examples)<br>
 [**passign.csd**](../opcodes/passign.md#examples)<br>
 [**pset.csd**](../opcodes/pset.md#examples)<br>
@@ -844,7 +848,9 @@
 [**musical/Reinit_Giordani-modern.csd**](../opcodes/reinit.md#examples)<br>
 [**musical/Reinit_Giordani.csd**](../opcodes/reinit.md#examples)<br>
 [**reinit.csd**](../opcodes/rireturn.md#examples)<br>
+[**setoption.csd**](../opcodes/setoption.md#examples)<br>
 [**splice.csd**](../opcodes/splice.md#examples)<br>
+[**start.csd**](../opcodes/start.md#examples)<br>
 [**instrument-names.csd**](../opcodes/str.md#examples)<br>
 [**tival.csd**](../opcodes/tival.md#examples)<br>
 
