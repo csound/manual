@@ -101,6 +101,8 @@ An opcode name such as `oscili` is an `OpcodeDef`. Pass it to `create` to get an
 
 Use `run` to initialize an object and call its performance routine each control cycle. Its inputs and outputs must match the chosen opcode overload. For separate control of these phases, use `init` and `perf` instead.
 
+[getp](../opcodes/getp.md) copies one of the object's outputs by its zero-based index. Call it after `run` or `perf` to read the current result without running the object again. Its index selects an opcode output, not an instrument p-field.
+
 ``` csound-orc
 oscillator:Opcode = create(oscili)
 aTone = run(oscillator, 0.1, 440)
