@@ -836,6 +836,7 @@
 [**instrument-names.csd**](../opcodes/nstrnum.md#examples)<br>
 [**nstrnum_nstrstr.csd**](../opcodes/nstrstr.md#examples)<br>
 [**opcodeinfo.csd**](../opcodes/opcodeinfo.md#examples)<br>
+[**opcoderef.csd**](../opcodes/opcoderef.md#examples)<br>
 [**p.csd**](../opcodes/p.md#examples)<br>
 [**passign.csd**](../opcodes/passign.md#examples)<br>
 [**pset.csd**](../opcodes/pset.md#examples)<br>

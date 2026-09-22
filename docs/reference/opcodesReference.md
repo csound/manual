@@ -642,6 +642,7 @@ numeric or string values.<br>
 [olabuffer](../opcodes/olabuffer.md) - Sum overlapping frames of audio as k-rate arrays and read as an audio signal.<br>
 [opcode](../opcodes/opcode.md) - Defines the start of user-defined opcode block.<br>
 [opcodeinfo](../opcodes/opcodeinfo.md) - Prints information on an opcode definition and its overloads.<br>
+[opcoderef](../opcodes/opcoderef.md) - Gets an opcode definition by name.<br>
 [oscbundle](../opcodes/OSCbundle.md) - Sends data to other processes using the OSC protocol by packing messages in a bundle.<br>
 [osccount](../opcodes/OSCcount.md) - Gives the Count of OSC messages currently unread but received by the current listeners.<br>
 [oscil1](../opcodes/oscil1.md) - Accesses table values by incremental sampling.<br>

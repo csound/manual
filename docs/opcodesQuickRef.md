@@ -2418,6 +2418,9 @@
 `opcodeinfo(obj:Opcode)`<br>
 
 
+`definition:OpcodeDef = `[**`opcoderef`**](opcodes/opcoderef.md)`(Sname)`<br>
+
+
 [**`p`**](opcodes/p.md)`(x)`<br>
 
 
