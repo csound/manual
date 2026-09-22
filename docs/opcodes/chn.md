@@ -94,7 +94,7 @@ endin
 
 ## See also
 
-[Software Bus](../sigio/softbus.md)
+[chncleararray](chncleararray.md), [Software Bus](../sigio/softbus.md)
 
 ## Credits
 

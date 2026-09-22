@@ -38,7 +38,7 @@ _Sname*_ -- a string that indicates which named channel of the software bus to c
 
 ## See also
 
-[Software Bus](../sigio/softbus.md)
+[chncleararray](chncleararray.md), [Software Bus](../sigio/softbus.md)
 
 ## Credits
 
