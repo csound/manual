@@ -3552,6 +3552,7 @@
 [**`mclock`**](opcodes/mclock.md)`(ifreq [, iport])`<br>
 
 
+`kpulse = `[**`midiclockin`**](opcodes/midiclockin.md)`()`<br>
 `kfreq = `[**`midiclockfreq`**](opcodes/midiclockfreq.md)`()`<br>
 
 
