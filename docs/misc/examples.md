@@ -828,6 +828,7 @@
 [**assign.csd**](../opcodes/assign.md#examples)<br>
 [**create.csd**](../opcodes/create.md#examples)<br>
 [**delete.csd**](../opcodes/delete.md#examples)<br>
+[**destroy.csd**](../opcodes/destroy.md#examples)<br>
 [**instance-controls.csd**](../opcodes/getinstance.md#examples)<br>
 [**init.csd**](../opcodes/init.md#examples)<br>
 [**create.csd**](../opcodes/init.md#examples)<br>

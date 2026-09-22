@@ -234,6 +234,7 @@ transform.<br>
 [deltapx](../opcodes/deltapx.md) - Read from or write to a delay line with interpolation.<br>
 [deltapxw](../opcodes/deltapxw.md) - Mixes the input signal to a delay line.<br>
 [denorm](../opcodes/denorm.md) - Mixes low level (~1e-20 for floats, and ~1e-56 for doubles) noise to a list of a-rate signals.<br>
+[destroy](../opcodes/destroy.md) - Destroys an embedded Csound engine at initialization.<br>
 [diff](../opcodes/diff.md) - Modify a signal by differentiation.<br>
 [diodeladder](../opcodes/diode_ladder.md) - Zero-delay feedback implementation of a 4 pole (24 dB/oct) diode low-pass filter.<br>
 [directory](../opcodes/directory.md) - Reads a directory and outputs to a string array a list of file names.<br>

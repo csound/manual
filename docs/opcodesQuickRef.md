@@ -2386,6 +2386,9 @@
 `delete(engine)`<br>
 
 
+[**`destroy`**](opcodes/destroy.md)`(engine)`<br>
+
+
 `self:Instr = `[**`getinstance`**](opcodes/getinstance.md)`()`<br>
 
 
