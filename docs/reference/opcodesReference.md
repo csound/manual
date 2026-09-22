@@ -995,6 +995,7 @@ time-varying crossfade looping.<br>
 [squinewave](../opcodes/squinewave.md) - A mostly bandlimited shape-shifting square-pulse-saw-sinewave oscillator with hardsync.<br>
 [sr](../opcodes/sr.md) - Sets the audio sampling rate.<br>
 [st2ms](../opcodes/st2ms.md) - Stereo to Mid-Side Conversion.<br>
+[start](../opcodes/start.md) - Prepares an embedded Csound engine for performance.<br>
 [statevar](../opcodes/statevar.md) - Statevar is a new digital implementation of the analogue state-variable filter.<br>
 [sterrain](../opcodes/sterrain.md) - A wave-terrain synthesis opcode using curves computed with the superformula.<br>
 [stix](../opcodes/stix.md) - Semi-physical model of a stick sound.<br>

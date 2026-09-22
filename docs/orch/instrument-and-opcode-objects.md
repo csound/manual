@@ -131,6 +131,8 @@ Delete manually managed instances before deleting a definition they use. A share
 
 Use [setoption](../opcodes/setoption.md) to configure an embedded engine before compiling code or starting it. Its example shows how the main engine can play audio from an embedded engine configured with `-n`.
 
+[start](../opcodes/start.md) prepares an embedded engine for performance. Call `perf(engine)` to advance it and [delete](../opcodes/delete.md) to release it when the containing instrument ends.
+
 ## See also
 
 [create](../opcodes/create.md), [play](../opcodes/play.md), [init](../opcodes/init.md), [perf](../opcodes/perf.md), [delete](../opcodes/delete.md), [opcodeinfo](../opcodes/opcodeinfo.md), [What's new in Csound 7](../intro/whats-new-in-csound-7.md)

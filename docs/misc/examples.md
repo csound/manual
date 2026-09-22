@@ -849,6 +849,7 @@
 [**reinit.csd**](../opcodes/rireturn.md#examples)<br>
 [**setoption.csd**](../opcodes/setoption.md#examples)<br>
 [**splice.csd**](../opcodes/splice.md#examples)<br>
+[**start.csd**](../opcodes/start.md#examples)<br>
 [**instrument-names.csd**](../opcodes/str.md#examples)<br>
 [**tival.csd**](../opcodes/tival.md#examples)<br>
 
