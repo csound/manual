@@ -130,6 +130,8 @@
 [checkbox](../opcodes/checkbox.md) - Sense on-screen controls.<br>
 [chn](../opcodes/chn.md) - Declare a channel of the named software bus.<br>
 [chnclear](../opcodes/chnclear.md) - Clears a number of audio output channel of the named software bus.<br>
+[chnclear_array](../opcodes/chnclear_array.md) - Sets the contents of one or more array channels to zero.<br>
+[chncleararray](../opcodes/chncleararray.md) - Sets the contents of one or more array channels to zero.<br>
 [chnexport](../opcodes/chnexport.md) - Export a global variable as a channel of the bus.<br>
 [chnget](../opcodes/chnget.md) - Reads data from a channel of the inward named software bus.<br>
 [chnmix](../opcodes/chnmix.md) - Writes audio data to the named software bus, mixing to the previous output.<br>
