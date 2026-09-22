@@ -269,6 +269,14 @@
 | [cpsmidi](opcodes/cpsmidi.md) | [cpsmidib](opcodes/cpsmidib.md) | [cpsmidinn](opcodes/cpsmidinn.md) | [cpsoct](opcodes/cpsoct.md) | [cpspch](opcodes/cpspch.md) |
 | [cpstmid](opcodes/cpstmid.md) | [cpstun](opcodes/cpstun.md) | [cpstuni](opcodes/cpstuni.md) | [cpsxpch](opcodes/cpsxpch.md) | [cpumeter](opcodes/cpumeter.md) |
 | [cpuprc](opcodes/cpuprc.md) | [create](opcodes/create.md) | [createinstr](opcodes/createinstr.md) | [cross2](opcodes/cross2.md) | [crossfm](opcodes/crossfm.md) |
+| [crunch](opcodes/crunch.md) | [ctlchn](opcodes/ctlchn.md) | [ctrl14](opcodes/ctrl14.md) | [ctrl21](opcodes/ctrl21.md) | [ctrl7](opcodes/ctrl7.md) |
+| [ctrlinit](opcodes/ctrlinit.md) | [ctrlpreset](opcodes/ctrlpreset.md) | [ctrlprint](opcodes/ctrlprint.md) | [ctrlprintpresets](opcodes/ctrlprintpresets.md) | [ctrlsave](opcodes/ctrlsave.md) |
+| [ctrlselect](opcodes/ctrlselect.md) | [cuserrnd](opcodes/cuserrnd.md) | [dam](opcodes/dam.md) | [date](opcodes/date.md) | [dates](opcodes/dates.md) |
+| [db](opcodes/db.md) | [dbamp](opcodes/dbamp.md) | [dbap](opcodes/dbap.md) | [dbapgains](opcodes/dbapgains.md) | [dbfsamp](opcodes/dbfsamp.md) |
+| [dcblock2](opcodes/dcblock2.md) | [dcblock](opcodes/dcblock.md) | [dconv](opcodes/dconv.md) | [dct](opcodes/dct.md) | [dctinv](opcodes/dctinv.md) |
+| [deconv](opcodes/deconv.md) | [deinterleave](opcodes/deinterleave.md) | [delay1](opcodes/delay1.md) | [delay](opcodes/delay.md) | [delayk](opcodes/delayk.md) |
+| [delayr](opcodes/delayr.md) | [delayw](opcodes/delayw.md) | [delete](opcodes/delete.md) | [deltap3](opcodes/deltap3.md) | [deltap](opcodes/deltap.md) |
+| [deltapi](opcodes/deltapi.md) | [deltapn](opcodes/deltapn.md) | [deltapx](opcodes/deltapx.md) | [deltapxw](opcodes/deltapxw.md) | [denorm](opcodes/denorm.md) |
 | [crunch](opcodes/crunch.md) | [ctrl14](opcodes/ctrl14.md) | [ctrl21](opcodes/ctrl21.md) | [ctrl7](opcodes/ctrl7.md) | [ctrlinit](opcodes/ctrlinit.md) |
 | [ctrlpreset](opcodes/ctrlpreset.md) | [ctrlprint](opcodes/ctrlprint.md) | [ctrlprintpresets](opcodes/ctrlprintpresets.md) | [ctrlsave](opcodes/ctrlsave.md) | [ctrlselect](opcodes/ctrlselect.md) |
 | [cuserrnd](opcodes/cuserrnd.md) | [dam](opcodes/dam.md) | [date](opcodes/date.md) | [dates](opcodes/dates.md) | [db](opcodes/db.md) |

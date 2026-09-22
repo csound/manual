@@ -64,6 +64,8 @@ Here is an example of the ctrl7 opcode. It uses the file [ctrl7.csd](../examples
 
 ## See also
 
+[ctlchn](ctlchn.md) reports new controller messages with their controller number and channel.
+
 [MIDI input and Initialization](../midi/input.md)
 
 ## Credits
