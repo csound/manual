@@ -97,9 +97,11 @@ Once an instance is in this list, Csound performs it automatically. Stop calling
 
 ## Opcode objects
 
-An opcode name such as `oscili` is an `OpcodeDef`. Pass it to `create` to get an `Opcode` object. Creating two objects gives two independent sets of opcode state.
+An opcode name such as `oscili` is an `OpcodeDef`. Pass it to `create` to get an `Opcode` object. Creating two objects gives two independent sets of opcode state. If the name comes from a string, use [opcoderef](../opcodes/opcoderef.md) to look up its definition at initialization.
 
 Use [run](../opcodes/run.md) to initialize an object and call its performance routine each control cycle. Its inputs and outputs must match the chosen opcode overload. For separate control of these phases, use `init` and `perf` instead.
+
+[getp](../opcodes/getp.md) copies one of the object's outputs by its zero-based index. Call it after `run` or `perf` to read the current result without running the object again. Its index selects an opcode output, not an instrument p-field.
 
 ``` csound-orc
 oscillator:Opcode = create(oscili)
@@ -125,7 +127,7 @@ Keep one clear owner for each object and arrange its cleanup there. Copying a re
 
 Delete manually managed instances before deleting a definition they use. A shared named instrument definition normally stays available for the whole piece. For a temporary definition, let all its notes finish before removing it, as in the first example.
 
-`delete` also accepts a `Csound` object, which holds a separate Csound engine. The [delete reference](../opcodes/delete.md) covers that form and the immediate `remove` and `destroy` operations.
+`delete` also accepts a `Csound` object, which holds a separate Csound engine. Use [destroy](../opcodes/destroy.md) to release that engine during initialization, or [delete](../opcodes/delete.md) to release it when the containing instrument ends.
 
 ## See also
 
