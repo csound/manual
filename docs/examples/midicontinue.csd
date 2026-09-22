@@ -11,11 +11,11 @@ nchnls = 1
 massign 0, 0
 
 instr CheckContinue
-  // The affected implementation reads the clock field for both opcodes.
+  // Continue and Timing Clock have independent flags.
   kContinue = midicontinue()
   kClock = midiclockin()
 
-  // Print the returned flags. Do not use them to control playback here.
+  // Check every cycle, including consecutive cycles with a message.
   if kContinue != 0 || kClock != 0 then
     printks "Reported continue %.0f, clock %.0f\n", 0, kContinue, kClock
   endif
