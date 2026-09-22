@@ -503,6 +503,7 @@ numeric or string values.<br>
 [lpcanal](../opcodes/lpcanal.md) - Streaming linear prediction analysis.<br>
 [lpcfilter](../opcodes/lpcfilter.md) - Streaming linear prediction all-pole filter whose coefficients are obtained from streaming linear prediction analysis.<br>
 [lpf18](../opcodes/lpf18.md) - A 3-pole sweepable resonant lowpass filter.<br>
+[lpform](../opcodes/lpform.md) - Reads a formant's center frequency and bandwidth from an LPC pole analysis.<br>
 [lpfreson](../opcodes/lpfreson.md) - Resynthesises a signal from the data passed internally by a previous _lpread_, applying formant shifting.<br>
 [lphasor](../opcodes/lphasor.md) - Generates a table index for sample playback (e.g. with [tablexkt](../opcodes/tablexkt.md)).<br>
 [lpinterp](../opcodes/lpinterp.md) - Computes a new set of poles from the interpolation between two analysis.<br>

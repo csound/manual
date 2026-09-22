@@ -1288,6 +1288,7 @@
 [**lpcanal-2.csd**](../opcodes/lpcanal.md#examples)<br>
 [**lpcfilter.csd**](../opcodes/lpcfilter.md#examples)<br>
 [**lpcfilter-2.csd**](../opcodes/lpcfilter.md#examples)<br>
+[**lpform.csd**](../opcodes/lpform.md#examples)<br>
 [**lpfreson.csd**](../opcodes/lpfreson.md#examples)<br>
 [**lpread.csd**](../opcodes/lpread.md#examples)<br>
 [**lpreson.csd**](../opcodes/lpreson.md#examples)<br>

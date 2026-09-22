@@ -3773,6 +3773,9 @@
 `ares = lpcfilter(asig, koff, kflg, ifn, isiz, iord [, iwin])`<br>
 
 
+`kfrequency, kbandwidth = `[**`lpform`**](opcodes/lpform.md)`(kformant)`<br>
+
+
 `ares = `[**`lpfreson`**](opcodes/lpfreson.md)`(asig, kfrqratio)`<br>
 
 
