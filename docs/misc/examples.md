@@ -691,6 +691,7 @@
 ### Signal Modifiers:Waveshaping
 [**chebyshevpoly-modern.csd**](../opcodes/chebyshevpoly.md#examples)<br>
 [**chebyshevpoly.csd**](../opcodes/chebyshevpoly.md#examples)<br>
+[**chebyshevpoly2.csd**](../opcodes/chebyshevpoly2.md#examples)<br>
 [**pdclip.csd**](../opcodes/pdclip.md#examples)<br>
 [**pdhalf.csd**](../opcodes/pdhalf.md#examples)<br>
 [**pdhalfy.csd**](../opcodes/pdhalfy.md#examples)<br>
@@ -1177,6 +1178,7 @@
 [**pgmassign.csd**](../opcodes/pgmassign.md#examples)<br>
 [**pgmassign_ignore.csd**](../opcodes/pgmassign.md#examples)<br>
 [**pgmassign_advanced.csd**](../opcodes/pgmassign.md#examples)<br>
+[**pgmchn.csd**](../opcodes/pgmchn.md#examples)<br>
 [**polyaft.csd**](../opcodes/polyaft.md#examples)<br>
 [**veloc.csd**](../opcodes/veloc.md#examples)<br>
 
@@ -1246,6 +1248,8 @@
 [**midiclockfreq.csd**](../opcodes/midiclockfreq.md#examples)<br>
 [**midiclockin.csd**](../opcodes/midiclockin.md#examples)<br>
 [**midicontinue.csd**](../opcodes/midicontinue.md#examples)<br>
+[**midistop.csd**](../opcodes/midistop.md#examples)<br>
+[**midistart.csd**](../opcodes/midistart.md#examples)<br>
 
 ### Real-time MIDI:Slider Banks
 

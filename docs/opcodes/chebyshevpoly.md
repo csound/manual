@@ -62,6 +62,8 @@ More information about Chebyshev polynomials can be found on Wikipedia at [http:
 
 ## See also
 
+[chebyshevpoly2](chebyshevpoly2.md) evaluates the series directly and supports coefficient arrays. Use it when high-order terms cause rounding errors or overflow in `chebyshevpoly`.
+
 [Waveshaping](../sigmod/wavshape.md)
 
 [Opcode Equivalents of Functions](../math/opeqfunc.md)
