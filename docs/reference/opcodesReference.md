@@ -130,6 +130,8 @@
 [checkbox](../opcodes/checkbox.md) - Sense on-screen controls.<br>
 [chn](../opcodes/chn.md) - Declare a channel of the named software bus.<br>
 [chnclear](../opcodes/chnclear.md) - Clears a number of audio output channel of the named software bus.<br>
+[chnclear_array](../opcodes/chnclear_array.md) - Sets the contents of one or more array channels to zero.<br>
+[chncleararray](../opcodes/chncleararray.md) - Sets the contents of one or more array channels to zero.<br>
 [chnexport](../opcodes/chnexport.md) - Export a global variable as a channel of the bus.<br>
 [chnget](../opcodes/chnget.md) - Reads data from a channel of the inward named software bus.<br>
 [chnmix](../opcodes/chnmix.md) - Writes audio data to the named software bus, mixing to the previous output.<br>
@@ -234,6 +236,7 @@ transform.<br>
 [deltapx](../opcodes/deltapx.md) - Read from or write to a delay line with interpolation.<br>
 [deltapxw](../opcodes/deltapxw.md) - Mixes the input signal to a delay line.<br>
 [denorm](../opcodes/denorm.md) - Mixes low level (~1e-20 for floats, and ~1e-56 for doubles) noise to a list of a-rate signals.<br>
+[destroy](../opcodes/destroy.md) - Destroys an embedded Csound engine at initialization.<br>
 [diff](../opcodes/diff.md) - Modify a signal by differentiation.<br>
 [diodeladder](../opcodes/diode_ladder.md) - Zero-delay feedback implementation of a 4 pole (24 dB/oct) diode low-pass filter.<br>
 [directory](../opcodes/directory.md) - Reads a directory and outputs to a string array a list of file names.<br>
@@ -358,6 +361,8 @@ numeric or string values.<br>
 [ftmorf](../opcodes/ftmorf.md) - Uses an index into a table of ftable numbers to morph between adjacent tables in the list.<br>
 [ftom](../opcodes/ftom.md) - Convert frequency to midi note number, taking global value of A4 into account.<br>
 [ftprint](../opcodes/ftprint.md) - Print the contents of a table (for debugging).<br>
+[ftresize](../opcodes/ftresize.md) - Changes a function table's size at performance time.<br>
+[ftresizei](../opcodes/ftresizei.md) - Changes a function table's size at initialization.<br>
 [ftsamplebank](../opcodes/ftsamplebank.md) - Reads a directory for sound files and loads them to a series of GEN01 function tables.<br>
 [ftsave](../opcodes/ftsave.md) - Save a set of previously-allocated tables to a file.<br>
 [ftsavek](../opcodes/ftsavek.md) - Save a set of previously-allocated tables to a file.<br>
@@ -380,6 +385,7 @@ numeric or string values.<br>
 [getcol](../opcodes/getcol.md) - Gets a given column from a 2-dimensional array as a vector.<br>
 [getftargs](../opcodes/getftargs.md) - Fill a string variable with the arguments used to create a function table at k-rate.<br>
 [getinstance](../opcodes/getinstance.md) - Returns a reference to the current instrument instance.<br>
+[getp](../opcodes/getp.md) - Reads one output from an opcode object.<br>
 [getrow](../opcodes/getrow.md) - Gets a given row from a 2-dimensional array as a vector.<br>
 [getseed](../opcodes/getseed.md) - Reads the global seed value.<br>
 [gogobel](../opcodes/gogobel.md) - Audio output is a tone related to the striking of a cow bell or similar.<br>
@@ -630,6 +636,7 @@ numeric or string values.<br>
 [ntof](../opcodes/ntof.md) - Convert note name to frequency.<br>
 [ntom](../opcodes/ntom.md) - Convert note name to midi note number.<br>
 [ntrpol](../opcodes/ntrpol.md) - Calculates the weighted mean value (i.e. linear interpolation) of two input signals.<br>
+[nxtpow2](../opcodes/nxtpow2.md) - Returns a power of two at least as large as the integer part of its input, with a minimum result of 2.<br>
 [octave](../opcodes/octave.md) - Calculates a factor to raise/lower a frequency by a given amount of octaves.<br>
 [octcps](../opcodes/octcps.md) - Converts a cycles-per-second value to octave-point-decimal.<br>
 [octmidi](../opcodes/octmidi.md) - Get the note number, in octave-point-decimal units, of the current MIDI event.<br>
@@ -640,6 +647,7 @@ numeric or string values.<br>
 [olabuffer](../opcodes/olabuffer.md) - Sum overlapping frames of audio as k-rate arrays and read as an audio signal.<br>
 [opcode](../opcodes/opcode.md) - Defines the start of user-defined opcode block.<br>
 [opcodeinfo](../opcodes/opcodeinfo.md) - Prints information on an opcode definition and its overloads.<br>
+[opcoderef](../opcodes/opcoderef.md) - Gets an opcode definition by name.<br>
 [oscbundle](../opcodes/OSCbundle.md) - Sends data to other processes using the OSC protocol by packing messages in a bundle.<br>
 [osccount](../opcodes/OSCcount.md) - Gives the Count of OSC messages currently unread but received by the current listeners.<br>
 [oscil1](../opcodes/oscil1.md) - Accesses table values by incremental sampling.<br>
@@ -753,6 +761,7 @@ numeric or string values.<br>
 [pow](../opcodes/pow.md) - Computes one argument to the power of another argument and scales the result.<br>
 [powershape](../opcodes/powershape.md) - Waveshapes a signal by raising it to a variable exponent.<br>
 [powoftwo](../opcodes/powoftwo.md) - Performs a  power-of-two calculation.<br>
+[pows](../opcodes/pows.md) - Calculates a power spectrum from a packed real FFT array.<br>
 [prealloc](../opcodes/prealloc.md) - Creates space for instruments but does not run them.<br>
 [prepiano](../opcodes/prepiano.md) - Creates a tone similar to a piano string prepared in a Cageian fashion.<br>
 [print](../opcodes/print.md) - Displays the values of init (i-rate) variables.<br>
@@ -881,6 +890,7 @@ numeric or string values.<br>
 [round](../opcodes/round.md) - Returns the integer value nearest to _x_.<br>
 [rspline](../opcodes/rspline.md) - Generate random spline curves.<br>
 [rtclock](../opcodes/rtclock.md) - Read the real time clock from the operating system.<br>
+[run](../opcodes/run.md) - Initializes and performs an opcode object or an array of opcode objects.<br>
 [s16b14](../opcodes/s16b14.md) - Creates a bank of 16 different 14-bit MIDI control message numbers.<br>
 [s32b14](../opcodes/s32b14.md) - Creates a bank of 32 different 14-bit MIDI control message numbers.<br>
 [samphold](../opcodes/samphold.md) - Performs a sample-and-hold operation on its input.<br>
@@ -921,6 +931,7 @@ numeric or string values.<br>
 [setcol](../opcodes/setcol.md) - Sets a given column of a 2-dimensional array from a vector.<br>
 [setctrl](../opcodes/setctrl.md) - Configurable slider controls for realtime user input.<br>
 [setksmps](../opcodes/setksmps.md) - Sets the local ksmps value in an instrument or user-defined opcode block.<br>
+[setoption](../opcodes/setoption.md) - Sets command-line options on an embedded Csound engine.<br>
 [setp](../opcodes/setp.md) - Set the value of an instrument parameter.<br>
 [setrow](../opcodes/setrow.md) - Sets a given row of a 2-dimensional array from a vector.<br>
 [setscorepos](../opcodes/setscorepos.md) - Sets the playback position of the current score performance to a given position.<br>
@@ -950,6 +961,8 @@ time-varying crossfade looping.<br>
 [skf](../opcodes/skf.md) - Sallen-Key filter.<br>
 [sleighbells](../opcodes/sleighbells.md) - Semi-physical model of a sleighbell sound.<br>
 [slicearray](../opcodes/slicearray.md) - Take a slice of a vector (one-dimensional k-rate array).<br>
+[slicearray_i](../opcodes/slicearray_i.md) - Copies selected array elements at initialization only.<br>
+[slicearrayi](../opcodes/slicearrayi.md) - Copies selected array elements at initialization only.<br>
 [slider16](../opcodes/slider16.md) - Creates a bank of 16 different MIDI control message numbers.<br>
 [slider16f](../opcodes/slider16f.md) - Creates a bank of 16 different MIDI control message numbers, filtered before output.<br>
 [slider16table](../opcodes/slider16table.md) - Stores a bank of 16 different MIDI control messages to a table.<br>
@@ -990,6 +1003,7 @@ time-varying crossfade looping.<br>
 [squinewave](../opcodes/squinewave.md) - A mostly bandlimited shape-shifting square-pulse-saw-sinewave oscillator with hardsync.<br>
 [sr](../opcodes/sr.md) - Sets the audio sampling rate.<br>
 [st2ms](../opcodes/st2ms.md) - Stereo to Mid-Side Conversion.<br>
+[start](../opcodes/start.md) - Prepares an embedded Csound engine for performance.<br>
 [statevar](../opcodes/statevar.md) - Statevar is a new digital implementation of the analogue state-variable filter.<br>
 [sterrain](../opcodes/sterrain.md) - A wave-terrain synthesis opcode using curves computed with the superformula.<br>
 [stix](../opcodes/stix.md) - Semi-physical model of a stick sound.<br>
@@ -1007,6 +1021,7 @@ time-varying crossfade looping.<br>
 [strget](../opcodes/strget.md) - Set  a string variable at initialization time to the value stored in [strset](../opcodes/strset.md) table at the specified index, or a string p-field from the score.<br>
 [strindex](../opcodes/strindex.md) - Return the position of the first occurence of S2 in S1, or -1 if not found.<br>
 [strindexk](../opcodes/strindexk.md) - Return the position of the first occurence of S2 in S1, or -1 if not found.<br>
+[string2array](../opcodes/string2array.md) - Reads a list of numbers from a string into an array.<br>
 [strlen](../opcodes/strlen.md) - Return the length of a string, or zero if it is empty.<br>
 [strlenk](../opcodes/strlenk.md) - Return the length of a string, or zero if it is empty.<br>
 [strlower](../opcodes/strlower.md) - Convert Ssrc to lower case, and write the result to Sdst.<br>
