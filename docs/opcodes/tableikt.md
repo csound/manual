@@ -63,6 +63,8 @@ play table no: 1
 
 ## See also
 
+[table3kt](table3kt.md) provides cubic interpolation with a variable table number.
+
 [Table Reading with Dynamic Selection](../table/select.md)
 
 ## Credits

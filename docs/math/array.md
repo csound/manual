@@ -8,10 +8,12 @@ Array Opcodes:
 
 * [init](../opcodes/init.md) initiatlise array
 * [fillarray](../opcodes/fillarray.md) fill array with values
+* [string2array](../opcodes/string2array.md) read numeric values from a string
 * [genarray](../opcodes/genarray.md) create array with artithmetic sequence
 * [genarrayi](../opcodes/genarray_i.md) create array with artithmetic sequence
 * [=](../opcodes/assign.md) create or reset array as copy of another array
 * [slicearray](../opcodes/slicearray.md) take slice of an array
+* [slicearrayi](../opcodes/slicearrayi.md) copy a slice at initialization only
 * [maparray](../opcodes/maparray.md) apply a function to an array
 * [scalearray](../opcodes/scalearray.md) scale values in an array
 * [sorta](../opcodes/sorta.md) sort an array in ascending order

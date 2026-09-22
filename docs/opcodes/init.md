@@ -97,7 +97,7 @@ instrument and opcode initialisation.
 
 ## See also
 
-[create](create.md), [perf](perf.md), [delete](delete.md), [Instrument definitions, instances and opcode objects](../orch/instrument-and-opcode-objects.md)
+[create](create.md), [run](run.md), [perf](perf.md), [delete](delete.md), [Instrument definitions, instances and opcode objects](../orch/instrument-and-opcode-objects.md)
 
 [Initialization and Reinitialization](../control/reinitn.md)
 
