@@ -2811,6 +2811,16 @@
 `karray = `[**`slicearray`**](opcodes/slicearray.md)`(kinarray, istart, iend [,istride])`<br>
 
 
+`iout[] = `[**`slicearray_i`**](opcodes/slicearray_i.md)`(iin[], istart, iend [, istride])`<br>
+`kout[] = slicearray_i(kin[], istart, iend [, istride])`<br>
+`Sout[] = slicearray_i(Sin[], istart, iend [, istride])`<br>
+
+
+`iout[] = `[**`slicearrayi`**](opcodes/slicearrayi.md)`(iin[], istart, iend [, istride])`<br>
+`kout[] = slicearrayi(kin[], istart, iend [, istride])`<br>
+`Sout[] = slicearrayi(Sin[], istart, iend [, istride])`<br>
+
+
 `ires = `[**`tableng`**](opcodes/tableng.md)`(ifn)`<br>
 `kres = tableng(kfn)`<br>
 

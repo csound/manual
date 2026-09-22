@@ -975,6 +975,7 @@
 [**maparray.csd**](../opcodes/maparray.md#examples)<br>
 [**nsamp.csd**](../opcodes/nsamp.md#examples)<br>
 [**slicearray.csd**](../opcodes/slicearray.md#examples)<br>
+[**slicearrayi.csd**](../opcodes/slicearrayi.md#examples)<br>
 [**tableng.csd**](../opcodes/tableng.md#examples)<br>
 [**tabsum.csd**](../opcodes/tabsum.md#examples)<br>
 

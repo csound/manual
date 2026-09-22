@@ -961,6 +961,8 @@ time-varying crossfade looping.<br>
 [skf](../opcodes/skf.md) - Sallen-Key filter.<br>
 [sleighbells](../opcodes/sleighbells.md) - Semi-physical model of a sleighbell sound.<br>
 [slicearray](../opcodes/slicearray.md) - Take a slice of a vector (one-dimensional k-rate array).<br>
+[slicearray_i](../opcodes/slicearray_i.md) - Copies selected array elements at initialization only.<br>
+[slicearrayi](../opcodes/slicearrayi.md) - Copies selected array elements at initialization only.<br>
 [slider16](../opcodes/slider16.md) - Creates a bank of 16 different MIDI control message numbers.<br>
 [slider16f](../opcodes/slider16f.md) - Creates a bank of 16 different MIDI control message numbers, filtered before output.<br>
 [slider16table](../opcodes/slider16table.md) - Stores a bank of 16 different MIDI control messages to a table.<br>
