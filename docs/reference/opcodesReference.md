@@ -636,6 +636,7 @@ numeric or string values.<br>
 [ntof](../opcodes/ntof.md) - Convert note name to frequency.<br>
 [ntom](../opcodes/ntom.md) - Convert note name to midi note number.<br>
 [ntrpol](../opcodes/ntrpol.md) - Calculates the weighted mean value (i.e. linear interpolation) of two input signals.<br>
+[nxtpow2](../opcodes/nxtpow2.md) - Returns a power of two at least as large as the integer part of its input, with a minimum result of 2.<br>
 [octave](../opcodes/octave.md) - Calculates a factor to raise/lower a frequency by a given amount of octaves.<br>
 [octcps](../opcodes/octcps.md) - Converts a cycles-per-second value to octave-point-decimal.<br>
 [octmidi](../opcodes/octmidi.md) - Get the note number, in octave-point-decimal units, of the current MIDI event.<br>

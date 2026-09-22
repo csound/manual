@@ -1069,6 +1069,7 @@
 [**log10.csd**](../opcodes/log10.md#examples)<br>
 [**log2.csd**](../opcodes/log2.md#examples)<br>
 [**logbtwo.csd**](../opcodes/logbtwo.md#examples)<br>
+[**nxtpow2.csd**](../opcodes/nxtpow2.md#examples)<br>
 [**powoftwo.csd**](../opcodes/powoftwo.md#examples)<br>
 [**qinf.csd**](../opcodes/qinf.md#examples)<br>
 [**qnan.csd**](../opcodes/qnan.md#examples)<br>

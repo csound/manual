@@ -537,6 +537,7 @@
 | [nchnlshw](opcodes/nchnls_hw.md) | [nestedap](opcodes/nestedap.md) | [nlfilt2](opcodes/nlfilt2.md) | [nlfilt](opcodes/nlfilt.md) | [noise](opcodes/noise.md) |
 | [noteoff](opcodes/noteoff.md) | [noteon](opcodes/noteon.md) | [noteondur2](opcodes/noteondur2.md) | [noteondur](opcodes/noteondur.md) | [notnum](opcodes/notnum.md) |
 | [nreverb](opcodes/nreverb.md) | [nrpn](opcodes/nrpn.md) | [nsamp](opcodes/nsamp.md) | [nstance](opcodes/nstance.md) | [nstrnum](opcodes/nstrnum.md) |
+| [nstrstr](opcodes/nstrstr.md) | [ntof](opcodes/ntof.md) | [ntom](opcodes/ntom.md) | [ntrpol](opcodes/ntrpol.md) | [nxtpow2](opcodes/nxtpow2.md) |
 | [nstrstr](opcodes/nstrstr.md) | [ntof](opcodes/ntof.md) | [ntom](opcodes/ntom.md) | [ntrpol](opcodes/ntrpol.md) | [octave](opcodes/octave.md) |
 | [octcps](opcodes/octcps.md) | [octmidi](opcodes/octmidi.md) | [octmidib](opcodes/octmidib.md) | [octmidinn](opcodes/octmidinn.md) | [octpch](opcodes/octpch.md) |
 | [offsetsmps](opcodes/offsetsmps.md) | [olabuffer](opcodes/olabuffer.md) | [opcode](opcodes/opcode.md) | [opcodeinfo](opcodes/opcodeinfo.md) | [oscbundle](opcodes/OSCbundle.md) |
