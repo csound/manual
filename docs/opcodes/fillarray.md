@@ -50,6 +50,8 @@ Here is an example of the fillarray opcode. It uses the file [fillarray.csd](../
 
 ## See also
 
+[string2array](string2array.md) reads numeric values from a string at initialization.
+
 [Array opcodes](../math/array.md)
 
 ## Credits

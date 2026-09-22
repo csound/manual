@@ -50,6 +50,8 @@ Here is an example of the midiin opcode. It uses the file [midiin.csd](../exampl
 
 ## See also
 
+[ctlchn](ctlchn.md) reads controller messages with optional channel and controller filters.
+
 [MIDI input and Initialization](../midi/input.md)
 
 [Generic Input and Output](../midi/generic.md)
