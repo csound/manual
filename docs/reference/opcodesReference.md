@@ -126,6 +126,7 @@
 [changed](../opcodes/changed.md) - k-rate signal change detector.<br>
 [chani](../opcodes/chani.md) - Reads data from a channel of the inward software bus.<br>
 [chano](../opcodes/chano.md) - Send data to a channel of the outward software bus.<br>
+[chebyshevpoly2](../opcodes/chebyshevpoly2.md) - Evaluates a weighted sum of Chebyshev polynomials directly for each audio sample.<br>
 [chebyshevpoly](../opcodes/chebyshevpoly.md) - Efficiently evaluates the sum of Chebyshev polynomials of arbitrary order.<br>
 [checkbox](../opcodes/checkbox.md) - Sense on-screen controls.<br>
 [chn](../opcodes/chn.md) - Declare a channel of the named software bus.<br>

@@ -691,6 +691,7 @@
 ### Signal Modifiers:Waveshaping
 [**chebyshevpoly-modern.csd**](../opcodes/chebyshevpoly.md#examples)<br>
 [**chebyshevpoly.csd**](../opcodes/chebyshevpoly.md#examples)<br>
+[**chebyshevpoly2.csd**](../opcodes/chebyshevpoly2.md#examples)<br>
 [**pdclip.csd**](../opcodes/pdclip.md#examples)<br>
 [**pdhalf.csd**](../opcodes/pdhalf.md#examples)<br>
 [**pdhalfy.csd**](../opcodes/pdhalfy.md#examples)<br>

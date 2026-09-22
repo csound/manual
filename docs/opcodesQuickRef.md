@@ -2031,6 +2031,11 @@
 `aout = `[**`chebyshevpoly`**](opcodes/chebyshevpoly.md)`(ain, k0 [, k1 [, k2 [...]]])`<br>
 
 
+`aout = `[**`chebyshevpoly2`**](opcodes/chebyshevpoly2.md)`(ain, k0 [, k1 [, k2 [...]]])`<br>
+`aout = chebyshevpoly2(ain, kcoefficients)`<br>
+`aout = chebyshevpoly2(ain, icoefficients)`<br>
+
+
 `aout = `[**`pdclip`**](opcodes/pdclip.md)`(ain, kWidth, kCenter [, ibipolar [, ifullscale]])`<br>
 
 
