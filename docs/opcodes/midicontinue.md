@@ -52,10 +52,6 @@ The example uses the audio device to run in real time and listens for 30 seconds
 --8<-- "examples/midicontinue.csd"
 ```
 
-### Earlier Csound 7 builds
-
-This behavior requires a build containing the [MIDI transport input fix](https://github.com/csound/csound/pull/3223). Earlier Csound 7 development builds read the clock flag for both `midicontinue` and `midistop`, causing false indications on clock pulses and missing Continue or Stop messages sent alone. They could also lose realtime MIDI flags when processing note messages in the same control cycle.
-
 ## See also
 
 [midiclockin](midiclockin.md), [midiclockfreq](midiclockfreq.md), [mrtmsg](mrtmsg.md), [System realtime messages](../midi/realtime.md), [MIDI input](../midi/input.md)
