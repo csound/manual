@@ -2324,6 +2324,9 @@
 [**`exitnowk`**](opcodes/exitnowk.md)`(kStatus)`<br>
 
 
+`xvalue = `[**`getp`**](opcodes/getp.md)`(object, kindex)`<br>
+
+
 `active:b = `[**`isactive`**](opcodes/isactive.md)`(voice)`<br>
 `active:B = isactive(voice)`<br>
 
@@ -2381,6 +2384,9 @@
 `delete(opcode)`<br>
 `delete(opcodes)`<br>
 `delete(engine)`<br>
+
+
+[**`destroy`**](opcodes/destroy.md)`(engine)`<br>
 
 
 `self:Instr = `[**`getinstance`**](opcodes/getinstance.md)`()`<br>
