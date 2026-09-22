@@ -361,6 +361,8 @@ numeric or string values.<br>
 [ftmorf](../opcodes/ftmorf.md) - Uses an index into a table of ftable numbers to morph between adjacent tables in the list.<br>
 [ftom](../opcodes/ftom.md) - Convert frequency to midi note number, taking global value of A4 into account.<br>
 [ftprint](../opcodes/ftprint.md) - Print the contents of a table (for debugging).<br>
+[ftresize](../opcodes/ftresize.md) - Changes a function table's size at performance time.<br>
+[ftresizei](../opcodes/ftresizei.md) - Changes a function table's size at initialization.<br>
 [ftsamplebank](../opcodes/ftsamplebank.md) - Reads a directory for sound files and loads them to a series of GEN01 function tables.<br>
 [ftsave](../opcodes/ftsave.md) - Save a set of previously-allocated tables to a file.<br>
 [ftsavek](../opcodes/ftsavek.md) - Save a set of previously-allocated tables to a file.<br>

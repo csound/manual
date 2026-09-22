@@ -2765,6 +2765,12 @@
 `ifno = `[**`ftgentmp`**](opcodes/ftgentmp.md)`(ip1, ip2dummy, isize, igen, iarga, iargb, ...)`<br>
 
 
+`kunused = `[**`ftresize`**](opcodes/ftresize.md)`(kfn, ksize)`<br>
+
+
+`iunused = `[**`ftresizei`**](opcodes/ftresizei.md)`(ifn, isize)`<br>
+
+
 `Sdst = `[**`getftargs`**](opcodes/getftargs.md)`(iftno, ktrig)`<br>
 
 
