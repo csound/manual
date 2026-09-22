@@ -579,6 +579,7 @@ numeric or string values.<br>
 [midipitchbend](../opcodes/midipitchbend.md) - Gets a MIDI pitchbend value.<br>
 [midipolyaftertouch](../opcodes/midipolyaftertouch.md) - Gets a MIDI polyphonic aftertouch value.<br>
 [midiprogramchange](../opcodes/midiprogramchange.md) - Gets a MIDI program change value.<br>
+[midistart](../opcodes/midistart.md) - Reports incoming MIDI Start messages at control rate.<br>
 [miditempo](../opcodes/miditempo.md) - Returns the current tempo at k-rate, of either the MIDI file (if available) or the score.<br>
 [midremot](../opcodes/midremot.md) - An opcode which can be used to implement a remote midi orchestra.<br>
 [min](../opcodes/min.md) - Produces a signal that is the minimum of any number of input signals.<br>

@@ -1246,6 +1246,7 @@
 [**midicontinue.csd**](../opcodes/midicontinue.md#examples)<br>
 [**midiclockin.csd**](../opcodes/midiclockin.md#examples)<br>
 [**midiclockfreq.csd**](../opcodes/midiclockfreq.md#examples)<br>
+[**midistart.csd**](../opcodes/midistart.md#examples)<br>
 
 ### Real-time MIDI:Slider Banks
 
