@@ -148,7 +148,7 @@ endin
 
 Opcode objects may be invoked in loops, passed as parameters, have
 their init and perf functions executed, exist in arrays, etc. 
-For example, we can run an array of opcodes in parallel,
+The [run reference](../opcodes/run.md) explains initialization, performance and how arrays supply inputs to each object. For example, we can run an array of opcodes in parallel,
 
 ```csound-orc title="Array of opcodes in parallel"
 instr 1
@@ -171,7 +171,7 @@ or in series
 
 ## Object cleanup
 
-[delete](../opcodes/delete.md) cleans up an instrument instance, instrument definition, opcode object, opcode array or separate Csound engine when the containing instrument ends. It runs at deinitialization, after any release extension.
+[delete](../opcodes/delete.md) cleans up an instrument instance, instrument definition, opcode object, opcode array or separate Csound engine when the containing instrument ends. It runs at deinitialization, after any release extension. For a separate `Csound` engine, [destroy](../opcodes/destroy.md) performs cleanup immediately at initialization.
 
 Keep a definition available until all notes that use it have finished. Copied references share an object, so arrange one cleanup for each object. See [Object lifetimes](../orch/instrument-and-opcode-objects.md#object-lifetimes) for the timing and examples.
 
