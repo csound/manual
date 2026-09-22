@@ -563,6 +563,7 @@
 | [planet](opcodes/planet.md) | [platerev](opcodes/platerev.md) | [play](opcodes/play.md) | [plltrack](opcodes/plltrack.md) | [pluck](opcodes/pluck.md) |
 | [poisson](opcodes/poisson.md) | [pol2rect](opcodes/pol2rect.md) | [polar](opcodes/polar.md) | [polyaft](opcodes/polyaft.md) | [polynomial](opcodes/polynomial.md) |
 | [port](opcodes/port.md) | [portk](opcodes/portk.md) | [poscil3](opcodes/poscil3.md) | [poscil](opcodes/poscil.md) | [pow](opcodes/pow.md) |
+| [powershape](opcodes/powershape.md) | [powoftwo](opcodes/powoftwo.md) | [pows](opcodes/pows.md) | [prealloc](opcodes/prealloc.md) | [prepiano](opcodes/prepiano.md) |
 | [powershape](opcodes/powershape.md) | [powoftwo](opcodes/powoftwo.md) | [prealloc](opcodes/prealloc.md) | [prepiano](opcodes/prepiano.md) | [print](opcodes/print.md) |
 | [print_type](opcodes/print_type.md) | [printarray](opcodes/printarray.md) | [printf](opcodes/printf.md) | [printk2](opcodes/printk2.md) | [printk](opcodes/printk.md) |
 | [printks2](opcodes/printks2.md) | [printks](opcodes/printks.md) | [println](opcodes/println.md) | [prints](opcodes/prints.md) | [printsk](opcodes/printsk.md) |

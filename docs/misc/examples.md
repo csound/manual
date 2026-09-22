@@ -1558,6 +1558,7 @@
 [**mags.csd**](../opcodes/mags.md#examples)<br>
 [**phs.csd**](../opcodes/phs.md#examples)<br>
 [**pol2rect.csd**](../opcodes/pol2rect.md#examples)<br>
+[**pows.csd**](../opcodes/pows.md#examples)<br>
 [**r2c.csd**](../opcodes/r2c.md#examples)<br>
 [**rect2pol.csd**](../opcodes/rect2pol.md#examples)<br>
 

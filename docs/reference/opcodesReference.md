@@ -761,6 +761,7 @@ numeric or string values.<br>
 [pow](../opcodes/pow.md) - Computes one argument to the power of another argument and scales the result.<br>
 [powershape](../opcodes/powershape.md) - Waveshapes a signal by raising it to a variable exponent.<br>
 [powoftwo](../opcodes/powoftwo.md) - Performs a  power-of-two calculation.<br>
+[pows](../opcodes/pows.md) - Calculates a power spectrum from a packed real FFT array.<br>
 [prealloc](../opcodes/prealloc.md) - Creates space for instruments but does not run them.<br>
 [prepiano](../opcodes/prepiano.md) - Creates a tone similar to a piano string prepared in a Cageian fashion.<br>
 [print](../opcodes/print.md) - Displays the values of init (i-rate) variables.<br>
