@@ -535,6 +535,7 @@
 | [midifilemute](opcodes/midifilemute.md) | [midifileopen](opcodes/midifileopen.md) | [midifilepause](opcodes/midifilepause.md) | [midifileplay](opcodes/midifileplay.md) | [midifilepos](opcodes/midifilepos.md) |
 | [midifilerewind](opcodes/midifilerewind.md) | [midifilestatus](opcodes/midifilestatus.md) | [midifiletempo](opcodes/midifiletempo.md) | [midifilevents](opcodes/midifilevents.md) | [midiin](opcodes/midiin.md) |
 | [midinoteoff](opcodes/midinoteoff.md) | [midinoteoncps](opcodes/midinoteoncps.md) | [midinoteonkey](opcodes/midinoteonkey.md) | [midinoteonoct](opcodes/midinoteonoct.md) | [midinoteonpch](opcodes/midinoteonpch.md) |
+| [midion2](opcodes/midion2.md) | [midion](opcodes/midion.md) | [midiout](opcodes/midiout.md) | [midiout_i](opcodes/midiout_i.md) | [midipgm](opcodes/midipgm.md) |
 | [midion2](opcodes/midion2.md) | [midion](opcodes/midion.md) | [midiout](opcodes/midiout.md) | [midiout_i](opcodes/midiout_i.md) | [midipitchbend](opcodes/midipitchbend.md) |
 | [midipolyaftertouch](opcodes/midipolyaftertouch.md) | [midiprogramchange](opcodes/midiprogramchange.md) | [miditempo](opcodes/miditempo.md) | [midremot](opcodes/midremot.md) | [min](opcodes/min.md) |
 | [minabs](opcodes/minabs.md) | [minabsaccum](opcodes/minabsaccum.md) | [minaccum](opcodes/minaccum.md) | [minarray](opcodes/minarray.md) | [mincer](opcodes/mincer.md) |
