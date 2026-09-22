@@ -628,6 +628,7 @@ numeric or string values.<br>
 [nchnls_i](../opcodes/nchnls_i.md) - Sets the number of channels of audio input.<br>
 [nchnlshw](../opcodes/nchnls_hw.md) - Returns the number of audio channels in the underlying hardware.<br>
 [nestedap](../opcodes/nestedap.md) - Three different nested all-pass filters, useful for implementing reverbs.<br>
+[nlalp](../opcodes/nlalp.md) - Filters an audio signal with a nonlinear first-order all-pass structure.<br>
 [nlfilt2](../opcodes/nlfilt2.md) - A filter with a non-linear effect and blowup protection.<br>
 [nlfilt](../opcodes/nlfilt.md) - A filter with a non-linear effect.<br>
 [noise](../opcodes/noise.md) - A white noise generator with an IIR lowpass filter.<br>

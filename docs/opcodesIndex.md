@@ -435,6 +435,7 @@
 | [mpulse](opcodes/mpulse.md) | [mrtmsg](opcodes/mrtmsg.md) | [ms2st](opcodes/ms2st.md) | [mtof](opcodes/mtof.md) | [mton](opcodes/mton.md) |
 | [multitap](opcodes/multitap.md) | [mute](opcodes/mute.md) | [mvchpf](opcodes/mvchpf.md) | [mvclpf1](opcodes/mvclpf1.md) | [mvclpf2](opcodes/mvclpf2.md) |
 | [mvclpf3](opcodes/mvclpf3.md) | [mvclpf4](opcodes/mvclpf4.md) | [mvmfilter](opcodes/mvmfilter.md) | [mxadsr](opcodes/mxadsr.md) | [nchnls](opcodes/nchnls.md) |
+| [nchnls_i](opcodes/nchnls_i.md) | [nchnlshw](opcodes/nchnls_hw.md) | [nestedap](opcodes/nestedap.md) | [nlalp](opcodes/nlalp.md) | [nlfilt2](opcodes/nlfilt2.md) |
 | [nchnls_i](opcodes/nchnls_i.md) | [nchnlshw](opcodes/nchnls_hw.md) | [nestedap](opcodes/nestedap.md) | [nlfilt2](opcodes/nlfilt2.md) | [nlfilt](opcodes/nlfilt.md) |
 | [noise](opcodes/noise.md) | [noteoff](opcodes/noteoff.md) | [noteon](opcodes/noteon.md) | [noteondur2](opcodes/noteondur2.md) | [noteondur](opcodes/noteondur.md) |
 | [notnum](opcodes/notnum.md) | [nreverb](opcodes/nreverb.md) | [nrpn](opcodes/nrpn.md) | [nsamp](opcodes/nsamp.md) | [nstance](opcodes/nstance.md) |

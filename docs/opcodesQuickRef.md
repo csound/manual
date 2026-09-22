@@ -2005,6 +2005,9 @@
 `aout = `[**`mvmfilter`**](opcodes/mvmfilter.md)`(ain, xfreq, xTau [, iskip])`<br>
 
 
+`aout = `[**`nlalp`**](opcodes/nlalp.md)`(ain, klinear, knonlinear [, istor])`<br>
+
+
 `ares = `[**`nlfilt`**](opcodes/nlfilt.md)`(ain, ka, kb, kd, kC, kL)`<br>
 
 
