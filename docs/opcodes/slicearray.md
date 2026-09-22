@@ -34,6 +34,8 @@ Here is an example of the slicearray opcode. It uses the file [slicearray.csd](.
 
 ## See Also
 
+[slicearrayi](slicearrayi.md) and its older spelling `slicearray_i` copy i-rate, k-rate or string arrays at initialization only.
+
 [Array opcodes](../math/array.md)
 
 ## Credits

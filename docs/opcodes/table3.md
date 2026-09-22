@@ -46,6 +46,8 @@ _table3_ is identical to [tablei](../opcodes/tablei.md), except that it uses cub
 
 ## See Also
 
+[table3kt](table3kt.md) allows the table number to change at control rate.
+
 [Table Access](../siggen/tableacc.md)
 
 More information on this opcode: [http://www.csoundjournal.com/issue12/genInstruments.html](http://www.csoundjournal.com/issue12/genInstruments.html)  , written by Jacob Joaquin

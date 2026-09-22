@@ -21,6 +21,7 @@ Opcodes that perform mathematical functions are:
 * [polynomial](../opcodes/polynomial.md)
 * [pow](../opcodes/pow.md)
 * [powershape](../opcodes/powershape.md)
+* [nxtpow2](../opcodes/nxtpow2.md)
 * [powoftwo](../opcodes/powoftwo.md)
 * [qinf](../opcodes/qinf.md)
 * [qnan](../opcodes/qnan.md)
