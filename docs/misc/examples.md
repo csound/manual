@@ -1242,6 +1242,7 @@
 
 ### Real-time MIDI:System Realtime
 [**mclock.csd**](../opcodes/mclock.md#examples)<br>
+[**midicontinue.csd**](../opcodes/midicontinue.md#examples)<br>
 [**midiclockin.csd**](../opcodes/midiclockin.md#examples)<br>
 [**midiclockfreq.csd**](../opcodes/midiclockfreq.md#examples)<br>
 

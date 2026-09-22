@@ -527,6 +527,7 @@
 | [maxaccum](opcodes/maxaccum.md) | [maxalloc](opcodes/maxalloc.md) | [maxarray](opcodes/maxarray.md) | [maxk](opcodes/max_k.md) | [mclock](opcodes/mclock.md) |
 | [mdelay](opcodes/mdelay.md) | [median](opcodes/median.md) | [mediank](opcodes/mediank.md) | [metro2](opcodes/metro2.md) | [metro](opcodes/metro.md) |
 | [metrobpm](opcodes/metrobpm.md) | [mfb](opcodes/mfb.md) | [midglobal](opcodes/midglobal.md) | [midiarp](opcodes/midiarp.md) | [midic14](opcodes/midic14.md) |
+| [midic21](opcodes/midic21.md) | [midic7](opcodes/midic7.md) | [midichannelaftertouch](opcodes/midichannelaftertouch.md) | [midichn](opcodes/midichn.md) | [midicontinue](opcodes/midicontinue.md) |
 | [midic21](opcodes/midic21.md) | [midic7](opcodes/midic7.md) | [midichannelaftertouch](opcodes/midichannelaftertouch.md) | [midichn](opcodes/midichn.md) | [midiclockin](opcodes/midiclockin.md) |
 | [midic21](opcodes/midic21.md) | [midic7](opcodes/midic7.md) | [midichannelaftertouch](opcodes/midichannelaftertouch.md) | [midichn](opcodes/midichn.md) | [midiclockfreq](opcodes/midiclockfreq.md) |
 | [midic21](opcodes/midic21.md) | [midic7](opcodes/midic7.md) | [midichannelaftertouch](opcodes/midichannelaftertouch.md) | [midichn](opcodes/midichn.md) | [midicontrolchange](opcodes/midicontrolchange.md) |
