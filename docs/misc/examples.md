@@ -980,6 +980,7 @@
 [**tabsum.csd**](../opcodes/tabsum.md#examples)<br>
 
 ### Table Control:Dynamic Selection
+[**table3kt.csd**](../opcodes/table3kt.md#examples)<br>
 [**tableikt.csd**](../opcodes/tableikt.md#examples)<br>
 [**tablekt.csd**](../opcodes/tablekt.md#examples)<br>
 [**tablexkt.csd**](../opcodes/tablexkt.md#examples)<br>

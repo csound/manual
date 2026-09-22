@@ -679,6 +679,13 @@
 | [stix](opcodes/stix.md) | [str](opcodes/str.md) | [strcat](opcodes/strcat.md) | [strcatk](opcodes/strcatk.md) | [strchar](opcodes/strchar.md) |
 | [strchark](opcodes/strchark.md) | [strcmp](opcodes/strcmp.md) | [strcmpk](opcodes/strcmpk.md) | [strcpy](opcodes/strcpy.md) | [strcpyk](opcodes/strcpyk.md) |
 | [streson](opcodes/streson.md) | [strfromurl](opcodes/strfromurl.md) | [strget](opcodes/strget.md) | [strindex](opcodes/strindex.md) | [strindexk](opcodes/strindexk.md) |
+| [strlen](opcodes/strlen.md) | [strlenk](opcodes/strlenk.md) | [strlower](opcodes/strlower.md) | [strlowerk](opcodes/strlowerk.md) | [strrindex](opcodes/strrindex.md) |
+| [strrindexk](opcodes/strrindexk.md) | [strset](opcodes/strset.md) | [strstrip](opcodes/strstrip.md) | [strsub](opcodes/strsub.md) | [strsubk](opcodes/strsubk.md) |
+| [strtod](opcodes/strtod.md) | [strtodk](opcodes/strtodk.md) | [strtol](opcodes/strtol.md) | [strtolk](opcodes/strtolk.md) | [strupper](opcodes/strupper.md) |
+| [strupperk](opcodes/strupperk.md) | [subinstr](opcodes/subinstr.md) | [subinstrinit](opcodes/subinstrinit.md) | [sum](opcodes/sum.md) | [sumarray](opcodes/sumarray.md) |
+| [svfilter](opcodes/svfilter.md) | [svn](opcodes/svn.md) | [switch](opcodes/switch.md) | [syncgrain](opcodes/syncgrain.md) | [syncloop](opcodes/syncloop.md) |
+| [syncphasor](opcodes/syncphasor.md) | [system](opcodes/system.md) | [tab2array](opcodes/tab2array.md) | [tab2pvs](opcodes/tab2pvs.md) | [tab](opcodes/tab.md) |
+| [tabi](opcodes/tab_i.md) | [tabifd](opcodes/tabifd.md) | [table3](opcodes/table3.md) | [table3kt](opcodes/table3kt.md) | [table](opcodes/table.md) |
 | [string2array](opcodes/string2array.md) | [strlen](opcodes/strlen.md) | [strlenk](opcodes/strlenk.md) | [strlower](opcodes/strlower.md) | [strlowerk](opcodes/strlowerk.md) |
 | [squinewave](opcodes/squinewave.md) | [sr](opcodes/sr.md) | [st2ms](opcodes/st2ms.md) | [start](opcodes/start.md) | [statevar](opcodes/statevar.md) |
 | [setoption](opcodes/setoption.md) | [setp](opcodes/setp.md) | [setrow](opcodes/setrow.md) | [setscorepos](opcodes/setscorepos.md) | [sfilist](opcodes/sfilist.md) |
