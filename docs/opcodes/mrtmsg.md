@@ -34,6 +34,8 @@ Sends a real-time message once, in init stage of current instrument. _imsgtype_ 
 
 ## See Also
 
+[midicontinue](midicontinue.md) describes Continue input and its known implementation issue.
+
 [mclock](../opcodes/mclock.md)
 
 [System Realtime Messages](../midi/realtime.md)

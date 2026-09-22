@@ -3372,6 +3372,9 @@
 `kval = midictrl(inum [, imin] [, imax])`<br>
 
 
+`iprogram = `[**`midipgm`**](opcodes/midipgm.md)`([ichannel])`<br>
+
+
 `ival = `[**`notnum`**](opcodes/notnum.md)`()`<br>
 
 
@@ -3552,6 +3555,8 @@
 [**`mclock`**](opcodes/mclock.md)`(ifreq [, iport])`<br>
 
 
+`kcontinue = `[**`midicontinue`**](opcodes/midicontinue.md)`()`<br>
+`kpulse = `[**`midiclockin`**](opcodes/midiclockin.md)`()`<br>
 `kfreq = `[**`midiclockfreq`**](opcodes/midiclockfreq.md)`()`<br>
 
 
