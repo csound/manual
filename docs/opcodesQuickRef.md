@@ -3565,6 +3565,7 @@
 
 
 `kstop = `[**`midistop`**](opcodes/midistop.md)`()`<br>
+`kstart = `[**`midistart`**](opcodes/midistart.md)`()`<br>
 
 
 [**`mrtmsg`**](opcodes/mrtmsg.md)`(imsgtype [, iport])`<br>
