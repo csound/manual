@@ -740,6 +740,7 @@ numeric or string values.<br>
 [peak](../opcodes/peak.md) - Maintains the output equal to the highest absolute value received.<br>
 [perf](../opcodes/perf.md) - Execute a performance pass on an instrument or opcode.<br>
 [pgmassign](../opcodes/pgmassign.md) - Assigns an instrument number to a specified MIDI program.<br>
+[pgmchn](../opcodes/pgmchn.md) - Reads MIDI Program Change messages and returns the program number and channel.<br>
 [phaser1](../opcodes/phaser1.md) - First-order allpass filters arranged in a series.<br>
 [phaser2](../opcodes/phaser2.md) - Second-order allpass filters arranged in a series.<br>
 [phasor](../opcodes/phasor.md) - Produce a normalized moving phase value.<br>

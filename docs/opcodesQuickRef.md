@@ -3386,6 +3386,9 @@
 `pgmassign(ipgm, "insname"[, ichn])`<br>
 
 
+`kprogram, kchannel = `[**`pgmchn`**](opcodes/pgmchn.md)`([ichannel])`<br>
+
+
 `ires = `[**`polyaft`**](opcodes/polyaft.md)`(inote [, ilow] [, ihigh])`<br>
 `kres = polyaft(inote [, ilow] [, ihigh])`<br>
 

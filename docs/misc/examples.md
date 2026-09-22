@@ -1177,6 +1177,7 @@
 [**pgmassign.csd**](../opcodes/pgmassign.md#examples)<br>
 [**pgmassign_ignore.csd**](../opcodes/pgmassign.md#examples)<br>
 [**pgmassign_advanced.csd**](../opcodes/pgmassign.md#examples)<br>
+[**pgmchn.csd**](../opcodes/pgmchn.md#examples)<br>
 [**polyaft.csd**](../opcodes/polyaft.md#examples)<br>
 [**veloc.csd**](../opcodes/veloc.md#examples)<br>
 
