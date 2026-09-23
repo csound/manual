@@ -126,6 +126,7 @@
 [changed](../opcodes/changed.md) - k-rate signal change detector.<br>
 [chani](../opcodes/chani.md) - Reads data from a channel of the inward software bus.<br>
 [chano](../opcodes/chano.md) - Send data to a channel of the outward software bus.<br>
+[chebyshevpoly2](../opcodes/chebyshevpoly2.md) - Evaluates a weighted sum of Chebyshev polynomials directly for each audio sample.<br>
 [chebyshevpoly](../opcodes/chebyshevpoly.md) - Efficiently evaluates the sum of Chebyshev polynomials of arbitrary order.<br>
 [checkbox](../opcodes/checkbox.md) - Sense on-screen controls.<br>
 [chn](../opcodes/chn.md) - Declare a channel of the named software bus.<br>
@@ -502,6 +503,7 @@ numeric or string values.<br>
 [lpcanal](../opcodes/lpcanal.md) - Streaming linear prediction analysis.<br>
 [lpcfilter](../opcodes/lpcfilter.md) - Streaming linear prediction all-pole filter whose coefficients are obtained from streaming linear prediction analysis.<br>
 [lpf18](../opcodes/lpf18.md) - A 3-pole sweepable resonant lowpass filter.<br>
+[lpform](../opcodes/lpform.md) - Reads a formant's center frequency and bandwidth from an LPC pole analysis.<br>
 [lpfreson](../opcodes/lpfreson.md) - Resynthesises a signal from the data passed internally by a previous _lpread_, applying formant shifting.<br>
 [lphasor](../opcodes/lphasor.md) - Generates a table index for sample playback (e.g. with [tablexkt](../opcodes/tablexkt.md)).<br>
 [lpinterp](../opcodes/lpinterp.md) - Computes a new set of poles from the interpolation between two analysis.<br>
@@ -579,6 +581,8 @@ numeric or string values.<br>
 [midipitchbend](../opcodes/midipitchbend.md) - Gets a MIDI pitchbend value.<br>
 [midipolyaftertouch](../opcodes/midipolyaftertouch.md) - Gets a MIDI polyphonic aftertouch value.<br>
 [midiprogramchange](../opcodes/midiprogramchange.md) - Gets a MIDI program change value.<br>
+[midistop](../opcodes/midistop.md) - Intended to report incoming MIDI Stop messages at control rate.<br>
+[midistart](../opcodes/midistart.md) - Reports incoming MIDI Start messages at control rate.<br>
 [miditempo](../opcodes/miditempo.md) - Returns the current tempo at k-rate, of either the MIDI file (if available) or the score.<br>
 [midremot](../opcodes/midremot.md) - An opcode which can be used to implement a remote midi orchestra.<br>
 [min](../opcodes/min.md) - Produces a signal that is the minimum of any number of input signals.<br>
@@ -624,6 +628,7 @@ numeric or string values.<br>
 [nchnls_i](../opcodes/nchnls_i.md) - Sets the number of channels of audio input.<br>
 [nchnlshw](../opcodes/nchnls_hw.md) - Returns the number of audio channels in the underlying hardware.<br>
 [nestedap](../opcodes/nestedap.md) - Three different nested all-pass filters, useful for implementing reverbs.<br>
+[nlalp](../opcodes/nlalp.md) - Filters an audio signal with a nonlinear first-order all-pass structure.<br>
 [nlfilt2](../opcodes/nlfilt2.md) - A filter with a non-linear effect and blowup protection.<br>
 [nlfilt](../opcodes/nlfilt.md) - A filter with a non-linear effect.<br>
 [noise](../opcodes/noise.md) - A white noise generator with an IIR lowpass filter.<br>
@@ -738,6 +743,7 @@ numeric or string values.<br>
 [peak](../opcodes/peak.md) - Maintains the output equal to the highest absolute value received.<br>
 [perf](../opcodes/perf.md) - Execute a performance pass on an instrument or opcode.<br>
 [pgmassign](../opcodes/pgmassign.md) - Assigns an instrument number to a specified MIDI program.<br>
+[pgmchn](../opcodes/pgmchn.md) - Reads MIDI Program Change messages and returns the program number and channel.<br>
 [phaser1](../opcodes/phaser1.md) - First-order allpass filters arranged in a series.<br>
 [phaser2](../opcodes/phaser2.md) - Second-order allpass filters arranged in a series.<br>
 [phasor](../opcodes/phasor.md) - Produce a normalized moving phase value.<br>
