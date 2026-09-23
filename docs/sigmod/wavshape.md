@@ -5,6 +5,7 @@ These opcodes can perform dynamic waveshaping or phaseshaping (a.k.a. phase dist
 These opcodes are good for waveshaping:
 
 * [chebyshevpoly](../opcodes/chebyshevpoly.md)
+* [chebyshevpoly2](../opcodes/chebyshevpoly2.md)
 * [clip](../opcodes/clip.md)
 * [distort](../opcodes/distort.md)
 * [distort1](../opcodes/distort1.md)

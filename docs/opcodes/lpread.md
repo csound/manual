@@ -56,4 +56,6 @@ Here is an example of the lpread opcode. It uses the file [lpread.csd](../exampl
 
 ## See also
 
+[lpform](lpform.md) reads a formant frequency and bandwidth from a pole analysis.
+
 [Linear Predictive Coding (LPC) Resynthesis](../spectral/lpcresyn.md)
