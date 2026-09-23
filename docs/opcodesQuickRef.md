@@ -3877,6 +3877,9 @@
 [**`pvsdisp`**](opcodes/pvsdisp.md)`(fsig [, ibins, iwtflg])`<br>
 
 
+`kupdate = `[**`pvsenvftw`**](opcodes/pvsenvftw.md)`(fsrc, ktable [, kmethod [, kgain [, kcoefs]]])`<br>
+
+
 `fsig = `[**`pvsfilter`**](opcodes/pvsfilter.md)`(fsigin, fsigfil, kdepth [, igain])`<br>
 
 

@@ -819,6 +819,7 @@ numeric or string values.<br>
 [pvsdemix](../opcodes/pvsdemix.md) - Spectral azimuth-based de-mixing of stereo sources, with a reverse-panning result.<br>
 [pvsdiskin](../opcodes/pvsdiskin.md) - Create an fsig stream by reading a selected channel from a PVOC-EX analysis file, with frame interpolation.<br>
 [pvsdisp](../opcodes/pvsdisp.md) - Displays a PVS signal as an amplitude vs.<br>
+[pvsenvftw](../opcodes/pvsenvftw.md) - Writes a smoothed spectral amplitude envelope to a function table.<br>
 [pvsfilter](../opcodes/pvsfilter.md) - Multiply amplitudes of a pvoc stream by those of a second pvoc stream, with dynamic scaling.<br>
 [pvsfread](../opcodes/pvsfread.md) - Read a selected channel from a PVOC-EX analysis file.<br>
 [pvsfreeze](../opcodes/pvsfreeze.md) - Freeze the amplitude and frequency time functions of a pv stream according to a control-rate trigger.<br>
