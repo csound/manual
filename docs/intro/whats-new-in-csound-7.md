@@ -21,7 +21,7 @@ schedule(1,0,2)
 In this syntax, global variables are annotated with an `@global` sign,
 at the time of creation, then used freely in the code,
 
-```
+``` csound-orc
 freq@global:k = init(0)
 ```
 
@@ -51,7 +51,7 @@ exactly as the classic syntax, with no penalties.
 Boolean variable types `b` and `B` have been exposed, with two constants `true` and
 `false` also introduced for convenience,
 
-```
+``` csound-orc
 test:b = a > b
 if test then
  prints "true test\n"
@@ -333,7 +333,7 @@ endin
 
 which can be controlled by the following messages,
 
-```
+``` csound-orc
 instr 2
   oscsend(0, "localhost", 7000, "/csound/event/instr", "ffff", 1, 0, 1, 300)
   oscsend(1, "localhost", 7000, "/csound/channel/freq/amp", "ff", p4, p5)
@@ -359,7 +359,7 @@ highest precedence.
 The only significant impact is observed in expressions involving
 exponentiation:
 
-```
+``` csound-orc
 a = -2^2 // -4 now, before was (-2)^2 = 4 
 ```
 
