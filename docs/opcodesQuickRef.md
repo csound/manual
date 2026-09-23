@@ -3905,6 +3905,9 @@
 `fsig = `[**`pvsgain`**](opcodes/pvsgain.md)`(fsigin, kgain)`<br>
 
 
+`fout = `[**`pvsgendy`**](opcodes/pvsgendy.md)`(fin, kmrate, kfrate)`<br>
+
+
 `fsig = `[**`pvshift`**](opcodes/pvshift.md)`(fsigin, kshift, klowest [, kkeepform, igain, kcoefs])`<br>
 
 

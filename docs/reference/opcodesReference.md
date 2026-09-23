@@ -828,6 +828,7 @@ numeric or string values.<br>
 [pvsftw](../opcodes/pvsftw.md) - Writes amplitude and/or frequency data to function tables.<br>
 [pvsfwrite](../opcodes/pvsfwrite.md) - Write a fsig to a PVOCEX file (which in turn can be read by _pvsfread_ or other programs that support PVOCEX file input).<br>
 [pvsgain](../opcodes/pvsgain.md) - Scale the amplitude of a pv stream.<br>
+[pvsgendy](../opcodes/pvsgendy.md) - Adds random changes to the frequencies in a spectral stream.<br>
 [pvshift](../opcodes/pvshift.md) - Shift the frequency components of a pv stream, stretching/compressing its spectrum.<br>
 [pvsifd](../opcodes/pvsifd.md) - Instantaneous Frequency Distribution, magnitude and phase analysis.<br>
 [pvsin](../opcodes/pvsin.md) - Retrieve an fsig from the input software bus; a pvs equivalent to _chani_.<br>

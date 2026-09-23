@@ -474,6 +474,9 @@
 | [pvsarp](opcodes/pvsarp.md) | [pvsbandp](opcodes/pvsbandp.md) | [pvsbandr](opcodes/pvsbandr.md) | [pvsbandwidth](opcodes/pvsbandwidth.md) | [pvsbin](opcodes/pvsbin.md) |
 | [pvsblur](opcodes/pvsblur.md) | [pvsbuffer](opcodes/pvsbuffer.md) | [pvsbufread2](opcodes/pvsbufread2.md) | [pvsbufread](opcodes/pvsbufread.md) | [pvscale](opcodes/pvscale.md) |
 | [pvscent](opcodes/pvscent.md) | [pvsceps](opcodes/pvsceps.md) | [pvscfs](opcodes/pvscfs.md) | [pvscross](opcodes/pvscross.md) | [pvsdemix](opcodes/pvsdemix.md) |
+| [pvsdiskin](opcodes/pvsdiskin.md) | [pvsdisp](opcodes/pvsdisp.md) | [pvsfilter](opcodes/pvsfilter.md) | [pvsfread](opcodes/pvsfread.md) | [pvsfreeze](opcodes/pvsfreeze.md) |
+| [pvsfromarray](opcodes/pvsfromarray.md) | [pvsftr](opcodes/pvsftr.md) | [pvsftw](opcodes/pvsftw.md) | [pvsfwrite](opcodes/pvsfwrite.md) | [pvsgain](opcodes/pvsgain.md) |
+| [pvsgendy](opcodes/pvsgendy.md) | [pvshift](opcodes/pvshift.md) | [pvsifd](opcodes/pvsifd.md) | [pvsin](opcodes/pvsin.md) | [pvsinfo](opcodes/pvsinfo.md) |
 | [pvsdiskin](opcodes/pvsdiskin.md) | [pvsdisp](opcodes/pvsdisp.md) | [pvsenvftw](opcodes/pvsenvftw.md) | [pvsfilter](opcodes/pvsfilter.md) | [pvsfread](opcodes/pvsfread.md) |
 | [perf](opcodes/perf.md) | [pgmassign](opcodes/pgmassign.md) | [pgmchn](opcodes/pgmchn.md) | [phaser1](opcodes/phaser1.md) | [phaser2](opcodes/phaser2.md) |
 | [midipitchbend](opcodes/midipitchbend.md) | [midipolyaftertouch](opcodes/midipolyaftertouch.md) | [midiprogramchange](opcodes/midiprogramchange.md) | [midistop](opcodes/midistop.md) | [miditempo](opcodes/miditempo.md) |

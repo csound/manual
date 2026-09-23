@@ -1332,6 +1332,7 @@
 [**pvsftw.csd**](../opcodes/pvsftw.md#examples)<br>
 [**pvsfwrite.csd**](../opcodes/pvsfwrite.md#examples)<br>
 [**pvsgain.csd**](../opcodes/pvsgain.md#examples)<br>
+[**pvsgendy.csd**](../opcodes/pvsgendy.md#examples)<br>
 [**pvshift.csd**](../opcodes/pvshift.md#examples)<br>
 [**pvsifd.csd**](../opcodes/pvsifd.md#examples)<br>
 [**pvsinfo.csd**](../opcodes/pvsinfo.md#examples)<br>
