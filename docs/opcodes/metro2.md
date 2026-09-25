@@ -26,6 +26,11 @@ _icorrect_ (optional, default=0) -- zero preserves the original timing, includin
 
 For example, `ktrig metro2 4, .65, -1, 0, 1` selects corrected timing, with `1` for main beats and `-1` for offbeats.
 
+For new scores that need evenly spaced triggers, use
+`ktrig metro2 kfreq, 0.5, 1, 0, 1`. This selects equal spacing, equal trigger
+amplitudes, and corrected timing. It is the recommended alternative to the
+deprecated [metro](metro.md); it does not preserve every detail of its timing.
+
 ### Performance
 
 _ktrig_ - output trigger signal
@@ -35,6 +40,13 @@ _kfreq_ - frequency of trigger bangs in cps
 _kswing_ - value (in the 0 to 1 range)
 
 _metro2_ is a modification of 'classic' _metro_ opcode with additional swinging. The swinging clicks can be modulated at k-rate. Also, swinging clicks can have their own amplitude value set by iamp.
+
+With `icorrect=1`, each clock discards all completed phase cycles, so a high
+frequency does not leave whole cycles that cause extra triggers after the
+frequency drops to zero. The output can still represent at most one trigger
+per control cycle. Keep `kfreq` within the control rate when every trigger
+must be represented. With `icorrect=0`, the historical timing, including
+accumulated phase at high frequencies, remains unchanged.
 
 > :memo: **Note**
 >
