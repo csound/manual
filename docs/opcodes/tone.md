@@ -15,6 +15,20 @@ where
 *  c2 = b - sqrt(b<sup>2</sup> - 1.0)
 *  c1 = 1 - c2
 
+An algebraically equivalent form uses s = abs(sin(&pi; hp/sr)):
+
+*  c1 = 2s / (sqrt(1 + s<sup>2</sup>) + s)
+*  c2 = 1 - c1
+
+The half-angle identity gives b = 1 + 2s<sup>2</sup>, so
+sqrt(b<sup>2</sup> - 1) = 2s sqrt(1 + s<sup>2</sup>). Hence:
+
+c1 = 1 - b + sqrt(b<sup>2</sup> - 1)<br>
+&nbsp;&nbsp;&nbsp; = 2s (sqrt(1 + s<sup>2</sup>) - s)<br>
+&nbsp;&nbsp;&nbsp; = 2s / (sqrt(1 + s<sup>2</sup>) + s)
+
+The last step uses (sqrt(1 + s<sup>2</sup>) - s)(sqrt(1 + s<sup>2</sup>) + s) = 1.
+
 ## Syntax
 === "Modern"
     ``` csound-orc
