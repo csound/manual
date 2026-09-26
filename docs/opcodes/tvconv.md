@@ -24,6 +24,8 @@ _iparts_ -- partition size, for sizes > 1, a DFT-based partitioned convolution p
 
 _ifils_ -- filter size. For partition sizes > 1, filter sizes are rounded to the nearest power-of-two. With partition size = 1, since direct convolution is used, filters can be of any size.
 
+Csound discards fractional parts first. If the partition size exceeds the filter size, it swaps the two sizes before choosing the method and rounding. When rounding either size to a power of two, ties round up.
+
 ### Performance
 
 _ares_ -- audio output.
@@ -33,6 +35,10 @@ _asig1, asig2_ -- audio inputs.
 _xfreez1_ -- freeze switch for asig1. Coefficients are only updated (ie. the signal is passing into the convolution) if xfreez1 > 0. This input can take an audio or a k-rate signal, or a constant.
 
 _xfreez2_ -- freeze switch for asig2, similar to xfreez1 in operation.
+
+DFT-based convolution adds a delay equal to its rounded partition size in samples. Divide this size by _sr_ to get the delay in seconds. Direct convolution adds no processing delay. Delays from the filter coefficients apply in both cases.
+
+Freezing stops updates to the stored samples. It does not stop convolution or mute the output. Initialization clears all stored samples and pending output.
 
 ## Examples
 
