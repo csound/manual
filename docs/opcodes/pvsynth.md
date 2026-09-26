@@ -3,7 +3,7 @@ id:pvsynth
 category:Spectral Processing:Streaming
 -->
 # pvsynth
-Resynthesise phase vocoder data (f-signal) using a FFT overlap-add.
+Resynthesise phase vocoder data (f-signal) as audio.
 
 ## Syntax
 === "Modern"
@@ -18,11 +18,15 @@ Resynthesise phase vocoder data (f-signal) using a FFT overlap-add.
 
 ### Performance
 
-_ares_ -- output audio signal
+_ares_ -- output audio signal. Samples before the note starts or after it ends within a control block are zero.
 
-_fsrc_ -- input signal
+_fsrc_ -- input stream in amplitude + frequency format.
 
 _iinit_ -- not yet implemented.
+
+For ordinary PVS streams, `pvsynth` uses inverse FFT overlap-add synthesis. For sliding streams, it reconstructs the centre sample of each spectrum's analysis window, including the DC and Nyquist bins.
+
+With an unmodified sliding [pvsanal](../opcodes/pvsanal.md) stream, the delay is _N/2 - 1_ samples, where _N_ is the transform size. Gain follows the value of the analysis window at its centre; Hamming, Hann and rectangular windows have a centre value of 1.
 
 ## Examples
 
