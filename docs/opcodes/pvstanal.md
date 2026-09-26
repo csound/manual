@@ -28,9 +28,9 @@ _pvstanal_ will also scale pitch, independently of frequency, using a transposit
 
 ### Initialization
 
-_ifftsize_ -- FFT size (power-of-two), defaults to 2048.
+_ifftsize_ -- FFT size, a power of two of at least 2. A zero or negative value selects the default, 2048.
 
-_ihop_ -- hopsize, defaults to 512
+_ihop_ -- Hop size in samples, at least _ksmps_. A zero or negative value selects the default, 512. Fractional sample counts are truncated.
 
 _ioffset_ -- startup read offset into table, in secs.
 
