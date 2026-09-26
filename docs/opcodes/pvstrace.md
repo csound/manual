@@ -18,21 +18,25 @@ Process a PV stream by retaining only the N bins with the highest amplitude, zer
     fsig, kBins[] pvstrace fsigin, kn [, isort, imin, imax]
     ```
 
-Initialization
+### Initialization
 
-_isort_ -- if nonzero, sort the reported bins in kBins by decreasing amplitude, optional (default 0, off).
+_isort_ -- if nonzero, list the selected bins in decreasing amplitude order. Otherwise, list them in increasing bin-number order. Default: 0.
 
-_imin, imax_ -- if nonzero, search between a min and max value (default 0, no min or max).
+_imin, imax_ -- search range in bin numbers, including _imin_ and excluding _imax_. Bin numbers start at 0. An _imax_ of 0 includes all bins from _imin_ through Nyquist. Both default to 0, which searches the whole frame.
+
+Csound discards fractional parts and limits values beyond the frame to its end. Negative limits cause an initialization error. If the resulting range is empty or reversed, the output is silent and the bin array contains zeros. For example, limits of 2 and 6 search bins 2, 3, 4, and 5.
 
 ### Performance
 
-_fsig_ -- output pv stream
+_fsig_ -- output PV stream. Selected bins retain their input amplitude and frequency or phase; all other bins are zero.
 
-_kBins[]_ -- an array of size fftsize/2 + 1 values, whose first N values report the kn bin numbers retained by pvstrace. Other locations are set to 0. It can be sorted or unsorted.
+_kBins[]_ -- array of _fftsize_/2 + 1 values. The first values list the selected bin numbers; the remaining values are zero. _isort_ controls their order.
 
-_fsigin_ -- input pv stream
+_fsigin_ -- input PV stream in amplitude/frequency or amplitude/phase format. Sliding analyses are not supported.
 
-_kn_ -- number of bins to be retained
+_kn_ -- number of bins to retain from the search range. Csound discards the fractional part, treats values below 1 as 1, and limits the count to the number of bins in the range.
+
+When amplitudes tie, lower bin numbers take priority. Sorting the bin list does not change which bins the output retains.
 
 > :warning: **Warning**
 >
