@@ -9,9 +9,8 @@ nchnls = 1
 0dbfs = 1
 
 instr 1
-  ; The final argument selects corrected timing.
   ; Phase .75 starts after the .65 offbeat, so that offbeat is skipped.
-  kTrigger metro2 4, .65, -1, .75, 1
+  kTrigger metro2 4, .65, -1, .75
   kTime timeinsts
   if kTrigger != 0 then
     printks "Time: %.4f s, trigger: %+.0f\n", 0, kTime, kTrigger
