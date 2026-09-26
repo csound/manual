@@ -10,6 +10,7 @@ Performs a simple assignment.
 ares = xarg
 ires = iarg
 kres = karg
+fres = farg
 ires, ... = iarg, ...
 kres, ... = karg, ...
 table [ kval] = karg
@@ -22,6 +23,14 @@ _=_ (simple assignment) - Put the value of the expression _iarg_ (_karg, xarg_) 
 From version 5.13 onwards the i- and k-rate versions of assignment can take a number of outputs, and an equal or less number of inputs.  If there are less the last value is repeated as necessary.
 
 From version 5.14 values can be assigned to elements of a vector with the square bracket form.
+
+For an f-signal, assignment copies the source's properties and current data at initialization. The destination has its own data, including for sliding signals and partial tracks. Assigning an f-signal to itself leaves it unchanged.
+
+### Performance
+
+F-signal assignment copies new source frames whenever the statement runs. If a conditional skips the statement, the destination keeps its last copy. When assignment resumes, it copies the current source frame; it does not replay missed frames. Sliding signals copy the current block of sample frames each time the statement runs.
+
+When several statements assign to the same f-signal, their sources must have the same FFT size, hop size, window size, window type, format and sliding mode. Assignment does not convert between these properties. To change them, reinitialize the source, destination and any opcodes that use the destination.
 
 ## Examples
 
