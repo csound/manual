@@ -9,7 +9,6 @@ The following opcodes are deprecated. They are still distributed with Csound for
 [fin](opcodes/fin.md) - Read signals from a file at a-rate.<br>
 [hrtfer](opcodes/hrtfer.md) - Creates 3D audio for two speakers.<br>
 [ktableseg](opcodes/ktableseg.md) - Deprecated.<br>
-[metro](opcodes/metro.md) - Trigger Metronome.<br>
 [pop](opcodes/pop.md) - Pops values from the global stack.<br>
 [pop_f](opcodes/pop_f.md) - Pops an f-sig frame from the global stack.<br>
 [ptable3](opcodes/ptable3.md) - Accesses table values by direct indexing with cubic interpolation.<br>
