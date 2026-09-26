@@ -18,49 +18,54 @@ Clips an a-rate signal to a predefined limit, in a &#8220;soft&#8221; manner, us
 
 ### Initialization
 
-_imeth_ -- selects the clipping method. The default is 0. The methods are:
+_imeth_ -- selects the clipping method. This argument is required. The methods are:
 
-*  0 = Bram de Jong method (default)
+*  0 = Bram de Jong method
 *  1 = sine clipping
 *  2 = tanh clipping
 
-_ilimit_ -- limiting value
+Other method codes use method 0.
 
-_iarg_ (optional, default=0.5) -- when _imeth_ = 0, indicates the point at which clipping starts, in the range 0 - 1. Not used when _imeth_ = 1 or _imeth_ = 2. Default is 0.5.
+_ilimit_ -- a finite, non-negative clipping limit. A limit of 0 produces silence.
+
+_iarg_ (optional, default=0.5) -- for method 0, the fraction of _ilimit_ at which soft clipping starts. Use a value from 0 to 1. A value of 1 gives hard clipping at _ilimit_. Methods 1 and 2 ignore this argument.
 
 ### Performance
 
 _asig_ -- a-rate input signal
 
-The Bram de Jong method (_imeth_ = 0) applies the algorithm (denoting _ilimit_ as _limit_ and _iarg_ as _a_):
+For a positive _ilimit_, the curves below use _L_ for _ilimit_ and _x_ for the input sample.
+
+The Bram de Jong method (_imeth_ = 0) uses _a_ for _iarg_ and _u_ for the input magnitude, $u = |x|$:
 
 $$
-|x| \ge 0 \: \mathrm{and} \: |x| \le (limit \times a):  f(x) = f(x)
+u \le La: \quad f(x) = x
 $$
 
 $$
-|x| \gt (limit \times a) \: \mathrm{and} \: |x| \le limit:  f(x) = sign(x) \times (limit \times a+ \frac{x - limit \times a}{1 + ((x-limit \times a)/(limit \times (1-a)))^2})
+La < u \le L: \quad f(x) = \operatorname{sign}(x)
+\left(La + \frac{u-La}{1 + \left(\frac{u-La}{L(1-a)}\right)^2}\right)
 $$
 
 $$
-|x| \gt limit:  f(x) = sign(x) \times \frac{(limit\times(1+a))}{2}
+u > L: \quad f(x) = \operatorname{sign}(x)\frac{L(1+a)}{2}
 $$
+
+The curved segment is empty when _a_ = 1. For smaller values of _a_, the output stops at $\pm L(1+a)/2$, below the clipping limit.
 
 The second method (_imeth_ = 1) is the sine clip:
 
 $$
-|x| \lt limit:  f(x) = limit \times sin(\pi x/(2 \times limit)), \;  |x| \ge limit:  f(x) = limit \times sign(x)
+|x| < L: \quad f(x) = L\sin\left(\frac{\pi x}{2L}\right),
+\qquad |x| \ge L: \quad f(x) = L\operatorname{sign}(x)
 $$
 
-The third method (_imeth = 2_) is the tanh clip:
+The third method (_imeth_ = 2) is the tanh clip:
 
 $$
-|x| \lt limit:  f(x) = limit \times tanh(x/limit)/tanh(1), \;  |x| \ge limit:  f(x) = limit \times sign(x)
+|x| < L: \quad f(x) = L\frac{\tanh(x/L)}{\tanh(1)},
+\qquad |x| \ge L: \quad f(x) = L\operatorname{sign}(x)
 $$
-
-> :memo: **Note**
->
-> Method 1 appears to be non-functional at release of Csound version 4.07.
 
 ## Examples
 
