@@ -18,13 +18,19 @@ Performs morphing (or interpolation) between two source fsigs.
 
 ### Performance
 
-The operation of this opcode is similar to that of [pvinterp](../opcodes/pvinterp.md) (q.v.), except in using _fsig_s rather than analysis files, and the absence of spectral envelope preservation. The amplitudes and frequencies of _fsig1_ are interpolated with those of _fsig2_, depending on the values of _kampint_ and _kfrqint_, respectively. These range between 0 and 1, where 0 means _fsig1_ and 1, _fsig2_. Anything in between will interpolate amps and/or freqs of the two fsigs.
+_pvsmorph_ interpolates the amplitudes and frequencies of two input spectra. Unlike [pvinterp](../opcodes/pvinterp.md), it uses _fsig_s instead of analysis files and does not preserve the spectral envelope.
 
-With this opcode, morphing can be performed on real-time audio input, by using [pvsanal](../opcodes/pvsanal.md) to generate _fsig1_ and _fsig2_. These must have the same format.
+_fsig1_, _fsig2_ -- input spectra, such as those produced by [pvsanal](../opcodes/pvsanal.md). Both must use the same FFT size, hop size, window size, window type, and format. Amplitude/frequency and amplitude/phase formats are supported. Both inputs must use the same analysis mode: ordinary frames or sliding analysis. Reinitialize _pvsmorph_ if these settings change.
+
+_kampint_ -- amplitude blend. A value of 0 selects amplitudes from _fsig1_; 1 selects amplitudes from _fsig2_. Values between 0 and 1 give a linear blend.
+
+_kfrqint_ -- frequency blend, independent of _kampint_. A value of 0 selects frequencies from _fsig1_; 1 selects frequencies from _fsig2_. For amplitude/phase input, this control blends phases linearly instead.
+
+Both blend controls are limited to the range 0 to 1. Ordinary analysis produces a new output frame when _fsig1_ supplies a new frame. Sliding analysis processes a spectrum for each active audio sample.
 
 > :warning: **Warning**
 >
-> It is unsafe to use the same f-variable for both input and output of pvs opcodes. Using the same one might lead to undefined behavior on some opcodes. Use a different one on the left and right sides of the opcode.
+> Use an output f-variable distinct from both inputs. _pvsmorph_ reports an initialization error if an input is also its output.
 
 ## Examples
 
