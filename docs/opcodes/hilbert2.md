@@ -8,33 +8,37 @@ A DFT-based implementation of a Hilbert transformer.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    c:a, s:a = hilbert2(sig:a, fftsize:a, hopsize:i)
-    csig:Complex[] = hilbert2(sig:a, fftsize:a, hopsize:i)    
+    c:a, s:a = hilbert2(sig:a, fftsize:i, hopsize:i)
+    csig:Complex[] = hilbert2(sig:a, fftsize:i, hopsize:i)
     ```
 
 === "Classic"
     ``` csound-orc
     ac, as hilbert2 asig, ifftsize, ihopsize
-    csig:Complex[] hilbert2 asig, ifftsize, ihopsize    
+    csig:Complex[] hilbert2 asig, ifftsize, ihopsize
     ```
 
-Initialisation
+### Initialization
 
-_ifftsize_ -- DFT analysis size
+_ifftsize_ -- FFT size in samples, at least 2. Csound rounds this down to a power of two. Below, _N_ means the rounded FFT size.
 
-_ihopsize_ -- analysis hopsize
+_ihopsize_ -- number of samples between analysis frames, at least 1. Csound rounds this down to a power of two, then limits it to _N_. A smaller hop gives more overlap and uses more processing time.
+
+For example, an FFT size of 150 and a hop size of 35 become 128 and 32.
 
 ### Performance
 
 _sig_ -- input signal
 
-_c_ -- cosine output of _sig_
+_c_ -- real (cosine) output: a delayed copy of _sig_.
 
-_s_ -- sine output of _sig_
+_s_ -- imaginary (sine) output: an approximation of the Hilbert transform of _sig_.
 
-_csig_ -- Complex array containing the analytic signal.
+_csig_ -- Complex array containing the same real and imaginary outputs, with one element per sample in the current control block.
 
-_hilbert2_ is a DFT-based implementation of the Hilbert Transform producing two outputs in quadrature (90 degree phase difference across the spectrum). Unlike the IIR-based _hilbert_ opcode, _hilbert2_ has a linear frequency response. Given that it employs a streaming algorithm, a delay of fftsize samples will be imposed between input and output.
+_hilbert2_ uses FFT processing to produce two outputs in quadrature (a 90-degree phase difference). The approximation is less accurate near DC and Nyquist (_sr_/2). Steady DC and Nyquist components have zero imaginary output.
+
+Both outputs have a delay of _N_ samples, or _N_/_sr_ seconds. This uses the rounded FFT size, not the requested size.
 
 ## Examples
 
@@ -46,7 +50,7 @@ Here is an example of the hilbert2 opcode. It uses the file [hilbert2.csd](../ex
 
 ## See also
 
-[Specialized Filters: Other filters](../sigmod/speciali.md)
+[hilbert](hilbert.md), [Specialized Filters: Other filters](../sigmod/speciali.md)
 
 ## Credits
 
