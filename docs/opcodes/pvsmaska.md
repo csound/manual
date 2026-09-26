@@ -18,13 +18,17 @@ Modify amplitudes using a function table, with dynamic scaling.
 
 ### Initialization
 
-_ifn_ -- The f-table to use. Given fsrc has N analysis bins, table ifn must be of size N or larger. The table need not be normalized, but values should lie within the range 0 to 1. It can be supplied from the score in the usual way, or from within the orchestra by using [pvsinfo](../opcodes/pvsinfo.md) to find the size of fsrc, (returned by pvsinfo in inbins), which can then be passed to ftgen to create the f-table.
+_ifn_ -- The mask table, with one value per analysis bin, from DC through Nyquist. Use [pvsinfo](pvsinfo.md) to get the bin count and [ftgen](ftgen.md) to create a table of that size. Values between 0 and 1 attenuate the signal; values above 1 amplify it. At initialization, pvsmaska replaces negative values in the table with zero.
 
 ### Performance
 
-_kdepth_ -- Controls the degree of modification applied to fsrc, using simple linear scaling. 0 leaves amplitudes unchanged, 1 applies the full profile of ifn.
+_kdepth_ -- Blends between unchanged amplitudes (0) and the full mask (1). Values outside this range are clipped with a warning. For each bin, the gain is `(1 - kdepth) + kdepth * mask_value`.
 
-Note that power-of-two FFT sizes are particularly convenient when using table-based processing, as the number of analysis bins (inbins) is then a power-of-two plus one, for which an exactly matching f-table can be created. In this case it is important that the f-table be created with a size of inbins, rather than as a power of two, as the latter will copy the first table value to the guard point, which is inappropriate for this opcode.
+_fsrc_ must use amplitude+frequency (format 0) or amplitude+phase (format 1). The output keeps the input frequencies or phases unchanged. Reinitialize pvsmaska when changing the input's analysis properties, such as FFT size or sliding mode.
+
+For ordinary analysis frames, the mask and depth take effect when a new input frame arrives. For sliding signals, they apply to every active sample in the control block. Samples before the note starts or after it ends have zero output.
+
+For a power-of-two FFT size, use a table size of `ifftsize / 2 + 1` so you can set the Nyquist-bin value explicitly. A power-of-two table size uses its guard point for that bin, which may repeat the first table value.
 
 > :warning: **Warning**
 >
