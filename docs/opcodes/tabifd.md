@@ -5,7 +5,7 @@ category:Spectral Processing:Streaming
 # tabifd
 Instantaneous Frequency Distribution, magnitude and phase analysis.
 
-The tabifd opcode takes an input function table and performs an Instantaneous Frequency, magnitude and phase analysis, using the STFT and tabifd (Instantaneous Frequency Distribution), as described in Lazzarini et al, "Time-stretching using the Instantaneous Frequency Distribution and Partial Tracking", Proc.of ICMC05, Barcelona. It generates two PV streaming signals, one containing the amplitudes and frequencies (a similar output to pvsanal) and another containing amplitudes and unwrapped phases.
+The tabifd opcode takes an input function table and performs an Instantaneous Frequency, magnitude and phase analysis, using the STFT and tabifd (Instantaneous Frequency Distribution), as described in Lazzarini et al, "Time-stretching using the Instantaneous Frequency Distribution and Partial Tracking", Proc.of ICMC05, Barcelona. It generates two PV streaming signals: one containing magnitudes and frequencies, and another containing magnitudes and phases.
 
 ## Syntax
 === "Modern"
@@ -20,25 +20,27 @@ The tabifd opcode takes an input function table and performs an Instantaneous Fr
 
 ### Initialization
 
-_ifftsize_ -- FFT analysis size, must be power-of-two and integer multiple of the hopsize.
+_ifftsize_ -- FFT size in samples. It must be a power of two, at least 2, and an integer multiple of _ihopsize_. The Hann window requires at least 4 samples.
 
-_ihopsize_ -- hopsize in samples
+_ihopsize_ -- positive whole number of samples between analysis frames. The opcode produces at most one frame per control period, so use a hop size of at least _ksmps_ to receive every frame.
 
-_iwintype_ -- window type (O: Hamming, 1: Hanning)
+_iwintype_ -- window type: 0 for Hamming, 1 for Hann.
 
 _ifn_ -- source function table
 
 ### Performance
 
-_ffr_ -- output pv stream in AMP_FREQ format
+_ffr_ -- output PV stream in AMP_FREQ format, with magnitudes and frequencies in Hz.
 
-_fphs_ -- output pv stream in AMP_PHASE format
+_fphs_ -- output PV stream in AMP_PHASE format, with magnitudes and phases in radians, wrapped to the range from -pi to pi.
 
-_ktimpt_ -- time point (in secs) to read from table (if less than 0 or bigger than table length, it will wraparound)
+Both outputs have nonnegative magnitudes, including at DC and Nyquist. At those two bins, a negative real coefficient has phase pi; a positive or zero coefficient has phase zero.
+
+_ktimpt_ -- position in seconds at which to start reading. Reading wraps at the table boundaries and uses linear interpolation between samples, including at negative positions.
 
 _kamp_ -- amplitude scaling
 
-_kpitch_ -- pitch scaling (transposition)
+_kpitch_ -- table samples to advance per analysis sample: 1 reads forward at the original pitch, -1 reads backward, and 0 holds the value at _ktimpt_.
 
 ## Examples
 
