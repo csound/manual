@@ -5,7 +5,7 @@ category:Spectral Processing:Streaming
 # pvsifd
 Instantaneous Frequency Distribution, magnitude and phase analysis.
 
-The pvsifd opcode takes an input a-rate signal and performs an Instantaneous Frequency, magnitude and phase analysis, using the STFT and pvsifd (Instantaneous Frequency Distribution), as described in Lazzarini et al, "Time-stretching using the Instantaneous Frequency Distribution and Partial Tracking", Proc.of ICMC05, Barcelona. It generates two PV streaming signals, one containing the amplitudes and frequencies (a similar output to pvsanal) and another containing amplitudes and unwrapped phases.
+The pvsifd opcode takes an input a-rate signal and performs an Instantaneous Frequency, magnitude and phase analysis, using the STFT and pvsifd (Instantaneous Frequency Distribution), as described in Lazzarini et al, "Time-stretching using the Instantaneous Frequency Distribution and Partial Tracking", Proc.of ICMC05, Barcelona. It generates two PV streaming signals: one containing magnitudes and frequencies, and another containing magnitudes and phases.
 
 ## Syntax
 === "Modern"
@@ -18,19 +18,25 @@ The pvsifd opcode takes an input a-rate signal and performs an Instantaneous Fre
     ffr, fphs pvsifd ain, ifftsize, ihopsize, iwintype [,iscal]
     ```
 
-### Performance
+### Initialization
 
-_ffr_ -- output pv stream in AMP_FREQ format
+_ifftsize_ -- FFT size in samples. It must be a power of two, at least 2, and an integer multiple of _ihopsize_. The Hann window requires at least 4 samples.
 
-_fphs_ -- output pv stream in AMP_PHASE format
+_ihopsize_ -- positive whole number of samples between analysis frames.
 
-_ifftsize_ -- FFT analysis size, must be power-of-two and integer multiple of the hopsize.
-
-_ihopsize_ -- hopsize in samples
-
-_iwintype_ -- window type (O: Hamming, 1: Hanning)
+_iwintype_ -- window type: 0 for Hamming, 1 for Hann.
 
 _iscal_ -- amplitude scaling (defaults to 1).
+
+### Performance
+
+_ain_ -- input audio signal.
+
+_ffr_ -- output PV stream in AMP_FREQ format, with magnitudes and frequencies in Hz.
+
+_fphs_ -- output PV stream in AMP_PHASE format, with magnitudes and phases in radians, wrapped to the range from -pi to pi.
+
+Both outputs have nonnegative magnitudes, including at DC and Nyquist. At those two bins, a negative real coefficient has phase pi; a positive or zero coefficient has phase zero.
 
 > :warning: **Warning**
 >
