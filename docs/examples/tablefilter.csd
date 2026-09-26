@@ -16,16 +16,17 @@ nchnls=1
 
       gifarey ftgen 200, 0, gilen, "farey", gifarn, 0
 
-      ; initialize destiniation table with 0s
+      ; initialize destination table with 0s
       gifiltered ftgen 0, 0, gilen, 21, 1, 0
 
-      ; initialize second destiniation table with 0s
+      ; initialize second destination table with 0s
       gifiltered2 ftgen 0, 0, gilen, 21, 1, 0
 
       ; table filtering opcode:   dest.         source,         mode,   threshold
       ginumpassed tablefilteri    gifiltered,   gifarey,        1,      6
       ; the threshold parameter indicates that denominators whose weights are heavier
-      ; than 6 are not passing through the filter. The weight is calculated using
+      ; than the weight of 6 do not pass through the filter. Equal weights pass.
+      ; The weight is calculated using
       ; Clarence Barlow's function of indigestibility of a number. According to this function,
       ; higher prime numbers contribute to an increased weight of any natural integer they divide.
       ; ginumpassed is the number of elements from the source table 'gifarey'
@@ -35,7 +36,7 @@ nchnls=1
       ginumpassed2 tablefilteri   gifiltered2,  gifarey,        2,      5
       ; In mode=2 we again test the digestibility of the denominators of the
       ; fractions in the source table.
-      ; The difference to mode=1 is that we now let pass only vaules from the
+      ; The difference to mode=1 is that we now let pass only values from the
       ; source that are as heavy as the threshold or greater.
 
 
