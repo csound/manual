@@ -9,7 +9,7 @@ The following opcodes can receive MIDI information:
 * MIDI Controller input for MIDI-triggered instruments only: [midic7](../opcodes/midic7.md), [midic14](../opcodes/midic14.md) and [midic21](../opcodes/midic21.md).
 * MIDI controller  value initialization: [initc7](../opcodes/initc7.md), [initc14](../opcodes/initc14.md), [initc21](../opcodes/initc21.md), [ctrlinit](../opcodes/ctrlinit.md), [ctrlpreset](../opcodes/ctrlpreset.md), [ctrlprint](../opcodes/ctrlprint.md), [ctrlprintpresets](../opcodes/ctrlprintpresets.md), [ctrlsave](../opcodes/ctrlsave.md) and [ctrlselect](../opcodes/ctrlselect.md).
 * MIDI file input information: [midifilestatus](../opcodes/midifilestatus.md).
-* [midicontinue](../opcodes/midicontinue.md) is intended to report MIDI Continue messages. See its known implementation issue before using it.
+* [midicontinue](../opcodes/midicontinue.md) reports MIDI Continue messages.
 * [midiclockin](../opcodes/midiclockin.md) reports incoming MIDI clock pulses.
 * Incoming MIDI clock frequency in Hz is available through [midiclockfreq](../opcodes/midiclockfreq.md).
 * Generic MIDI input: [midiin](../opcodes/midiin.md).
