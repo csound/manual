@@ -5,25 +5,25 @@ category:Spectral Processing:Streaming
 # pvstanal
 Phase vocoder analysis processing with onset detection/processing.
 
-_pvstanal_ reads a sound stored in a [GEN01](../scoregens/gen01.md) function table and produces amplitude+frequency f-signals. It accepts deferred allocation tables. Use one output for each channel in the table, up to 16 outputs.
+_pvstanal_ implements phase vocoder analysis by reading function tables containing sampled-sound sources, with [GEN01](../scoregens/gen01.md), and _pvstanal_ will accept deferred allocation tables.
 
-Pitch and time scaling are independent. The opcode advances the read position internally. Onset detection can briefly suspend time stretching to preserve attacks. All channels use the same read position.
+This opcode allows for time and frequency-independent scaling. Time is advanced internally, but controlled by a tempo scaling parameter; when an onset is detected, timescaling is momentarily stopped to avoid smearing of attacks. The quality of the effect is generally improved with phase locking switched on.
+
+_pvstanal_ will also scale pitch, independently of frequency, using a transposition factor (k-rate).
 
 ## Syntax
 === "Modern"
     ``` csound-orc
-    fsig = pvstanal(ktimescal, kamp, kpitch, ktab [, kdetect, kwrap, ioffset, \
-                   ifftsize, ihop, idbthresh])
-    fleft, fright = pvstanal(ktimescal, kamp, kpitch, ktab [, kdetect, kwrap, \
-                            ioffset, ifftsize, ihop, idbthresh])
+    fsig = pvstanal(ktimescal, kamp, kpitch, ktab, [kdetect, kwrap, ioffset, \
+                    ifftsize, ihop, idbthresh])
+      )
     ```
 
 === "Classic"
     ``` csound-orc
-    fsig pvstanal ktimescal, kamp, kpitch, ktab [, kdetect, kwrap, ioffset, \
-                 ifftsize, ihop, idbthresh]
-    fleft, fright pvstanal ktimescal, kamp, kpitch, ktab [, kdetect, kwrap, \
-                          ioffset, ifftsize, ihop, idbthresh]
+    fsig pvstanal ktimescal, kamp, kpitch, ktab, [kdetect, kwrap, ioffset, \
+                  ifftsize, ihop, idbthresh]
+    
     ```
 
 ### Initialization
@@ -32,23 +32,24 @@ _ifftsize_ -- FFT size, a power of two of at least 2. A zero or negative value s
 
 _ihop_ -- Hop size in samples, at least _ksmps_. A zero or negative value selects the default, 512. Fractional sample counts are truncated.
 
-_ioffset_ -- Initial read offset in seconds of the source sound, default 0. The source and orchestra may have different sample rates.
+_ioffset_ -- startup read offset into table, in secs.
 
-_idbthresh_ -- Onset threshold in decibels, default 1. The detector compares the next window's power with the current window's power using _10 log10(next/current)_. A rise above the threshold counts as an onset. For example, doubling the amplitude gives a rise of about 6 dB.
+_idbthresh_ -- threshold for onset detection, based on dB power spectrum ratio between two successive windows. A detected ratio above it will cancel timescaling momentarily, to avoid smearing (defaults to 1).
+By default anything more than a 1 dB inter-frame power difference will be detected as an onset.
 
 ### Performance
 
-_ktimescal_ -- Time scaling ratio: 1 plays at the original speed, values between 0 and 1 stretch time, and values above 1 shorten it. Negative values move the read position backwards. With onset detection off, 0 holds the read position.
+_ktimescal_ -- timescaling ratio, &lt; 1 stretch, > 1 contract.
 
 _kamp_ -- amplitude scaling
 
-_kpitch_ -- Pitch scaling: 1 keeps the original pitch, values between 0 and 1 lower it, and values above 1 raise it. Negative values reverse the reading direction within each analysis window.
+_kpitch_ -- grain pitch scaling (1=normal pitch, &lt; 1 lower, > 1 higher; negative, backwards)
 
-_kdetect_ -- Set to 1 to enable onset detection, or 0 to disable it. The default is 1. When stretching time, an onset on any channel advances all channels at the original speed for that hop.
+_kdetect_ -- 0 or 1, to switch onset detection/processing. The onset detector checks for power difference between analysis windows. If more than what has been specified in the dbthresh parameter, an onset is declared. It suspends timescaling momentarily so the onsets are not modified. The default is 1, so onset detection/processing is on.
 
-_ktab_ -- Source sound table. Its channel count must match the number of outputs. Tables can be switched at k-rate, but must keep that channel count.
+_ktab_ -- source signal function table. Deferred-allocation tables (see [GEN01](../scoregens/gen01.md)) are accepted, but the opcode expects a mono source. Tables can be switched at k-rate.
 
-_kwrap_ -- Set to 1 to loop the read position, or 0 to stop producing frames with sound when the position passes either end of the table. The default is 1. Analysis windows wrap across table ends in either mode.
+_kwrap_ -- 0 or 1, to switch on/off table wrap-around read (default to 1)
 
 ## Examples
 
