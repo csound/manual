@@ -56,6 +56,10 @@ _iinit_ -- (optional) Skip reinitialization. This is not currently implemented f
 >
 > It is unsafe to use the same f-variable for both input and output of pvs opcodes. Using the same one might lead to undefined behavior on some opcodes. Use a different one on the left and right sides of the opcode.
 
+### Note boundaries
+
+With sample-accurate scheduling, sliding analysis sets every bin to zero for samples outside the note within its first and last control blocks. It analyzes only the active input samples.
+
 ## Examples
 
 Here is an example of the pvsanal opcode. It uses the file [pvsanal.csd](../examples/pvsanal.csd).
