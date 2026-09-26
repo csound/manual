@@ -18,9 +18,13 @@ Performs cross-synthesis between two source fsigs.
 
 ### Performance
 
-The operation of this opcode is identical to that of [pvcross](../opcodes/pvcross.md) (q.v.), except in using _fsig_s rather than analysis files, and the absence of spectral envelope preservation. The amplitudes from _fsrc_ and _fdest_ (using scale factors _kamp1_ for _fsrc_ and _kamp2_ for _fdest_) are applied to the frequencies of _fsrc_. _kamp1_ and _kamp2_ must not exceed the range 0 to 1.
+For each bin, the output adds the amplitude from _fsrc_ scaled by _abs(kamp1)_ to the amplitude from _fdest_ scaled by _abs(kamp2)_. It keeps the frequency from _fsrc_. For amplitude+phase input, it keeps the phase from _fsrc_ instead. Unlike [pvcross](pvcross.md), it reads f-signals and does not preserve the spectral envelope.
 
-With this opcode, cross-synthesis can be performed on real-time audio input, by using [pvsanal](../opcodes/pvsanal.md) to generate _fsrc_ and _fdest_. These must have the same format.
+_kamp1_ and _kamp2_ use their absolute values: negative gains act like positive gains. Values above 1 amplify the input; gains are not clipped to 1. Use values between 0 and 1 for a crossfade.
+
+Both inputs must use amplitude+frequency (format 0) or amplitude+phase (format 1), with matching FFT size, hop size, window size, window type, format and sliding mode. Complex frames and partial tracks are not supported. Use [pvsanal](pvsanal.md) to generate inputs from real-time audio.
+
+For ordinary analysis frames, the output updates when _fsrc_ supplies a new frame, using the latest frame from _fdest_. Sliding signals process each active sample in the control block. Samples before the note starts or after it ends have zero output.
 
 > :warning: **Warning**
 >
