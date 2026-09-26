@@ -23,6 +23,10 @@ Use `pvsgendy` to turn a steady tone into a less pitched, noisier sound. It appl
 
 `fin` is an amplitude-frequency spectral stream, such as the output of [pvsanal](pvsanal.md). `fout` has the same analysis settings as `fin`. Use different f-variables for input and output.
 
+The opcode processes every bin, including DC and Nyquist. Set both controls to 0 to copy the full input spectrum. In sliding analysis, it clears the output samples before the note starts and after it ends within each control block.
+
+Reinitialize `pvsgendy` if the input's analysis settings change.
+
 `kmrate` controls the size of random amplitude changes in sliding analysis. Each bin receives an independent offset of roughly `-kmrate/2` to `kmrate/2` in linear amplitude units. In ordinary frame-based analysis, this parameter has no effect and the opcode copies the input amplitudes. Use 0 to leave amplitudes unchanged.
 
 `kfrate` controls the size of random frequency changes in Hz. Larger values give more detuning, and lower bins receive larger offsets than higher bins. Use 0 to leave the processed bin frequencies unchanged. Neither control sets the speed of the random changes. Use nonnegative values for both controls.
@@ -36,13 +40,9 @@ The two analysis modes use different frequency ranges. In the table below, `b` i
 
 For example, in ordinary frame-based analysis, `kfrate = 1000` gives bin 1 an offset of roughly -167 to 167 Hz. Each update adds a fresh offset to the input value. The changes do not build up from one update to the next.
 
+Each instance has its own random sequence. Set [seed](seed.md) before the opcode initializes to make the result repeatable. Use the same seed and initialization order for repeat runs.
+
 The opcode does not limit the resulting amplitudes or frequencies. Large settings can produce negative amplitudes in sliding mode or frequencies outside the range from 0 to `sr/2` in either mode.
-
-### Current limits
-
-The current implementation leaves out the Nyquist bin at `sr/2`. That bin stays zero in the output, even when both controls are 0. A zero setting therefore does not give an exact copy of the full input spectrum.
-
-The amplitude control's lack of effect in ordinary frame-based analysis is also a limit of the current implementation.
 
 ## Examples
 
