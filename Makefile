@@ -217,8 +217,8 @@ OPCODES = opcodes/0dbfs.xml	opcodes/ATSadd.xml	opcodes/ATSaddnz.xml \
 	opcodes/gogobel.xml	opcodes/goto.xml	opcodes/grain.xml \
 	opcodes/grain2.xml	opcodes/grain3.xml	opcodes/granule.xml \
 	opcodes/greaterequal.xml	opcodes/greaterthan.xml	opcodes/guiro.xml \
-	opcodes/harmon.xml	opcodes/harmon234.xml	opcodes/hdf5read.xml \
-	opcodes/hdf5write.xml	opcodes/hilbert.xml	opcodes/hrtfearly.xml \
+	opcodes/harmon.xml	opcodes/harmon234.xml \
+	opcodes/hilbert.xml	opcodes/hrtfearly.xml \
 	opcodes/hrtfer.xml	opcodes/hrtfmove.xml	opcodes/hrtfmove2.xml \
 	opcodes/hrtfreverb.xml	opcodes/hrtfstat.xml	opcodes/hsboscil.xml \
 	opcodes/hvs1.xml	opcodes/hvs2.xml	opcodes/hvs3.xml \
