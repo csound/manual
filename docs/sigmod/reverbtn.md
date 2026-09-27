@@ -12,5 +12,6 @@ The opcodes one can use for reverberation are:
 * [platerev](../opcodes/platerev.md)
 * [reverb](../opcodes/reverb.md)
 * [reverbsc](../opcodes/reverbsc.md)
+* [reverbsc2](../opcodes/reverbsc2.md)
 * [valpass](../opcodes/valpass.md)
 * [vcomb](../opcodes/vcomb.md)

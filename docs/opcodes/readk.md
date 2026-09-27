@@ -75,7 +75,7 @@ i   2 time    11.00000:   460.66550
 
 ## See also
 
-[File Input and Output](../sigio/fileio.md)
+[readks](readks.md), [File Input and Output](../sigio/fileio.md)
 
 ## Credits
 
