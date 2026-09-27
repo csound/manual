@@ -13,6 +13,7 @@
   sr        =  44100
   ksmps     =  10
   nchnls    =  1
+  0dbfs     =  1
 
     instr 1
 
@@ -35,7 +36,7 @@
 
   atab      tablexkt  andx, kfn, kwarp, iwsize
 
-  atab      =  atab * 10000
+  atab      =  atab * 0.3
 
             out       atab
 

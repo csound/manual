@@ -11,6 +11,7 @@
 <CsInstruments>
 ksmps = 256
 nchnls = 2
+0dbfs = 1
 gisize = 64
 
 gitable ftgen 0, 0, gisize, 10, 1  ;Table to be processed
@@ -19,7 +20,7 @@ gimap2 ftgen 0, 0, gisize, -5, 1, gisize-1, gisize-1  ; Mapping function for PWM
 gimap3 ftgen 0, 0, gisize, -7, 1, (gisize/2)-1, gisize-1, 1, 1, (gisize/2)-1, gisize-1  ; Double frequency
 
 instr 1  ;Hear an oscillator using gitable
-asig oscil 10000, 440, gitable
+asig oscil 0.3, 440, gitable
 outs asig,asig
 endin
 

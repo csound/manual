@@ -7,15 +7,15 @@
 
 
 sr=44100
-kr=441
 ksmps=100
 nchnls=2
+0dbfs=1
 
         instr 1
 ilen = ftlen(1)
 
-knew1 oscil 10000, 440, 3
-knew2 oscil 15000, 440, 3, 0.5
+knew1 oscil 0.3, 440, 3
+knew2 oscil 0.46, 440, 3, 0.5
 kindex phasor 0.3
 asig oscil 1, sr/ilen , 1
 vtablewk kindex*ilen, 1, 0, knew1, knew2

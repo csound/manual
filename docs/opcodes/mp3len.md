@@ -34,7 +34,7 @@ Here is an example of the mp3len opcode. It uses the file [mp3len.csd](../exampl
 
 ## See also
 
-[Sound File Queries](../sigio/queries.md)
+[mp3bitrate](mp3bitrate.md), [Sound File Queries](../sigio/queries.md)
 
 ## Credits
 

@@ -9,7 +9,6 @@
 <CsInstruments>
 
         sr      =       44100
-        kr      =       441
         ksmps   =       100
         nchnls  =       2
         0dbfs   =       1
@@ -34,11 +33,11 @@ giModScale ftgen 0, 0, giMaxNumParam*giMaxNumMod, -2, 0
 ;********************************************
         instr 1
 
-; LFO1, 1.5 Hz, normalized range (0.0 to 1.0)
+; LFO1, 1.5 Hz, range (0.0 to 1.0)
 kLFO1   oscil   0.5, 1.5, giSine                ; generate LFO signal
 kLFO1   = kLFO1+0.5                             ; offset
 
-; LFO2, 0.4 Hz, normalized range (0.0 to 1.0)
+; LFO2, 0.4 Hz, range (0.0 to 1.0)
 kLFO2   oscil   0.5, 0.4, giSine                ; generate LFO signal
 kLFO2   = kLFO2+0.5                             ; offset
 

@@ -5,9 +5,9 @@
 <CsInstruments>
 
 sr     =        44100
-kr     =        100
 ksmps  =        441
 nchnls =        2
+0dbfs  =        1
 
 gindx init 0
 

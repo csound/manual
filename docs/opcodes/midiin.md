@@ -34,6 +34,8 @@ if channel is port mapped.)
 
 _kdata1, kdata2_ -- message-dependent data values
 
+For a Note Off message with _kstatus_ equal to 128, _kdata1_ is the key number and _kdata2_ is the Note Off velocity. Match _kchan_ and _kdata1_ to the note you want to handle. Check each message rather than waiting for _kstatus_ to change, since consecutive messages can have the same status.
+
 _midiin_ has no input arguments, because it reads at the MIDI in port implicitly. It works at k-rate. Normally (i.e., when no messages are pending) _kstatus_ is zero, only when MIDI data are present in the MIDI IN buffer, is _kstatus_ set to the type of the relevant messages.
 
 > :memo: **Note**

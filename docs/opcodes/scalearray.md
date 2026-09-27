@@ -8,12 +8,12 @@ The _scalearray_ opcode scales a subregion of a vector to a given minimum/maximu
 ## Syntax
 === "Modern"
     ``` csound-orc
-    scalearray(tarray, kmin, kmax[, kleft, kright])
+    scalearray(karray, kmin, kmax[, kleft, kright])
     ```
 
 === "Classic"
     ``` csound-orc
-    scalearray tarray, kmin, kmax[, kleft, kright]
+    scalearray karray, kmin, kmax[, kleft, kright]
     ```
 
 ### Performance
@@ -23,6 +23,12 @@ _karray_ --  array for operation.
 _kmin, kmax_ --  target minimum and maximum values.
 
 _kleft, kright_ --  range of table to use, defaulting to 0 and size of the vector.
+
+## Replacing scalet
+
+[scalet](scalet.md) is the deprecated k-rate name. Replace `scalet(kArray, kmin, kmax, kleft, kright)` with `scalearray(kArray, kmin, kmax, kleft, kright)`. Both modify the same array in place on each control cycle.
+
+The left index is inclusive and the right index is exclusive. Defaults select the whole vector. `scalearray` also supports an i-rate array form for initialization-time scaling.
 
 ## Examples
 

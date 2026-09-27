@@ -9,9 +9,9 @@
 
 
 sr=44100
-kr=4410
 ksmps=10
 nchnls=2
+0dbfs=1
 
         instr 1 ;table playback
 ar lposcil 1, 1, 0, 262144, 1
@@ -20,7 +20,7 @@ outs ar,ar
 
         instr 2
 vcopy 2, 1, 20000 ;copy vector from sample to empty table
-vmult 5, 20000, 262144 ;scale noise to make it audible
+vmult 5, 0.6, 262144  ; scale noise to make it audible
 vcopy 1, 5, 20000  ;put noise into sample
 turnoff
         endin

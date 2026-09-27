@@ -10,9 +10,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Initialize the ZAK space.
 ; Create 2 a-rate variables and 2 k-rate variables.
@@ -20,8 +20,8 @@ zakinit 2, 2
 
 ; Instrument #1 -- a simple waveform.
 instr 1
-  ; Vary an a-rate signal linearly from 20,000 to 0.
-  asig line 20000, p3, 0
+  ; Vary an a-rate signal linearly from 0.6 to 0.
+  asig line 0.6, p3, 0
 
   ; Send the signal to za variable #1.
   zaw asig, 1

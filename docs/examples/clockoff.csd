@@ -10,16 +10,16 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 44100
 ksmps = 1
 nchnls = 1
+0dbfs = 1
 
 ; Instrument #1.
 instr 1
   ; Start clock #1.
   clockon 1
   ; Do something that keeps Csound busy.
-  a1 oscili 10000, 440, 1
+  a1 oscili 0.3, 440, 1
   out a1
   ; Stop clock #1.
   clockoff 1

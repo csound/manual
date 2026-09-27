@@ -7,6 +7,7 @@
 <CsInstruments>
 ;ksmps needs to be an integer div of hopsize 
 ksmps = 64
+0dbfs = 1
 
 instr 1
 

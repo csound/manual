@@ -10,19 +10,19 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Define the macros.
-#define VOLUME #5000#
+#define VOLUME #0.15#
 #define FREQ #440#
 #define TABLE #1#
 
 ; Instrument #1
 instr 1
   ; Use the macros.
-  ; This will be expanded to "a1 oscil 5000, 440, 1".
+  ; This will be expanded to "a1 oscil 0.15, 440, 1".
   a1 oscil $VOLUME, $FREQ, $TABLE
 
   ; Send it to the output.

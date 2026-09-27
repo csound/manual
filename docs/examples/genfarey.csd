@@ -6,6 +6,7 @@
 sr=44100
 ksmps=10
 nchnls=1
+0dbfs=1
 
 instr 4
       kndx init 0 ; read out elements of F_8 one by one and print to file

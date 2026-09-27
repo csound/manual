@@ -9,13 +9,13 @@
 <CsInstruments>
 
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Instrument #1 - a basic oscillator.
 instr 1
-  kamp = 10000
+  kamp = 0.3
   kcps = 440
   ifn = 1
 

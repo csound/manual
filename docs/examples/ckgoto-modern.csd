@@ -12,9 +12,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr =  4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Instrument #1.
 instr 1
@@ -37,7 +37,7 @@ lownote:
 playit:
   ; Print the values of kval and kfreq.
   printks("val = %f, freq = %f\\n", 1, val, freq)
-  out(poscil(10000, freq))
+  out(poscil(0.3, freq))
 endin
 
 </CsInstruments>

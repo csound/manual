@@ -11,6 +11,7 @@
 sr = 44100
 ksmps = 32
 nchnls = 2
+0dbfs = 1
 
 instr 1
   sig:a = bamboo(p4, 0.01, 0, 0, 0, 8000)
@@ -20,8 +21,8 @@ endin
 </CsInstruments>
 <CsScore>
 
-i1 0 1 20000
-i1 2 1 20000
+i1 0 1 0.6
+i1 2 1 0.6
 e
 
 </CsScore>

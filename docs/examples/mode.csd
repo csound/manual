@@ -10,9 +10,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 2
+0dbfs = 1
 
 instr 1; 2 modes excitator
 
@@ -21,7 +21,7 @@ ifreq11 init p4
 ifreq12 init p5
 iQ11    init p6
 iQ12    init p7
-iamp    init ampdb(p8)
+iamp    init ampdbfs(p8)
 ifreq21 init p9
 ifreq22 init p10
 iQ21    init p11
@@ -59,28 +59,28 @@ endin
 <CsScore>
 
 ;wooden excitator against glass resonator
-i1 0 8  1000   3000  12  8  70  440   888   500  420 
+i1 0 8  1000   3000  12  8  -20  440   888   500  420
 
 ;felt against glass
-i1 4 8  80   188  8  3  70  440   888   500  420 
+i1 4 8  80   188  8  3  -20  440   888   500  420
 
 ;wood against wood
-i1 8 8  1000   3000  12  8  70  440  630   60  53 
+i1 8 8  1000   3000  12  8  -20  440  630   60  53
 
 ;felt against wood
-i1 12 8  80   180  8  3  70  440  630   60  53 
+i1 12 8  80   180  8  3  -20  440  630   60  53
 
 
-i1 16 8  1000   3000  12  8  70  440  888   2000  1630
-i1 23 8  80   180  8  3  70  440  888   2000  1630
+i1 16 8  1000   3000  12  8  -20  440  888   2000  1630
+i1 23 8  80   180  8  3  -20  440  888   2000  1630
 
 
 ;With a metallic excitator
 
-i1 33 8 1000  1800  1000  720  70   440   882  500  500
-i1 37 8 1000  1800  1000  850  70   440   630  60  53
+i1 33 8 1000  1800  1000  720  -20   440   882  500  500
+i1 37 8 1000  1800  1000  850  -20   440   630  60  53
 
-i1 42 8 1000  1800  2000  1720  70   440   442  500  500
+i1 42 8 1000  1800  2000  1720  -20   440   442  500  500
 
 
 </CsScore>

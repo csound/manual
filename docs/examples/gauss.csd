@@ -5,6 +5,7 @@
 </CsOptions>
 
 <CsInstruments>
+0dbfs = 1
 instr 1
 irange   = p4
 imu      = p5

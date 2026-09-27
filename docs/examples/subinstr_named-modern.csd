@@ -11,9 +11,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr =  4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Instrument "basic_tone" - Creates a basic tone.
 instr basic_tone
@@ -31,7 +31,7 @@ endin
 
 ; Instrument #1 - Demonstrates the subinstr opcode.
 instr 1
-  amp:i = 20000
+  amp:i = 0.6
   pch:i = 440
 
   ; Use the "basic_tone" named instrument to create a 

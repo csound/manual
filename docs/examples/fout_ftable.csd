@@ -7,6 +7,7 @@
 ; -o fout_ftable.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 ; By: Jonathan Murphy 2007
 
   gilen         =               131072

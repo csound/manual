@@ -19,6 +19,12 @@ It is recommended to use a good text editor for writing md files. [Visual Studio
 
 If you want to see local changes, run `mkdocs serve` in the doc directory. The site is then visible under `localhost:8000` in your browser.
 
+### Example headers and amplitudes
+
+Use `sr` and `ksmps` to set the sample and control rates. Csound calculates `kr` from them. Place `0dbfs = 1` after the rate and channel settings, and use normalized amplitudes, such as `0.3`. Keep explicit `kr` assignments when an example teaches control-rate settings, as in `kr.csd`. The `genwave.csd` header keeps the exception listed in [issue 213](https://github.com/csound/manual/issues/213).
+
+When updating an older example, keep its sample rate and control period unless the example needs a different rate. Use simple dBFS ranges or linear amplitudes with two or three significant digits. Preserve exact values only when the example depends on them. Check score fields, envelopes and amplitude thresholds as well as oscillators. Do not scale frequencies or relative gains. Audio file input and values based on `0dbfs` or `ampdbfs()` already follow the new full-scale setting.
+
 ### Building the manual
 
 Each time some changes are committed on GitHub, a Continous Integration (CI) Action is launched on the manual GitHub repository and in a few minutes the result can be seen online [here](https://csound.com/manual/).

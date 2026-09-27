@@ -7,6 +7,7 @@
 ; -o strsub.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 ; By: Jonathan Murphy 2007
 
 instr 1

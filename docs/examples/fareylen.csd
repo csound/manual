@@ -7,6 +7,7 @@
 sr=44100
 ksmps=32
 nchnls=1
+0dbfs=1
 
 ; by Stefano Cucchi and Menno Knevel - 2024
 

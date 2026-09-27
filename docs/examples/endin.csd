@@ -10,13 +10,13 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Instrument #1.
 instr 1
-  iamp = 10000
+  iamp = 0.3
   icps = 440
   iphs = 0
 

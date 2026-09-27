@@ -24,7 +24,6 @@ _timek_ is for time in k-rate cycles. So with:
 
 ``` csound-orc
   sr    = 44100
-  kr    = 6300
   ksmps = 7
 ```
 

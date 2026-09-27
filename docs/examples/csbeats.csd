@@ -5,6 +5,7 @@
 <CsInstruments>
 sr      =           44100
 nchnls  =               2
+0dbfs   =               1
 
 gi1 ftgen 1, 0, 4096, 10, 1
 gi2 ftgen 2, 0, 4096, 7, -1, 4096, 1    ; sawtooth

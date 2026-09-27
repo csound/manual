@@ -11,23 +11,24 @@
 sr = 44100
 ksmps = 32
 nchnls = 2
+0dbfs = 1
 
 instr 1
 
 idb  =  p4
-iamp =  ampdb(idb)
+iamp =  ampdbfs(idb)
 asig    oscil iamp, 220
-        print iamp
+        print ampdb(idb)
         outs  asig, asig
 endin
 
 
 </CsInstruments>
 <CsScore>
-i 1 0 1 50
-i 1 + 1 90
-i 1 + 1 68
-i 1 + 1 80
+i 1 0 1 -40
+i 1 + 1 0
+i 1 + 1 -22
+i 1 + 1 -10
 
 e
 

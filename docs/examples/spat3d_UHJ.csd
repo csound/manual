@@ -10,9 +10,9 @@
 
 /* Written by Istvan Varga */
 sr      =  48000
-kr      =  750
 ksmps   =  64
 nchnls  =  2
+0dbfs   =  1
 
 itmp    ftgen   1, 0, 64, -2,                                           \
                 /* depth1, depth2, max delay, IR length, idist, seed */ \
@@ -48,7 +48,7 @@ aenv4   phasor 3.0
 aenv4   limit 2.0 - aenv4 * 8.0, 0.0, 1.0
 a1      butterbp a1 * aenv4, kffrq, 160.0
 aenv    linseg 1.0, p3 - 1.0, 1.0, 0.04, 0.0, 1.0, 0.0
-a_      =  4000000 * a1 * aenv + 0.00000001
+a_      =  120 * a1 * aenv + 0.00000001
 
 ; spatialize
 a_W, a_X, a_Y, a_Z      spat3d a_, kX, kY, kZ, 1.0, 1, 2, 2.0, 2

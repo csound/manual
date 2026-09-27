@@ -32,8 +32,8 @@ The example shows the software bus being used as an output audio channel. It ass
 
 ``` csound-orc linenums="1"
 sr = 44100
-kr = 100
 ksmps = 1
+0dbfs = 1
 
 instr   1
     a1   oscil     p4, p5, 100

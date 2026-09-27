@@ -32,7 +32,7 @@ Here is an example of the rtclock opcode. It uses the file [rtclock.csd](../exam
 
 ## See also
 
-[Time Reading](../control/timeread.md)
+[systime](systime.md), [Time Reading](../control/timeread.md)
 
 ## Credits
 

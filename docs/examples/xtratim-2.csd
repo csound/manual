@@ -11,6 +11,7 @@
 sr = 44100
 ksmps = 10
 nchnls = 2
+0dbfs = 1
 
             ; sine wave for oscillators
 gisin       ftgen     1, 0, 4096, 10, 1
@@ -27,7 +28,7 @@ gisin       ftgen     1, 0, 4096, 10, 1
 
             ; master volume
   kamp      ctrl7     1, 7, 0, 127
-  kamp      =  kamp * ivel
+  kamp      =  kamp * ivel * 0.0000305
 
             ; parameters for aenv1
   iatt1     =  0.03     

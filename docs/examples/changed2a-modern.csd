@@ -4,6 +4,7 @@
 -n
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 Array@global:k[][] = init(2, 3)
 Array = fillarray(1, 2, 3, 7, 6, 5)
 

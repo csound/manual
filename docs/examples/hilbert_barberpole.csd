@@ -11,9 +11,9 @@
 ; Initialize the global variables.
 sr = 44100
 ; kr must equal sr for the barberpole effect to work.
-kr = 44100
 ksmps = 1
 nchnls = 2
+0dbfs = 1
 
 ; Instrument #1
 instr 1
@@ -25,8 +25,8 @@ instr 1
   asaw   phasor 100
   ; add offset to center phasor amplitude between -.5 and .5
   asaw = asaw - .5
-  ; sawtooth wave, with amplitude of 10000
-  ain = asaw * 20000
+  ; sawtooth wave, with amplitude of 0.3052
+  ain = asaw * 0.6
   
   ; The envelope of the frequency shift.
   kfreq linseg ibegshift, idur, iendshift

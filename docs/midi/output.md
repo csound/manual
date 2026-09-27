@@ -4,7 +4,7 @@ Opcodes that produce MIDI output are:
 
 * [mdelay](../opcodes/mdelay.md)
 * [midiout](../opcodes/midiout.md)
-* [midiout_i](../opcodes/midiout_i.md)
+* [midiout_i](../opcodes/midiout_i.md) (also called [midiouti](../opcodes/midiouti.md))
 * [nrpn](../opcodes/nrpn.md)
 * [outiat](../opcodes/outiat.md)
 * [outic](../opcodes/outic.md)

@@ -9,9 +9,9 @@
 <CsInstruments>
 
 sr = 44100
-kr  = 4410
 ksmps = 10
 nchnls = 2
+0dbfs = 1
 
 instr 15
   ifc     =       p4                       ; Center / Shelf
@@ -19,7 +19,7 @@ instr 15
   kv      =       ampdb(p6)                ; Volume Boost/Cut
   imode   =       p7                       ; Mode 0=Peaking EQ, 1=Low Shelf, 2=High Shelf
   kfc     linseg  ifc*2, p3, ifc/2
-  asig    rand    5000                     ; Random number source for testing
+  asig    rand    0.15  ; Random number source for testing
   aout    pareq   asig, kfc, kv, kq, imode ; Parmetric equalization
           outs    aout, aout               ; Output the results
 endin

@@ -11,6 +11,7 @@
 sr = 44100
 ksmps = 32
 nchnls = 2
+0dbfs = 1
 
 ; time-varying mixture of first six harmonics
 instr 1
@@ -35,7 +36,7 @@ instr 1
 
   ; avoid clicks, scale final amplitude, and output
   declick:a = linseg(0.0, 0.05, 1.0, dur-0.1, 1.0, 0.05, 0.0)
-  y *= declick*10000
+  y *= declick*0.3
   outs(y, y)
 endin
 

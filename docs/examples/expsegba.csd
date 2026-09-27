@@ -10,15 +10,15 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr  = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Instrument #1.
 instr 1
   ; Define a short percussive amplitude envelope that
-  ; goes from 0.01 to 20,000 and back.
-  aenv expsegba 0.01, 0.1, 20000, 0.2, 0.01
+  ; rises from near silence to 60% of full scale.
+  aenv expsegba 0.00000031, 0.1, 0.6, 0.2, 0.00000031
 
   a1 oscil aenv, 440, 1
   out a1

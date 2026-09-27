@@ -12,6 +12,7 @@
 sr=44100
 ksmps=128
 nchnls=2
+0dbfs=1
 
 gitab ftgen 0, 0, 16, -7, 0, 128, 0
 
@@ -33,9 +34,9 @@ instr 1
   kfreq3 table 5, gitab
 
   ;Change the frequency of three oscillators according to the random values
-  aosc1 oscili 4000, kfreq1, 1
-  aosc2 oscili 2000, kfreq2, 1
-  aosc3 oscili 4000, kfreq3, 1
+  aosc1 oscili 0.12, kfreq1, 1
+  aosc2 oscili 0.061, kfreq2, 1
+  aosc3 oscili 0.12, kfreq3, 1
 
   outs aosc1+aosc2, aosc3+aosc2
 endin

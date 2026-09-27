@@ -10,9 +10,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Pre-allocate memory for five instances of Instrument #1.
 prealloc 1, 5
@@ -20,7 +20,7 @@ prealloc 1, 5
 ; Instrument #1
 instr 1
   ; Generate a waveform, get the cycles per second from the 4th p-field.
-  a1 oscil 6500, p4, 1
+  a1 oscil 0.2, p4, 1
   out a1
 endin
 

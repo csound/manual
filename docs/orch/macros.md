@@ -9,7 +9,7 @@ Orchestra macros work like C preprocessor macros, and replace the content of the
 * [#end](../opcodes/ifdef.md)
 * [#else](../opcodes/ifdef.md)
 * [#include](../opcodes/include.md)
-* [#includestr](../opcodes/include.md)
+* [#includestr](../opcodes/include.md#using-includestr) expands macros in an included file name.
 * [#undef](../opcodes/undef.md)
 
 Orchestra macros can also be defined using the command line flag [--omacro:](../invoke/cs-options-by-category.md#-omacroxxxyyy).

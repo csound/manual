@@ -6,11 +6,12 @@
 ;-iadc    ;;;uncomment -iadc if RT audio input is needed too
 
 </CsOptions> 
-<CsInstruments> 
+<CsInstruments>
 
 sr = 44100
 ksmps = 32
 nchnls = 2
+0dbfs = 1
 
 instr 1 
 

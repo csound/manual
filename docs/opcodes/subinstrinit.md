@@ -3,9 +3,9 @@ id:subinstrinit
 category:Instrument Control:Subinstrument Control
 -->
 # subinstrinit
-Creates and runs a numbered instrument instance at init-time.
+Runs the initialization code of a numbered or named instrument.
 
-Same as [subinstr](../opcodes/subinstr.md), but init-time only and has no output arguments.
+The called instrument can print messages or set up data at initialization. `subinstrinit` has no output arguments and does not run the called instrument at performance time. Its audio processing and audio output opcodes do not run. Use [subinstr](../opcodes/subinstr.md) when you need audio from the called instrument.
 
 ## Syntax
 === "Modern"
@@ -26,11 +26,13 @@ _instrnum_ -- Number of the instrument to be called.
 
 _&#8220;insname&#8221;_ -- A string (in double-quotes) representing a named instrument.
 
-_p4, p5, ..._ -- Additional input values the are mapped to the called instrument p-fields, starting with p4.
+_p4, p5, ..._ -- Values passed to the called instrument as p4, p5, and so on.
 
 The called instrument's p2 and p3 values will be identical to the host instrument's values. While the host instrument can [control its own duration](../control/durctl.md), any such attempts inside the called instrument will most likely have no effect.
 
 ## Examples
+
+Instrument 1 uses its p4 to choose instrument 2, 3, or 4, then passes its p5 as the called instrument's p4. Each called instrument prints a message during initialization. This example makes no sound and needs no audio device.
 
 === "Modern"
     Here is an example of the subinstrinit opcode. It uses the file [subinstrinit-modern.csd](../examples/subinstrinit-modern.csd).
@@ -44,16 +46,12 @@ The called instrument's p2 and p3 values will be identical to the host instrumen
     --8<-- "examples/subinstrinit.csd"
     ```
 
-Its output should include lines like this:
+The console output includes these messages. Each message appears once when the corresponding score event starts.
 
-```
-instr. 2 playing
-B  0.000 ..  2.000 T  2.000 TT  2.000 M:  0.00000  0.00000
-instr. 3 playing
-B  2.000 ..  4.000 T  4.000 TT  4.000 M:  0.00000  0.00000
-instr. 4 playing
-B  4.000 ..  6.000 T  6.000 TT  6.000 M:  0.00000  0.00000
-.........
+``` text
+Instrument 2 initialized with p4 = 10
+Instrument 3 initialized with p4 = 20
+Instrument 4 initialized with p4 = 30
 ```
 
 ## See also

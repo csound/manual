@@ -2,6 +2,7 @@
 <CsOptions>
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 
 instr 1
   Arg:i[] = fillarray(1, 2, 3)

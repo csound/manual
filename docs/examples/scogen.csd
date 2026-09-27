@@ -31,6 +31,7 @@ gScoName = "schottstaedt.sco"     ; the name of the file to be generated
                 ; to the nearest 1/100th of a second
 
     ksmps =    1     ; set kr=sr so we can do everything at k-rate
+    0dbfs =    1
 
 
 ; some print opcodes

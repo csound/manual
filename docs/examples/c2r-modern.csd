@@ -4,6 +4,7 @@
 </CsOptions>
 <CsInstruments>
 ksmps = 64
+0dbfs = 1
 
 instr 1
   fftsize:i = 1024

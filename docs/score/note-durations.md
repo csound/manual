@@ -31,6 +31,7 @@ If an instrument is called via an opcode in the Csound orchestra (typically `sch
 
 ``` csound-csd
 <CsInstruments>
+0dbfs = 1
 schedule(1, 0, 1)
 schedule(1, 2, 1)
 </CsInstruments>
@@ -89,7 +90,8 @@ It is possible to run several instances called by negative duration at the same 
 <CsOptions> 
   -odac
 </CsOptions> 
-<CsInstruments> 
+<CsInstruments>
+0dbfs = 1
 instr 1
   aSig = poscil:a(0dbfs/5, p4)
   outall(aSig)
@@ -119,7 +121,8 @@ If there is only one negative duration, the called instrument instance will play
 <CsOptions> 
   -odac
 </CsOptions> 
-<CsInstruments> 
+<CsInstruments>
+0dbfs = 1
 instr 1
   aSig = poscil:a(0dbfs/5, 400)
   outall(aSig)
@@ -138,7 +141,8 @@ This code runs "endlessly" because the score section is empty. Putting the note 
 <CsOptions> 
   -odac
 </CsOptions> 
-<CsInstruments> 
+<CsInstruments>
+0dbfs = 1
 instr 1
   aSig = poscil:a(0dbfs/5, 400)
   outall(aSig)
@@ -157,7 +161,8 @@ There must be a `e` or `f0` statement followed by a positive duration to prevent
 <CsOptions> 
   -odac
 </CsOptions> 
-<CsInstruments> 
+<CsInstruments>
+0dbfs = 1
 instr 1
   aSig = poscil:a(0dbfs/5, 400)
   outall(aSig)

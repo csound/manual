@@ -10,9 +10,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 2
+0dbfs = 1
 
 instr 1
   kaz          linseg 0, p3, -360  ; move the sound in circle

@@ -5,6 +5,7 @@
 <CsInstruments>
 nchnls = 2
 ksmps = 400
+0dbfs = 1
 
 #define WII_B           #3#
 #define WII_A           #4#

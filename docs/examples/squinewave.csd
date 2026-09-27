@@ -9,9 +9,9 @@
 <CsInstruments>
 
 ;#################################################
-0dbfs = 1.1
 nchnls = 2
 ksmps = 100
+0dbfs = 1
 
 ; aSyncin, FMod for instr 2
 gafmod init 0
@@ -28,7 +28,7 @@ instr 1
 ;  ar, async   squinewave   aFreq , aclip, askew [, asyncin, iMinSweep, iphase]
     aout1, gasync   squinewave  cpsoct(acps), aclip, askew, 0, 17
 
-    outs1 aout1
+    outs1 aout1 / 1.1
 
     gaFMod = aout1
 endin
@@ -48,7 +48,7 @@ instr 2
 ;  ar  squinewave   aFreq, aclip, askew [, asyncin, iMinSweep, iphase]
     aout2  squinewave   afreq , aclip, askew, asyncin
 
-    outs2 aout2
+    outs2 aout2 / 1.1
 endin
 
 

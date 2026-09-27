@@ -12,6 +12,7 @@
 sr=44100
 ksmps=128
 nchnls=2
+0dbfs=1
 
   opcode TableDumpSimp, 0, ijo
 ;prints the content of a table in a simple way

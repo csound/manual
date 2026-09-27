@@ -10,6 +10,7 @@
 sr = 44100
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Instrument #1.
 instr 1
@@ -20,11 +21,11 @@ instr 1
   cggoto (i1 == 1), highnote
 
 lownote:
-  a1 oscil 10000, 220, 1
+  a1 oscil 0.3, 220, 1
   goto playit
   
 highnote:
-  a1 oscil 10000, 440, 1
+  a1 oscil 0.3, 440, 1
   goto playit
 
 playit:

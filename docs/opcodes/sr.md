@@ -24,7 +24,6 @@ Beginning with Csound version 3.46, _sr_ may be omitted. The sample rate will be
 
 ``` csound-orc
 sr = 10000
-kr = 500
 ksmps = 20
 gi1 = sr/2.
 ga init 0

@@ -15,9 +15,9 @@
   ; from the same instrument.
 
   sr = 44100
-  kr = 4410
   ksmps = 10
   nchnls = 1
+  0dbfs = 1
   
 instr 1
   
@@ -57,12 +57,12 @@ endin
 /* Written by Sean Costello */
 f1 0 8192 9 1 1 .25                               ; cosine table for gbuzz generator
   
-i1  0 10 1 3000 200 100 4000 1 0 0                ; reson  output with bw = 200
-i1 10 10 1 3000 200 100 4000 0 1 0                ; resonr output with bw = 200
-i1 20 10 1 3000 200 100 4000 0 0 1                ; resonz output with bw = 200
-i1 30 10 1 3000  50 200 8000 1 0 0                ; reson  output with bw = 50
-i1 40 10 1 3000  50 200 8000 0 1 0                ; resonr output with bw = 50
-i1 50 10 1 3000  50 200 8000 0 0 1                ; resonz output with bw = 50
+i1  0 10 1 3000 200 100 0.12 1 0 0  ; reson  output with bw = 200
+i1 10 10 1 3000 200 100 0.12 0 1 0  ; resonr output with bw = 200
+i1 20 10 1 3000 200 100 0.12 0 0 1  ; resonz output with bw = 200
+i1 30 10 1 3000  50 200 0.24 1 0 0  ; reson  output with bw = 50
+i1 40 10 1 3000  50 200 0.24 0 1 0  ; resonr output with bw = 50
+i1 50 10 1 3000  50 200 0.24 0 0 1  ; resonz output with bw = 50
 e
 
 

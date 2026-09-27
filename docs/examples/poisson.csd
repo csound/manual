@@ -11,6 +11,7 @@
 sr = 44100
 ksmps = 441  ;ksmps set deliberately high to have few k-periods per second
 nchnls = 1
+0dbfs = 1
 
 instr 1
   ; Generates a random number in a poisson distribution.

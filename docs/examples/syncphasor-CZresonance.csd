@@ -7,6 +7,7 @@
 ; -o syncphasor-CZresonance.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 ; by Anthony Kozar. February 2008
 ; http://www.anthonykozar.net/
 
@@ -31,7 +32,7 @@ instr 1
   ifreq      =           cpspch(p4)
   initReson  =           p5
   itable     =           p6
-  imaxamp    =           10000
+  imaxamp    =           0.3
   anosync    init        0.0
 
   kslavecps       line        ifreq * initReson, p3, ifreq
@@ -57,7 +58,7 @@ instr 2
   initReson  =           p5
   itable     =           p6
   ismoothtbl =           p7
-  imaxamp    =           10000
+  imaxamp    =           0.3
   anosync    init        0.0
 
   kslavecps       line        ifreq * initReson, p3, ifreq

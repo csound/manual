@@ -13,6 +13,7 @@
 sr = 44100
 ksmps = 100
 nchnls = 2
+0dbfs = 1
 
 ; Connect up the instruments to create a signal flow graph.
 
@@ -36,7 +37,7 @@ alwayson "Soundfile"
 
 instr SimpleSine
   ihz = cpsmidinn(p4)
-  iamplitude = ampdb(p5)
+  iamplitude = ampdbfs(p5)
   print ihz, iamplitude
   ; Use ftgenonce instead of ftgen, ftgentmp, or f statement.
   isine ftgenonce 0, 0, 4096, 10, 1
@@ -50,13 +51,13 @@ endin
 
 instr Moogy
   ihz = cpsmidinn(p4)
-  iamplitude = ampdb(p5)
+  iamplitude = ampdbfs(p5)
   ; Use ftgenonce instead of ftgen, ftgentmp, or f statement.
   isine ftgenonce 0, 0, 4096, 10, 1
   asignal vco iamplitude, ihz, 1, 0.5, isine
   kfco line 200, p3, 2000
   krez init 0.9
-  asignal moogvcf asignal, kfco, krez, 100000
+  asignal moogvcf asignal, kfco, krez, 3.05
   ; Stereo audio outlet to be routed in the orchestra header.
   outleta "leftout", asignal * 0.75
   outleta "rightout", asignal * 0.25
@@ -78,7 +79,7 @@ instr Compressor
   ; Stereo input.
   aleftin inleta "leftin"
   arightin inleta "rightin"
-  kthreshold = 25000
+  kthreshold = 0.76
   icomp1 = 0.5
   icomp2 = 0.763
   irtime = 0.1
@@ -101,10 +102,10 @@ endin
 <CsScore>
 ; Not necessary to activate "effects" or create f-tables in the score!
 ; Overlapping notes to create new instances of instruments.
-i "SimpleSine" 1 5 60 85
-i "SimpleSine" 2 5 64 80
-i "Moogy" 3 5 67 75
-i "Moogy" 4 5 71 70
+i "SimpleSine" 1 5 60 -5
+i "SimpleSine" 2 5 64 -10
+i "Moogy" 3 5 67 -15
+i "Moogy" 4 5 71 -20
 e 1
 </CsScore>
 </CsoundSynthesizer>

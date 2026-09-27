@@ -10,9 +10,9 @@
 
 /* Written by Istvan Varga */
 sr     =  48000
-kr     =  750
 ksmps  =  64
 nchnls =  2
+0dbfs  =  1
 
 ga01 = init(0)
 ga02 = init(0)
@@ -81,7 +81,7 @@ instr 1
   a02 = vdelayx(a0, del, 0.01, 16)
   a0 = a01 + a02
 
-  ga01 +=  a0 * env * 2500
+  ga01 +=  a0 * env * 0.075
 
   /* oscillator / right */
 
@@ -103,7 +103,7 @@ instr 1
   a02 = vdelayx(a0, adel, 0.01, 16)
   a0 = a01 + a02
 
-  ga02 += a0 * env * 2500
+  ga02 += a0 * env * 0.075
 endin
 
 /* output / left */

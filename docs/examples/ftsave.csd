@@ -10,9 +10,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Table #1, make a sine wave using the GEN10 routine.
 gitmp1 ftgen 1, 0, 32768, 10, 1
@@ -21,7 +21,7 @@ gitmp2 ftgen 2, 0, 32768, 7, 0, 32768, 0
 
 ; Instrument #1 - a basic oscillator.
 instr 1
-  kamp = 20000
+  kamp = 0.6
   kcps = 440
   ; Use Table #1.
   ifn = 1
@@ -39,7 +39,7 @@ instr 2
   ; Load the "table1.ftsave" file into Table #2.
   ftload "table1.ftsave", 0, 2
 
-  kamp = 20000
+  kamp = 0.6
   kcps = 440
   ; Use Table #2, it should contain Table #1's sine wave now.
   ifn = 2

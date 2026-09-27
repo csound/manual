@@ -3,9 +3,9 @@ id:strcpy
 category:Strings:Manipulation
 -->
 # strcpy
-Assign to a string variable by copying the source which may be a constant or another string variable.
+Copies a string literal or string variable to another string variable.
 
-_strcpy_ and _=_copy the string at i-time only.
+`strcpy` and string assignment with `=` copy at initialization only. Use [strcpyk](strcpyk.md) to copy a string during performance.
 
 ## Syntax
 === "Modern"
@@ -20,16 +20,39 @@ _strcpy_ and _=_copy the string at i-time only.
     Sdst = Ssrc
     ```
 
+### Initialization
+
+_Ssrc_ -- the source string, given as a literal or a string variable.
+
+_Sdst_ -- the destination string variable. It receives a copy of the source. Later changes to the source leave this copy unchanged.
+
 ## Examples
 
-``` csound-orc
-Sfoo    strcpy "Hello, world !"
-        puts   Sfoo, 1
+These examples copy a literal into a source variable, then copy it with both `strcpy` and `=`. They change the source and print all three strings. They run without audio output or external files.
+
+=== "Modern"
+    [strcpy-modern.csd](../examples/strcpy-modern.csd)
+    ``` csound-csd title="Copy strings at initialization" linenums="1"
+    --8<-- "examples/strcpy-modern.csd"
+    ```
+
+=== "Classic"
+    [strcpy.csd](../examples/strcpy.csd)
+    ``` csound-csd title="Copy strings at initialization" linenums="1"
+    --8<-- "examples/strcpy.csd"
+    ```
+
+Both examples print these values.
+
+``` text
+Source = Goodbye.
+Copy = Hello, world!
+Assignment = Hello, world!
 ```
 
 ## See Also
 
-[String Manipulation Opcodes](../strings/manipulate.md)
+[strcpyk](strcpyk.md), [String Manipulation Opcodes](../strings/manipulate.md)
 
 ## Credits
 

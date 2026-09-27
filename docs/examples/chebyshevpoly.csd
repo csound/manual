@@ -11,6 +11,7 @@
 sr = 44100
 ksmps = 32
 nchnls = 2
+0dbfs = 1
 
 ; time-varying mixture of first six harmonics
 instr 1
@@ -34,7 +35,7 @@ instr 1
         
         ; avoid clicks, scale final amplitude, and output
         adeclick   linseg         0.0, 0.05, 1.0, p3 - 0.1, 1.0, 0.05, 0.0
-                   outs           ay * adeclick * 10000, ay * adeclick * 10000
+                   outs           ay * adeclick * 0.3, ay * adeclick * 0.3
 endin
 
 </CsInstruments>

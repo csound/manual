@@ -10,14 +10,14 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 44100
 ksmps = 1
 nchnls = 2
+0dbfs = 1
 
 ; Instrument #1 - a lorenz system in 3D space.
 instr 1
   ; Create a basic tone.
-  kamp init 25000
+  kamp init 0.76
   kcps init 1000
   ifn = 1
   asnd oscil kamp, kcps, ifn

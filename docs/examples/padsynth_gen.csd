@@ -6,7 +6,7 @@
 sr=44100
 ksmps=1
 nchnls=2
-0dbfs=2000
+0dbfs=1
 
         gispec_len init 2^18
 
@@ -20,6 +20,7 @@ nchnls=2
     aenv madsr iattack, idecay, isustain, irelease
     ifreq cpsmidinn p4
     iamp ampdb p5
+    iamp = iamp / 2000
     ibasefreq = 440 ; can be lower or higher frequency; close to played frequency is said to be best
     ibw_cents = 56.96943 ; width of the peaks, 100 is semitone
         asig poscil iamp, ifreq, gi_padsynth_1
@@ -40,6 +41,7 @@ nchnls=2
     aenv madsr iattack, idecay, isustain, irelease
     ifreq cpsmidinn p4
     iamp ampdb p5
+    iamp = iamp / 2000
         asig poscil iamp, ifreq*(sr/gispec_len/ibasehz), gi_padsynth_1
     asig = aenv * asig
         aleft, aright pan2 asig, 0.5
@@ -58,6 +60,7 @@ nchnls=2
     aenv madsr iattack, idecay, isustain, irelease
     ifreq cpsmidinn p4
     iamp ampdb p5
+    iamp = iamp / 2000
         asig poscil iamp, ifreq*(sr/gispec_len/ibasehz), gi_padsynth_1
     asig = aenv * asig
         aleft, aright pan2 asig, 0.5
@@ -76,6 +79,7 @@ nchnls=2
     aenv madsr iattack, idecay, isustain, irelease
     ifreq cpsmidinn p4
     iamp ampdb p5
+    iamp = iamp / 2000
         asig poscil iamp, ifreq*(sr/gispec_len/ibasehz), gi_padsynth_1
     asig = aenv * asig
         aleft, aright pan2 asig, 0.5

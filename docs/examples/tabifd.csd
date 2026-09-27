@@ -10,6 +10,7 @@
 sr=44100
 ksmps=1
 nchnls=1
+0dbfs=1
 opcode TrackPlay, a, kkiiii
  ktime,kthr,isiz,ihsiz,ifcos,ifn  xin 
  idel = isiz-ihsiz*(isiz/(2*ihsiz)-1)

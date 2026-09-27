@@ -16,9 +16,9 @@
 ; Csound 5 that come from Gabriel Maldonado's CsoundAV.
 
 sr        = 44100
-kr        = 4410
 ksmps     = 10
 nchnls    = 1
+0dbfs     = 1
 
 ; Cellular automata-driven oscillator bank using vcella and adsynt
 instr 1
@@ -73,7 +73,7 @@ loop1:
   kenv      linseg    0.0, 0.5, 1.0, idur - 1.0, 1.0, 0.5, 0.0
   aosc      adsynt    kenv, ifreqbase, iwavefn, ifreqs, iamps, ielements, iphs
 
-            out       aosc * ampdb(68)
+            out       aosc * ampdbfs(-22)
 endin
 
 </CsInstruments>

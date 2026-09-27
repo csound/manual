@@ -4,6 +4,7 @@
 </CsOptions>
 
 <CsInstruments>
+0dbfs = 1
  gicnt cntCreate 1     ; a toggle
  gicntNote cntCreate 1 ; ignore note-off message to turn MIDI notes into toggles
 
@@ -36,12 +37,12 @@ endif
 endin
 
 instr 2
-asig oscil 10000, 440
+asig oscil 0.3, 440
 out asig
 endin
 
 instr 3
-asig oscil 5000, 880
+asig oscil 0.15, 880
 out asig
 endin
 

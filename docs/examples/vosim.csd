@@ -10,6 +10,7 @@
 sr     = 44100
 ksmps  = 100
 nchnls = 1
+0dbfs  = 1
 
 ;#################################################
 ; By Rasmus Ekman 2008
@@ -70,9 +71,9 @@ instr 1
     ar1 vosim   kamp, kfund, kform, kDecay, kPulseCount, kPulseFactor, 17, p12
 
     ; scale amplitude for 16-bit files, with quick fade out
-    amp init 20000
+    amp init 0.6
     if (p13 != 0) goto nofade
-        amp linseg 20000, p3-.02, 20000, .02, 0
+        amp linseg 0.6, p3-.02, 0.6, .02, 0
 nofade:
         out ar1 * amp
 endin

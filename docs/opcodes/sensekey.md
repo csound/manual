@@ -38,6 +38,8 @@ Here is an example of the sensekey opcode. It uses the file [sensekey.csd](../ex
 
 ## See also
 
+[readline](readline.md) reads a complete line with a prompt and status output.
+
 [Sensing and Control: Keyboard and mouse sensing](../control/sensing.md)
 
 ## Credits

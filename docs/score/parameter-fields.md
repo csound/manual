@@ -28,7 +28,8 @@ The meaning of the optional parameters `p4`, `p5`, ... is given by the instrumen
 <CsOptions> 
   -odac
 </CsOptions> 
-<CsInstruments> 
+<CsInstruments>
+0dbfs = 1
 instr 1
   print(p1, p2, p3)
   amp:i = p4*0dbfs

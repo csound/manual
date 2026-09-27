@@ -11,6 +11,7 @@
 sr = 44100
 ksmps = 10
 nchnls = 2
+0dbfs = 1
  
 instr 1
   kq init 0
@@ -20,7 +21,7 @@ instr 1
   ; If the checkbox is selected then k2=440, otherwise k2=880.
   k2 = (k1 == 0 ? 440 : 880)
 
-  a1 oscil 10000, k2, 1
+  a1 oscil 0.3, k2, 1
   outs a1, a1
   kq button 1
   schedkwhen kq, 0, 1, 2, 0, 0

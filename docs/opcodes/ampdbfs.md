@@ -3,9 +3,9 @@ id:ampdbfs
 category:Mathematical Operations:Amplitude Functions
 -->
 # ampdbfs
-Returns the amplitude equivalent (in 16-bit signed integer scale) of the full scale decibel (dB FS) value _x_.
+Returns the amplitude for a decibel value relative to full scale. The result depends on [0dbfs](0dbfs.md).
 
-The logarithmic full scale decibel values will be converted to linear 16-bit signed integer values from −32,768 to +32,767.
+With `0dbfs = 1`, `ampdbfs(0)` returns 1 and `ampdbfs(-20)` returns 0.1.
 
 ## Syntax
 ``` csound-orc
@@ -29,10 +29,10 @@ ampdbfs(x)  (no rate restriction)
 Its output should include lines like:
 
 ```
-instr 1:  iamp = 29204.511
-instr 1:  iamp = 18426.801
-instr 1:  iamp = 16422.904
-instr 1:  iamp = 3276.800
+instr 1:  iamp = 0.891
+instr 1:  iamp = 0.562
+instr 1:  iamp = 0.501
+instr 1:  iamp = 0.100
 ```
 
 ## See also

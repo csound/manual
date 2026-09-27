@@ -10,9 +10,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 2
+0dbfs = 1
 
 ; Initialize the ZAK space.
 ; Create 2 a-rate variables and 2 k-rate variables.
@@ -42,9 +42,9 @@ instr 2
   kjfreq zkmod kjtr, 1
 
   ; Use a simple sine waveform for the left speaker.
-  aleft oscil 20000, kfreq, 1
+  aleft oscil 0.6, kfreq, 1
   ; Use a sine waveform with jitter for the right speaker.
-  aright oscil 20000, kjfreq, 1
+  aright oscil 0.6, kjfreq, 1
 
   ; Generate the audio output.
   outs aleft, aright

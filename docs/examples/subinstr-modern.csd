@@ -11,9 +11,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr =  4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Instrument #1 - Creates a basic tone.
 instr 1
@@ -32,7 +32,7 @@ endin
 
 ; Instrument #2 - Demonstrates the subinstr opcode.
 instr 2
-  amp:i = 20000
+  amp:i = 0.6
   pch:i = 440
 
   ; Use Instrument #1 to create a basic sine-wave tone.

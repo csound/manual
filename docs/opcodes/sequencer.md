@@ -11,17 +11,17 @@ Uses a collection of arrays to generate a sequence of events with variable tempo
 === "Modern"
     ``` csound-orc
     kres = sequ(irhythm[], iinstr[], idata[], kbpm, klen [, kmode] [, kstep] \
-                [, kreset] [, kverbose])
+                [, kreset] [, iverbose] [, iid])
     kres = sequ(irhythm[], iinstr[], idata[][], kbpm, klen [, kmode] [, kstep] \
-                [, kreset] [, kverbose])
+                [, kreset] [, iverbose] [, iid])
     ```
 
 === "Classic"
     ``` csound-orc
     kres sequ irhythm[], iinstr[], idata[], kbpm, klen [, kmode] [, kstep] \
-              [, kreset] [, kverbose]
+              [, kreset] [, iverbose] [, iid]
     kres sequ irhythm[], iinstr[], idata[][], kbpm, klen [, kmode] [, kstep] \
-              [, kreset] [, kverbose]
+              [, kreset] [, iverbose] [, iid]
     ```
 
 ### Initialization
@@ -31,6 +31,10 @@ _irhythm_  - array of durations in beats.  The actual duration is determined by 
 _iinstr_  -  array of instrument numbers scheduled per step. An instrument number zero does nothing. It skips the note associated with the step and produces a silence for that note's duration.
 
 _idata_  -  Either a vector of p4 values to the associated iinstr step or a two dimensional array of p4, p5, p6...values.  Typically, one would specify pitch information in cps, or MIDI note number; but the arbitrary list of p4 data values could have other uses in the called iinstr.
+
+`iverbose` enables messages about internal state changes when nonzero. It is an initialization argument and defaults to 0.
+
+`iid` is an optional sequence ID from 0 to 9, defaulting to 0. Give each active sequence its own ID when reading its counter and ordering with [sequstate](sequstate.md).
 
 ### Performance
 
@@ -56,8 +60,6 @@ _kstep_ - if non zero replace the irhythm array with k-rate triggers. These coul
 
 _kreset_ - if non zero resets the sequencer (like mode -7). Default is zero.
 
-_kverbose_ - if non zero prints messages about the internal state changes.  Default is zero.
-
 _kres_ - gives the index of the event created for the current k-cycle, or -1 if no event happened.
 
 > :memo: **Note**
@@ -80,7 +82,7 @@ Here is another example of the sequ opcode showing the various modes. It uses th
 
 ## See also
 
-[Sensing and Control: Tempo and Sequencing](../control/sensing.md)
+[sequstate](sequstate.md), [Sensing and Control: Tempo and Sequencing](../control/sensing.md)
 
 ## Credits
 

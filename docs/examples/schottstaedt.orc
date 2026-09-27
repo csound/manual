@@ -6,9 +6,9 @@
 ;===========================================================
 
         sr      =       44100
-        kr      =       2205
         ksmps   =       20
         nchnls  =       2
+        0dbfs   =       1
 
 
 ; functions for the schottstaedt string
@@ -25,7 +25,7 @@ giPanRight    ftgen    11, 0, 129, 9, .25, 1, 0
 ;   p4=amp(0-1)     p5=pitch(in oct)     p6=pan(0=l, 1=r)
 ;===========================================================
 ; set constants
-iamp    =        32767*p4
+iamp    =        p4
 
 icps    =        cpsoct(p5)
 

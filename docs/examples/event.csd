@@ -10,9 +10,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Instrument #1 - an oscillator with a high note.
 instr 1
@@ -32,13 +32,13 @@ instr 1
     ktrigger = 0
 
 contin:
-  a1 oscils 10000, 440, 1
+  a1 oscils 0.3, 440, 1
   out a1
 endin
 
 ; Instrument #2 - an oscillator with a low note.
 instr 2
-  a1 oscils 10000, 220, 1
+  a1 oscils 0.3, 220, 1
   out a1
 endin
 

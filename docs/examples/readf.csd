@@ -4,6 +4,7 @@
 </CsOptions>
 
 <CsInstruments>
+0dbfs = 1
 instr 1
   Swd           pwd
                 printf_i      "Working directory is '%s'\n", 1, Swd
