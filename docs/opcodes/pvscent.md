@@ -20,11 +20,19 @@ Calculate the spectral centroid of a signal from its discrete Fourier transform.
 
 ### Performance
 
-_kcent_ -- the spectral centroid
+_kcent_ -- the spectral centroid, in Hz
 
-_acent_ -- the spectral centroid
+_acent_ -- the spectral centroid, in Hz
 
-_fsig_ -- an input pv stream
+_fsig_ -- an input pv stream in amplitude-frequency or amplitude-phase format
+
+The centroid is the mean of the FFT bin centre frequencies, weighted by their
+magnitudes. The calculation uses bin positions, not the frequency or phase
+values stored in the bins. A silent frame returns zero.
+
+For frame-based input, both outputs update when a new frame arrives and hold
+the result between frames. For sliding input, _acent_ updates each sample;
+_kcent_ uses the first active sample of each control block.
 
 ## Examples
 
