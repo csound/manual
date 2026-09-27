@@ -17,8 +17,8 @@ instr 1 ;uses external midi device
 
 kkey init 0                             ;initialize key number
 kvel init 0                             ;initialize velocity
-midinoteoff kkey,kvel                   ;MIDI noteoff value
-printk2 kvel                            ;display noteoff value
+midinoteoff kkey,kvel                   ;reads the key and Note On velocity
+printk2 kvel                            ;display Note On velocity when it changes
 midion 1, kkey, kvel                    ;sent note to external device
 
 endin
