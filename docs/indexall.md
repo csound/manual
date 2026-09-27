@@ -160,6 +160,7 @@
             - [Network](oscnetwork/Network.md)
             - [Remote Opcodes](oscnetwork/Remote.md)
             - [Non-MIDI Devices](oscnetwork/nonMIDIdevices.md)
+            - [Bela Digital I/O](oscnetwork/bela.md)
         - Plugin Hosting
             - [DSSI and LADSPA](plugin/dssi4cs.md)
         - Miscellaneous Opcodes

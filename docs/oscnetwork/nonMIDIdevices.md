@@ -2,6 +2,13 @@
 
 The following opcodes connect and communicate with non-MIDI hardware devices.
 
+### Bela
+
+See [Bela digital input and output](bela.md) for host setup and digital pin access.
+
+* [digiInBela](../opcodes/digiInBela.md) reads a digital input.
+* [digiOutBela](../opcodes/digiOutBela.md) writes a digital output.
+* [digiIOBela](../opcodes/digiIOBela.md) selects the pin and direction during performance.
 ### Bela Trill
 
 * [trill](../opcodes/trill.md) - Read capacitive touch sensors through the Bela Csound host.
