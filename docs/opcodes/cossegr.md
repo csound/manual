@@ -27,13 +27,15 @@ _ib, ic_, etc. -- value after _dur1_ seconds, etc.
 
 _idur1_ -- duration in seconds of first segment. A zero or negative value will cause all initialization to be skipped.
 
-_idur2, idur3_, etc. -- duration in seconds of subsequent segments. A zero or negative value will terminate the initialization process with the preceding point, permitting the last-defined line or curve to be continued indefinitely in performance. The default is zero.
+_idur2, idur3_, etc. -- duration in seconds of subsequent segments. A zero or negative duration jumps to that segment's end value and continues with the next segment.
 
 _irel, iz_ -- duration in seconds and final value of a note releasing segment.
 
 ### Performance
 
-These units generate control or audio signals whose values can pass through 2 or more specified points. The sum of _dur_ values may or may not equal the instrument's performance time: a shorter performance will truncate the specified pattern, while a longer one will cause the last-defined segment to continue on in the same direction.
+Durations use whole samples at audio rate and whole control periods at control rate. A positive duration that rounds to zero steps also jumps to its end value; later segments still run.
+
+After the segments before the release finish, _cossegr_ holds their final value until note-off. Note-off starts the release from the current output, even if an earlier segment is still running. The release ends at _iz_.
 
 _cossegr_ is amongst the Csound &#8220;r&#8221; units that contain a note-off sensor and release time extender. When each senses an event termination or MIDI noteoff, it immediately extends the performance time of the current instrument by _irel _seconds, and sets out to reach the value _iz_ by the end of that period (no matter which segment the unit is in). MIDI Note Off velocity does not control the release segment. For two or more extenders in an instrument, extension is by the greatest period.
 
