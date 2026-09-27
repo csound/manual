@@ -5,7 +5,7 @@ category:Signal Modifiers:Standard Filters:Control
 # resonxk
 Control signal resonant filter stack.
 
-_resonxk_ is equivalent to a group of resonk filters, with the same arguments, serially connected. Using a stack of a larger number of filters allows a sharper cutoff.
+_resonxk_ connects several [resonk](../opcodes/resonk.md) filters in series, all with the same settings. More layers give a sharper response.
 
 ## Syntax
 === "Modern"
@@ -20,11 +20,11 @@ _resonxk_ is equivalent to a group of resonk filters, with the same arguments, s
 
 ### Initialization
 
-_inumlayer_ - number of elements of filter stack. Default value is 4. Maximum value is 10
+_inumlayer_ - number of filters in the stack. The default is 4.
 
-_iscl_ (optional, default=0) - coded scaling factor for resonators. A value of 1 signifies a peak response factor of 1, i.e. all frequencies other than kcf are attenuated in accordance with the (normalized) response curve. A value of 2 raises the response factor so that its overall RMS value equals 1. (This intended equalization of input and output power assumes all frequencies are physically present; hence it is most applicable to white noise.) A zero value signifies no scaling of the signal, leaving that to some later adjustment (see balance). The default value is 0.
+_iscl_ (optional, default=0) - scaling for each filter. A value of 1 gives each filter a peak gain of 1. A value of 2 gives each filter an RMS gain of 1 for white noise; this does not give the whole stack an RMS gain of 1. A value of 0 leaves the signal unscaled.
 
-_istor_ (optional, default=0) -- initial disposition of internal data space. Since filtering incorporates a feedback loop of previous output, the initial status of the storage space used is significant. A zero value will clear the space; a non-zero value will allow previous information to remain. The default value is 0.
+_istor_ (optional, default=0) -- set to zero to clear the filter history, or nonzero to keep it on reinitialization. First use and a change in the number of filters always clear the history.
 
 ### Performance
 
@@ -32,11 +32,11 @@ _kres_ - output signal
 
 _ksig_ - input signal
 
-_kcf_ -  the center frequency of the filter, or frequency position of the peak response.
+_kcf_ - center frequency in Hz, shared by all filters.
 
-_kbw_ - bandwidth of the filter (the Hz difference between the upper and lower half-power points)
+_kbw_ - bandwidth of each filter in Hz (the difference between the upper and lower half-power points).
 
-_resonxk_ is a lot faster than using individual instances in Csound orchestra of the old opcodes, because only one initialization and 'k' cycle are needed at a time, and the audio loop falls enterely inside the cache memory of processor.
+The filters process one sample per control period. Their frequency range therefore depends on _kr_. The bandwidth setting applies to each filter; adding layers narrows the response of the whole stack.
 
 ## Examples
 
