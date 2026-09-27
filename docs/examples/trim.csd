@@ -3,6 +3,7 @@
 -n
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 instr 1
     kA1[]   fillarray       0, 1, 2, 3, 4, 5, 6, 7 ; <-- 8 elements
             printf          "lenarray(kA1) before slicearray: %d\n", 1, lenarray(kA1)

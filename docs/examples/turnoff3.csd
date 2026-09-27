@@ -1,6 +1,7 @@
 <CsoundSynthesizer>
 
 <CsInstruments>
+0dbfs = 1
 instr 1
   print p2
   turnoff3 1

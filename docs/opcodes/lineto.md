@@ -22,15 +22,15 @@ _kres_ -- Output signal.
 
 _ksig_ -- Input signal.
 
-_ktime_ -- Time length of glissando in seconds.
+_ktime_ -- Ramp duration in seconds. Positive durations are rounded up to a whole number of control cycles. Zero or negative durations jump to the new target immediately.
 
-_lineto_ adds glissando (i.e. straight lines) to a stepped input signal (for example, produced by [randh](../opcodes/randh.md) or [lpshold](../opcodes/lpshold.md)).  It generates a straight line starting from previous step value, reaching the new step value in _ktime_ seconds. When the new step value is reached, such value is held until a new step occurs. Be sure that _ktime_ argument value is smaller than the time elapsed between two consecutive steps of the original signal, otherwise discontinuities will occur in output signal.
+_lineto_ adds linear ramps to a stepped input signal, such as the output of [randh](../opcodes/randh.md) or [lpshold](../opcodes/lpshold.md). It starts at the first value of _ksig_. When it accepts a new target, it moves linearly to that value over _ktime_, then holds it until another ramp starts.
 
 When used together with the output of [lpshold](../opcodes/lpshold.md) it emulates the glissando effect of old analog sequencers.
 
 > :memo: **Note**
 >
-> No new value for _ksig_ or _ktime_ will have effect until the previous _ktime_ has elapsed.
+> _lineto_ finishes the current ramp before accepting another target or duration. Once the ramp ends, it uses the latest _ksig_ and _ktime_. Use [tlineto](../opcodes/tlineto.md) to interrupt a ramp with a trigger.
 
 ## Examples
 

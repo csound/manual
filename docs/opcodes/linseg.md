@@ -26,11 +26,13 @@ _ib, ic_, etc. -- value after _dur1_ seconds, etc.
 
 _idur1_ -- duration in seconds of first segment. A zero or negative value will cause all initialization to be skipped.
 
-_idur2, idur3_, etc. -- duration in seconds of subsequent segments. A zero or negative value will terminate the initialization process with the preceding point, permitting the last-defined line or curve to be continued indefinitely in performance. The default is zero.
+_idur2, idur3_, etc. -- duration in seconds of subsequent segments. A zero or negative duration jumps to the next value and continues with the following segment. The default is zero.
 
 ### Performance
 
 These units generate control or audio signals whose values can pass through 2 or more specified points. The sum of _dur_ values may or may not equal the instrument's performance time: a shorter performance will truncate the specified pattern, while a longer one will cause the last value to be repeated until the end of the note.
+
+Segment durations round to the nearest whole control period for _kres_ or sample for _ares_. A positive duration that rounds to zero jumps to the next value without taking an extra step.
 
 ## Examples
 

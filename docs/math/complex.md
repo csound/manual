@@ -37,3 +37,5 @@ Generally, operations resulting in Complex types run at both at init
 and perf-time. Operations consuming Complex types run at either init,
 perf, or init and perf, depending on the output type.
 
+
+[quadosc](../opcodes/quadosc.md) generates a block of complex oscillator samples. Use `real` and `imag` with audio-rate outputs to extract its cosine and sine signals.

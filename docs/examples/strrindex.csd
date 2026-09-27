@@ -5,6 +5,7 @@
 ;-iadc    ;;;uncomment -iadc if realtime audio input is needed too
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 ;example by Joachim Heintz
 
   opcode FilNam, S, S

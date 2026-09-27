@@ -10,9 +10,9 @@
 
 /* Written by Istvan Varga */
 sr      =  48000
-kr      =  1000
 ksmps   =  48
 nchnls  =  4
+0dbfs   =  1
 
 /* room parameters */
 
@@ -38,7 +38,7 @@ a1      =  taninv(a1 * 100)
 a2      phasor 3                ; envelope
 a2      mirror 40*a2, -100, 5
 a2      limit a2, 0, 1
-a1      =  a1 * a2 * 9000
+a1      =  a1 * a2 * 0.27
 
 kazim   line 0, 2.5, 360        ; move sound source around
 kdist   line 1, 10, 4           ; distance

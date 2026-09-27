@@ -27,11 +27,13 @@ _ib, ic_, etc. -- value at _tim1_ seconds, etc.
 _itim1_ -- time in seconds of end of first segment. A zero or negative value will cause all initialization
 to be skipped.
 
-_itim2, itim3_, etc. -- time in seconds at the end of subsequent segments.
+_itim2, itim3_, etc. -- time in seconds at the end of subsequent segments. Times must not decrease. Equal times jump to the next value.
 
 ### Performance
 
 These units generate control or audio signals whose values can pass through 2 or more specified points. The last _tim_ value may or may not equal the instrument's performance time: a shorter performance will truncate the specified pattern, while a longer one will cause the last value to be repeated until the end of the note.
+
+Times round to the nearest whole control period for _kres_ or sample for _ares_. Points that round to the same step jump to the next value without taking an extra step.
 
 ## Examples
 

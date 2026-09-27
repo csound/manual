@@ -5,7 +5,7 @@ category:Signal Generators:Linear and Exponential Generators
 # expsegba
 An exponential segment generator operating at a-rate with absolute times.
 
-This unit is almost identical to [expsegb](../opcodes/expsegb.md), but more precise when defining segments with very short durations (i.e., in a percussive attack phase) at audio rate.
+This is the audio-only form of [expsegb](../opcodes/expsegb.md). Both use sample timing at audio rate.
 
 ## Syntax
 === "Modern"
@@ -22,16 +22,17 @@ This unit is almost identical to [expsegb](../opcodes/expsegb.md), but more prec
 
 _ia_ -- starting value. Zero is illegal.
 
-_ib_, _ic_, etc. -- value after _itim1_ seconds, etc. must be non-zero and must agree in sign with _ia_.
+_ib_, _ic_, etc. -- value at _itim1_ seconds, etc. must be non-zero and must agree in sign with _ia_.
 
-_itim1_ -- time in seconds at end of first segment.
+_itim1_ -- time in seconds at the end of the first segment. A zero or negative value skips initialization, preserving the current curve during reinitialization.
 
-_itim2_, _itim3_, etc. --
-time in seconds at the end of subsequent segments.
+_itim2_, _itim3_, etc. -- times in seconds at the ends of later segments. Times must not decrease.
 
 ### Performance
 
-This unit generate audio signals whose values can pass through two or more specified points. The final _tim _ value may or may not equal the instrument's performance time. A shorter performance will truncate the specified pattern, while a longer one will cause the last defined segment to continue on in the same direction.
+Each time gives an endpoint's position in seconds from the start of the envelope. Each time rounds to the nearest sample. The magnitude changes by a constant factor between points. All points must be non-zero and have the same sign; negative points are allowed.
+
+If several points round to the same update, the output jumps to the last value at that update. If the note continues past the final time, the final segment keeps the same exponential rate. When the final two points share an update, the output holds the final value.
 
 ## Examples
 

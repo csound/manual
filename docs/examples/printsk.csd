@@ -6,6 +6,7 @@
 sr = 44100
 ksmps = 64
 nchnls = 1
+0dbfs = 1
 
 instr 1
   ; printsk is executed at k-time, possibly multiples times per cycle.

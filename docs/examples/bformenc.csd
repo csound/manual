@@ -8,15 +8,15 @@
 </CsOptions>
 <CsInstruments>
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 8
+0dbfs = 1
 
 ;bformenc is deprecated, please use bformenc1
 
 instr 1
   ; generate pink noise
-  anoise pinkish 1000
+  anoise pinkish 0.03
   
   ; two full turns
   kalpha line 0, p3, 720

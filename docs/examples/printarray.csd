@@ -5,6 +5,7 @@
 
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 
 instr 1
   ; test i-time, 1D

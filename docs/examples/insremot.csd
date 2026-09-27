@@ -10,6 +10,7 @@
 
 <CsInstruments>
 nchnls = 1
+0dbfs = 1
 
 insremot "192.168.1.100", "192.168.1.101", 1
 

@@ -9,9 +9,9 @@
 <CsInstruments>
 
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Instrument #1.
 instr 1
@@ -30,7 +30,7 @@ instr 1
   endif
 
   ; Create the note.
-  kamp init 25000
+  kamp init 0.76
   ifn = 1
   a1 oscili kamp, kcps, ifn
 

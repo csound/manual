@@ -3,6 +3,7 @@
 --nosound
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 
 /*
 

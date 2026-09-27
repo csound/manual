@@ -12,6 +12,7 @@
 sr = 44100
 ksmps = 10
 nchnls = 2
+0dbfs = 1
 
 ; Instrument #1.
 instr 1
@@ -35,7 +36,7 @@ instr 1
 
   ; Play an oscillator, use the x values for amplitude and
   ; the y values for frequency.
-  kamp = kx * 1000
+  kamp = kx * 0.03
   kcps = ky * 220
   a1 poscil kamp, kcps, 1
 

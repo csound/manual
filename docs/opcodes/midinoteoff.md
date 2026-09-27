@@ -3,9 +3,9 @@ id:midinoteoff
 category:Real-time MIDI:MIDI/Score Interoperability
 -->
 # midinoteoff
-Gets a MIDI noteoff value.
+Returns the key number and Note On velocity of a MIDI-activated instrument.
 
-This opcode is incorrect. It is _identical_ to _midinoteonkey_. It does not do what you would expect from its name, as it does not respond to Note-Off events, but is activated by Note-On. The _midiin_ opcode can be used to receive noteoff events and their velocities.
+The current implementation behaves like [midinoteonkey](midinoteonkey.md). It reads the Note On values that started the instrument and does not return Note Off velocity. Use `midinoteonkey` for these values in new code. To read incoming Note Off messages and their velocities, use [midiin](midiin.md).
 
 _midinoteoff_ is designed to simplify writing instruments that can be used interchangeably for either score or MIDI input, and to make it easier to adapt instruments originally written for score input to work with MIDI input.
 
@@ -26,11 +26,11 @@ Note that correlating Csound instruments with MIDI channel numbers is done using
 
 ### Performance
 
-_xkey_ -- returns MIDI key during MIDI activation, remains unchanged otherwise.
+_xkey_ -- receives the MIDI key number from the Note On message that started the instrument. For a score event, its value stays unchanged.
 
-_xvelocity_ -- returns MIDI velocity during MIDI activation, remains unchanged otherwise.
+_xvelocity_ -- receives the velocity from that Note On message. A later Note Off message does not replace this value. For a score event, its value stays unchanged.
 
-If the instrument was activated by MIDI input, the opcode overwrites the values of the _xkey_ and _xvelocity_ with the corresponding values from MIDI input. If the instrument was _NOT_ activated by MIDI input, the values of _xkey_ and _xvelocity_ remain unchanged.
+If the instrument was activated by MIDI input, the opcode overwrites the values of the _xkey_ and _xvelocity_ with the key number and velocity from the Note On message that started the instrument. If the instrument was _NOT_ activated by MIDI input, the values of _xkey_ and _xvelocity_ remain unchanged.
 
 This enables score p-fields to receive MIDI input data during MIDI activation, and score values otherwise.
 
@@ -46,16 +46,11 @@ Here is an example of the midinoteoff opcode. It uses the file [midinoteoff.csd]
 --8<-- "examples/midinoteoff.csd"
 ```
 
-Its output should include lines like:
-
-```
-i1    60.00000
-i1    76.00000
-```
+When you play a MIDI note, the example prints its Note On velocity. Releasing the key does not make it print the Note Off velocity. The score events leave the initialized values unchanged.
 
 ## See also
 
-[MIDI/Score Interoperability](../midi/interop.md)
+[midinoteonkey](midinoteonkey.md), [midiin](midiin.md), [MIDI/Score Interoperability](../midi/interop.md)
 
 ## Credits
 

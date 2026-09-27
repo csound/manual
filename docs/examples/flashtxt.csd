@@ -10,13 +10,13 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 44100
 ksmps = 1
 nchnls = 1
+0dbfs = 1
 
 instr 1
   flashtxt 1, "Instr 1 live"
-  ao oscil 4000, 440, 1
+  ao oscil 0.12, 440, 1
   out ao
 endin
 

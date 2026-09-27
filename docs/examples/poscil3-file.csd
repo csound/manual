@@ -11,9 +11,9 @@
 ; Example written by Joachim Heintz 07/2008
 
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; non-normalized function table with a sample 1
 giFile  ftgen 1, 0, 0, -1, "fox.wav", 0, 0, 0

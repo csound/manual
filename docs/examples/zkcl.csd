@@ -10,9 +10,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Initialize the ZAK space.
 ; Create 1 a-rate variable and 1 k-rate variable.
@@ -34,7 +34,7 @@ instr 2
 
   ; Use the value of zk variable #1 to vary 
   ; the frequency of a sine waveform.
-  a1 oscil 20000, kfreq, 1
+  a1 oscil 0.6, kfreq, 1
 
   ; Generate the audio output.
   out a1

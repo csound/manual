@@ -8,6 +8,7 @@ Opcodes one can use to read time values are:
 * [eventtime](../opcodes/eventtime.md)
 * [readclock](../opcodes/readclock.md)
 * [rtclock](../opcodes/rtclock.md)
+* [systime](../opcodes/systime.md)
 * [timeinstk](../opcodes/timeinstk.md)
 * [timeinsts](../opcodes/timeinsts.md)
 * [times](../opcodes/times.md)

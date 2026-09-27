@@ -109,6 +109,7 @@ categories = ['Orchestra Syntax:Header',
 'Array Operations: Autocorrelation',
 'Array Operations: Discrete Cosine Transform',
 'Array Operations: Mel scale filterbank',
+'Plugin Hosting:DSSI and LADSPA',
 'Miscellaneous',
 'Miscellaneous:Testing',
 'Utilities']

@@ -17,9 +17,11 @@ _iarg_ -- the value of 0 decibels using full scale amplitude.
 
 ### Performance
 
-The default is 32767, so all existing orcs _should_ work.
+The default is 32768. Set `0dbfs = 1` in the orchestra header to use amplitudes from -1 to 1 for full-scale output.
 
-Amplitude values in Csound are always relative to a _0dbfs_ value representing the peak available amplitude before clipping. In the original Csound, this value was always 32767, corresponding to the bipolar range of a 16bit soundfile or 16bit AD/DA codec. This remains the _default_ peak amplitude for Csound, for backward compatibility. The _0dbfs_ value enables Csound to produce appropriately scaled values to whatever output format is being used, whether 16bit integer, 24bit integer, 32bit floats, or even 32bit integers.
+When converting an older orchestra that uses the default, divide its absolute signal amplitudes by 32768 to keep a similar output level. For example, an oscillator amplitude of 10000 becomes about `0.3`. Scale amplitude envelopes and thresholds too. Leave frequencies, times and relative gains unchanged. Values based on `0dbfs` or `ampdbfs()` already follow the new scale.
+
+Csound uses this value to scale audio for the output format. It does not limit internal signals to that range. Signals above full scale can clip at the audio device or when written to an integer sound file.
 
 0dBFS can be defined in the header, to set the amplitude reference Csound will use, but it can also be used as a varible inside instruments like this:
 

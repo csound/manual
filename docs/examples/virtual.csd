@@ -10,6 +10,7 @@
 sr=44100
 ksmps=10
 nchnls=2
+0dbfs=1
 
 massign 1,1
 prealloc 1,10
@@ -17,14 +18,14 @@ prealloc 1,10
 instr 1  ;Midi FM synth 
 
 inote cpsmidi
-iveloc ampmidi 10000
+iveloc ampmidi 0.3
 idur = 2
     xtratim 1
 
 kgate oscil 1,10,2
 anoise noise 100*inote,.99
 acps  samphold anoise,kgate
-aosc oscili 1000,acps,1
+aosc oscili 0.03,acps,1
 aout = aosc
 
 ; Use controller 7 to control volume

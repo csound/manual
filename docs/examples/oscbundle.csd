@@ -3,6 +3,7 @@
 -odac
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 
 instr 1
 Sdest[] init 2

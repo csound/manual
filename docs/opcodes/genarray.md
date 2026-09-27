@@ -8,14 +8,14 @@ Generate a vector (one-dimensional k-rate or i-rate array) with an arithmetic se
 ## Syntax
 === "Modern"
     ``` csound-orc
-    karray = genarray(kstart, kens [, inc])
-    iarray = genarray(istart, iens [, inc])
+    karray = genarray(kstart, kend [, inc])
+    iarray = genarray(istart, iend [, inc])
     ```
 
 === "Classic"
     ``` csound-orc
-    karray genarray kstart, kens [, inc]
-    iarray genarray istart, iens [, inc]
+    karray genarray kstart, kend [, inc]
+    iarray genarray istart, iend [, inc]
     ```
 
 The following expression can also be used,
@@ -34,6 +34,12 @@ _istart_ -- value to place in first element.
 _iend_ -- last value to place in array.
 
 _inc_ -- amount to add to previous value (default 1).
+
+## Replacing tabgen
+
+[tabgen](tabgen.md) generates a k-rate array only at initialization. Replace `kArray = tabgen(istart, iend, istep)` with `kArray = genarray(istart, iend, istep)`, keeping the inputs at i-rate. `genarrayi` explicitly selects this initialization-only form.
+
+K-rate bounds select repeated generation during performance. Preserve the input rates when migrating so later edits to the output array are not overwritten by a newly generated sequence.
 
 ## Examples
 

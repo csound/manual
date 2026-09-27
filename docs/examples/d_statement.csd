@@ -3,12 +3,13 @@
   -o dac
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 instr 1
-  a1  oscil 10000, 440
+  a1  oscil 0.3, 440
       out   a1
 endin
 instr sound
-  a1  oscil 10000, 440
+  a1  oscil 0.3, 440
       out   a1
 endin
 </CsInstruments>

@@ -12,10 +12,11 @@
 sr = 44100
 ksmps = 10
 nchnls = 2
+0dbfs = 1
 
 ; Instrument #1.
 instr 1
-  ; kamp = 20000
+  ; kamp = 0.6
   ; kfreq = 440
   ; ihrd = 0.5
   ; ipos = p4
@@ -24,7 +25,7 @@ instr 1
   ; kvamp = 0.05
   ; ivibfn = 2
   ; idec = 0.1
-asig    vibes   20000, 440, .5, p4 , 1, 6.0, 0.05, 2, .1
+asig    vibes   0.6, 440, .5, p4 , 1, 6.0, 0.05, 2, .1
         outs            asig, asig
 endin
 

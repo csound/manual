@@ -14,6 +14,7 @@ With Python installed, the following example will print the arguments (= file na
 ``` csound-csd title="Calling a binary without a script" linenums="1"
 <CsoundSynthesizer>
 <CsInstruments>
+0dbfs = 1
 instr 1
 endin
 </CsInstruments>
@@ -54,6 +55,7 @@ Then run this Csound file from the same directory:
 ``` csound-csd 
 <CsoundSynthesizer>
 <CsInstruments>
+0dbfs = 1
 instr 1
   outall(poscil(.2,expon(1500,p3,400)))
 endin

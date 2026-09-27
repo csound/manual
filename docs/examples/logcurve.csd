@@ -9,6 +9,7 @@
 sr      =       48000
 ksmps   =       100
 nchnls  =       2
+0dbfs   =       1
 
                 instr   1       ; logcurve test
 kmod    phasor  1/p3

@@ -12,6 +12,7 @@
 sr = 44100
 ksmps = 20
 nchnls = 2
+0dbfs = 1
 
 ; Example by Oeyvind Brandtsegg 2007, revised 2008
 

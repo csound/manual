@@ -20,9 +20,19 @@ Scale the amplitude of a pv stream.
 
 _fsig_ -- output pv stream
 
-_fsigin_ -- input pv stream
+_fsigin_ -- input pv stream in amplitude-frequency or amplitude-phase format
 
-_kgain_ -- amplitude scaling (defaults to 1).
+_kgain_ -- amplitude multiplier. This argument is required. A value of 1
+leaves the magnitudes unchanged; 0 sets them to zero. Frequencies or phases
+remain unchanged.
+
+For frame-based input, gain changes take effect on the next new input frame.
+The output holds its values between frames. For sliding input, the current
+gain applies to each active sample in the control block.
+
+You can restart the source with the same analysis settings while _pvsgain_
+keeps running. If you change the FFT size, hop size, window, or data format,
+reinitialize _pvsgain_ too.
 
 > :warning: **Warning**
 >

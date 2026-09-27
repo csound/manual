@@ -3,9 +3,7 @@ id:pvsmix
 category:Spectral Processing:Streaming
 -->
 # pvsmix
-Mix 'seamlessly' two pv signals.
-
-This opcode combines the most prominent components of two pvoc streams into a single mixed stream.
+Combine the strongest bins from two spectral signals.
 
 ## Syntax
 === "Modern"
@@ -22,9 +20,20 @@ This opcode combines the most prominent components of two pvoc streams into a si
 
 _fsig_ -- output pv stream
 
-_fsigin1_ -- input pv stream.
+_fsigin1_ -- input pv stream in amplitude-frequency or amplitude-phase format.
 
-_fsigin2_ -- input pv stream, which must have same format as _fsigin1_.
+_fsigin2_ -- input pv stream with the same FFT size, hop size, window settings,
+and data format as _fsigin1_. Both inputs must use the same analysis mode
+(frame-based or sliding).
+
+For each bin, _pvsmix_ copies the larger magnitude and its frequency or phase
+to the output. If the magnitudes are equal, it uses the first input's bin.
+
+For frame-based input, a new frame from either input updates the output using
+the latest frame from each input. For sliding input, it mixes each active
+sample separately.
+
+Reinitialize _pvsmix_ if you change the sources' analysis settings.
 
 > :warning: **Warning**
 >

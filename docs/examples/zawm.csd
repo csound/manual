@@ -10,9 +10,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Initialize the ZAK space.
 ; Create 1 a-rate variable and 1 k-rate variable.
@@ -21,7 +21,7 @@ zakinit 1, 1
 ; Instrument #1 -- a basic instrument.
 instr 1
   ; Generate a simple sine waveform.
-  asin oscil 15000, 440, 1
+  asin oscil 0.46, 440, 1
 
   ; Mix the sine waveform with za variable #1.
   zawm asin, 1
@@ -30,7 +30,7 @@ endin
 ; Instrument #2 -- another basic instrument.
 instr 2
   ; Generate another waveform with a different frequency.
-  asin oscil 15000, 880, 1
+  asin oscil 0.46, 880, 1
 
   ; Mix this sine waveform with za variable #1.
   zawm asin, 1

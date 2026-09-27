@@ -6,6 +6,7 @@
 
 sr = 44100
 ksmps = 32
+0dbfs = 1
 
 ; by tgrey 2020
 instr 1

@@ -18,9 +18,18 @@ Calculate the spectral bandwidth of a signal from its discrete Fourier transform
 
 ### Performance
 
-_kbnd_ -- the spectral bandwidth
+_kbnd_ -- the spectral bandwidth, in Hz
 
-_fsig_ -- an input pv stream
+_fsig_ -- an input pv stream in amplitude-frequency or amplitude-phase format
+
+The bandwidth is the standard deviation of the FFT bin centre frequencies,
+weighted by their magnitudes. It measures their spread around the spectral
+centroid. The calculation uses bin positions, not the frequency or phase
+values stored in the bins. A silent frame returns zero.
+
+For frame-based input, the output updates when a new frame arrives and holds
+the result between frames. For sliding input, it uses the first active sample
+of each control block.
 
 ## Examples
 

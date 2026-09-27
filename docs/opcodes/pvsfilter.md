@@ -24,11 +24,17 @@ _fsigin_ -- input pv stream.
 
 _fsigfil_ -- filtering pvoc stream.
 
-_kdepth_ -- controls the depth of filtering of fsigin by fsigfil .
+_kdepth_ -- filtering depth, limited to the range 0 to 1. At 0, the filter has no effect. At 1, each input amplitude is multiplied by the corresponding filter amplitude.
 
 _igain_ -- amplitude scaling (optional, defaults to 1).
 
-Here the input pvoc stream amplitudes are modified by the filtering stream, keeping its frequencies intact. As usual, both signals have to be in the same format.
+The output keeps the frequencies or phases of _fsigin_. Both streams must use the same analysis settings and spectral format. For each bin, the output amplitude is:
+
+``` text
+input amplitude * ((1 - depth) + filter amplitude * depth) * gain
+```
+
+For frame-based analysis, a new frame from either input updates the output, using the latest frame from the other input. A fixed input spectrum can therefore use a changing filter. If a source changes its analysis settings, reinitialize _pvsfilter_ with matching inputs.
 
 > :warning: **Warning**
 >

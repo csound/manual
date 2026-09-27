@@ -10,9 +10,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Instrument #1.
 instr 1
@@ -25,7 +25,7 @@ instr 1
   printks "Repeated %i time(s).\\n", 1, kreps
 
   ; Generate a nice beep.
-  a1 oscil 20000, kcps, 1
+  a1 oscil 0.6, kcps, 1
   out a1
 endin
 

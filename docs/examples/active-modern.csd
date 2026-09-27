@@ -11,16 +11,16 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr =  4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Instrument #1 - a noisy waveform.
 instr 1
   ; Generate a really noisy waveform.
-  noisy:a = rand(44100)
+  noisy:a = rand(1.3)
   ; Turn down its amplitude.
-  output:a = gain(noisy, 2500)
+  output:a = gain(noisy, 0.075)
   ; Send it to the output.
   out(output)
 endin

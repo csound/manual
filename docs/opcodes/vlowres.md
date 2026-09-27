@@ -24,13 +24,13 @@ _iord_ -- total number of filters (1 to 10)
 
 _asig_ -- input signal
 
-_kfco_ -- frequency cutoff (not in Hz)
+_kfco_ -- positive cutoff control for the first filter, not in Hz.
 
-_kres_ -- resonance amount
+_kres_ -- positive resonance control shared by all filters, not in dB.
 
-_ksep_ -- frequency cutoff separation for each filter: the first filter has a kfreq cutoff, the second has a kfreq + ksep and the third  kfreq + 2*ksep and so on, depending on the number of filters.
+_ksep_ -- cutoff separation. Filter _j_, counting from zero, uses cutoff `kfco * (1 + ksep*j/iord)`. For example, with _kfco_ = 100, _iord_ = 4, and _ksep_ = 1, the cutoffs are 100, 125, 150, and 175. A separation of zero gives every filter the same cutoff. Choose _ksep_ so that every cutoff stays positive.
 
-_vlowres_ (variable resonant lowpass filter) allows a variable response curve in resonant filters. It can be thought of as a bank of lowpass resonant filters, each with the same resonance, serially connected. The frequency cutoff of each filter can vary with the _kcfo_ and _ksep_ parameters.
+_vlowres_ connects several [lowres](../opcodes/lowres.md) filters in series. All filters share the same resonance, while _kfco_ and _ksep_ set their cutoffs.
 
 ## Examples
 

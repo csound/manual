@@ -7,8 +7,9 @@
 ; -o abs.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 instr 1
-        imaxamp    =           10000
+        imaxamp    =           0.3
         kshapeamt  line        p5, p3, p6
         aosc       oscili      1.0, cpspch(p4), 1
         aout       powershape  aosc, kshapeamt

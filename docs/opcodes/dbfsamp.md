@@ -5,7 +5,9 @@ category:Mathematical Operations:Amplitude Functions
 # dbfsamp
 Returns the decibel equivalent of the raw amplitude _x_, relative to full scale amplitude.
 
-Full scale is assumed to be 16 bit. New is Csound version 4.10.
+Full scale is set by [0dbfs](0dbfs.md). With `0dbfs = 1`, `dbfsamp(1)` returns 0 dB and `dbfsamp(0.1)` returns -20 dB.
+
+New in Csound version 4.10.
 
 ## Syntax
 ``` csound-orc

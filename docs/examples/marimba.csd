@@ -12,6 +12,7 @@
 sr = 44100
 ksmps = 128
 nchnls = 2
+0dbfs = 1
 
 ; Instrument #1.
 instr 1
@@ -24,7 +25,7 @@ instr 1
   ivibfn = 2
   idec = 0.6
 
-  a1 marimba 20000, ifreq, ihrd, ipos, imp, kvibf, kvamp, ivibfn, idec, 20, 10
+  a1 marimba 0.6, ifreq, ihrd, ipos, imp, kvibf, kvamp, ivibfn, idec, 20, 10
 
   outs a1, a1
 endin

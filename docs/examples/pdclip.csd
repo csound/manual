@@ -7,6 +7,7 @@
 ; -o abs.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 
 ; test instrument for pdclip opcode
 instr 3
@@ -31,15 +32,15 @@ f1 0 16385 10 1
 f2 0 16385 10 1 .5 .3333 .25 .5
 
 ; pdclipped sine wave
-i3 0 3 15000 440 1
-i3 + 3 15000 330 1
-i3 + 3 15000 220 1
+i3 0 3 0.46 440 1
+i3 + 3 0.46 330 1
+i3 + 3 0.46 220 1
 s
 
 ; pdclipped composite wave
-i3 0 3 15000 440 2
-i3 + 3 15000 330 2
-i3 + 3 15000 220 2
+i3 0 3 0.46 440 2
+i3 + 3 0.46 330 2
+i3 + 3 0.46 220 2
 e
 </CsScore>
 </CsoundSynthesizer>

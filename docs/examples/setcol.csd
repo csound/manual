@@ -3,6 +3,7 @@
  -odac
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 instr 1
  kcnt init 0
  kArr[] init 3,3

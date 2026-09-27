@@ -10,9 +10,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr  = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Instrument #1.
 instr 1
@@ -21,7 +21,7 @@ instr 1
 
   ; Create an amplitude envelope.
   kenv expsegb 0.01, p3*0.25, 1, p3, 0.01
-  kamp = kenv * 30000
+  kamp = kenv * 0.9
 
   a1 oscil kamp, kcps, 1
   out a1

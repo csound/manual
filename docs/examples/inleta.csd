@@ -6,11 +6,12 @@
 ; For Non-realtime ouput leave only the line below:
 ; -o inleta.wav -W ;;; for file output any platform
 </CsOptions> 
-<CsInstruments> 
+<CsInstruments>
 
 sr = 44100
 ksmps = 32
 nchnls = 2
+0dbfs = 1
 
 ; Connect up instruments and effects to create the signal flow graph. 
 
@@ -46,7 +47,7 @@ p3              = iattack + idecay + isustain + irelease
 adamping        linsegr 0.0, iattack, 1.0, idecay + isustain, 1.0, irelease, 0.0
 iHz             = cpsmidinn(p4) 
 ; Rescale MIDI velocity range to a musically usable range of dB. 
-iamplitude      = ampdb(p5 / 127 * 15.0 + 60.0) 
+iamplitude      = ampdbfs(-30 + 15 * p5 / 127)  ;; MIDI velocity maps to -30 through -15 dBFS.
 ; Use ftgenonce instead of ftgen, ftgentmp, or f statement. 
 icosine         ftgenonce 0, 0, 65537, 11, 1 
 aoscili         oscili iamplitude, iHz, icosine 
@@ -69,14 +70,14 @@ p3              = iattack + isustain + irelease
 adamping        linsegr 0.0, iattack, 1.0, isustain, 1.0, irelease, 0.0
 iHz             = cpsmidinn(p4)
 ; Rescale MIDI velocity range to a musically usable range of dB. 
-iamplitude      = ampdb(p5 / 127 * 20.0 + 60.0) 
+iamplitude      = ampdbfs(-30 + 20 * p5 / 127)  ;; MIDI velocity maps to -30 through -10 dBFS.
                 print iHz, iamplitude 
 ; Use ftgenonce instead of ftgen, ftgentmp, or f statement. 
 isine           ftgenonce 0, 0, 65537, 10, 1 
 asignal         vco iamplitude, iHz, 1, 0.5, isine 
 kfco            line 2000, p3, 200
 krez            = 0.8 
-asignal         moogvcf asignal, kfco, krez, 100000 
+asignal         moogvcf asignal, kfco, krez, 3.05
 asignal         = asignal * adamping
 aleft, aright   pan2 asignal, p7
 ; Stereo audio output to be routed in the orchestra header. 
@@ -102,7 +103,7 @@ instr Compressor
 ; Stereo input. 
 aleftin         inleta "leftin" 
 arightin        inleta "rightin" 
-kthreshold      = 25000 
+kthreshold      = 0.76
 icomp1          = 0.5 
 icomp2          = 0.763 
 irtime          = 0.1 

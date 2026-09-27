@@ -9,9 +9,9 @@
 </CsOptions>
 <CsInstruments>
 sr = 44100
-kr =  4410
 ksmps = 10
 nchnls = 2
+0dbfs = 1
 
 /*  modal synthesis using biquad filters as oscillators
     Example by Scott Lindroth 2007 */
@@ -30,12 +30,12 @@ instr 1
 
     ; filter gain
 
-    amp1:i = 600
-    amp2:i = 1000
-    amp3:i = 1000
-    amp4:i = 1000
-    amp5:i = 1000
-    amp6:i = 1000
+    amp1:i = 0.02
+    amp2:i = 0.03
+    amp3:i = 0.03
+    amp4:i = 0.03
+    amp5:i = 0.03
+    amp6:i = 0.03
 
     ; resonance
 

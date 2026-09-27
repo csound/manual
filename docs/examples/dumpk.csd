@@ -10,8 +10,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 20
+ksmps = 2205 ; 20 control periods per second at sr = 44100
 nchnls = 1
+0dbfs = 1
 
 ; By Andres Cabrera 2008
 

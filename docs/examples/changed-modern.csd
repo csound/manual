@@ -11,6 +11,7 @@
 sr = 44100
 ksmps = 32
 nchnls = 2
+0dbfs = 1
 
 instr 1
   kint  = int(oscil:k(2, 0.5))

@@ -3,7 +3,7 @@ id:sumarray
 category:Array Opcodes
 -->
 # sumarray
-Returns the sum of all elements in a k-rate array.
+Returns the sum of all elements in a numeric array.
 
 ## Syntax
 === "Modern"
@@ -21,6 +21,12 @@ Returns the sum of all elements in a k-rate array.
 _ksum_ --  variable for result.
 
 _karray_ --  array for reading.
+
+## Replacing sumtab
+
+[sumtab](sumtab.md) is the deprecated k-rate name. Replace `ksum = sumtab(kArray)` with `ksum = sumarray(kArray)`. Both add all elements, across all dimensions, on each control cycle.
+
+`sumarray` also accepts i-rate arrays at initialization and audio arrays for sample-by-sample summation. `sumtab` accepts only k-rate arrays.
 
 ## Examples
 

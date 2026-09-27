@@ -3,6 +3,7 @@
 -d -odac
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 
 instr 1
 ideltime = 0.5

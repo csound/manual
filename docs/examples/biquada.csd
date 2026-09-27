@@ -10,9 +10,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 2
+0dbfs = 1
 
 ; Instrument #1.
 instr 1
@@ -54,7 +54,7 @@ endin
 f 1 0 16384 10 1
 
 ;    Sta  Dur  Amp    Pitch
-i 1  0.0  5.0  20000  6.00 
+i 1  0.0  5.0  0.6  6.00
 e
 
 

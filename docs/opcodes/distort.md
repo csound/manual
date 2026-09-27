@@ -20,17 +20,17 @@ Distort an audio signal via waveshaping and optional clipping.
 
 _ifn_ -- table number of a waveshaping function with extended guard point.  The function can be of any shape, but it should pass through 0 with positive slope at the table mid-point.  The table size need not be large, since it is read with interpolation.
 
-_ihp_ -- (optional) half-power point (in cps) of an internal low-pass filter. The default value is 10.
+_ihp_ -- (optional) half-power frequency in Hz of the RMS detector's low-pass filter. Lower values make the level estimate change more slowly during waveshaping. Zero holds the detector's current level. The default is 10.
 
-_istor_ -- (optional) initial disposition of internal data space (see reson).  The default value is 0.
+_istor_ -- (optional) zero resets the stored RMS level and scale factor. A nonzero value preserves them during reinitialization. The first use initializes the state either way. The default is 0.
 
 ### Performance
 
 _asig_ -- Audio signal to be processed
 
-_kdist_ -- Amount of distortion (usually between 0 and 1)
+_kdist_ -- amount of distortion, usually between 0 and 1. Values below 0.001 use 0.001.
 
-This unit distorts an incoming signal using a waveshaping function _ifn_ and a distortion index _kdist_. The input signal is first compressed using a running rms, then passed through a waveshaping ```function which may modify its shape and spectrum. Finally it is rescaled to approximately its original power.
+The opcode uses the running RMS level and _kdist_ to scale the input before reading the waveshaping table. It applies the inverse scale to the table output. The scale factor changes smoothly over each control block. The RMS estimate has a minimum of `0dbfs / 32768` to avoid division by zero at silence.
 
 The amount of distortion depends on the nature of the shaping function and on the value of _kdist_, which generally ranges from 0 to 1. For low values of _kdist_, we should like the shaping function to pass the signal almost unchanged.  This will be the case if, at the mid-point of the table, the shaping function is near-linear and is passing through 0 with positive slope.  A line function from  -1 to +1 will satisfy this requirement;  so too will a sigmoid (sinusoid from 270 to 90 degrees).  As _kdist_ is increased, the compressed signal is expanded to encounter more and more of the shaping function, and if this becomes non-linear the signal is increasingly _bent_ on read-through to cause distortion.
 

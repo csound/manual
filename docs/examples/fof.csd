@@ -11,6 +11,7 @@
 sr = 44100
 ksmps = 32  
 nchnls = 2
+0dbfs = 1
 
 instr 1
   ; Combine five formants together to create 
@@ -64,7 +65,7 @@ instr 1
          kdur, kdec, iolaps, ifna, ifnb, itotdur
 
   ; Combine all of the formants together
-asig sum (a1+a2+a3+a4+a5) * 13000
+asig sum (a1+a2+a3+a4+a5) * 0.4
      outs asig, asig
 
 endin

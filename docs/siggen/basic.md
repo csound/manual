@@ -1,6 +1,8 @@
 # **Basic Oscillators**
 
 ## Basic Oscillators
+
+[quadosc](../opcodes/quadosc.md) produces a cosine and sine pair as an array of complex samples.
 The basic oscillator opcodes are: (note that opcodes that end with 'i' implement linear interpolation and those that end with '3' implement cubic interpolation).
 
 - Oscillator Banks: [oscilbank](../opcodes/oscbnk.md)

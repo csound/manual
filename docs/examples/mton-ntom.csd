@@ -3,6 +3,7 @@
 --nosound
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 
 instr 1
     S4 mton ntom("7D+63")

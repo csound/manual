@@ -11,6 +11,7 @@
 sr = 44100
 ksmps = 128
 nchnls = 2
+0dbfs = 1
 
 ;By Andres Cabrera 2007
 
@@ -36,7 +37,7 @@ koct line p8, p3, p9
 kband line p10, p3, p11
 kgliss line p16, p3, p17
 
-kenv linen 5000, 0.03, p3, 0.03  ;to avoid clicking
+kenv linen 0.15, 0.03, p3, 0.03  ; to avoid clicking
 
 
 aout    fof2    kenv, kfund, kform, koct, kband, kris, kdur, kdec, iolaps, \

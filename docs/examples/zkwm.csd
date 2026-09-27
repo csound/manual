@@ -10,9 +10,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Initialize the ZAK space.
 ; Create 1 a-rate variable and 1 k-rate variable.
@@ -21,8 +21,8 @@ zakinit 1, 1
 ; Instrument #1 -- a basic instrument.
 instr 1
   ; Generate a k-rate signal.
-  ; The signal goes from 30 to 20,000 then back to 30.
-  kramp linseg 30, p3/2, 20000, p3/2, 30
+  ; The signal goes from 0.00092 to 0.6 and back.
+  kramp linseg 0.00092, p3/2, 0.6, p3/2, 0.00092
 
   ; Mix the signal into the zk variable #1.
   zkwm kramp, 1
@@ -32,7 +32,7 @@ endin
 instr 2
   ; Generate another k-rate signal.
   ; This is a low frequency oscillator.
-  klfo lfo 3500, 2
+  klfo lfo 0.11, 2
 
   ; Mix this signal into the zk variable #1.
   zkwm klfo, 1

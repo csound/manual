@@ -9,6 +9,7 @@
 sr      =       44100
 ksmps   =       100
 nchnls  =       2
+0dbfs   =       1
 
 giElem  init    13
 giOutTab        ftgen   1,0,128, 2,     0
@@ -36,7 +37,7 @@ vtable1k  giOutTab, kout1 , kout2, kout3, kout4, kout5 , kout6, kout7, kout8
 kmodindex1=     2 * db(kout1 * 80 )
 kmodindex2=     2 * db(kout2 * 80 )
 kmodindex3=     2 * db(kout3 * 80 )
-kamp    =       50 * db(kout4 * 70 )
+kamp    =       0.0015 * db(kout4 * 70 )
 kfreq1  =       1.1 * octave(kout5 * 10)
 kfreq2  =       1.1 * octave(kout6 * 10) 
 kfreq3  =       1.1 * octave(kout7 * 10)

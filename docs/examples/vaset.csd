@@ -10,10 +10,11 @@
 sr=44100
 ksmps=1
 nchnls=2
+0dbfs=1
 
         instr 1 ; Sine Wave
 ifreq = (p4 > 15 ? p4 : cpspch(p4))
-iamp = ampdb(p5)
+iamp = ampdbfs(p5)
 
 kenv adsr 0.1, 0.05, .9, 0.2
 
@@ -47,7 +48,7 @@ outs aout, aout
 
 <CsScore>
 
-i1      0.0     2 440 80
+i1      0.0     2 440 -10
 e
 
 </CsScore>

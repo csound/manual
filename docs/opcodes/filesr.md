@@ -42,7 +42,7 @@ sample rate = 44100.000000, size = 131072.000000
 
 ## See also
 
-[Sound File Queries](../sigio/queries.md)
+[mp3sr](mp3sr.md), [Sound File Queries](../sigio/queries.md)
 
 ## Credits
 

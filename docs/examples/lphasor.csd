@@ -13,6 +13,7 @@
   sr        =  44100
   ksmps     =  10
   nchnls    =  1
+  0dbfs     =  1
 
     instr 1
 
@@ -27,7 +28,7 @@
   alphs     lphasor   itrns, ilps, ilpe, imode, istrt
   atab      tablei    alphs, ifn
             ; amplify signal
-  atab      =  atab * 10000
+  atab      =  atab * 0.3
 
             out       atab
 

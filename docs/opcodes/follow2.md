@@ -20,11 +20,13 @@ Another controllable envelope extractor using the algorithm attributed to Jean-M
 
 _asig_ -- the input signal whose envelope is followed
 
-_katt_ -- the attack rate (60dB attack time in seconds)
+_katt_ -- the attack time in seconds (60 dB)
 
-_krel_ -- the decay rate (60dB decay time in seconds)
+_krel_ -- the release time in seconds (60 dB)
 
-The output tracks the amplitude envelope of the input signal. The rate at which the output grows to follow the signal is controlled by the _katt_, and the rate at which it decreases in response to a lower amplitude, is controlled by the _krel_. This gives a smoother envelope than _follow_.
+The envelope starts at zero and follows the absolute value of _asig_. _katt_ controls its rise and _krel_ controls its fall. Each time specifies how long it takes to reduce the difference from a constant target to 0.1% (60 dB). For example, with an input of 1 and _katt_ = 0.1, the output reaches 0.999 after 0.1 seconds.
+
+Zero or negative values for either time use 0.1 seconds.
 
 ## Examples
 

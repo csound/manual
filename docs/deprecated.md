@@ -6,17 +6,24 @@ The following opcodes are deprecated. They are still distributed with Csound for
 
 [bformdec](opcodes/bformdec.md) - Decodes an ambisonic B format signal into loudspeaker specific signals.<br>
 [bformenc](opcodes/bformenc.md) - Codes a signal into the ambisonic B format.<br>
+[copy2ftab](opcodes/copy2ftab.md) - Copies values from an array to a function table at performance time.<br>
+[copy2ttab](opcodes/copy2ttab.md) - Copies values from a function table to an array at performance time.<br>
 [fin](opcodes/fin.md) - Read signals from a file at a-rate.<br>
 [hrtfer](opcodes/hrtfer.md) - Creates 3D audio for two speakers.<br>
 [ktableseg](opcodes/ktableseg.md) - Deprecated.<br>
+[lentab](opcodes/lentab.md) - Returns a dimension's length or the number of dimensions in a k-rate array.<br>
+[maxtab](opcodes/maxtab.md) - Returns the maximum value in a k-rate array and optionally its index.<br>
+[mintab](opcodes/mintab.md) - Returns the minimum value in a k-rate array and optionally its index.<br>
 [pop](opcodes/pop.md) - Pops values from the global stack.<br>
 [pop_f](opcodes/pop_f.md) - Pops an f-sig frame from the global stack.<br>
 [ptable3](opcodes/ptable3.md) - Accesses table values by direct indexing with cubic interpolation.<br>
 [ptable](opcodes/ptable.md) - Accesses table values by direct indexing.<br>
 [ptablei](opcodes/ptablei.md) - Accesses table values by direct indexing with linear interpolation.<br>
+[ptableiw](opcodes/ptableiw.md) - Writes a value to a function table at initialization.<br>
 [ptablew](opcodes/ptablew.md) - Change the contents of existing function tables of any length.<br>
 [push](opcodes/push.md) - Pushes a value into the global stack.<br>
 [push_f](opcodes/push_f.md) - Pushes an f-sig frame into the global stack.<br>
+[scalet](opcodes/scalet.md) - Rescales part of a k-rate array in place.<br>
 [sclag](opcodes/sc_lag.md) - Exponential lag with 60dB lag time.<br>
 [sclagud](opcodes/sc_lagud.md) - Exponential Lag (Deprecated).<br>
 [scphasor](opcodes/sc_phasor.md) - A resettable linear ramp between two levels (renamed as trigphasor).<br>
@@ -34,7 +41,13 @@ The following opcodes are deprecated. They are still distributed with Csound for
 [specsum](opcodes/specsum.md) - Sums the magnitudes across all channels of the spectrum.<br>
 [spectrum](opcodes/spectrum.md) - Generate a constant-Q, exponentially-spaced DFT across all octaves of a multiply-downsampled control or audio input signal.<br>
 [stack](opcodes/stack.md) - Initializes and sets the size of the global stack.<br>
+[sumtab](opcodes/sumtab.md) - Returns the sum of a k-rate array.<br>
+[tabgen](opcodes/tabgen.md) - Creates a k-rate array containing an arithmetic sequence at initialization.<br>
 [tableiw](opcodes/tableiw.md) - Deprecated as of version 3.<br>
+[tabmap](opcodes/tabmap.md) - Applies a function to each element of a k-rate array.<br>
+[tabmap_i](opcodes/tabmap_i.md) - Maps a function over a k-rate array at initialization only.<br>
+[tabmapi](opcodes/tabmapi.md) - Provides the older alias for initialization-only array mapping.<br>
+[tabslice](opcodes/tabslice.md) - Copies selected elements from a k-rate array during performance.<br>
 [tb](opcodes/tb.md) - Table Read Access inside expressions.<br>
 [xscanmap](opcodes/xscanmap.md) - Allows the position and velocity of a node in a scanned process to be read.<br>
 [xscans](opcodes/xscans.md) - Fast scanned synthesis waveform and the wavetable generator.<br>

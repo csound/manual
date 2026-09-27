@@ -11,6 +11,7 @@
 sr      =  44100
 ksmps   =  10
 nchnls  =  1
+0dbfs   =  1
 
         massign 1, 1
 itmp    ftgen 1, 0, 1024, 10, 1         ; sine wave
@@ -19,7 +20,7 @@ itmp    ftgen 1, 0, 1024, 10, 1         ; sine wave
 
 kcps    cpsmidib 2              ; note frequency
 inote   notnum                  ; note number
-kaft    polyaft inote, 0, 127   ; aftertouch
+kaft    polyaft inote, 0, 0.0039  ; aftertouch
 ; interpolate aftertouch to eliminate clicks
 ktmp    phasor 40
 ktmp    trigger 1 - ktmp, 0.5, 0

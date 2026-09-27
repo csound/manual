@@ -12,6 +12,7 @@
 sr = 44100
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Instrument #1.
 instr 1
@@ -22,11 +23,11 @@ instr 1
   cggoto(i1 == 1, highnote)
 
 lownote:
-  a1 = poscil(10000, 220)
+  a1 = poscil(0.3, 220)
   goto(playit)
   
 highnote:
-  a1 = poscil(10000, 440)
+  a1 = poscil(0.3, 440)
 
 playit:
   out(a1)

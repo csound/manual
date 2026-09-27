@@ -3,6 +3,7 @@
 -nm128
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 
   opcode FirstEl, k, k[]
   ;returns the first element of vector kArr

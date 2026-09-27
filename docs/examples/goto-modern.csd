@@ -12,13 +12,13 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr  = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Instrument #1.
 instr 1
-  a1 = poscil(10000, 440)
+  a1 = poscil(0.3, 440)
   goto(playit)
 
   ; The goto will go to the playit label.

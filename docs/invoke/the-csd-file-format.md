@@ -25,7 +25,7 @@ If the *Options* element is missing, the default options will be used:
 
 The instrument definitions (orchestra) are put into the *Instruments* element. The statements and syntax in this section are identical to the Csound orchestra file, and have the same requirements. This Instruments Element is delimited with the start tag `<CsInstruments>` and the end tag `</CsInstruments>`.
 
-Usually the `CsInstruments` tag starts with a declaration of the fundamental constants `sr` (sample rate, default 44100), `ksmps` (number of samples per control cycle, default 10, recommended 32 or 64), `nchnls` (number of channels, default 1) and `0dbfs` (amplitude value equal to zero dB full scale, default 32767, recommended 1). 
+Usually the `CsInstruments` tag starts with a declaration of the fundamental constants `sr` (sample rate, default 44100), `ksmps` (number of samples per control cycle, default 10, recommended 32 or 64), `nchnls` (number of channels, default 1) and `0dbfs` (amplitude value equal to zero dB full scale, default 32768, recommended 1).
 
 ### Score `<CsScore>`
 

@@ -11,13 +11,14 @@
 sr = 44100
 ksmps = 32
 nchnls = 2
+0dbfs = 1
 
 instr 1
 
 idec = p4
 iamp = db(idec)
      print iamp
-asig vco2 iamp, 110                     ;sawtooth
+asig vco2 (iamp * 0.0000305), 110  ; sawtooth
      outs asig, asig
 
 endin

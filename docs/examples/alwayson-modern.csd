@@ -51,7 +51,7 @@ instr SimpleSine
   damping:a   = linsegr(0.0, attack, 1.0, decay + sustain, 1.0, rel, 0.0)
   Hz:i        = cpsmidinn(p4) 
   ; Rescale MIDI velocity range to a musically usable range of dB. 
-  amplitude:i = ampdb(p5/127 * 15.0 + 60.0) / 32767
+  amplitude:i = ampdbfs(-30 + 15 * p5 / 127)  ;; MIDI velocity maps to -30 through -15 dBFS.
   ; Use ftgenonce instead of ftgen, ftgentmp, or f statement. 
   cosine:i    = ftgenonce(0, 0, 65537, 11, 1)
   aoscili     = oscili(amplitude, Hz, cosine)
@@ -75,7 +75,7 @@ instr Moogy
   damping:a    = linsegr(0.0, attack, 1.0, sustain, 1.0, rel, 0.0)
   Hz:i         = cpsmidinn(p4)
   ; Rescale MIDI velocity range to a musically usable range of dB. 
-  amplitude:i  = ampdb(p5/127 * 20.0 + 60.0) / 32767
+  amplitude:i  = ampdbfs(-30 + 20 * p5 / 127)  ;; MIDI velocity maps to -30 through -10 dBFS.
   print(Hz, amplitude)
   ; Use ftgenonce instead of ftgen, ftgentmp, or f statement. 
   sine:i       = ftgenonce(0, 0, 65537, 10, 1)

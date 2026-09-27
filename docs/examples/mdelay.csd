@@ -7,9 +7,9 @@
 <CsInstruments>
 
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 2
+0dbfs = 1
 
 ; Example by Giorgio Zucco 2007
 

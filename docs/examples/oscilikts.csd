@@ -10,9 +10,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Instrument #1: oscilikts example.
 instr 1
@@ -27,8 +27,8 @@ instr 1
   atmp2 phasor 150
   async diff 1 - (atmp1 + atmp2)
 
-  a1 oscilikts 14000, kfrq, 1, async, 0
-  a2 oscilikts 14000, kfrq, 1, async, -kphs
+  a1 oscilikts 0.43, kfrq, 1, async, 0
+  a2 oscilikts 0.43, kfrq, 1, async, -kphs
 
   out a1 - a2
 endin

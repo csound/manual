@@ -3,6 +3,7 @@
 -ndm0
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 ;example by joachim heintz 2013
 
   opcode ToAscii, S, S                          ;returns the ASCII numbers of the input string as string

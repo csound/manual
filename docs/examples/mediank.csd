@@ -4,9 +4,9 @@
 </CsOptions>
 <CsInstruments>
 sr = 44100
-kr = 147
 ksmps = 300
 nchnls = 1
+0dbfs = 1
 
 instr 1
   k1  oscil  100, 10, 1

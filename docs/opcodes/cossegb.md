@@ -27,9 +27,11 @@ _ib, ic_, etc. -- value at _tim1_ seconds, etc.
 
 _itim1_ -- time in seconds of end of first segment. A zero or negative value will cause all initialization to be skipped.
 
-_itim2, itim3_, etc. -- time in seconds at the end of subsequent segments.
+_itim2, itim3_, etc. -- time in seconds at the end of subsequent segments. Give times in increasing order. Equal times cause an immediate jump to the next value.
 
 ### Performance
+
+Times use whole samples at audio rate and whole control periods at control rate. Breakpoints that fall on the same output step cause an immediate jump; later segments still run.
 
 These units generate control or audio signals whose values can pass through 2 or more specified points. The last _tim_ value may or may not equal the instrument's performance time: a shorter performance will truncate the specified pattern, while a longer one will cause the last value to be repeated until the end of the note.
 

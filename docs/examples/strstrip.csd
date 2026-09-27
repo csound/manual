@@ -5,6 +5,7 @@
 </CsOptions>
 
 <CsInstruments>
+0dbfs = 1
 
 /* strstrip: strip whitespace from string
 

@@ -10,6 +10,7 @@
 sr=44100
 ksmps=16
 nchnls=2
+0dbfs=1
 
         instr 1 ; Sqrt Signal
 ifreq = (p4 > 15 ? p4 : cpspch(p4))
@@ -45,7 +46,8 @@ loopStart:
 
 loop_lt kcount, 1, ksmps, loopStart
 
-aout = aout * kenv
+; Keep the filter input level relative to full scale.
+aout = aout * kenv * 0.0000305
 
 aout    moogladder aout, 8000, .1
 

@@ -3,6 +3,7 @@
 -o dac
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 
 instr   1
   when:k = init(0)

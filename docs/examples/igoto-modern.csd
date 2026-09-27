@@ -12,9 +12,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr =  4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Instrument #1.
 instr 1
@@ -38,7 +38,7 @@ playit:
   print(param)
   print(freq)
 
-  a1 = poscil(10000, freq)
+  a1 = poscil(0.3, freq)
   out(a1)
 endin
 

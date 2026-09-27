@@ -18,15 +18,19 @@ Reads amplitude and/or frequency data from function tables.
 
 ### Initialization
 
-_ifna_ -- A table, at least inbins in size, that stores amplitude data. Ignored if ifna  = 0
+_ifna_ -- Table number for amplitude data. Use 0 to leave the signal's amplitudes unchanged.
 
-_ifnf_ (optional) -- A table, at least inbins in size, that stores frequency data. Ignored if ifnf = 0
+_ifnf_ (optional) -- Table number for frequency data, or phase data when _fsrc_ uses amplitude/phase format. The default is 0, which leaves these values unchanged.
+
+Each enabled table needs room for _N_/2 + 1 values, where _N_ is the signal's FFT size. These include the DC and Nyquist bins. The table's guard point can hold the last value.
 
 ### Performance
 
-_fsrc_ -- a PVOC-EX formatted source.
+_fsrc_ -- A non-sliding spectral signal in amplitude/frequency or amplitude/phase format. `pvsftr` modifies this signal in place. Reinitialize `pvsftr` if the signal's FFT size or format changes.
 
-Enables the contents of _fsrc_ to be exchanged with function tables for custom processing. Except when the frame overlap equals _ksmps_ (which will generally not be the case), the frame data is not updated each control period. The data in _ifna_, _ifnf_ should only be processed when _kflag_ is set to 1. To process only frequency data, set _ifna_ to zero.
+`pvsftr` reads the enabled tables at initialization and whenever a new frame is available in _fsrc_. Editing a table does not cause another read of the same frame. To change only frequency data, set _ifna_ to zero.
+
+When used with [pvsftw](pvsftw.md), edit the tables when that opcode's _kflag_ is 1, then call `pvsftr` to read the edited values back into the signal.
 
 As the function tables are required only to store data from _fsrc_, there is no advantage in defining then in the score, and they should generally be created in the instrument, using [ftgen](../opcodes/ftgen.md).
 

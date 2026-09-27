@@ -18,15 +18,17 @@ Writes amplitude and/or frequency data to function tables.
 
 ### Initialization
 
-_ifna_ -- A table, at least inbins in size, that stores amplitude data. Ignored if ifna  = 0
+_ifna_ -- Table number for amplitude data. Use 0 to skip amplitude export.
 
-_ifnf_ -- A table, at least inbins in size, that stores frequency data. Ignored if ifnf = 0
+_ifnf_ -- Table number for frequency data, or phase data when _fsrc_ uses amplitude/phase format. The default is 0, which skips this export.
+
+Each enabled table needs room for _N_/2 + 1 values, where _N_ is the source FFT size. These include the DC and Nyquist bins. The table's guard point can hold the last value. Setting both table numbers to 0 updates only _kflag_.
 
 ### Performance
 
 _kflag_ -- A flag that has the value of 1 when new data is available, 0 otherwise.
 
-_fsrc_ -- a PVOC-EX formatted source.
+_fsrc_ -- A non-sliding spectral signal in amplitude/frequency or amplitude/phase format. Reinitialize `pvsftw` if the source's FFT size or format changes.
 
 Enables the contents of _fsrc_ to be exchanged with function tables, for custom processing. Except when the frame overlap equals _ksmps_ (which will generally not be the case), the frame data is not updated each control period. The data in _ifna_, _ifnf_ should only be processed when _kflag_ is set to 1. To process only frequency data, set _ifna_ to zero.
 

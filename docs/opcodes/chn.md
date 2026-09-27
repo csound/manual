@@ -79,8 +79,8 @@ The example shows the software bus being used as an asynchronous control signal 
 
 ``` csound-orc linenums="1"
 sr = 44100
-kr = 100
 ksmps = 1
+0dbfs = 1
 
 chnk("cutoff", 1, 3, 1000, 500, 2000)
 

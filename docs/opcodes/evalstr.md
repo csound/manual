@@ -43,6 +43,8 @@ Here is a complete example of the evalstr opcode. It uses the file [evalstr.csd]
 --8<-- "examples/evalstr.csd"
 ```
 
+The [return example](return.md#examples) uses _evalstr_ to compute note frequencies for a bell arpeggio with bass, stereo echoes, and reverb.
+
 ## See Also
 
 [String Manipulation Opcodes](../strings/manipulate.md)

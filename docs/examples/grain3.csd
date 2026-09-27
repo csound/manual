@@ -9,9 +9,9 @@
 <CsInstruments>
 
 sr      =  48000
-kr      =  1000
 ksmps   =  48
 nchnls  =  1
+0dbfs   =  1
 
 /* Bartlett window */
 itmp    ftgen 1, 0, 16384, 20, 3, 1
@@ -59,7 +59,7 @@ a2      grain3  kfrq, 0.5 + kphs, kfmd, 0.5, kgdur, kdens, 100, \
 ; de-click
 aenv    linseg 0, 0.01, 1, p3 - 0.05, 1, 0.04, 0, 1, 0
 
-        out aenv * 2250 * (a1 - a2)
+        out aenv * 0.069 * (a1 - a2)
 
         endin
 
@@ -81,7 +81,7 @@ a1      grain3  kfrq, 0.5, 0, 0.5, kgdur, kdens, 100,        \
 ; de-click
 aenv    linseg 0, 0.01, 1, p3 - 0.05, 1, 0.04, 0, 1, 0
 
-        out aenv * 1500 * a1
+        out aenv * 0.046 * a1
 
         endin
 
@@ -101,7 +101,7 @@ a2      grain3 kfrq, 0.667, 0, 0, kgdur, kdens, 3, kfnum, 5, 0, 0, 0, 2
 ; de-click
 aenv    linseg 0, 0.01, 1, p3 - 0.05, 1, 0.04, 0, 1, 0
 
-        out aenv * 10000 * (a1 - a2)
+        out aenv * 0.3 * (a1 - a2)
 
         endin
 

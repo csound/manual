@@ -8,7 +8,8 @@ The following opcodes are available:
 
 * [oscinit](../opcodes/OSCinit.md) - Start an OSC listener thread.
 * [osclisten](../opcodes/OSClisten.md) - Receive OSC messages.
-* [oscsend](../opcodes/OSCsend.md) - Send an OSC message.
+* [oscsend](../opcodes/OSCsend.md) - Send an OSC message with the socket sender.
+* [oscsendlo](../opcodes/oscsendlo.md) - Send an OSC message using liblo. Also available as `OSCsend_lo`.
 * [oscinitm](../opcodes/OSCinitM.md) - Start to list for multicast OSC messages.
 * [oscraw](../opcodes/OSCraw.md) - Listen for all OSC messages.
 * [osccount](../opcodes/OSCcount.md) - Count of OSC messages currently unread.

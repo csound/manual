@@ -11,6 +11,7 @@
 sr = 44100
 ksmps = 20
 nchnls = 2
+0dbfs = 1
 
 giSine           ftgen   0, 0, 65537, 10, 1
 giCosine         ftgen   0, 0, 8193, 9, 1, 1, 90
@@ -28,7 +29,7 @@ ienv_decay       = -1 ;                  ; default decay envelope (flat)
 ksustain_amount  = 0.5                   ; time (in fraction of grain dur) at sustain level for each grain
 ka_d_ratio       = 0.5                   ; balance between attack and decay time
 kduration        = (0.5/kgrainfreq)*1000 ; set grain duration relative to grain rate
-kamp             = 5000                  ; amp
+kamp             = 0.15  ; amp
 igainmasks       = -1                    ; (default) no gain masking
 kwavfreq         = 440                   ; fundamental frequency of source waveform
 ksweepshape      = 0                     ; shape of frequency sweep (0=no sweep)

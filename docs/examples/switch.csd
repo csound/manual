@@ -1,5 +1,6 @@
 <CsoundSynthesizer>
 <CsInstruments>
+0dbfs = 1
 
 // accepts p-fields
 instr 1

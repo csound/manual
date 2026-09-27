@@ -10,9 +10,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Instrument #1.
 instr 1
@@ -23,7 +23,7 @@ instr 1
 
   apink  pinkish awhite, 1, 0, 0, 1
 
-  out apink * 30000
+  out apink * 0.9
 endin
 
 

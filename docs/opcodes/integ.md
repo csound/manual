@@ -20,11 +20,15 @@ Modify a signal by integration.
 
 ### Initialization
 
-_iskip_ (optional) -- initial disposition of internal save space (see [reson](../opcodes/reson.md)). The default value is 0.
+_iskip_ (optional, default=0) -- zero clears the running sum at initialization. A non-zero value keeps the previous sum.
 
 ### Performance
 
-_integ_ and [diff](../opcodes/diff.md) perform integration and differentiation on an input control signal or audio signal. Each is the converse of the other, and applying both will reconstruct the original signal. Since these units are special cases of low-pass and high-pass filters, they produce a scaled (and phase shifted) output that is frequency-dependent. Thus _diff_ of a sine produces a cosine, with amplitude 2 * _pi_ * Hz / _sr_ that of the original (for each component partial); _integ_ will inversely affect the magnitudes of its component inputs. With this understanding, these units can provide useful signal modification.
+_integ_ keeps a running sum. At audio rate, it adds each input sample and outputs the new total. At control rate, it does the same once per control cycle. It does not divide the input by _sr_ or _kr_, so a constant input produces a ramp whose slope depends on that rate.
+
+Low-frequency signals receive more gain than high-frequency signals. Any DC component accumulates, so the output can keep growing.
+
+_integ_ and [diff](../opcodes/diff.md) reverse each other's operations in exact arithmetic. Rounding can prevent exact reconstruction of the input.
 
 ## Examples
 

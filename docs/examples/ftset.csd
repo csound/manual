@@ -2,6 +2,7 @@ csdo<CsoundSynthesizer>
 <CsOptions>
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 
 ; Example file ftset
 

@@ -11,18 +11,19 @@
 sr = 44100
 ksmps = 32
 nchnls = 2
+0dbfs = 1
 
 instr 1 ;add DC to "drumsMlp.wav"
 
 asig soundin "drumsMlp.wav"
-asig = asig+5000        ;adds DC of 5000
+asig = asig+0.15  ; adds DC of 0.15
      outs asig, asig
 endin
 
 instr 2 ;dcblock audio
 
 asig soundin "drumsMlp.wav"
-asig = asig+5000        ;adds DC
+asig = asig+0.15  ; adds DC
 adc  dcblock asig       ;remove DC again
      outs adc, adc
 

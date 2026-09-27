@@ -11,6 +11,7 @@
 sr = 44100
 ksmps = 4410
 nchnls = 1
+0dbfs = 1
 
 ; Initialize the ZAK space.
 ; Create 3 a-rate variables and 5 k-rate variables.
@@ -18,7 +19,7 @@ zakinit 2, 3
 
 instr 1 ;a simple waveform.
   ; Generate a simple sine waveform.
-  asin oscil 20000, 440, 1
+  asin oscil 0.6, 440, 1
 
   ; Send the sine waveform to za variable #1.
   zaw asin, 1

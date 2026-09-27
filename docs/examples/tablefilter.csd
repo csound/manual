@@ -7,6 +7,7 @@
 sr=44100
 ksmps=10
 nchnls=1
+0dbfs=1
 
       gifarn init 8     ; initialise integer for Farey Sequence F_8
       gires fareyleni gifarn  ; calculate length of F_8, returns 23
