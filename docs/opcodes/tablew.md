@@ -5,7 +5,7 @@ category:Table Control:Read/Write Operations
 # tablew
 Change the contents of existing function tables.
 
-_tablew_ is for writing at k- or at a-rates, with the table number being specified at init time. Using _tablew_ with i-rate signal and index values is allowed, but the specified data will always be written to the function table at k-rate, not during the initialization pass. The valid combinations of variable types are shown by the first letter of the variable names.
+`tablew` writes at the rate of its value and index arguments. The i-rate form writes once during initialization, the k-rate form writes each control cycle, and the a-rate form writes at audio rate. The table number is fixed at initialization.
 
 ## Syntax
 === "Modern"
@@ -76,30 +76,11 @@ _tablew_ has no output value. The last three parameters are optional and have de
 
 At k-rate or a-rate, if a table number of &lt; 1 is given, or the table number points to a non-existent table, or to one which has a length of 0 (it is to be loaded from a file later) then an error will result and the instrument will be deactivated. _kfn_ and _afn_ must be initialized at the appropriate rate using _init_. Attempting to load an i-rate value into _kfn_ or _afn_ will result in an error.
 
-> :warning: **Warning**
->
-> Note that _tablew_ is always a k-rate opcode. This means that even its i-rate version runs at k-rate and will write the value of the i-rate variable. For this reason, the following code will not work as expected:
+## Replacing ptableiw and ptablew
 
-> ``` csound-orc
-> <CsoundSynthesizer>
-> <CsOptions>
-> </CsOptions>
-> <CsInstruments>
-> ft@global:i = ftgen(1, 0, 8, 2, 0)
-> instr 1
->   ndx:i = 0
->   tablew(10, ndx, ft)
->   val:i = tabi(ndx, ft)
->   print(val)
-> endin
-> </CsInstruments>
-> <CsScore>
-> i 1 0 1
-> </CsScore>
-> </CsoundSynthesizer>
-> ```
->
-> Although it may seem this program should print a 10 to the console. It will print 0, because  [tabi](../opcodes/tab_i.md) will read the value at the initialization of the note, before the first performance pass, when _tablew_ writes its value.
+Replace [ptableiw](ptableiw.md) with the i-rate form of `tablew`. Keep the same arguments. Both names use the same initialization-time writer, so a later i-rate table read sees the new value.
+
+Replace [ptablew](ptablew.md) with the matching k-rate or a-rate form. If the old call uses constant values and indices, assign them to k-rate variables before passing them to `tablew` to keep performance-time writing.
 
 ## See also
 

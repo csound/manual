@@ -19,6 +19,7 @@ The following opcodes are deprecated. They are still distributed with Csound for
 [ptable3](opcodes/ptable3.md) - Accesses table values by direct indexing with cubic interpolation.<br>
 [ptable](opcodes/ptable.md) - Accesses table values by direct indexing.<br>
 [ptablei](opcodes/ptablei.md) - Accesses table values by direct indexing with linear interpolation.<br>
+[ptableiw](opcodes/ptableiw.md) - Writes a value to a function table at initialization.<br>
 [ptablew](opcodes/ptablew.md) - Change the contents of existing function tables of any length.<br>
 [push](opcodes/push.md) - Pushes a value into the global stack.<br>
 [push_f](opcodes/push_f.md) - Pushes an f-sig frame into the global stack.<br>
