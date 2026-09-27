@@ -20,7 +20,7 @@ Filters the incoming signal with the specified resonance frequency and decay tim
 
 ### Initialization
 
-_iskip_ (optional, default=0) -- if non zero skip the initialisation of the filter.
+_iskip_ (optional, default=0) -- zero clears the filter history; nonzero keeps it on reinitialization.
 
 ### Performance
 
@@ -28,15 +28,17 @@ _aout_ -- filtered signal
 
 _ain_ -- signal to filter
 
-_xfreq_ -- resonant frequency of the filter
+_xfreq_ -- resonant frequency in Hz, at control or audio rate. Values above _sr_/2 are limited to _sr_/2.
 
 > :warning: **Warning**
 >
 > The filter output can rapidly grow to very large output if the input signal correlates with the output. The worst case is that it grows by the magnitude of the input with every sample. To limit the growth so the filter does not explode, it is best to scale down any continuous input significantly. The required scale is related to the value of the decay-time tau so if you select a maximum decay-time you can calculate the required scaling: factor = 1 / $M_E / (_sr_*tau)
 
-_xTau_ -- Decay time of the filter in seconds
+_xTau_ -- amplitude decay time in seconds, at control or audio rate.
 
-The decay time is the time in seconds for filter to decay to 1/_e_
+With positive _xTau_ and no further input, the resonance amplitude falls to 1/_e_ (about 0.368) after _xTau_ seconds. For example, _xTau_ = 2 gives about 36.8% of the initial amplitude after two seconds and 13.5% after four seconds.
+
+A zero or negative _xTau_ disables feedback and passes the current input through.
 
 ## Examples
 
