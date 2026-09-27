@@ -26,6 +26,8 @@ _iphs_ (optional) -- initial phase, expressed as a fraction of a cycle (0 to 1).
 
 An internal phase is successively accumulated in accordance with the _kcps_ or _xcps_ frequency to produce a moving phase value, normalized to lie in the range 0 &lt;= phs &lt; 1.
 
+Each update outputs the current phase, then advances it by _kcps_ / _kr_ at k-rate or _xcps_ / _sr_ at audio rate. A frequency change therefore affects the next output. A zero frequency holds the phase.
+
 When used as the index to a [table](../opcodes/table.md) unit, this phase (multiplied by the desired function table length) will cause it to behave like an oscillator.
 
 Note that _phasor_ is a special kind of integrator, accumulating phase increments that represent frequency settings.
