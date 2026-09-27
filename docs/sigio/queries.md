@@ -10,3 +10,4 @@ The opcodes that query information about files are:
 * [filevalid](../opcodes/filevalid.md)
 * [mp3bitrate](../opcodes/mp3bitrate.md)
 * [mp3len](../opcodes/mp3len.md)
+* [mp3nchnls](../opcodes/mp3nchnls.md)
