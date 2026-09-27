@@ -8,4 +8,5 @@ The opcodes that query information about files are:
 * [filepeak](../opcodes/filepeak.md)
 * [filesr](../opcodes/filesr.md)
 * [filevalid](../opcodes/filevalid.md)
+* [mp3bitrate](../opcodes/mp3bitrate.md)
 * [mp3len](../opcodes/mp3len.md)
