@@ -45,6 +45,7 @@
 * [seqtime](../opcodes/seqtime.md)
 * [seqtime2](../opcodes/seqtime2.md)
 * [sequ](../opcodes/sequencer.md)
+* [sequstate](../opcodes/sequstate.md)
 * [splitrig](../opcodes/splitrig.md)
 * [tempo](../opcodes/tempo.md)
 * [tempoval](../opcodes/tempoval.md)
