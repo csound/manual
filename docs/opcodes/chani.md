@@ -30,8 +30,8 @@ The example shows the software bus being used as an asynchronous control signal 
 
 ``` csound-orc linenums="1"
 sr = 44100
-kr = 100
 ksmps = 1
+0dbfs = 1
 
 instr   1
     kc   chani     1

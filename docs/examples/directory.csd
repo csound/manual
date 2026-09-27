@@ -3,6 +3,7 @@
 -n
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 
 ;browse for text files in current directory
 instr 1

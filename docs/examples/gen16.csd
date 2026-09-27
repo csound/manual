@@ -11,6 +11,7 @@
 sr = 44100
 ksmps = 128
 nchnls = 1
+0dbfs = 1
 
 instr 1
   kcps init 1/p3
@@ -22,7 +23,7 @@ instr 1
 
   ibasefreq = 440
   kfreq = kval * ibasefreq
-  a1 oscil 20000, ibasefreq + kfreq, 1
+  a1 oscil 0.6, ibasefreq + kfreq, 1
   out a1
 endin
 

@@ -9,6 +9,7 @@
 sr = 44100
 ksmps = 1
 nchnls = 1
+0dbfs = 1
 
 ;Example by Andres Cabrera 2008
 

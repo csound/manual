@@ -5,6 +5,7 @@
 </CsOptions>
 <CsInstruments>
 ksmps = 32
+0dbfs = 1
 ;example by joachim heintz
 
            seed       0

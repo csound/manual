@@ -11,6 +11,7 @@
 sr      =  44100
 ksmps   =  10
 nchnls  =  1
+0dbfs   =  1
 
 ; user defined waveform -1: trapezoid wave with default parameters (can be
 ; accessed at ftables starting from 10000)
@@ -23,20 +24,20 @@ ift     vco2init -2, ift, 1.02, 4096, 4096, 2
 
         instr 1
 kcps    expon p4, p3, p5                ; instr 1: basic vco2 example
-a1      vco2 12000, kcps                ; (sawtooth wave with default
+a1      vco2 0.37, kcps  ; (sawtooth wave with default
         out a1                          ; parameters)
         endin
 
         instr 2
 kcps    expon p4, p3, p5                        ; instr 2:
 kpw     linseg 0.1, p3/2, 0.9, p3/2, 0.1        ; PWM example
-a1      vco2 10000, kcps, 2, kpw
+a1      vco2 0.3, kcps, 2, kpw
         out a1
         endin
 
         instr 3
 kcps    expon p4, p3, p5                ; instr 3: vco2 with user
-a1      vco2 14000, kcps, 14            ; defined waveform (-1)
+a1      vco2 0.43, kcps, 14  ; defined waveform (-1)
 aenv    linseg 1, p3 - 0.1, 1, 0.1, 0   ; de-click envelope
         out a1 * aenv
         endin
@@ -44,7 +45,7 @@ aenv    linseg 1, p3 - 0.1, 1, 0.1, 0   ; de-click envelope
         instr 4
 kcps    expon p4, p3, p5                ; instr 4: vco2ft example,
 kfn     vco2ft kcps, -2, 0.25           ; with user defined waveform
-a1      oscilikt 12000, kcps, kfn       ; (-2), and sr/4 bandwidth
+a1      oscilikt 0.37, kcps, kfn  ; (-2), and sr/4 bandwidth
         out a1
         endin
 

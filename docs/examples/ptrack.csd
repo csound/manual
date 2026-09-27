@@ -21,7 +21,7 @@ kf,ka ptrack aout, ihop ; pitch track with different hopsizes
 kcps  port kf, 0.01     ; smooth freq
 kamp  port ka, 0.01     ; smooth amp
 ; drive an oscillator
-asig  poscil ampdb(kamp)*0dbfs, kcps, 1
+asig  poscil ampdbfs(kamp), kcps, 1
       outs  asig, asig
 
 endin

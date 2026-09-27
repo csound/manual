@@ -11,6 +11,7 @@
 sr = 44100
 ksmps = 32
 nchnls = 2
+0dbfs = 1
 
 instr 1
 
@@ -25,11 +26,11 @@ endin
 </CsInstruments>
 <CsScore>
 
-i 1 0 1 1
-i 1 + 1 100
-i 1 + 1 1000
-i 1 + 1 10000
-i 1 + 1 30000
+i 1 0 1 0.0000305
+i 1 + 1 0.0031
+i 1 + 1 0.03
+i 1 + 1 0.3
+i 1 + 1 0.9
 e
 
 </CsScore>

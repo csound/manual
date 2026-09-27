@@ -9,9 +9,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 44100
 ksmps = 1
 nchnls = 1
+0dbfs = 1
 
 ; Instrument #1.
 instr 1

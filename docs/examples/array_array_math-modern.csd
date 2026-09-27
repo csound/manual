@@ -3,6 +3,7 @@
 -n -m128
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 
 instr 1
   ;create array and fill with numbers 1..10 resp .1..1

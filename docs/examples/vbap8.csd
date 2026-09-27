@@ -9,13 +9,13 @@
 <CsInstruments>
 
   sr       =          44100
-  kr       =           441
   ksmps    =           100
   nchnls   =             4
+  0dbfs    =             1
   vbaplsinit          2, 8,  0, 45, 90, 135, 200, 245, 290, 315 
 
           instr  1
-  asig    oscil       20000, 440, 1
+  asig    oscil       0.6, 440, 1
   a1,a2,a3,a4,a5,a6,a7,a8   vbap8   asig, p4, 0, 20 ;p4 = azimuth
         
   ;render twice with alternate outq  statements

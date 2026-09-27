@@ -8,6 +8,7 @@
 sr=44100
 ksmps=10
 nchnls=2
+0dbfs=1
 
 gilen init 32
 

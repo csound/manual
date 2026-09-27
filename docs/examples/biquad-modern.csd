@@ -11,9 +11,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr =  4410
 ksmps = 10
 nchnls = 2
+0dbfs = 1
 
 ; Instrument #1.
 instr 1
@@ -55,8 +55,8 @@ endin
 f 1 0 16384 10 1
 
 ;    Sta  Dur  Amp    Pitch Fco   Rez
-i 1  0.0  1.0  20000  6.00  1000  .8
-i 1  1.0  1.0  20000  6.03  2000  .95
+i 1  0.0  1.0  0.6  6.00  1000  .8
+i 1  1.0  1.0  0.6  6.03  2000  .95
 e
 
 </CsScore>

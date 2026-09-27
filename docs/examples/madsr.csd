@@ -11,9 +11,9 @@
 /* Written by Iain McCurdy */
 ; Initialize the global variables.
 sr = 44100
-kr = 441
 ksmps = 100
 nchnls = 1
+0dbfs = 1
 
 ; Instrument #1.
 instr 1
@@ -27,7 +27,7 @@ instr 1
   irelease = 0.5
   aenv madsr iattack, idecay, isustain, irelease
 
-  a1 oscili 10000, 440, 1
+  a1 oscili 0.3, 440, 1
   out a1*aenv
 endin
 

@@ -11,6 +11,8 @@
 sr = 44100
 ksmps = 32
 nchnls = 2
+0dbfs = 1
+
 ;0dbfs  = 1
 
 instr 1
@@ -37,7 +39,7 @@ instr 2 ; play a tone until the button is released
 kstop   tab  p4, 1 ; when this button is released, we fade out
 ihz     init cpsoct(((p5+32767)/9362)+5) ; ~ 30 hz to 4khz
 print ihz
-ito     init ampdb(((p6+32767)/2184)+60) ; ~ 60 - 90 db
+ito     init ampdbfs(-30 + (p6 + 32767) / 2184)  ;; Joystick position maps to about -30 through 0 dBFS.
 kenv    init 0
 kdelta  init ito/(kr*10)
 if kstop == 1 kgoto output

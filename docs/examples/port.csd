@@ -20,7 +20,7 @@ kf,ka ptrack aout, 512  ; pitch track with winsize=1024
 kcps  port kf, 0.01     ; smooth freq
 kamp  port ka, 0.01     ; smooth amp
 ; drive an oscillator
-asig  poscil ampdb(kamp)*0dbfs, kcps, 1
+asig  poscil ampdbfs(kamp), kcps, 1
       outs  asig, asig
 
 endin

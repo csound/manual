@@ -9,9 +9,9 @@
 <CsInstruments>
 
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 instr 2              ; demonstration of phase shifting abilities of phaser2. 
   ; Input mixed with output of phaser2 to generate notches. 
@@ -42,12 +42,12 @@ endin
 f2 0  8192 9 1 1 .25     
 
 ; phaser2, imode=1
-i2 00 10 7000 8 .2 .9 1 .33
-i2 11 10 7000 8 .2 .9 1 2 
+i2 00 10 0.21 8 .2 .9 1 .33
+i2 11 10 0.21 8 .2 .9 1 2
 
 ; phaser2, imode=2
-i2 22 10 7000 8 .2 .9 2 .33
-i2 33 10 7000 8 .2 .9 2 2
+i2 22 10 0.21 8 .2 .9 2 .33
+i2 33 10 0.21 8 .2 .9 2 2
 e
 
 

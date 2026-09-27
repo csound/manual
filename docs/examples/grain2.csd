@@ -9,9 +9,9 @@
 <CsInstruments>
 
 sr      =  48000
-kr      =  750
 ksmps   =  64
 nchnls  =  2
+0dbfs   =  1
 
 /* square wave */
 i_      ftgen 1, 0, 4096, 7, 1, 2048, 1, 0, -1, 2048, -1
@@ -67,7 +67,7 @@ aenv3  linseg 1, p3 - 0.2, 1, 0.07, 0, 1, 0
 
 a1     =  aenv1 * aenv3 * (a1 + a2 * 0.7 * aenv2)
 
-ga01   =  ga01 + a1 * 10000 * iamp
+ga01   =  ga01 + a1 * 0.3 * iamp
 
        endin
 

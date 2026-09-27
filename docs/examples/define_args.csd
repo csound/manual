@@ -10,9 +10,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Define the oscillator macro.
 #define OSCMACRO(VOLUME'FREQ'TABLE) #oscil $VOLUME, $FREQ, $TABLE#
@@ -20,8 +20,8 @@ nchnls = 1
 ; Instrument #1
 instr 1
   ; Use the oscillator macro.
-  ; This will be expanded to "a1 oscil 5000, 440, 1".
-  a1 $OSCMACRO(5000'440'1)
+  ; This will be expanded to "a1 oscil 0.15, 440, 1".
+  a1 $OSCMACRO(0.15'440'1)
 
   ; Send it to the output.
   out a1

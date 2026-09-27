@@ -31,13 +31,15 @@ ampdb(x)  (no rate restriction)
     --8<-- "examples/ampdb.csd"
     ```
 
-Its output should include lines like:
+The examples print the result of `ampdb` and use `ampdbfs` for the oscillator amplitude. With `0dbfs = 1`, both functions return the same amplitude. The score supplies levels in dBFS.
+
+The printed amplitudes are approximately:
 
 ```
-instr 1:  iamp = 316.228
-instr 1:  iamp = 31622.763
-instr 1:  iamp = 2511.886
-instr 1:  iamp = 9999.996
+0.01
+1
+0.0794
+0.316
 ```
 
 ## See also

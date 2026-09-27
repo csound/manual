@@ -10,14 +10,14 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 gkfreq init 0.1
 
 instr 1
-  kamp = 10000
+  kamp = 0.3
 
   a1 mpulse kamp, gkfreq
   out a1

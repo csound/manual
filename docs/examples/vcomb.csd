@@ -10,6 +10,7 @@
   sr        =  44100
   ksmps     =  10
   nchnls    =  2
+  0dbfs     =  1
 
         ; new, and important. Make sure that midi note events are only
         ; received by instruments that actually need them.
@@ -42,7 +43,7 @@
 instr   1  
  ; Generate a sine wave at the frequency of the MIDI note that triggered the intrument
   ifqc      cpsmidi
-  iamp      ampmidi   10000
+  iamp      ampmidi   0.3
   aenv      linenr    iamp, .01, .1, .01          ;envelope
   a1        oscil     aenv, ifqc, 1
 ; All sound goes to the global variable gaosc

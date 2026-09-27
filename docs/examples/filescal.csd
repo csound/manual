@@ -2,6 +2,7 @@
 <CsOptions>
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 
 instr 1
 p3 = filelen("fox.wav")/p4

@@ -10,9 +10,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Generate a sinewave table.
 giwave ftgen 1, 0, 1024, 10, 1 
@@ -44,7 +44,7 @@ loop:
   ; the counter value (icnt).
   if (kindex < icnt) kgoto loop 
 
-  out asum*3000
+  out asum*0.092
 endin
 
 

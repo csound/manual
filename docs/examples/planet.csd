@@ -10,14 +10,14 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 44100
 ksmps = 1
 nchnls = 2
+0dbfs = 1
 
 ; Instrument #1 - a planet oribiting in 3D space.
 instr 1
   ; Create a basic tone.
-  kamp init 5000
+  kamp init 0.15
   kcps init 440
   ifn = 1
   asnd oscil kamp, kcps, ifn

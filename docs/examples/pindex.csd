@@ -7,6 +7,7 @@
 ;-o pindex.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 ;Example by Anthony Kozar Dec 2006
 
 instr 1

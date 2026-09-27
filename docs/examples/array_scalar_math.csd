@@ -3,6 +3,7 @@
 -n -m128
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 
 
   instr 1

@@ -2,12 +2,12 @@
 
 <CsInstruments>
 sr = 44100
-kr = 441
 ksmps = 100
 nchnls = 1
+0dbfs = 1
 
 instr 1
-  a1  oscil  30000, 10, 1
+  a1  oscil  0.9, 10, 1
   a2  median a1, 5, 8
   out a2
 endin

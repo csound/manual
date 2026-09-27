@@ -70,8 +70,8 @@ The example shows the software bus being used to write pitch information to a co
 
 ``` csound-orc linenums="1"
 sr = 44100
-kr = 100
 ksmps = 1
+0dbfs = 1
 
 instr 1
     a1    in

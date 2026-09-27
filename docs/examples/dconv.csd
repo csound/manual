@@ -9,9 +9,9 @@
 <CsInstruments>
 
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
  
 #define RANDI(A) #kout  randi   1, kfq, $A*.001+iseed, 1
         tablew  kout, $A, itable#
@@ -39,7 +39,7 @@ $RANDI(13)
 $RANDI(14)
 $RANDI(15)
 
-asig    rand    10000, .5, 1
+asig    rand    0.3, .5, 1
 asig    butlp   asig, 5000
 asig    dconv   asig, isize, itable
  

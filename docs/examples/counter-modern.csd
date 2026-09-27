@@ -4,6 +4,7 @@
 </CsOptions>
 
 <CsInstruments>
+0dbfs = 1
 
 cnt@global:i = cntcreate(1)     ; a toggle
 cntNote@global:i = cntcreate(1) ; ignore note-off message to turn MIDI notes into toggles
@@ -34,11 +35,11 @@ instr 1
 endin
 
 instr 2
-  out(poscil(10000, 440))
+  out(poscil(0.3, 440))
 endin
 
 instr 3
-  out(poscil(5000, 880))
+  out(poscil(0.15, 880))
 endin
 
 </CsInstruments>

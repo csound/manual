@@ -9,6 +9,7 @@
 sr = 44100
 ksmps = 32
 nchnls = 2
+0dbfs = 1
 
 instr 1 ;displays notes, midi channel and control number information
 

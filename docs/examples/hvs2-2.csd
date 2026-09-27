@@ -11,6 +11,7 @@
 sr=48000
 ksmps=100
 nchnls=2
+0dbfs=1
 
 ; Example by James Hearon 2008
 ; Edited by Andres Cabrera
@@ -71,7 +72,7 @@ kspeed  init    0
 
 kspeed = int((tb0(k2)) + 1)*.10
 
-kenv  oscil   25000, kspeed*16, 10 
+kenv  oscil   0.76, kspeed*16, 10
 
 k1    phasor kspeed ;slow phasor: 200 sec.
 kpch  tableikt k1 * 16, int((tb0(k1)) +1)*100 ;scale phasor * length

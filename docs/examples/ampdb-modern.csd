@@ -11,21 +11,22 @@
 sr = 44100
 ksmps = 32
 nchnls = 2
+0dbfs = 1
 
 instr 1
   idb = p4
-  amp:i = ampdb(idb)
+  amp:i = ampdbfs(idb)
   sig:a = poscil(amp, 220)
-  print(amp)
+  print(ampdb(idb))
   outs(sig, sig)
 endin
 
 </CsInstruments>
 <CsScore>
-i 1 0 1 50
-i 1 + 1 90
-i 1 + 1 68
-i 1 + 1 80
+i 1 0 1 -40
+i 1 + 1 0
+i 1 + 1 -22
+i 1 + 1 -10
 
 e
 

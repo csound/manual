@@ -10,9 +10,9 @@
 
 /* Written by Istvan Varga */
 sr     =  48000
-kr     =  750
 ksmps  =  64
 nchnls =  2
+0dbfs  =  1
 
 ga01    init 0
 ga02    init 0
@@ -82,7 +82,7 @@ adel    =  adel + 1.0 / (exp(log(2.0) * a_) * 8000)
 a02     vdelayx a0, adel, 0.01, 16
 a0      =  a01 + a02
 
-ga01    =  ga01 + a0 * aenv * 2500
+ga01    =  ga01 + a0 * aenv * 0.075
 
 /* oscillator / right */
 
@@ -104,7 +104,7 @@ adel    =  adel + 1.0 / (exp(log(2.0) * a_) * 8000)
 a02     vdelayx a0, adel, 0.01, 16
 a0      =  a01 + a02
 
-ga02    =  ga02 + a0 * aenv * 2500
+ga02    =  ga02 + a0 * aenv * 0.075
 
 
         endin

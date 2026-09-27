@@ -8,6 +8,7 @@
 </CsOptions>
 <CsInstruments>
 nchnls = 2
+0dbfs = 1
 
 gaReverbSend init 0
 
@@ -36,7 +37,7 @@ f1 0 4096 10 1
   { 8 PARTIAL
       ;   start time     duration            amplitude          frequency
       
-      i1  [0.5 * $CNT.]  [1 + ($CNT * 0.2)]  [500 + (~ * 200)]  [800 + (200 * $CNT.) + ($PARTIAL. * 20)]
+      i1  [0.5 * $CNT.]  [1 + ($CNT * 0.2)]  [0.015 + (~ * 0.0061)]  [800 + (200 * $CNT.) + ($PARTIAL. * 20)]
   }
 }
 

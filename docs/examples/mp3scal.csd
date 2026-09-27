@@ -5,6 +5,7 @@
 nchnls=2
 ksmps=64
 sr=44100
+0dbfs=1
 instr 1
 SFile = p4
 p3 = mp3len(SFile)/p5

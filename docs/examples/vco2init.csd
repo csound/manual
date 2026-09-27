@@ -11,6 +11,7 @@
 sr=44100
 ksmps=1
 nchnls=2
+0dbfs=1
 
 ; create waveform with discontinuities, so it has a lot of high freq content
 gitable ftgen 0, 0, 2^16+1, 7, -1, 2^14, 1, 0, -1, 2^14, 1, 0, -1, 2^15, 1
@@ -22,12 +23,12 @@ instr 1
 
 kfreq  expon 14000, p3, 500
 kfn    vco2ft kfreq, gitable_bl
-asig   oscilikt 5000, kfreq, kfn
+asig   oscilikt 0.15, kfreq, kfn
 printk 0.1, kfn
 
 ; remove semicolon on next line to hear original waveform, demonstrating
 ; the aliasing
-;asig   oscili 5000, kfreq, gitable
+;asig   oscili 0.15, kfreq, gitable
        outs asig, asig
 
 endin

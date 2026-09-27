@@ -10,9 +10,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Instrument #1: osciliktp example
 instr 1
@@ -22,7 +22,7 @@ instr 1
   a1y osciliktp 220.5, 1, -kphs
   a1 =  a1x - a1y
 
-  out a1 * 14000
+  out a1 * 0.43
 endin
 
 

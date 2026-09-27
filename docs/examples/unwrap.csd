@@ -3,6 +3,7 @@
 </CsOptions>
 <CsInstruments>
 ksmps = 64
+0dbfs = 1
 
 ifn1 ftgen 1, 0, 512, 7, 0, 512, 0
 ifn2 ftgen 2, 0, 512, 7, 0, 512, 0

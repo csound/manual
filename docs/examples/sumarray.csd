@@ -4,6 +4,7 @@
 -n 
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 ;example by joachim heintz
 
            seed       0

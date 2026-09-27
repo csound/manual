@@ -11,6 +11,7 @@
 sr = 44100
 ksmps = 10
 nchnls = 2
+0dbfs = 1
 
 ; sine wave for oscillators
 gisin       ftgen     1, 0, 4096, 10, 1
@@ -19,7 +20,7 @@ instr 1
 
   inum notnum
   icps cpsmidi
-  iamp ampmidi 4000
+  iamp ampmidi 0.12
  ;
  ;------- complex envelope block ------
   xtratim 1 ;extra-time, i.e. release dur

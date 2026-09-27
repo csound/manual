@@ -7,6 +7,7 @@
 ; -o date.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 instr 1
       ii,ij date
       print ii

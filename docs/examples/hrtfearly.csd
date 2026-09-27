@@ -11,12 +11,13 @@
 <CsInstruments>
 
 nchnls = 2
+0dbfs = 1
 
 gasrc init 0    ;global
 
 instr 1         ;a plucked string, distorted and filtered
 
-  iamp = 15000
+  iamp = 0.46
   icps = cpspch(p4)
 
   a1 pluck iamp, icps, icps, 0, 1

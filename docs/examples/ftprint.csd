@@ -5,6 +5,7 @@
 
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 
 ; This is the example file for ftprint
 

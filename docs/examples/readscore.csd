@@ -2,10 +2,11 @@
 <CsOptions>
 -d -o dac
 </CsOptions> 
-<CsInstruments>   
+<CsInstruments>
+0dbfs = 1
  
 instr 1
-a1 flooper2 1000,p4,2,5,0.1,1 
+a1 flooper2 0.03,p4,2,5,0.1,1
    out a1
 endin
 

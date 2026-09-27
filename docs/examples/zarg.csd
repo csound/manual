@@ -10,9 +10,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 4410
 ksmps = 10
 nchnls = 1
+0dbfs = 1
 
 ; Initialize the ZAK space.
 ; Create 1 a-rate variable and 1 k-rate variable.
@@ -30,8 +30,8 @@ endin
 
 ; Instrument #2 -- generates audio output.
 instr 2
-  ; Read za variable #1, multiply its amplitude by 20,000.
-  a1 zarg 1, 20000
+  ; Read za variable #1, scale its amplitude by 0.6.
+  a1 zarg 1, 0.6
 
   ; Generate audio output.
   out a1

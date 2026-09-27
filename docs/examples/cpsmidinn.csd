@@ -10,6 +10,7 @@
 -n
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 
 instr 1
   ; i-time loop to print conversion table

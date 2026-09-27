@@ -7,6 +7,7 @@
 ; -o abs.wav -W ;;; for file output any platform
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 
 instr 1
     ; Use two syncphasors - one is the "master",
@@ -14,7 +15,7 @@ instr 1
     
     ; master's frequency determines pitch
     imastercps  =           cpspch(p4)
-    imaxamp     =           10000
+    imaxamp     =           0.3
 
     ; the slave's frequency affects the timbre 
     kslavecps   line        imastercps, p3, imastercps * 3

@@ -3,6 +3,7 @@
 -odac
 </CsOptions>
 <CsInstruments>
+0dbfs = 1
 
 instr 1
   a1 = diskin("fox.wav", 1, 0, 1)

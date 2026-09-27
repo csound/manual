@@ -74,9 +74,9 @@ Here are some more advanced examples...
 <CsoundSynthesizer>
 <CsInstruments>
 sr        =         44100
-kr        =         4410
 ksmps     =         10
 nchnls    =         2
+0dbfs     =         1
 
 instr 1
 asource diskin "drumsMlp.wav",1,0,1 ; a source breakbeat sample, wraparound lest it stop!
@@ -113,9 +113,9 @@ e
 <CsoundSynthesizer>
 <CsInstruments>
 sr        =         44100
-kr        =         4410
 ksmps     =         10
 nchnls    =         2
+0dbfs     =         1
 
 instr 1
 ibps    = 2.6937
@@ -143,12 +143,12 @@ e
 <CsoundSynthesizer>
 <CsInstruments>
 sr        =         44100
-kr        =         4410
 ksmps     =         10
 nchnls    =         2
+0dbfs     =         1
 
 instr 1
-asource oscil 20000, 70, 1
+asource oscil 0.6, 70, 1
 ; ain, bps, subdiv, barlength, phrasebars, numrepeats,
 ;stutterspeed, stutterchance, envelopingon
 asig bbcutm asource, 2, 32, 1, 1, 2, 4, 0.6, 1
@@ -168,9 +168,9 @@ e
 <CsoundSynthesizer>
 <CsInstruments>
 sr        =         44100
-kr        =         4410
 ksmps     =         10
 nchnls    =         2
+0dbfs     =         1
 
 instr 1
 asource diskin "drumsMlp.wav", 1, 0, 1

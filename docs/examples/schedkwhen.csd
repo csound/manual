@@ -10,9 +10,9 @@
 
 ; Initialize the global variables.
 sr = 44100
-kr = 44100
 ksmps = 1
 nchnls = 1
+0dbfs = 1
 
 ; Instrument #1 - oscillator with a high note.
 instr 1
@@ -28,14 +28,14 @@ instr 1
   schedkwhen ktrigger, kmintim, kmaxnum, kinsnum, kwhen, kdur
 
   ; Play a high note.
-  a1 oscils 10000, 880, 1
+  a1 oscils 0.3, 880, 1
   out a1
 endin
 
 ; Instrument #2 - oscillator with a low note.
 instr 2
   ; Play a low note.
-  a1 oscils 10000, 220, 1
+  a1 oscils 0.3, 220, 1
   out a1
 endin
 
