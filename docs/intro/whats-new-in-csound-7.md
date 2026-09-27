@@ -177,10 +177,7 @@ Keep a definition available until all notes that use it have finished. Copied re
 
 ## User-Defined Types
 
-The type system in Csound 7 is very sophisticated and it allows new
-types to be added using Csound code (similarly to user-defined
-opcodes). Once created, these types are available to define new
-variables, arguments etc.
+Use `struct` to define a type with named members. The type can then be used for variables, arrays and opcode arguments. See [User-defined types](../orch/data-types.md#user-defined-types) and [init](../opcodes/init.md#user-defined-types-and-structs) for initialization and examples.
 
 ```csound-orc
 struct MyType val0:i, val1:i
@@ -376,4 +373,3 @@ of parameters are possible everywhere.
 
 Multi-line strings (`{{ }}`) can now be used inside other multi-line
 strings (with any number of embedding levels).
-

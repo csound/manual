@@ -41,6 +41,21 @@ endin
 schedule(2,0,3)
 ```
 
+## User-defined types
+
+Csound 7 lets you group named values in a user-defined type (UDT). Define the type with `struct` in the orchestra header. Each member has its own type, which can be a built-in type, an array or another struct.
+
+``` csound-orc
+struct Point x:i, y:i
+
+instr 1
+  point:Point = init(3, 4)
+  print(point.x, point.y)
+endin
+```
+
+Use the type name after a colon when declaring a variable, and a dot to access a member. [init](../opcodes/init.md#user-defined-types-and-structs) can initialize default members, set all members from arguments or copy the values of another struct of the same type. It can also allocate arrays of structs.
+
 ## Constants and Reserved Symbols
 
 Constants are available continuously and do not change in value. Usually they are connected with reserved symbols and written in the orchestra header:
