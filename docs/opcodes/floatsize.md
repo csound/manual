@@ -40,7 +40,7 @@ The example prints the internal number size and whether the check passed. Its to
 
 ## See also
 
-[Miscellaneous opcodes](../miscopcodes.md)
+[Floating-point precision](../misc/csound64.md), [Miscellaneous opcodes](../miscopcodes.md)
 
 ## Credits
 

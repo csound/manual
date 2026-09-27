@@ -187,6 +187,7 @@
 - Appendices
     - [List of Examples](misc/examples.md)
     - [Pitch Conversion](misc/pitch.md)
+    - [Floating-point Precision](misc/csound64.md)
     - [Sound Intensity Values](misc/amp.md)
     - [Formant Values](misc/formants.md)
     - [Modal Frequency Ratios](misc/modalfreq.md)
