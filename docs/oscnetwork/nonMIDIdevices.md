@@ -2,6 +2,10 @@
 
 The following opcodes connect and communicate with non-MIDI hardware devices.
 
+### Bela Trill
+
+* [trill](../opcodes/trill.md) - Read capacitive touch sensors through the Bela Csound host.
+
 ### Arduino
 
 Opcodes designed to work with an Arduino:
