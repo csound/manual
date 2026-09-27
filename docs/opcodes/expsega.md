@@ -5,7 +5,7 @@ category:Signal Generators:Linear and Exponential Generators
 # expsega
 An exponential segment generator operating at a-rate.
 
-This unit is almost identical to [expseg](../opcodes/expseg.md), but more precise when defining segments with very short durations (i.e., in a percussive attack phase) at audio rate.
+This is the audio-only form of [expseg](../opcodes/expseg.md). Both use sample timing at audio rate.
 
 ## Syntax
 === "Modern"
@@ -30,7 +30,9 @@ _idur2_, _idur3_, etc. -- duration in seconds of subsequent segments. A zero or 
 
 ### Performance
 
-This unit generate audio signals whose values can pass through two or more specified points. The sum of _dur_ values may or may not equal the instrument's performance time. A shorter performance will truncate the specified pattern, while a longer one will cause the last defined segment to continue on in the same direction.
+The magnitude changes by a constant factor within each segment. All points must be non-zero and have the same sign; negative points are allowed. Segment lengths round to the nearest whole samples.
+
+If the note ends before the segments finish, the curve stops. If the note continues, the final segment keeps the same exponential rate beyond its stated endpoint.
 
 ## Examples
 
