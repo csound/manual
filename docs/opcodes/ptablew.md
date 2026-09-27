@@ -8,6 +8,20 @@ Change the contents of existing function tables of any length.
 
 This opcode operates on existing function tables, changing their contents. _ptablew_ is for writing at k- or at a-rates, with the table number being specified at init time. Using _ptablew_ with i-rate signal and index values is allowed, but the specified data will always be written to the function table at k-rate, not during the initialization pass. The valid combinations of variable types are shown by the first letter of the variable names.
 
+## Replacement
+
+`ptablew` is deprecated. Use [tablew](tablew.md) with k-rate or a-rate value and index arguments to preserve performance-time writing.
+
+For a call with constant arguments, create k-rate variables before changing the name. `tablew` with only i-rate arguments writes during initialization instead.
+
+``` csound-orc
+kValue init 10
+kIndex init 0
+tablew(kValue, kIndex, ifn)
+```
+
+[ptableiw](ptableiw.md) is the deprecated initialization-only companion. Replace it with the i-rate form of `tablew`.
+
 ## Syntax
 ``` csound-orc
 ptablew asig, andx, ifn [, ixmode] [, ixoff] [, iwgmode]
@@ -71,7 +85,7 @@ At k-rate or a-rate, if a table number of &lt; 1 is given, or the table number p
 
 > :warning: **Warning**
 >
-> Note that _ptablew_ is always a k-rate opcode. This means that even its i-rate version runs at k-rate and will write the value of the i-rate variable. For this reason, the following code will not work as expected:
+> A `ptablew` call with i-rate value and index arguments runs at k-rate. It does not write during initialization. For this reason, the following code will not work as expected:
 >
 >
 > ``` csound-orc

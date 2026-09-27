@@ -22,7 +22,7 @@ Sends data to other listening processes using the OSC protocol.
 
 ### Initialization
 
-_ihost_ -- a string that is the intended host computer domain name.  An empty string is interpreted as the current computer.
+_ihost_ -- a numeric IPv4 address or `localhost`. Use [oscsendlo](oscsendlo.md) for hostname lookup or an empty string for the local computer.
 
 _iport_ -- the number of the port that is used for the communication.
 
@@ -38,11 +38,11 @@ The data is taken from the k-values or a-value that follow the format string.   
 
 ## Examples
 
-The example shows a simple instrument, which when called, sends a group of 3 messages to a computer called "xenakis", on port 7770, to be read by a process that recognises /foo/bar as its address.
+This instrument sends one message with three arguments to UDP port 7770 on the local computer. The receiver must listen for `/foo/bar` with types `sis`.
 
 ``` csound-orc
 instr 1
-  oscsend(1, "xenakis.cs.bath.ac.uk",7770, "/foo/bar", "sis", "FOO", 42, "bar")
+  oscsend(1, "127.0.0.1",7770, "/foo/bar", "sis", "FOO", 42, "bar")
 endin
 ```
 
@@ -59,6 +59,8 @@ endin
     ```
 
 ## See also
+
+[oscsendlo](oscsendlo.md) uses liblo and differs in its Boolean and timetag formats. See its [comparison table](oscsendlo.md#differences-from-oscsend) before changing senders.
 
 [OSC (Open Sound Control)](../oscnetwork/OSC.md)
 

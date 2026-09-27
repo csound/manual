@@ -160,6 +160,9 @@
             - [Network](oscnetwork/Network.md)
             - [Remote Opcodes](oscnetwork/Remote.md)
             - [Non-MIDI Devices](oscnetwork/nonMIDIdevices.md)
+            - [Bela Digital I/O](oscnetwork/bela.md)
+        - Plugin Hosting
+            - [DSSI and LADSPA](plugin/dssi4cs.md)
         - Miscellaneous Opcodes
             - [Overview](miscopcodes.md)
             - [Testing](misc/testing.md)
@@ -184,6 +187,7 @@
 - Appendices
     - [List of Examples](misc/examples.md)
     - [Pitch Conversion](misc/pitch.md)
+    - [Floating-point Precision](misc/csound64.md)
     - [Sound Intensity Values](misc/amp.md)
     - [Formant Values](misc/formants.md)
     - [Modal Frequency Ratios](misc/modalfreq.md)

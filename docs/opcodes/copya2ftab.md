@@ -3,7 +3,7 @@ id:copya2ftab
 category:Array Opcodes
 -->
 # copya2ftab
-The _copya2ftab_ opcode takes a k-array and copies the contents to an f-table.
+Copies a one-dimensional numeric array into a function table.
 
 ## Syntax
 === "Modern"
@@ -25,6 +25,12 @@ _kArray[]_ --  one-dimensional array for source.
 _ktab_ --  f-table for destination.
 
 _koffset_ --  offset into the f-table (defaults to 0).
+
+## Replacing copy2ftab
+
+[copy2ftab](copy2ftab.md) is the deprecated performance-only name. Keep the same argument order when replacing it with `copya2ftab`.
+
+The two-argument k-rate form also copies at initialization. Initialize the source array and create the table before the call. To preserve performance-only copying, use `copya2ftab(kArray, ktab, 0)` with an explicit zero offset. The i-rate form copies once at initialization.
 
 ## Examples
 

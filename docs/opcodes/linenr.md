@@ -36,7 +36,7 @@ _linenr_ is unique within Csound in containing a _note-off sensor_ and _release 
 
 You can use other pre-made envelopes which start a release segment upon receiving a note off message, like [linsegr](../opcodes/linsegr.md) and [expsegr](../opcodes/expsegr.md), or you can construct more complex envelopes using [xtratim](../opcodes/xtratim.md) and [release](../opcodes/release.md). Note that you don't need to use [xtratim](../opcodes/xtratim.md) if you are using _linenr_, since the time is extended automatically.
 
-These &#8220;r&#8221; units can also be modified by MIDI noteoff velocities (see veloffs).
+MIDI Note Off velocity does not control the release segment.
 
 ## Examples
 

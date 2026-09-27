@@ -17,7 +17,7 @@ Includes an external file for processing.
 
 ### Performance
 
-&num;includestr is similar to &num;include except that the file name must be delimited by a double quote character and the file name is subjected to macro expansion.
+`#includestr` expands macros in the file name before opening the file. It requires double quotes around the file name. This happens while Csound reads the orchestra, before instruments run. See the [#includestr example](#using-includestr) below.
 
 It is sometimes convenient to have the orchestra arranged in a number of files, for example with each instrument in a separate file.  This style is supported by the _&num;include_ facility which is part of the macro system.  A line containing the text
 
@@ -61,6 +61,28 @@ f 1 0 16384 10 1
 --8<-- "examples/include.csd"
 ```
 
+### Using #includestr
+
+Download [includestr.csd](../examples/includestr.csd) and [includestr-tone.inc](../examples/includestr-tone.inc) into the same directory, then run `csound includestr.csd` from that directory.
+
+The `INSTRUMENT` macro holds the file name `includestr-tone.inc`. In `#includestr "$INSTRUMENT"`, Csound expands the macro and reads the named file. The included text defines instrument 1, which the score then plays at 440 Hz for two seconds. `#include` would treat `$INSTRUMENT` as a literal file name instead of expanding it.
+
+``` csound-csd title="Expand a macro in an included file name." linenums="1"
+--8<-- "examples/includestr.csd"
+```
+
+The included file contains the instrument definition.
+
+``` csound-orc title="includestr-tone.inc" linenums="1"
+--8<-- "examples/includestr-tone.inc"
+```
+
+The console output includes this line.
+
+``` text
+Instrument 1 loaded from includestr-tone.inc
+```
+
 ## See also
 
 [Orchestra Macros](../orch/macros.md)
@@ -74,7 +96,7 @@ April 1998<br>
 
 &num;includestr new in version 6.12
 
-Example written by Kevin Conder.
+The `#include` example was written by Kevin Conder.
 
 New in Csound version 3.48
 

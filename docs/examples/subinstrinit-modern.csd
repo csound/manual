@@ -1,12 +1,8 @@
 <CsoundSynthesizer>
 <CsOptions>
-; Select audio/midi flags here according to platform
-; Audio out   Audio in
--odac
-; For Non-realtime ouput leave only the line below:
-
+; This example prints messages and makes no sound.
+-n -d
 ; By Stefano Cucchi 2020
-
 </CsOptions>
 <CsInstruments>
 
@@ -17,27 +13,28 @@ nchnls = 2
 0dbfs  = 1
 
 instr 1
-  subinstrinit(p4)
+; Choose a child with p4 and pass p5 as the child's p4.
+  subinstrinit(p4, p5)
 endin
 
 instr 2
-  prints("instr. 2 playing\n")
+  prints("Instrument 2 initialized with p4 = %g\n", p4)
 endin
 
 instr 3
-  prints("instr. 3 playing\n")
+  prints("Instrument 3 initialized with p4 = %g\n", p4)
 endin
 
 instr 4
-  prints("instr. 4 playing\n")
+  prints("Instrument 4 initialized with p4 = %g\n", p4)
 endin
 
 </CsInstruments>
 <CsScore>
 
-i1 0 2 2
-i1 2 2 3
-i1 4 2 4
+i1 0 2 2 10
+i1 2 2 3 20
+i1 4 2 4 30
 
 e
 
