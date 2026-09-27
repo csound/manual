@@ -22,13 +22,13 @@ _kres_ -- Output signal.
 
 _ksig_ -- Input signal.
 
-_ktime_ -- Time length of glissando in seconds.
+_ktime_ -- Ramp duration in seconds. Positive durations are rounded up to a whole number of control cycles. Zero or negative durations jump to the new target immediately.
 
-_ktrig_ -- Trigger signal.
+_ktrig_ -- Trigger signal. Any nonzero value starts a new ramp.
 
-_tlineto_ is similar to [lineto](../opcodes/lineto.md) but can be applied to any kind of signal (not only stepped signals) without producing discontinuities.  Last value of each segment is sampled and held from input signal each time _ktrig_ value is set to a nonzero value. Normally _ktrig_ signal consists of a sequence of zeroes (see [trigger opcode](../opcodes/trigger.md)).
+_tlineto_ starts at the first value of _ksig_. On each control cycle where _ktrig_ is nonzero, it starts a new linear ramp from the current output to the current _ksig_, using _ktime_ as the duration. A trigger can interrupt an active ramp. After a ramp ends, the output holds its target until the next trigger.
 
-The effect of glissando is quite different from [port](../opcodes/port.md). Since in these cases, the lines are straight. Also the context of usage is different.
+Use one-cycle trigger pulses with zeroes between them, for example from [trigger](../opcodes/trigger.md). Holding _ktrig_ nonzero restarts the ramp every cycle and prevents a positive-duration ramp from advancing.
 
 ## Examples
 
