@@ -30,9 +30,9 @@ _idur2, idur3_, etc. -- duration in seconds of subsequent segments. A zero or ne
 
 ### Performance
 
-These units generate control or audio signals whose values can pass through 2 or more specified points. The sum of _dur_ values may or may not equal the instrument's performance time: a shorter performance will truncate the specified pattern, while a longer one will cause the last-defined segment to continue on in the same direction.
+The magnitude changes by a constant factor within each segment. All points must be non-zero and have the same sign; negative points are allowed. Segment lengths round to the nearest whole control periods for _kres_ and whole samples for _ares_.
 
-Note that the _expseg_ opcode does not operate correctly at audio rate when segments are shorter than a k-period. Try the [expsega](../opcodes/expsega.md) opcode instead.
+If the note ends before the segments finish, the curve stops. If the note continues, the final segment keeps the same exponential rate beyond its stated endpoint.
 
 ## Examples
 

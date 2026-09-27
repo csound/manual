@@ -24,16 +24,15 @@ _ia_ -- starting value. Zero is illegal for exponentials.
 
 _ib, ic_, etc. -- value at _tim1_ seconds, etc. For exponentials, must be non-zero and must agree in sign with _ia_.
 
-_itim1_ -- time in seconds of end of first segment.
+_itim1_ -- time in seconds at the end of the first segment. A zero or negative value skips initialization, preserving the current curve during reinitialization.
 
-_itim2, itim3_, etc. -- time in seconds of
-subsequent ends of segments.
+_itim2, itim3_, etc. -- times in seconds at the ends of later segments. Times must not decrease.
 
 ### Performance
 
-These units generate control or audio signals whose values can pass through 2 or more specified points. The last _tim_ value may or may not equal the instrument's performance time: a shorter performance will truncate the specified pattern, while a longer one will cause the last-defined segment to continue on in the same direction.
+Each time gives an endpoint's position in seconds from the start of the envelope. Each time rounds to the nearest control period for _kres_ and the nearest sample for _ares_. The magnitude changes by a constant factor between points. All points must be non-zero and have the same sign; negative points are allowed.
 
-Note that the _expsegb_ opcode does not operate correctly at audio rate when segments are shorter than a k-period. Try the [expsegba](../opcodes/expsegba.md) opcode instead.
+If several points round to the same update, the output jumps to the last value at that update. If the note continues past the final time, the final segment keeps the same exponential rate. When the final two points share an update, the output holds the final value.
 
 ## Examples
 
