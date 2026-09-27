@@ -8,21 +8,25 @@ Second-order allpass filters arranged in a series.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    ares = phaser2(asig, kfreq, kq, kord, kmode, ksep, kfeedback)
+    ares = phaser2(asig, kfreq, kq, kord, kmode, ksep, kfeedback [, iskip])
     ```
 
 === "Classic"
     ``` csound-orc
-    ares phaser2 asig, kfreq, kq, kord, kmode, ksep, kfeedback
+    ares phaser2 asig, kfreq, kq, kord, kmode, ksep, kfeedback [, iskip]
     ```
+
+### Initialization
+
+_iskip_ (optional, default=0) -- zero clears the filter history and feedback. A nonzero value keeps them on reinitialization.
 
 ### Performance
 
-_kfreq_ -- frequency (in Hz) of the filter(s). This is the center frequency of the notch of the first allpass filter in the series. This frequency is used as the base frequency from which the frequencies of the other notches are derived.
+_kfreq_ -- frequency in Hz of the first allpass stage. The other stage frequencies depend on _kmode_ and _ksep_.
 
 _kq_ -- Q of each notch. Higher Q values result in narrow notches. A Q between 0.5 and 1 results in the strongest "phasing" effect, but higher Q values can be used for special effects.
 
-_kord_ -- the number of allpass stages in series. These are second-order filters, and iord can range from 1 to 2499. With higher orders, the computation time increases.
+_kord_ -- number of second-order allpass stages in series. Use a positive integer. More stages require more computation.
 
 _kfeedback_ -- amount of the output which is fed back into the input of the allpass chain. With larger amounts of feedback, more prominent notches appear in the spectrum of the output. _kfeedback_ must be between -1 and +1. for stability.
 
@@ -32,26 +36,26 @@ _kmode_ -- used in calculation of notch frequencies.
 >
 > Although _kord_ and _kmode_ are listed as k-rate, they are in fact accessed only at init-time. So if you are using k-rate arguments, they must be assigned with [init](../opcodes/init.md).
 
-_ksep_ -- scaling factor used, in conjunction with _imode_, to determine the frequencies of the additional notches in the output spectrum.
+_ksep_ -- spacing factor used with _kmode_ to set the frequencies of the later stages.
 
-_phaser2_ implements _iord_ number of second-order allpass sections, connected in series. The use of second-order allpass sections allows for the precise placement of the frequency, width, and depth of notches in the frequency spectrum. _iord_ is used to directly determine the number of notches in the spectrum; e.g. for _iord_ = 6, there will be 6 notches in the output spectrum.
+_phaser2_ connects _kord_ second-order allpass stages in series. With fixed controls and zero feedback, the chain changes phase while keeping a flat magnitude response. Mix the output with the input to create notches in the spectrum, as shown below.
 
-There are two possible modes for determining the notch frequencies. When _imode_ = 1, the notch frequencies are determined by the following function:
+There are two modes for setting the stage frequencies. When _kmode_ = 1, stage _N_ (counting from 1) uses:
 
 ```
-frequency of notch N = kbf + (ksep * kbf * N-1)
+frequency of stage N = kfreq * (1 + ksep * (N - 1))
 ```
 
-For example, with _imode_ = 1 and _ksep_ = 1, the notches will be in harmonic relationship with the notch frequency determined by _kfreq_ (i.e. if there are 8 notches, with the first at 100 Hz, the next notches will be at 200, 300, 400, 500, 600, 700, and 800 Hz). This is useful for generating a "comb filtering" effect, with the number of notches determined by _iord_. Different values of _ksep_ allow for inharmonic notch frequencies and other special effects. _ksep_ can be swept to create an expansion or contraction of the notch frequencies. A useful visual analogy for the effect of sweeping _ksep_ would be the bellows of an accordion as it is being played - the notches will be seperated, then compressed together, as _ksep_ changes.
+For example, with _kmode_ = 1, _ksep_ = 1, and _kfreq_ = 100, the first four stages use 100, 200, 300, and 400 Hz. Vary _ksep_ to change their spacing.
 
-When _imode_ = 2, the subsequent notches are powers of the input parameter _ksep_ times the initial notch frequency specified by _kfreq_. This can be used to set the notch frequencies to octaves and other musical intervals. For example, the following lines will generate 8 notches in the output spectrum, with the notches spaced at octaves of _kfreq_:
+When _kmode_ = 2, stage _N_ uses `kfreq * ksep^(N - 1)`. For example, the following lines space eight stages an octave apart and mix the result with the input:
 
 ``` csound-orc
 aphs    phaser2    ain, kfreq, 0.5, 8, 2, 2, 0
 aout    =          ain + aphs
 ```
 
-When _imode_ = 2, the value of _ksep_ must be greater than 0. _ksep_ can be swept to create a compression and expansion of notch frequencies (with more dramatic effects than when _imode_ = 1).
+Use a positive _ksep_ in mode 2. Values above 1 raise the frequency of each later stage; values between 0 and 1 lower it.
 
 ## Examples
 
