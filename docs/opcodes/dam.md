@@ -5,7 +5,7 @@ category:Signal Modifiers:Amplitude Modifiers
 # dam
 A dynamic compressor/expander.
 
-This opcode dynamically modifies a gain value applied to the input sound _ain_ by comparing its power level to a given threshold level. The signal will be compressed/expanded with different factors regarding that it is over or under the threshold.
+Applies a changing gain to the input signal. Separate compression factors control the target gain above and below a threshold.
 
 ## Syntax
 === "Modern"
@@ -20,13 +20,13 @@ This opcode dynamically modifies a gain value applied to the input sound _ain_ b
 
 ### Initialization
 
-_icomp1_ -- compression ratio for upper zone.
+_icomp1_ -- compression ratio above the threshold.
 
-_icomp2_ -- compression ratio for lower zone
+_icomp2_ -- compression ratio below the threshold.
 
-_irtime_ -- gain rise time in seconds. Time over which the gain factor is allowed to raise of one unit.
+_irtime_ -- time in seconds to increase gain by one unit. For example, a value of 2 allows gain to rise from 1 to 2 in two seconds, if the target stays at 2 or higher. Zero or negative values apply increases immediately.
 
-_iftime_ -- gain fall time in seconds. Time over which the gain factor is allowed to decrease of one unit.
+_iftime_ -- time in seconds to decrease gain by one unit. Zero or negative values apply decreases immediately.
 
 ### Performance
 
@@ -34,7 +34,11 @@ _asig_ -- input signal to be modified
 
 _kthreshold_ -- level of input signal which acts as the threshold. Can be changed at k-time (e.g. for ducking)
 
-Note on the compression factors: A compression ratio of one leaves the sound unchanged. Setting the ratio to a value smaller than one will compress the signal (reduce its volume) while setting the ratio to a value greater than one will expand the signal (augment its volume).
+Gain starts at 1 and moves toward its target without passing it. The rise and fall times set the rate of change, so a smaller gain change takes less time.
+
+The level detector averages the absolute input over 1,000 samples and divides it by the square root of 2. Its response time therefore depends on the sample rate.
+
+A ratio of 1 sets a target gain of 1. Ratios below 1 reduce the level; ratios above 1 raise it. Setting both ratios to 1 leaves the input unchanged.
 
 ## Examples
 
