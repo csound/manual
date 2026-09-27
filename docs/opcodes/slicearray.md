@@ -24,6 +24,12 @@ _iend_ -- index of the last element of the answer.
 
 _istride_ -- increment for source elements (optional), defaults to 1.
 
+## Replacing tabslice
+
+[tabslice](tabslice.md) is the deprecated performance-only name for k-rate arrays. Replace `kResult = tabslice(kSource, istart, iend, istride)` with `kResult = slicearray(kSource, istart, iend, istride)`.
+
+The indices and stride keep their meaning. The end index is inclusive. `slicearray` also copies at initialization, so the source must be ready then. Account for that earlier result if other initialization code reads it.
+
 ## Examples
 
 Here is an example of the slicearray opcode. It uses the file [slicearray.csd](../examples/slicearray.csd).

@@ -23,6 +23,7 @@ The following opcodes are deprecated. They are still distributed with Csound for
 [ptablew](opcodes/ptablew.md) - Change the contents of existing function tables of any length.<br>
 [push](opcodes/push.md) - Pushes a value into the global stack.<br>
 [push_f](opcodes/push_f.md) - Pushes an f-sig frame into the global stack.<br>
+[scalet](opcodes/scalet.md) - Rescales part of a k-rate array in place.<br>
 [sclag](opcodes/sc_lag.md) - Exponential lag with 60dB lag time.<br>
 [sclagud](opcodes/sc_lagud.md) - Exponential Lag (Deprecated).<br>
 [scphasor](opcodes/sc_phasor.md) - A resettable linear ramp between two levels (renamed as trigphasor).<br>
@@ -40,7 +41,13 @@ The following opcodes are deprecated. They are still distributed with Csound for
 [specsum](opcodes/specsum.md) - Sums the magnitudes across all channels of the spectrum.<br>
 [spectrum](opcodes/spectrum.md) - Generate a constant-Q, exponentially-spaced DFT across all octaves of a multiply-downsampled control or audio input signal.<br>
 [stack](opcodes/stack.md) - Initializes and sets the size of the global stack.<br>
+[sumtab](opcodes/sumtab.md) - Returns the sum of a k-rate array.<br>
+[tabgen](opcodes/tabgen.md) - Creates a k-rate array containing an arithmetic sequence at initialization.<br>
 [tableiw](opcodes/tableiw.md) - Deprecated as of version 3.<br>
+[tabmap](opcodes/tabmap.md) - Applies a function to each element of a k-rate array.<br>
+[tabmap_i](opcodes/tabmap_i.md) - Maps a function over a k-rate array at initialization only.<br>
+[tabmapi](opcodes/tabmapi.md) - Provides the older alias for initialization-only array mapping.<br>
+[tabslice](opcodes/tabslice.md) - Copies selected elements from a k-rate array during performance.<br>
 [tb](opcodes/tb.md) - Table Read Access inside expressions.<br>
 [xscanmap](opcodes/xscanmap.md) - Allows the position and velocity of a node in a scanned process to be read.<br>
 [xscans](opcodes/xscans.md) - Fast scanned synthesis waveform and the wavetable generator.<br>

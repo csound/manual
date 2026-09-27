@@ -32,6 +32,14 @@ _karray_ --  array for answers.
 
 _kinarray_ --  array for arguments to the function.
 
+## Replacing tabmap and tabmap_i
+
+[tabmap](tabmap.md) maps a k-rate array during initialization and on each control cycle. Change `kResult = tabmap(kSource, "abs")` to `kResult = maparray(kSource, "abs")`.
+
+[tabmap_i](tabmap_i.md) and its alias [tabmapi](tabmapi.md) run only at initialization. Replace either name with `maparrayi` to keep that timing. `maparray_i` is the older spelling of `maparrayi`.
+
+The source must be initialized and one-dimensional. Use a supported one-input scalar function such as `abs`. Initialization-only mapping requires its i-rate form. Repeated k-rate mapping needs both i-rate and k-rate forms. This is not an interface for arbitrary stateful opcodes.
+
 ## Examples
 
 === "Modern"
