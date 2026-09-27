@@ -3,7 +3,7 @@ id:phasorbnk
 category:Signal Generators:Phasors
 -->
 # phasorbnk
-Produce an arbitrary number of normalized moving phase values, accessable by an index.
+Produce an arbitrary number of normalized moving phase values, accessible by an index.
 
 ## Syntax
 === "Modern"
@@ -28,11 +28,13 @@ When a negative initial phase skips initialization during a bank resize, retaine
 
 ### Performance
 
-_kndx_ -- index value to access individual phasors
+_kndx_ -- index of the phasor to use, starting at zero.
 
 For each independent phasor, an internal phase is successively accumulated in accordance with the _kcps_ or _xcps_ frequency to produce a moving phase value, normalized to lie in the range 0 &lt;= phs &lt; 1. Each individual phasor is accessed by index _kndx_.
 
 This phasor bank can be used inside a k-rate loop to generate multiple independent voices, or together with the [adsynt](../opcodes/adsynt.md) opcode to change parameters in the tables used by _adsynt_.
+
+Each k-rate call outputs the selected phase, then advances it by _kcps_ / _kr_. Calling the same index again in a loop advances that phase again. At audio rate, each sample outputs the selected phase, then advances it by _xcps_ / _sr_. Other phasors keep their phase until selected.
 
 ## Examples
 
