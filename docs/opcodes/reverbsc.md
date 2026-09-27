@@ -7,6 +7,8 @@ category:Signal Modifiers:Reverberation
 
 It has a feedback matrix based upon physical modeling scattering junction of 8 lossless waveguides of equal characteristic impedance. Based on Csound orchestra version by Sean Costello.
 
+[reverbsc2](reverbsc2.md) uses the same reverb network with simpler delay reads. `reverbsc` uses cubic interpolation at every modulation depth. `reverbsc2` uses linear interpolation when modulation is enabled and no interpolation when it is zero. This changes the tone and decay of the tail.
+
 ## Syntax
 === "Modern"
     ``` csound-orc
@@ -22,7 +24,7 @@ It has a feedback matrix based upon physical modeling scattering junction of 8 l
 
 _israte_ (optional, defaults to the orchestra sample rate) -- assume a sample rate of israte. This is normally set to sr, but a different setting can be useful for special effects.
 
-_ipitchm_ (optional, defaults to 1) -- depth of random variation added to delay times, in the range 0 to 10. The default is 1, but this may be too high and may need to be reduced for held pitches such as piano tones.
+_ipitchm_ (optional, defaults to 1) -- depth of random variation added to delay times, in the range 0 to 20. The default is 1, but this may be too high and may need to be reduced for held pitches such as piano tones.
 
 _iskip_ (optional, defaults to zero) -- if non-zero, initialization of the opcode is skipped, whenever possible.
 
