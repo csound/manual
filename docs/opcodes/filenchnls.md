@@ -43,7 +43,7 @@ number of channels = 2
 
 ## See also
 
-[Sound File Queries](../sigio/queries.md)
+[mp3nchnls](mp3nchnls.md), [Sound File Queries](../sigio/queries.md)
 
 ## Credits
 
