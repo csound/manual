@@ -6,6 +6,8 @@ The following opcodes are deprecated. They are still distributed with Csound for
 
 [bformdec](opcodes/bformdec.md) - Decodes an ambisonic B format signal into loudspeaker specific signals.<br>
 [bformenc](opcodes/bformenc.md) - Codes a signal into the ambisonic B format.<br>
+[copy2ftab](opcodes/copy2ftab.md) - Copies values from an array to a function table at performance time.<br>
+[copy2ttab](opcodes/copy2ttab.md) - Copies values from a function table to an array at performance time.<br>
 [fin](opcodes/fin.md) - Read signals from a file at a-rate.<br>
 [hrtfer](opcodes/hrtfer.md) - Creates 3D audio for two speakers.<br>
 [ktableseg](opcodes/ktableseg.md) - Deprecated.<br>
