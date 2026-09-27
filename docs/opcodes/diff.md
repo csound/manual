@@ -20,11 +20,15 @@ Modify a signal by differentiation.
 
 ### Initialization
 
-_iskip_ (optional) -- initial disposition of internal save space (see [reson](../opcodes/reson.md)). The default value is 0.
+_iskip_ (optional, default=0) -- zero clears the saved input at initialization. A non-zero value keeps the previous input.
 
 ### Performance
 
-[integ](../opcodes/integ.md) and _diff_ perform integration and differentiation on an input control signal or audio signal. Each is the converse of the other, and applying both will reconstruct the original signal. Since these units are special cases of low-pass and high-pass filters, they produce a scaled (and phase shifted) output that is frequency-dependent. Thus _diff_ of a sine produces a cosine, with amplitude 2 * _pi_ * Hz / _sr_ that of the original (for each component partial); _integ_ will inversely affect the magnitudes of its component inputs. With this understanding, these units can provide useful signal modification.
+_diff_ subtracts the previous input from the current input. It does this once per audio sample or control cycle, and saves the current input for the next step. After a reset, the previous input is zero.
+
+For a sine wave at frequency _f_, the amplitude gain is `2 * sin(pi * f / sr)` at audio rate, or `2 * sin(pi * f / kr)` at control rate. The approximation `2 * pi * f / sr` applies only at frequencies much lower than _sr_; use _kr_ for the control-rate form.
+
+[integ](../opcodes/integ.md) and _diff_ reverse each other's operations in exact arithmetic. Rounding can prevent exact reconstruction of the input.
 
 ## Examples
 
