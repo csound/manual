@@ -11,6 +11,9 @@ The following opcodes are deprecated. They are still distributed with Csound for
 [fin](opcodes/fin.md) - Read signals from a file at a-rate.<br>
 [hrtfer](opcodes/hrtfer.md) - Creates 3D audio for two speakers.<br>
 [ktableseg](opcodes/ktableseg.md) - Deprecated.<br>
+[lentab](opcodes/lentab.md) - Returns a dimension's length or the number of dimensions in a k-rate array.<br>
+[maxtab](opcodes/maxtab.md) - Returns the maximum value in a k-rate array and optionally its index.<br>
+[mintab](opcodes/mintab.md) - Returns the minimum value in a k-rate array and optionally its index.<br>
 [pop](opcodes/pop.md) - Pops values from the global stack.<br>
 [pop_f](opcodes/pop_f.md) - Pops an f-sig frame from the global stack.<br>
 [ptable3](opcodes/ptable3.md) - Accesses table values by direct indexing with cubic interpolation.<br>
