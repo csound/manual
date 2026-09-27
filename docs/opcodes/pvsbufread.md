@@ -20,7 +20,9 @@ This opcode reads from a circular buffer of length ilen (secs), taking a handle 
 
 ### Initialisation
 
-_ilo, ihi_ -- set the lowest and highest freqs to be read from the buffer (defaults to 0, Nyquist).
+_ilo, ihi_ -- set the lowest and highest freqs to be read from the buffer. Note that due to how these parameters are used in the original
+code they set freqs that are 1/2 the requested value (e.g 500, 1000 sets a range of 250 - 500), and for backwards compatibility this 
+has been kept unchanged in version 7. If these values are not set they default to 0 and Nyquist (full range).
 
 _iclear_ -- set to 1 to clear output fsig before every write (default 1), 0 tells the opcode not to clear the output fsig. This is relevant when writing to subsets of an fsig frame using _ilo_, _ihi_.
 
