@@ -24,11 +24,13 @@ _ia_ -- starting value. Zero is illegal for exponentials.
 
 _ib_ -- value after _idur_ seconds. For exponentials, must be non-zero and must agree in sign with _ia_.
 
-_idur_ -- duration in seconds of the segment. A zero or negative value will cause all initialization to be skipped.
+_idur_ -- duration in seconds of the segment. A zero or negative value skips initialization, preserving the current value and rate during reinitialization.
 
 ### Performance
 
-These units generate control or audio signals whose values can pass through 2 specified points. The _idur_ value may or may not equal the instrument's performance time: a shorter performance will truncate the specified pattern, while a longer one will cause the defined segment to continue on in the same direction.
+The first output is _ia_. The magnitude changes by a constant factor at each audio sample or control cycle. For example, a curve from 1 to 4 passes through 2 halfway through _idur_. Both endpoints can also be negative; the curve stays on the same side of zero.
+
+If the note lasts longer than _idur_, the curve continues past _ib_ at the same exponential rate. If the note ends sooner, the curve stops at that point.
 
 ## Examples
 
