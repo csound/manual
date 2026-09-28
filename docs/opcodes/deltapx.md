@@ -10,15 +10,17 @@ _deltapx_ is similar to [deltapi](../opcodes/deltapi.md) or [deltap3](../opcodes
 ## Syntax
 === "Modern"
     ``` csound-orc
-    aout = deltapx(adel, iwsize)
+    aout = deltapx(adel, iwsize [, indx])
     ```
 
 === "Classic"
     ``` csound-orc
-    aout deltapx adel, iwsize
+    aout deltapx adel, iwsize [, indx]
     ```
 
 ### Initialization
+
+_indx_ (optional, default=0) -- selects a pending _delayr_ at initialization. Zero selects the newest reader. Pass the optional i-rate output of _delayr_ to select that reader. See [Selecting a delay line](delayr.md#selecting-a-delay-line) for index values and placement before _delayw_.
 
 _iwsize_ -- interpolation window size in samples. Allowed values are integer multiplies of 4 in the range 4 to 1024. _iwsize_ = 4 uses cubic interpolation. Increasing _iwsize_ improves sound quality at the expense of CPU usage, and minimum delay time.
 

@@ -18,6 +18,8 @@ Writes the audio signal to a digital delay line.
 
 ### Performance
 
+When several _delayr_ units precede the writers, each _delayw_ pairs at initialization with the oldest reader that still needs a writer. The optional index returned by _delayr_ selects delay taps and does not change this pairing. See the [indexed delay example](delayr.md#selecting-a-delay-line).
+
 _delayw_ writes _asig_ into the delay area established by the preceding [delayr](../opcodes/delayr.md) unit. Viewed as a pair, these two units permit the formation of modified feedback loops, etc. However, there is a lower bound on the value of _idlt_, which must be at least 1 control period (or 1/_kr_).
 
 ## Examples
