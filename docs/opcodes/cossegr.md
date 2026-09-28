@@ -33,11 +33,11 @@ _irel, iz_ -- duration in seconds and final value of a note releasing segment.
 
 ### Performance
 
-Durations use whole samples at audio rate and whole control periods at control rate. A positive duration that rounds to zero steps also jumps to its end value; later segments still run.
+Before the release, segment durations use whole samples at audio rate and whole control periods at control rate. A positive duration that rounds to zero steps also jumps to its end value; later segments still run.
 
-After the segments before the release finish, _cossegr_ holds their final value until note-off. Note-off starts the release from the current output, even if an earlier segment is still running. The release ends at _iz_.
+After the segments before the release finish, _cossegr_ holds their final value until the note ends or it receives a MIDI note-off. The release starts from the current output, even if an earlier segment is still running, and ends at _iz_. MIDI Note Off velocity does not control the release segment.
 
-_cossegr_ is amongst the Csound &#8220;r&#8221; units that contain a note-off sensor and release time extender. When each senses an event termination or MIDI noteoff, it immediately extends the performance time of the current instrument by _irel _seconds, and sets out to reach the value _iz_ by the end of that period (no matter which segment the unit is in). MIDI Note Off velocity does not control the release segment. For two or more extenders in an instrument, extension is by the greatest period.
+At both output rates, _irel_ rounds to the nearest whole control period. A release that rounds to zero jumps straight to _iz_. The instrument stays active for one extra control period to output _iz_. If several opcodes extend the note, the longest extension applies.
 
 You can use other pre-made envelopes which start a release segment upon receiving a note off message, like [linenr](../opcodes/linenr.md) and [expsegr](../opcodes/expsegr.md), or you can construct more complex envelopes using [xtratim](../opcodes/xtratim.md) and [release](../opcodes/release.md). Note that you do not need to use [xtratim](../opcodes/xtratim.md) if you are using _cossegr_, since the time is extended automatically.
 
