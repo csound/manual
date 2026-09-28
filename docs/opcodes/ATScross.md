@@ -34,7 +34,11 @@ _ipartialoffset_ (optional) – is the first partial used (defaults to 0).
 
 _ipartialincr_ (optional) – sets an increment by which these synthesis opcodes counts up from _ipartialoffset_ for ibins components in the re-synthesis (defaults to 1).
 
+_atscross_ can initialize before its _atsbufread_, but the reader must have filled its buffer before _atscross_ runs during performance. Put the reader first in the same instrument, UDO or subinstrument instance. See [reader scope and order](ATSbufread.md#reader-scope-and-order).
+
 ### Performance
+
+_atscross_ uses the last _atsbufread_ that ran in its instance. A reader in another note, UDO or subinstrument cannot supply the data. A local reader is required even when _kbuflev_ is zero.
 
 _ktimepnt_ – The time pointer in seconds used to index the ATS file. Used for _atscross_ exactly the same as for [pvoc](../opcodes/pvoc.md).
 

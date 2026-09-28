@@ -3,7 +3,7 @@ id:ATSbufread
 category:Spectral Processing:ATS
 -->
 # atsbufread
-Reads data from and ATS data file and stores it in an internal data table of frequency, amplitude pairs.
+Reads an ATS data file and stores frequency and amplitude pairs in an internal table.
 
 > :memo: **Note**
 >
@@ -38,7 +38,17 @@ _ktimepnt_ – The time pointer in seconds used to index the ATS file. Used for 
 
 _kfmod_ – an input for performing pitch transposition or frequency modulation on all of the synthesized partials, if no fm or pitch change is desired then use a 1 for this value.
 
-_atsbufread_ is based on pvbufread by Richard Karpen. [atscross](../opcodes/ATScross.md), [atsinterpread](../opcodes/ATSinterpread.md) and [atspartialtap](../opcodes/ATSpartialtap.md) are all dependent on _atsbufread_ just as [pvcross](../opcodes/pvcross.md) and [pvinterp](../opcodes/pvinterp.md) are on [pvbufread](../opcodes/pvbufread.md). _atsbufread_ reads data from and ATS data file and stores it in an internal data table of frequency, amplitude pairs. The data stored by an _atsbufread_ can only be accessed by other unit generators, and therefore, due to the architecture of Csound, an _atsbufread_  must come before (but not necessarily directly) any dependent unit generator. Besides the fact that _atsbufread_ does not output any data directly, it works almost exactly as [atsadd](../opcodes/ATSadd.md). The ugen uses a time pointer (_ktimepnt_) to index the data in time, _ipartials_, _ipartialoffset_ and _ipartialincr_ to select which partials to store in the table and _kfmod_ to scale partials in frequency.
+_atsbufread_ is based on [pvbufread](pvbufread.md) by Richard Karpen. It stores data for [atscross](ATScross.md), [atsinterpread](ATSinterpread.md) and [atspartialtap](ATSpartialtap.md), without producing an output signal itself. The time pointer _ktimepnt_ selects a position in the file. The arguments _ipartials_, _ipartialoffset_ and _ipartialincr_ select the partials to store, and _kfmod_ scales their frequencies.
+
+### Reader scope and order
+
+In Csound 7, each instrument instance has its own current _atsbufread_. Each UDO and subinstrument instance also has its own reader. A reader inside a UDO or subinstrument does not replace its parent's reader, and a consumer inside it cannot use the parent's reader. Separate notes cannot share a reader through this implicit connection, even when they use the same instrument number.
+
+Put _atsbufread_ and its consumers in the same instance, with the reader before the consumers. If several readers run there, each consumer uses the last reader that ran in that instance. During performance, this follows execution order, so a consumer can use a different reader on a later control cycle.
+
+_atspartialtap_ and _atsinterpread_ need a local reader when they initialize. _atscross_ can initialize before its reader, but the reader must have filled its buffer before _atscross_ runs during performance. Keeping the reader first handles both cases.
+
+Older versions used one current reader across Csound. To update an orchestra that relied on a reader in another note, UDO or subinstrument, add an _atsbufread_ in the instance that consumes the data. These scope rules also apply to the uppercase aliases and to both filename and numeric file arguments.
 
 ## Examples
 

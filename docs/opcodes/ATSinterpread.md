@@ -20,7 +20,13 @@ Allows a user to determine the frequency envelope of any [atsbufread](../opcodes
     kamp ATSinterpread kfreq
     ```
 
+### Initialization
+
+An _atsbufread_ must initialize first in the same instrument, UDO or subinstrument instance. A reader in another instance cannot supply the data. See [reader scope and order](ATSbufread.md#reader-scope-and-order).
+
 ### Performance
+
+_atsinterpread_ uses the last _atsbufread_ that ran in its instance. If another local reader runs before it on a later control cycle, it uses that reader's data.
 
 _kfreq_ - a frequency value (given in Hertz) used by _atsinterpread_ as in index into the table produced by an [atsbufread](../opcodes/ATSbufread.md).
 
