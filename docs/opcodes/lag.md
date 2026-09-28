@@ -7,7 +7,7 @@ Exponential Lag.
 
 Plugin opcode in scugens.
 
-Exponential lag with 60dB lag time. Port of Supercollider's Lag. This is essentially a one pole filter except that instead of supplying the coefficient directly, it is calculated from a 60 dB lag time. This is the time required for the filter to converge to within 0.01% of a value. This is useful for smoothing out control signals.
+`lag` smooths a signal with a 60 dB lag time. For a constant input, this is the time needed to reduce the difference from the target to 0.1% of its starting value. It is a port of SuperCollider's `Lag`.
 
 ## Syntax
 === "Modern"
@@ -24,15 +24,15 @@ Exponential lag with 60dB lag time. Port of Supercollider's Lag. This is essenti
 
 ### Initialization
 
-_initialvalue_ If given, sets the internal state. It defaults to the first value passed
+_initialvalue_ -- optional starting value for the filter. If omitted, the filter starts at the first input value.
 
 ### Performance
 
-_ain_ -- input signal
+_ain_, _kin_ -- input signal
 
-_klagtime_ -- 60 dB lag time in seconds.
+_klagtime_ -- 60 dB lag time in seconds. Use zero for no smoothing.
 
-_kladown_ -- 60 dB lag time in seconds for the downgoing signal.
+At audio rate, changes to the lag time take effect smoothly over one control block.
 
 ## Examples
 
