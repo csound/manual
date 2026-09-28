@@ -8,13 +8,17 @@ Taps a delay line at variable offset times.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    ares = deltap(kdlt)
+    ares = deltap(kdlt [, indx])
     ```
 
 === "Classic"
     ``` csound-orc
-    ares deltap kdlt
+    ares deltap kdlt [, indx]
     ```
+
+### Initialization
+
+_indx_ (optional, default=0) -- selects a pending _delayr_ at initialization. Zero selects the newest reader. Pass the optional i-rate output of _delayr_ to select that reader. See [Selecting a delay line](delayr.md#selecting-a-delay-line) for index values and placement before _delayw_.
 
 ### Performance
 
@@ -26,7 +30,7 @@ This opcode can tap into a [delayr](../opcodes/delayr.md)/[delayw](../opcodes/de
 
 This opcode can provide multiple delay taps for arbitrary delay path and feedback networks. They can deliver either constant-time or time-varying taps, and are useful for building chorus effects, harmonizers, and Doppler shifts. Constant-time delay taps (and some slowly changing ones) do not need interpolated readout; they are well served by _deltap_. Medium-paced or fast varying dlt's, however, will need the extra services of _deltapi_.
 
-_delayr_/_delayw_ pairs may be interleaved. To associate a delay tap unit with a specific _delayr_ unit, it not only has to be located between that _delayr_ and the appropriate _delayw_ unit, but must also precede any following _delayr_ units. See Example 2. (This feature added in Csound version 3.57 by Jens Groh and John ffitch).
+_delayr_/_delayw_ pairs may be interleaved. With the default index, put a tap after its reader and before any following _delayr_ or the matching _delayw_. An explicit _indx_ can select an earlier pending reader even when another _delayr_ intervenes. Jens Groh and John ffitch added interleaved read/write pairs in Csound 3.57.
 
 _N.B._ k-rate delay times are not internally interpolated, but rather lay down stepped time-shifts of audio samples; this will be found quite adequate for slowly changing tap times. For medium to fast-paced changes, however, one should provide a higher resolution audio-rate timeshift as input.
 
