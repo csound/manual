@@ -12,6 +12,13 @@ nchnls = 2
 struct JsonNote start:i, duration:i, pitch:i, amplitude:i, pan:i
 struct JsonScore title:S, tempo:i, notes:JsonNote[]
 
+instr JsonTone
+  envelope:a = linseg(0, p3 * 0.1, p5, p3 * 0.8, p5, p3 * 0.1, 0)
+  tone:a = poscil(envelope, cpsmidinn(p4))
+  left:a, right:a = pan2(tone, p6)
+  out(left, right)
+endin
+
 ; Return the score length in seconds. Starts and durations in JSON use beats.
 opcode PlayJsonScore(path:S):(i)
   score:JsonScore = jsonunmarshalfile(path)
@@ -23,38 +30,27 @@ opcode PlayJsonScore(path:S):(i)
   count:i = lenarray(score.notes)
   endTime:i = 0
 
-  ; JSON checks types. This pass checks the musical limits before any scheduling.
-  index:i = 0
-  while index < count do
-    note:JsonNote = init(score.notes[index])
-    if note.start < 0 || note.duration <= 0 || \
-       note.pitch < 0 || note.pitch > 127 || \
-       note.amplitude < 0 || note.amplitude > 0.25 || \
-       note.pan < 0 || note.pan > 1 then
-      prints("Invalid score.notes[%d]: check time, pitch, amplitude and pan.\n", index)
-      exitnow(1)
-    endif
-    endTime = max(endTime, (note.start + note.duration) * secondsPerBeat)
-    index += 1
-  od
+  if count > 0 then
+    ; JSON checks types. This pass checks the musical limits before any scheduling.
+    for note, index in score.notes do
+      if note.start < 0 || note.duration <= 0 || \
+         note.pitch < 0 || note.pitch > 127 || \
+         note.amplitude < 0 || note.amplitude > 0.25 || \
+         note.pan < 0 || note.pan > 1 then
+        prints("Invalid score.notes[%d]: check time, pitch, amplitude and pan.\n", index)
+        exitnow(1)
+      endif
+      endTime = max(endTime, (note.start + note.duration) * secondsPerBeat)
+    od
 
-  index = 0
-  while index < count do
-    note:JsonNote = init(score.notes[index])
-    eventi("i", "JsonTone", note.start * secondsPerBeat, \
-           note.duration * secondsPerBeat, note.pitch, note.amplitude, note.pan)
-    index += 1
-  od
+    for note in score.notes do
+      schedule(JsonTone, note.start * secondsPerBeat, \
+               note.duration * secondsPerBeat, note.pitch, note.amplitude, note.pan)
+    od
+  endif
   prints("%s: %d notes, %.2f seconds\n", score.title, count, endTime)
   xout(endTime)
 endop
-
-instr JsonTone
-  envelope:a = linseg(0, p3 * 0.1, p5, p3 * 0.8, p5, p3 * 0.1, 0)
-  tone:a = poscil(envelope, cpsmidinn(p4))
-  left:a, right:a = pan2(tone, p6)
-  out(left, right)
-endin
 
 instr LoadScore
   duration:i = PlayJsonScore("jsonunmarshalfile-score.json")

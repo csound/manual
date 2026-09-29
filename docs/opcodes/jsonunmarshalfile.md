@@ -83,15 +83,17 @@ The example writes `json-score.wav`. It prints `A short JSON score: 4 notes, 2.5
 --8<-- "examples/jsonunmarshalfile.csd"
 ```
 
-`PlayJsonScore` reads the score, checks its musical values, then schedules the notes with [eventi](event_i.md). JSON starts and durations use beats; the UDO converts them to seconds with `60 / tempo`. Pitches use MIDI note numbers, amplitudes use the example's `0dbfs = 1`, and pan runs from 0 (left) to 1 (right). The amplitude limit of 0.25 is a choice made by this UDO, not a JSON restriction; many overlapping notes can still sum above full scale.
+`PlayJsonScore` reads the score, checks its musical values, then schedules the notes with [schedule](schedule.md). It passes `JsonTone` without quotes, using the named instrument's `InstrDef` reference. JSON starts and durations use beats; the UDO converts them to seconds with `60 / tempo`. Pitches use MIDI note numbers, amplitudes use the example's `0dbfs = 1`, and pan runs from 0 (left) to 1 (right). The amplitude limit of 0.25 is a choice made by this UDO, not a JSON restriction; many overlapping notes can still sum above full scale.
 
-The UDO checks all notes before scheduling any. It rejects non-positive tempo or duration, negative starts, out-of-range MIDI pitches, and amplitudes or pan positions outside its chosen limits. JSON type checks alone cannot enforce those musical rules. The UDO sends all notes to the fixed `JsonTone` instrument and returns the last note's end time in seconds. `LoadScore` uses that value to end the performance, so changing the score length does not require changing `<CsScore>`.
+Both passes use Csound 7 [for](for.md) loops over the note array. `for note, index in score.notes do` supplies each note and its zero-based index for validation messages. `for note in score.notes do` supplies each note for scheduling. These loops run at initialization for this array of structs.
+
+The UDO checks all notes before scheduling any. It rejects non-positive tempo or duration, negative starts, out-of-range MIDI pitches, and amplitudes or pan positions outside its chosen limits. JSON type checks alone cannot enforce those musical rules. The UDO sends all notes to the fixed `JsonTone` instrument and returns the last note's end time in seconds. `LoadScore` uses that value to send an end-of-score event with [eventi](event_i.md), so changing the score length does not require changing `<CsScore>`.
 
 An empty `notes` array schedules no notes. For another score format, change the struct declarations and the UDO's checks together. To accept comments or trailing commas in a file, pass the chosen flags to the UDO's `jsonunmarshalfile` call.
 
 ## See also
 
-[jsonunmarshal](jsonunmarshal.md), [jsonmarshal](jsonmarshal.md), [JSON data](../strings/json.md), [User Defined Opcodes](../orch/user-defined-opcodes.md), [eventi](event_i.md), [File Input and Output](../sigio/fileio.md)
+[jsonunmarshal](jsonunmarshal.md), [jsonmarshal](jsonmarshal.md), [JSON data](../strings/json.md), [User Defined Opcodes](../orch/user-defined-opcodes.md), [schedule](schedule.md), [for](for.md), [eventi](event_i.md), [File Input and Output](../sigio/fileio.md)
 
 ## Availability
 
