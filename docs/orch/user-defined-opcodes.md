@@ -4,6 +4,8 @@ User Defined Opcodes are functions written in Csound code. They are located in t
 
 The definition of a User Defined Opcode starts with the keyword [opcode](../opcodes/opcode.md) and ends with the keyword [endop](../opcodes/endop.md). The syntax and implementation of UDOs has changed in Csound 7; so there are two different syntax conventions which can be used.
 
+For a complete example that reads typed data and schedules notes, see the [JSON score loader UDO](../opcodes/jsonunmarshalfile.md#read-a-score-with-a-udo).
+
 ## Old style UDO definition
 
 The implementation is described in detail in the manual page for [opcode](../opcodes/opcode.md).

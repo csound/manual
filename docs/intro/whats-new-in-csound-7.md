@@ -2,6 +2,10 @@
 
 Csound 7 brings major changes which offer new possibilities for users and modernize coding. Nevertheless Csound 7 keeps backwards compatibility: Despite new syntax features any valid Csound code from the past can be run without any code change.
 
+## JSON data
+
+[jsonunmarshal](../opcodes/jsonunmarshal.md) reads JSON text into a declared user-defined type or typed array. [jsonunmarshalfile](../opcodes/jsonunmarshalfile.md) reads the same data through Csound's file handling and search paths. [jsonmarshal](../opcodes/jsonmarshal.md) returns compact or indented JSON. See [JSON data](../strings/json.md) for type mappings, fault handling, a score-reading UDO and function-table export.
+
 ## Explicit Variable Types
 
 Variable names no longer have to start with `i`, `k`, `a` etc. to declare their data type implicitely. Instead any name (except existing opcodes or keywords) can be used, and the type declared explicitely:
