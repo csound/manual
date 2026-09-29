@@ -56,6 +56,8 @@ endin
 
 Use the type name after a colon when declaring a variable, and a dot to access a member. [init](../opcodes/init.md#user-defined-types-and-structs) can initialize default members, set all members from arguments or copy the values of another struct of the same type. It can also allocate arrays of structs.
 
+[jsonunmarshal](../opcodes/jsonunmarshal.md) and [jsonunmarshalfile](../opcodes/jsonunmarshalfile.md) read JSON objects into declared structs or JSON arrays into typed arrays. [jsonmarshal](../opcodes/jsonmarshal.md) writes supported structs and arrays as JSON text. See [JSON data](../strings/json.md) for the supported types, strict field checks, and examples of presets and scores.
+
 ## Constants and Reserved Symbols
 
 Constants are available continuously and do not change in value. Usually they are connected with reserved symbols and written in the orchestra header:
