@@ -3,6 +3,7 @@
 The opcodes for file input and output are:
 
 * File open/close: [fiopen](../opcodes/fiopen.md) and [ficlose](../opcodes/ficlose.md).
+* JSON input: [jsonunmarshalfile](../opcodes/jsonunmarshalfile.md) reads a JSON file into a UDT or typed array through Csound's search paths. [jsonmarshal](../opcodes/jsonmarshal.md) returns JSON text for use with a file writer. See [JSON data](../strings/json.md) for a score-loading UDO and table export.
 * File output: [dumpk](../opcodes/dumpk.md), [dumpk2](../opcodes/dumpk2.md), [dumpk3](../opcodes/dumpk3.md), [dumpk4](../opcodes/dumpk4.md), [fout](../opcodes/fout.md), [fouti](../opcodes/fouti.md), [foutir](../opcodes/foutir.md) and [foutk](../opcodes/foutk.md)
 * Standard input: [readline](../opcodes/readline.md).
 * File input: [readf](../opcodes/readf.md), [readfi](../opcodes/readfi.md), [readk](../opcodes/readk.md), [readk2](../opcodes/readk2.md), [readk3](../opcodes/readk3.md), [readk4](../opcodes/readk4.md), [fin](../opcodes/fin.md), [fini](../opcodes/fini.md) and [fink](../opcodes/fink.md)

@@ -146,6 +146,7 @@
             - [Top](strings/top.md)
             - [String Manipulation Opcodes](strings/manipulate.md)
             - [String Conversion Opcodes](strings/convert.md)
+            - [JSON Data](strings/json.md)
         - Vectorial opcodes
             - [Top](vectorial/top.md)
             - [Tables of vectors operators](vectorial/tables.md)

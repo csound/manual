@@ -9,6 +9,7 @@ Array Opcodes:
 * [init](../opcodes/init.md) initiatlise array
 * [fillarray](../opcodes/fillarray.md) fill array with values
 * [string2array](../opcodes/string2array.md) read numeric values from a string
+* [jsonunmarshal](../opcodes/jsonunmarshal.md) and [jsonunmarshalfile](../opcodes/jsonunmarshalfile.md) read JSON into a one-dimensional typed array; [jsonmarshal](../opcodes/jsonmarshal.md) writes it as JSON text
 * [genarray](../opcodes/genarray.md) create array with artithmetic sequence
 * [genarrayi](../opcodes/genarray_i.md) create array with artithmetic sequence
 * [=](../opcodes/assign.md) create or reset array as copy of another array

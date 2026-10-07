@@ -50,6 +50,8 @@ The replacement also copies at initialization. Account for that earlier copy if 
 
 [Array opcodes](../math/array.md)
 
+[jsonmarshal](jsonmarshal.md#export-a-function-table) shows how to export the copied values as a JSON array and read them back into a table.
+
 ## Credits
 
 Author: John ffitch<br>
