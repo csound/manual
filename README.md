@@ -229,5 +229,4 @@ prove that every opcode description or example is correct.
 With Csound 7 and the MP3 and signal-flow-graph plugins, run
 `csound tools/synopsis-smoke.csd` to compile the corrected syntax forms. The file
 uses `--syntax-check-only`; it does not play audio or open the named sample and
-MIDI files. See [the audit notes](audit/article-formatting.md) for the scope and
-source references.
+MIDI files.
