@@ -5,54 +5,64 @@ Csound includes a fully-functional UDP server, which can accept a range of comma
 ## Overview
 
 The UDP server can be started with the following option:
+
 ```
    --port=N
 ```
+
 where N indicates a port number to listen to UDP messages. Csound does not necessarily need to be given a CSD or orchestra, although it is also possible to do so.
     
 
 ## Commands
 
 Commands take the form of an opcode followed by one or more arguments. The following commands are accepted by the server:
+
 ```
    &[line event]
 ```
+
 Sends in a line event [live event]. Multiple events can be send on multiple lines. Use this command for single or multiple events that do not need preprocessing.
 
 
 ```
    $[score]
 ```
+
 Sends in a score [score], to which most preprocessing (except for tempo) can  be applied. Use this option for larger blocks of score events.
 
 
 ```
    @[channel_name] [value]
 ```
+
 Set a control channel [channel_name] with the value [value].  Example:   if the csd contains the line ' chnk "freq", 440' then send '@freq 330' sets "freq" to 330
 
 
 ```
    %[channel_name] [string]
 ```
+
 Set a string channel [channel_name] with the string [string].
   
 
 ```
    :@[channel_name] [address] [port]
 ```
+
 Request the value of the control channel [channel_name] to be sent as a string via UDP to address [address] port [port]. The string will contain the channel name followed by two colons (::) and its current value.
 
 
 ```
    :%[channel_name] [address] [port]
 ```
+
 Request the contents of the string channel [channel_name] to be sent as a string via UDP to address [address] port [port]. The string will contain the channel name followed by two colons (::) and its current contents.
 
 
 ```
    /[OSC message]
 ```
+
 A command starting with a slash "/" is interpreted as an Open Sound Control (OSC) Message. The data contents of the command are expected to adhere to the OSC format. See the section below on OSC for more details.
 
 
@@ -70,6 +80,7 @@ The server (and Csound) can be closed with one of the following commands:
 ```
     ##close##
 ```
+
  or
 
 ```
@@ -85,21 +96,25 @@ System messages: these are defined by addresses starting with "/csound" and used
 ```
 /csound/compile "s" [string]
 ```
+
 Compiles the string passed as the message data.
 
 ```
 /csound/event "s" [string]
 ```
+
 Sends an event defined by the string passed as the message data.
  
 ```
 /csound/event/instr "fff..." [float data]
 ```
+
 Instantiates an instrument with p-fields as defined in the message type and data. Only float types are accepted.
 
 ```
 /csound/channel/a[/b/c...] "..." [float data]
 ```
+
 Sets software bus channels a[, b, c, ...] according to the message type and data. Floats and strings are allowed, one datum per channel.
 
 ```
@@ -108,6 +123,7 @@ Sets software bus channels a[, b, c, ...] according to the message type and data
   /csound/close
   /csound/stop
 ```
+
  Stops the performance and UDP server 
  
 User-defined: these are defined by any other addresses chosen by the user. They are stored in a list and can be retrieved using the osclisten opcode.

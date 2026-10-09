@@ -10,12 +10,12 @@ Returns the current playback status at k-rate, of the input MIDI file, 1 if file
 ## Syntax
 === "Modern"
     ``` csound-orc
-    status:k = midifilestatus([id:k])
+    status:k = midifilestatus([id:i])
     ```
 
 === "Classic"
     ``` csound-orc
-    kstatus midifilestatus [id:k]
+    kstatus midifilestatus [iid]
     ```
 
 _id_ (optional, default=0) -- MIDI file id, defaults to 0, the id of

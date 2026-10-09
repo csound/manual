@@ -34,7 +34,7 @@ _Sstr_ -- String to convert.
 
 _indx_ -- index of string set by strset
 
-## See Also
+## See also
 
 [String Conversion Opcodes](../strings/convert.md)
 

@@ -55,24 +55,28 @@ Here we synthesize both the noise and the sinewaves (all 42 partials) contained 
 
 === "Modern"
     Here is a complete example of the atssinnoi opcode. It uses the file [atssinnoi-modern.csd](../examples/atssinnoi-modern.csd).
+
     ``` csound-csd title="Example of the atssinnoi opcode." linenums="1"
     --8<-- "examples/atssinnoi-modern.csd"
     ```
 
 === "Classic"
     Here is a complete example of the ATSsinnoi opcode. It uses the file [ATSsinnoi.csd](../examples/ATSsinnoi.csd).
+
     ``` csound-csd title="Example of the ATSsinnoi opcode." linenums="1"
     --8<-- "examples/ATSsinnoi.csd"
     ```
 
 === "Modern"
     Here is another complete example of the atssinnoi opcode. It uses the file [atssinnoi-2-modern.csd](../examples/atssinnoi-2-modern.csd).
+
     ``` csound-csd title="Example 2 of the atssinnoi opcode." linenums="1"
     --8<-- "examples/atssinnoi-2-modern.csd"
     ```
 
 === "Classic"
     Here is another complete example of the ATSsinnoi opcode. It uses the file [ATSsinnoi-2.csd](../examples/ATSsinnoi-2.csd).
+
     ``` csound-csd title="Example 2 of the ATSsinnoi opcode." linenums="1"
     --8<-- "examples/ATSsinnoi-2.csd"
     ```

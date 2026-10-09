@@ -40,7 +40,7 @@ Here is a simple example of the framebuffer opcode. It uses the file [framebuffe
 --8<-- "examples/framebuffer.csd"
 ```
 
-## See Also
+## See also
 
 [Array-based spectral opcodes](../spectral/arrays.md)
 

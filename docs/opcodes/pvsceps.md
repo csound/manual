@@ -30,7 +30,7 @@ _fsig_ -- an input pv stream
 
 Here is an example of the use of the _pvsceps_ opcode. It uses the file [pvsceps.csd](../examples/pvsceps.csd).
 
-``` csound-csd title="Example of the _pvsceps_ opcode." linenums="1"
+``` csound-csd title="Example of the pvsceps opcode." linenums="1"
 --8<-- "examples/pvsceps.csd"
 ```
 

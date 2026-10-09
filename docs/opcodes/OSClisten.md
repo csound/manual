@@ -93,6 +93,7 @@ nxtmsg:
 
 === "Modern"
     The following two .csd files demonstrate the usage of the OSC opcodes in csound. The first file, [oscmidisend-modern.csd](../examples/oscmidisend-modern.csd), transforms received real-time MIDI messages into OSC data. The second file, [oscmidircv-modern.csd](../examples/oscmidircv-modern.csd), can take these OSC messages, and intrepret them to generate sound from note messages, and store controller values. It will use controller number 7 to control volume. Note that these files are designed to be on the same machine, but if a different host address (in the IPADDRESS macro) is used, they can be separate machines on a network, or connected through the internet.
+
     ``` csound-csd title="oscmidisend-modern.csd" linenums="1"
     --8<-- "examples/oscmidisend-modern.csd"
     ```
@@ -102,12 +103,14 @@ nxtmsg:
     ```
 
     The next example demonstrates the usage of the third overload of the *osclisten* opcode. It uses the file [osclistenex2-modern.csd](../examples/osclistenex2-modern.csd).
+
     ``` csound-csd title="osclistenex2-modern.csd" linenums="1"
     --8<-- "examples/osclistenex2-modern.csd"
     ```
 
 === "Classic"
     The following two .csd files demonstrate the usage of the OSC opcodes in csound. The first file, [OSCmidisend.csd](../examples/OSCmidisend.csd), transforms received real-time MIDI messages into OSC data. The second file, [OSCmidircv.csd](../examples/OSCmidircv.csd), can take these OSC messages, and intrepret them to generate sound from note messages, and store controller values. It will use controller number 7 to control volume. Note that these files are designed to be on the same machine, but if a different host address (in the IPADDRESS macro) is used, they can be separate machines on a network, or connected through the internet.
+
     ``` csound-csd title="OSCmidisend.csd" linenums="1"
     --8<-- "examples/OSCmidisend.csd"
     ```
@@ -117,6 +120,7 @@ nxtmsg:
     ```
 
     The next example demonstrates the usage of the third overload of the *OSClisten* opcode. It uses the file [OSClistenex2.csd](../examples/OSClistenex2.csd).
+
     ``` csound-csd title="OSClistenex2.csd" linenums="1"
     --8<-- "examples/OSClistenex2.csd"
     ```

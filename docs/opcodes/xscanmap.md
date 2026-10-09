@@ -30,11 +30,12 @@ The internal state of a node is read. This includes its position and velocity. T
 ## Examples
 
 Here is an example of the xscanmap opcode. It uses the file [xscanmap.csd](../examples/xscanmap.csd).
+
 ``` csound-csd title="Example of the xscanmap opcode." linenums="1"
 --8<-- "examples/xscanmap.csd"
 ```
 
-## See Also
+## See also
 
 More information on Scanned Synthesis (as well as several other matrices) is available on the [Scanned Synthesis page](http://www.csounds.com/scanned/) at cSounds.com.
 

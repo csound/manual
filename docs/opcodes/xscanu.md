@@ -91,13 +91,14 @@ To avoid confusion with other matrix formats, it is best to save this matrix for
 ## Examples
 
 Here is an example of the xscanu opcode. It uses the file [xscanu.csd](../examples/xscanu.csd).
+
 ``` csound-csd title="Example of the xscanu opcode." linenums="1"
 --8<-- "examples/xscanu.csd"
 ```
 
 For similar examples, see the documentation on [scans](../opcodes/scans.md).
 
-## See Also
+## See also
 
 More information on Scanned Synthesis (as well as several other matrices) is available on the [Scanned Synthesis page](http://www.csounds.com/scanned/) at cSounds.com.
 

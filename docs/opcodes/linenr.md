@@ -46,6 +46,6 @@ Here is an example of the linenr opcode. It uses the file [linenr.csd](../exampl
 --8<-- "examples/linenr.csd"
 ```
 
-## See Also
+## See also
 
 [Envelope Generators](../siggen/envelope.md)

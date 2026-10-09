@@ -54,7 +54,7 @@ Another example of the rifft opcode, now using a Complex-type array. It uses the
 ```
 
 
-## See Also
+## See also
 
 [Vectorial opcodes](../vectorial/top.md)
 

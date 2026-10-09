@@ -30,7 +30,7 @@ Here is an example of the rect2pol opcode. It uses the file [rect2pol.csd](../ex
 --8<-- "examples/rect2pol.csd"
 ```
 
-## See Also
+## See also
 
 [Vectorial opcodes](../vectorial/top.md)
 

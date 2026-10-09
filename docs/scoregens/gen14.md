@@ -63,7 +63,7 @@ These are the diagrams of the waveforms of the GEN14 routines, as used in the ex
 <figcaption>f31 0 4097 14  1 1 0 1 0 .6 0 .4 0 .1 - waveshaping function: GEN14, the same even harmonics</figcaption>
 </figure>
 
-## See Also
+## See also
 
 [GEN03](../scoregens/gen03.md), [GEN13](../scoregens/gen13.md), and [GEN15](../scoregens/gen15.md).
 

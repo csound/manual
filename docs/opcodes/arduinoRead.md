@@ -36,17 +36,19 @@ _kval_ -- data to read in range [0, 1023].
 
 === "Modern"
     Here is an example of the arduinoread opcode. It uses the file [arduinoread-modern.csd](../examples/arduinoread-modern.csd).
+
     ``` csound-csd title="Example of the arduinoread opcode." linenums="1"
     --8<-- "examples/arduinoread-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the arduinoRead opcode. It uses the file [arduinoRead.csd](../examples/arduinoRead.csd).
+
     ``` csound-csd title="Example of the arduinoRead opcode." linenums="1"
     --8<-- "examples/arduinoRead.csd"
     ```
 
-## See Also
+## See also
 
 [non-MIDI Devices](../oscnetwork/nonMIDIdevices.md)
 

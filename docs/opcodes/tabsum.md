@@ -34,7 +34,7 @@ Here is an example of the tabsum opcode. It uses the file [tabsum.csd](../exampl
 --8<-- "examples/tabsum.csd"
 ```
 
-## See Also
+## See also
 
 [Vectorial opcodes](../vectorial/top.md)
 

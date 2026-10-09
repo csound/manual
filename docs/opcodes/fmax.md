@@ -38,7 +38,7 @@ Here is an example of the fmax opcode. It uses the file [fmax.csd](../examples/f
 --8<-- "examples/fmax.csd"
 ```
 
-## See Also
+## See also
 
 [Array opcodes](../math/array.md)
 

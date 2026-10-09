@@ -40,7 +40,7 @@ Here is an example of the gain opcode. It uses the file [gain.csd](../examples/g
 
 [Amplitude Modifiers and Dynamic processing](../sigmod/ampmod.md)
 
-## See Also
+## See also
 
 [balance](../opcodes/balance.md),
 [rms](../opcodes/rms.md)

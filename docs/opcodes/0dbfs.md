@@ -44,12 +44,14 @@ For more details on amplitude values in Csound, see the section [Amplitude value
 
 === "Modern"
     Here is an example of the 0dbfs opcode. It uses the file [0dbfs-modern.csd](../examples/0dbfs-modern.csd).
+
     ``` csound-csd title="Example of the 0dbfs opcode." linenums="1"
     --8<-- "examples/0dbfs-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the 0dbfs opcode. It uses the file [0dbfs.csd](../examples/0dbfs.csd).
+
     ``` csound-csd title="Example of the 0dbfs opcode." linenums="1"
     --8<-- "examples/0dbfs.csd"
     ```

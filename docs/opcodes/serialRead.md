@@ -32,12 +32,14 @@ _kByte_ -- a byte of data to read.
 
 === "Modern"
     Here is an example of the serialread opcode. It uses the file [serialread-modern.csd](../examples/serialread-modern.csd).
+
     ``` csound-csd title="Example of the serialread opcode." linenums="1"
     --8<-- "examples/serialread-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the serialRead opcode. It uses the file [serialRead.csd](../examples/serialRead.csd).
+
     ``` csound-csd title="Example of the serialRead opcode." linenums="1"
     --8<-- "examples/serialRead.csd"
     ```
@@ -68,7 +70,7 @@ void loop() {
 .....
 ```
 
-## See Also
+## See also
 
 [non-MIDI Devices](../oscnetwork/nonMIDIdevices.md)
 

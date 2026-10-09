@@ -26,7 +26,7 @@ Plugin opcode in serial.
 
 _iPort_ -- port number optained from a *serialbegin* opcode.
 
-## See Also
+## See also
 
 [non-MIDI Devices](../oscnetwork/nonMIDIdevices.md)
 

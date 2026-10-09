@@ -44,12 +44,14 @@ In all these opcodes, the resulting vectors are stored in _ifn_, overriding the 
 
 === "Modern"
     Here is an example of the vmulti opcode. It uses the file [vmulti.csd](../examples/vmulti.csd).
+
     ``` csound-csd title="Example of the vmulti opcode." linenums="1"
     --8<-- "examples/vmulti.csd"
     ```
 
 === "Classic"
     Here is an example of the vmult_i opcode. It uses the file [vmult_i.csd](../examples/vmult_i.csd).
+
     ``` csound-csd title="Example of the vmult_i opcode." linenums="1"
     --8<-- "examples/vmult_i.csd"
     ```

@@ -46,7 +46,7 @@ For a tutorial about random distribution histograms and functions see:
 
 Here is an example of the cuserrnd opcode. It uses the file [cuserrnd.csd](../examples/cuserrnd.csd).
 
-``` csound-orc title="Example of the cuserrnd opcode." linenums="1"
+``` csound-csd title="Example of the cuserrnd opcode." linenums="1"
 --8<-- "examples/cuserrnd.csd"
 ```
 

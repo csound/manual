@@ -42,7 +42,7 @@ Here is an example of the getcol opcode. It uses the file [getcol.csd](../exampl
 --8<-- "examples/getcol.csd"
 ```
 
-## See Also
+## See also
 
 [Vectorial Opcodes](../vectorial/top.md)
 

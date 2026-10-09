@@ -43,7 +43,7 @@ These are the diagrams of the waveforms of the GENtanh routines, as used in the 
 <figcaption>  f 4 0 8192 "tanh" -10 15 0</figcaption>
 </figure>
 
-## See Also
+## See also
 
 [GENexp](../scoregens/genexp.md) and [GENsone](../scoregens/gensone.md).
 

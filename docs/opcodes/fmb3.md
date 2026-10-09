@@ -51,11 +51,11 @@ _kvrate_ -- Vibrator rate
 
 Here is an example of the fmb3 opcode. It uses the file [fmb3.csd](../examples/fmb3.csd).
 
-``` csound-orc title="Example of the fmb3 opcode." linenums="1"
+``` csound-csd title="Example of the fmb3 opcode." linenums="1"
 --8<-- "examples/fmb3.csd"
 ```
 
-## See Also
+## See also
 
 [FM Synthesis](../siggen/fmsynth.md)
 

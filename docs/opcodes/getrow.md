@@ -42,7 +42,7 @@ Here is an example of the getrow opcode. It uses the file [rfft.csd](../examples
 --8<-- "examples/rfft.csd"
 ```
 
-## See Also
+## See also
 
 [Vectorial Opcodes](../vectorial/top.md)
 

@@ -30,7 +30,7 @@ For a tutorial about random distribution histograms and functions see:
 
 Here is an example of the urd opcode. It uses the file [urd.csd](../examples/urd.csd).
 
-``` csound-orc title="Example of the urd opcode." linenums="1"
+``` csound-csd title="Example of the urd opcode." linenums="1"
 --8<-- "examples/urd.csd"
 ```
 

@@ -38,7 +38,7 @@ Note that the result is quite different from the one obtained by filtering white
 
 Here is an example of the jspline opcode. It uses the file [jspline.csd](../examples/jspline.csd).
 
-``` csound-orc title="Example of the jspline opcode." linenums="1"
+``` csound-csd title="Example of the jspline opcode." linenums="1"
 --8<-- "examples/jspline.csd"
 ```
 

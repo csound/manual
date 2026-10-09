@@ -29,7 +29,7 @@ The length is returned in seconds.
 
 ## Examples
 
-Here is an example of the miditempo opcode. It uses the files [midifilelen.csd](../examples/midifilelen.csd).
+Here is an example of the midifilelen opcode. It uses the files [midifilelen.csd](../examples/midifilelen.csd).
 
 ``` csound-csd title="Example of the midifilelen opcode." linenums="1"
 --8<-- "examples/midifilelen.csd"

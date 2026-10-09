@@ -37,16 +37,18 @@ Whenever an _a statement_ is encountered by a performing orchestra, its presence
 
 === "Modern"
     Here is an example of the a statement. It uses the file [a-modern.csd](../examples/a-modern.csd).
+
     ``` csound-csd title="Example of the a statement." linenums="1"
     --8<-- "examples/a-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the a statement. It uses the file [a.csd](../examples/a.csd).
+
     ``` csound-csd title="Example of the a statement." linenums="1"
     --8<-- "examples/a.csd"
     ```
 
-## See Also
+## See also
 
 [Score Statements](../score/statemnt.md)

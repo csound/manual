@@ -60,7 +60,7 @@ Here is a complete example of the pvinterp opcode. It uses the file [pvinterp.cs
 --8<-- "examples/pvinterp.csd"
 ```
 
-## See Also
+## See also
 
 [Short-time Fourier Transform (STFT) Resynthesis](../spectral/stft.md)
 

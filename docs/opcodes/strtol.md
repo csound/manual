@@ -32,7 +32,7 @@ _strtol_ can parse numbers in decimal, octal (prefixed by 0), and hexadecimal (w
 
 _ir_ -- Value of string as signed integer.
 
-## See Also
+## See also
 
 [String Conversion Opcodes](../strings/convert.md)
 

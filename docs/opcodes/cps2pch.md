@@ -25,13 +25,14 @@ _iequal_ -- If positive, the number of equal intervals into which the 'octave' i
 > :memo: **Note**
 >
 > 1.  The following are essentially the same
-> ``` csound-orc
-> ia  =  cpspch(8.02)
-> ib     cps2pch  8.02, 12
-> ic     cpsxpch  8.02, 12, 2, 1.02197503906
-> ```
 >
-> 2.   These are opcodes not functions
+>     ``` csound-orc
+>     ia  =  cpspch(8.02)
+>     ib     cps2pch  8.02, 12
+>     ic     cpsxpch  8.02, 12, 2, 1.02197503906
+>     ```
+>
+> 2.   These calls use both functional and classic opcode syntax.
 > 3.   Negative values of _ipch_ are allowed.
 
 ## Examples

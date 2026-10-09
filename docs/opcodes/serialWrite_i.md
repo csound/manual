@@ -30,7 +30,7 @@ _iPort_ -- port number optained from a *serialbegin* opcode.
 
 _iByte_ -- a byte of data to write.
 
-## See Also
+## See also
 
 [non-MIDI Devices](../oscnetwork/nonMIDIdevices.md)
 

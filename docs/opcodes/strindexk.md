@@ -26,7 +26,7 @@ Here is an example of the strindexk opcode. It uses the file [strindexk.csd](../
 --8<-- "examples/strindexk.csd"
 ```
 
-## See Also
+## See also
 
 [String Manipulation Opcodes](../strings/manipulate.md)
 

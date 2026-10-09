@@ -48,7 +48,7 @@ All parameters can be varied at k-rate.  Negative frequency values are allowed, 
 
 Here is an example of the loopseg opcode. It uses the file [loopseg.csd](../examples/loopseg.csd).
 
-``` csound-orc title="Example of the loopseg opcode." linenums="1"
+``` csound-csd title="Example of the loopseg opcode." linenums="1"
 --8<-- "examples/loopseg.csd"
 ```
 

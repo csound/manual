@@ -36,12 +36,14 @@ Instrument 1 uses its p4 to choose instrument 2, 3, or 4, then passes its p5 as 
 
 === "Modern"
     Here is an example of the subinstrinit opcode. It uses the file [subinstrinit-modern.csd](../examples/subinstrinit-modern.csd).
+
     ``` csound-csd title="Example of the subinstrinit opcode." linenums="1"
     --8<-- "examples/subinstrinit-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the subinstrinit opcode. It uses the file [subinstrinit.csd](../examples/subinstrinit.csd).
+
     ``` csound-csd title="Example of the subinstrinit opcode." linenums="1"
     --8<-- "examples/subinstrinit.csd"
     ```

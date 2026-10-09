@@ -32,7 +32,7 @@ Here is an example of the tableseg opcode. It uses the file [tableseg_tablexseg.
 --8<-- "examples/tableseg_tablexseg.csd"
 ```
 
-## See Also
+## See also
 
 [Short-time Fourier Transform (STFT) Resynthesis](../spectral/stft.md)
 

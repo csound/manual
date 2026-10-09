@@ -32,11 +32,11 @@ _aphase_ -- clock phase. Outputs a linear ramping phase signal. Can be used e.g.
 
 Here is an example of the partikkelsync opcodes. It uses the file [partikkelsync.csd](../examples/partikkelsync.csd).
 
-``` csound-orc title="Example with soft sync of two partikkel generators." linenums="1"
+``` csound-csd title="Example with soft sync of two partikkel generators." linenums="1"
 --8<-- "examples/partikkelsync.csd"
 ```
 
-## See Also
+## See also
 
 [Granular Synthesis](../siggen/granular.md)
 

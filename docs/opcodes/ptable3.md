@@ -34,7 +34,7 @@ _iwrap_ (optional) -- wraparound index flag. The default value is 0.
 _ptable3_ is identical to [table3](../opcodes/table3.md), except
 that it uses does not require the table to have a power of two size.
 
-## See Also
+## See also
 
 [table](../opcodes/table.md),
 [tablei](../opcodes/tablei.md),

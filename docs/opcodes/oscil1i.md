@@ -34,10 +34,10 @@ _oscil1i_ is an interpolating unit in which the fractional part of index is used
 
 Here is an example of the oscil1i opcode. It uses the file [oscil1i.csd](../examples/oscil1i.csd).
 
-``` csound-orc title="Example of the oscil1i opcode." linenums="1"
+``` csound-csd title="Example of the oscil1i opcode." linenums="1"
 --8<-- "examples/oscil1i.csd"
 ```
 
-## See Also
+## See also
 
 [Table Access](../siggen/tableacc.md)

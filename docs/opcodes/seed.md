@@ -30,7 +30,7 @@ When specifying a seed value, _ival_ should be an integer between 0 and 2<sup>32
 
 Here is an example of the seed opcode. It uses the file [seed.csd](../examples/seed.csd).
 
-``` csound-orc title="Example of the seed opcode." linenums="1"
+``` csound-csd title="Example of the seed opcode." linenums="1"
 --8<-- "examples/seed.csd"
 ```
 

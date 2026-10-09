@@ -41,6 +41,6 @@ zero:
 contin:
 ```
 
-## See Also
+## See also
 
 [specsum](../opcodes/specsum.md)

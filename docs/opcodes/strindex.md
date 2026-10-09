@@ -18,7 +18,7 @@ _strindex_ runs at init time only.
     ipos strindex S1, S2
     ```
 
-## See Also
+## See also
 
 [String Manipulation Opcodes](../strings/manipulate.md)
 

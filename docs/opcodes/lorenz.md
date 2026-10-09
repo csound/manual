@@ -60,11 +60,11 @@ kb = 8/3
 
 Here is an example of the lorenz opcode. It uses the file [lorenz.csd](../examples/lorenz.csd).
 
-``` csound-orc title="Example of the lorenz opcode." linenums="1"
+``` csound-csd title="Example of the lorenz opcode." linenums="1"
 --8<-- "examples/lorenz.csd"
 ```
 
-## See Also
+## See also
 
 [Models and Emulations](../siggen/models.md)
 

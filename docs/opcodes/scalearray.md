@@ -38,7 +38,7 @@ Here is an example of the scalearray opcode. It uses the file [scalearray.csd](.
 --8<-- "examples/scalearray.csd"
 ```
 
-## See Also
+## See also
 
 [Array opcodes](../math/array.md)
 

@@ -45,11 +45,11 @@ _ktimes_ -- Number of times shaken.
 
 Here is an example of the shaker opcode. It uses the file [shaker.csd](../examples/shaker.csd).
 
-``` csound-orc title="Example of the shaker opcode." linenums="1"
+``` csound-csd title="Example of the shaker opcode." linenums="1"
 --8<-- "examples/shaker.csd"
 ```
 
-## See Also
+## See also
 
 [Models and Emulations](../siggen/models.md)
 

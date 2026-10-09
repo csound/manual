@@ -34,7 +34,7 @@ any file passed to the -F flag.
 
 ## Examples
 
-Here is an example of the miditempo opcode. It uses the files [midifilerewind.csd](../examples/midifilerewind.csd).
+Here is an example of the midifilerewind opcode. It uses the files [midifilerewind.csd](../examples/midifilerewind.csd).
 
 ``` csound-csd title="Example of the midifilerewind opcode." linenums="1"
 --8<-- "examples/midifilerewind.csd"

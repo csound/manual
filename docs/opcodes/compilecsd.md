@@ -28,12 +28,14 @@ _ires_ --  returns 0 if compilation was successful, or -1 if not.
 
 === "Modern"
     Here is an example of the compilecsd opcode. It uses the file [compilecsd-modern.csd](../examples/compilecsd-modern.csd).
+
     ``` csound-csd title="Example of the compilecsd opcode." linenums="1"
     --8<-- "examples/compilecsd-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the compilecsd opcode. It uses the file [compilecsd.csd](../examples/compilecsd.csd).
+
     ``` csound-csd title="Example of the compilecsd opcode." linenums="1"
     --8<-- "examples/compilecsd.csd"
     ```

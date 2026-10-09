@@ -44,6 +44,6 @@ This is the diagram of the waveform of the GEN19 routines, as used in the exampl
 <figcaption>f 2 0 1024 19 .5 .5 270 .5 - a rising sigmoid</figcaption>
 </figure>
 
-## See Also
+## See also
 
 [GEN09](../scoregens/gen09.md) and [GEN10](../scoregens/gen10.md)

@@ -22,12 +22,14 @@ The opcode [p](../opcodes/p.md) can be used to find score p-fields at i- or k-ra
 >
 > Note that an instrument may modify the p3 (duration) parameter at initialisation time.<br>
 For example statements like
+
 ``` csound-orc
 iattack = 0.02
 irelease = 0.04
 isustain = p3
 p3 = iattack + isustain + irelease
 ```
+
 > are valid.
 
 [delete](../opcodes/delete.md) cleans up objects at deinitialization. See the [object guide](../orch/instrument-and-opcode-objects.md) for instrument definitions, instances and opcode objects.

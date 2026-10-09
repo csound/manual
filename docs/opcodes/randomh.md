@@ -44,7 +44,7 @@ When _imode_ = 3, the generation process begins with a random value from the ini
 
 Here is an example of the randomh opcode. It uses the file [randomh.csd](../examples/randomh.csd).
 
-``` csound-orc title="Example of the randomh opcode." linenums="1"
+``` csound-csd title="Example of the randomh opcode." linenums="1"
 --8<-- "examples/randomh.csd"
 ```
 

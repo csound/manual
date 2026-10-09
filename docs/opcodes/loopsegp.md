@@ -36,7 +36,7 @@ _loopsegp_ opcode is similar to [loopseg](../opcodes/loopseg.md); the only diffe
 
 Here is an example of the loopsegp opcode. It uses the file [loopsegp.csd](../examples/loopsegp.csd).
 
-``` csound-orc title="Example of the loopsegp opcode." linenums="1"
+``` csound-csd title="Example of the loopsegp opcode." linenums="1"
 --8<-- "examples/loopsegp.csd"
 ```
 

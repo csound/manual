@@ -58,7 +58,7 @@ Here is an example of the m statement. It uses the file [m.csd](../examples/m.cs
 --8<-- "examples/m.csd"
 ```
 
-## See Also
+## See also
 
 [Score Statements](../score/statemnt.md)
 

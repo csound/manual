@@ -38,7 +38,7 @@ If the note ends before the segments finish, the curve stops. If the note contin
 
 Here is an example of the expseg opcode. It uses the file [expseg.csd](../examples/expseg.csd).
 
-``` csound-orc title="Example of the expseg opcode." linenums="1"
+``` csound-csd title="Example of the expseg opcode." linenums="1"
 --8<-- "examples/expseg.csd"
 ```
 

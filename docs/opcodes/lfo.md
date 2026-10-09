@@ -41,13 +41,13 @@ _kcps_ -- frequency of oscillator
 
 Here is an example of the lfo opcode. It uses the file [lfo.csd](../examples/lfo.csd).
 
-``` csound-orc title="Example of the lfo opcode." linenums="1"
+``` csound-csd title="Example of the lfo opcode." linenums="1"
 --8<-- "examples/lfo.csd"
 ```
 
 Here is another example of the lfo opcode. It uses the file [lfo-advanced.csd](../examples/lfo-advanced.csd).
 
-``` csound-orc title="Advanced example of the lfo opcode." linenums="1"
+``` csound-csd title="Advanced example of the lfo opcode." linenums="1"
 --8<-- "examples/lfo-advanced.csd"
 ```
 

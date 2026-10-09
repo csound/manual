@@ -32,7 +32,7 @@ Here is an example of the phs opcode. It uses the file [phs.csd](../examples/phs
 --8<-- "examples/phs.csd"
 ```
 
-## See Also
+## See also
 
 [Vectorial opcodes](../vectorial/top.md)
 

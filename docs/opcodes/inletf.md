@@ -26,7 +26,9 @@ _Sname_ -- String name of the inlet port. The name of the inlet is implicitly qu
 
 _ksignal_ -- frate input signal
 
-During performance, the frate inlet signal is received from each instance of an instrument containing an outlet port to which this inlet has been connected using the [See also](../opcodes/connect.md)e>
+During performance, the frate inlet signal is received from each instance of an instrument containing an outlet port to which this inlet has been connected using the [connect](../opcodes/connect.md) opcode.
+
+## See also
 
 [Signal Flow Graph Opcodes](../sigrouting/signalflowgraph.md)
 

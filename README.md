@@ -66,14 +66,14 @@ Eventually complementary and detailed description.
 ## Syntax
 
 === "Modern"
-``` csound-orc
-     res:type =  myopcode(arg1:type, ...)
-```
+    ``` csound-orc
+    res:type = myopcode(arg1:type, ...)
+    ```
 
 === "Classic"
-``` csound-orc
+    ``` csound-orc
     res myopcode arg1, ...
-```
+    ```
 
 ### Initialization
 
@@ -135,7 +135,7 @@ Markdown allows line breaks by including two blank spaces at the end of the line
 When enclosing a block of code with backticks, one can ask for syntax highlighting:
 
 ~~~ markdown
-``` csound-orc title="some title" linenum="1"
+``` csound-orc title="some title" linenums="1"
    some code
 ```
 ~~~
@@ -201,3 +201,33 @@ status:deprecated
 ```
 
 Then, runnning the `makeAppendices.py` script will automatically remove the references to this opcode in the *Opcodes Index*, *Opcodes Quick Reference*, and *List of Examples* sections, and it will add a link to the this opcode notice in the *Deprecated Opcodes* section.
+
+
+### Checking article formatting
+
+Leave a blank line between prose and a fenced code block, including inside
+tabs and blockquotes. Use `csound-csd` when including a complete `.csd` file;
+use `csound-orc` for orchestra fragments and `csound-sco` for score fragments.
+Code titles are plain text: write `>` rather than `&gt;`, and omit Markdown
+emphasis markers from the title.
+
+Run the article checks in a Python virtual environment:
+
+```sh
+python -m pip install -r tools/requirements-audit.txt
+python -m unittest discover -s tools -p 'test_*.py'
+python tools/check_articles.py
+mkdocs build --strict -d /tmp/csound-manual-audit
+python tools/check_articles.py --site /tmp/csound-manual-audit --json /tmp/csound-manual-audit.json
+```
+
+The JSON report lists every tracked article, including articles with no findings.
+The checks cover conversion damage, missing snippets, full-document highlighting,
+modern synopsis delimiters, and HTML that browsers would repair. They do not
+prove that every opcode description or example is correct.
+
+With Csound 7 and the MP3 and signal-flow-graph plugins, run
+`csound tools/synopsis-smoke.csd` to compile the corrected syntax forms. The file
+uses `--syntax-check-only`; it does not play audio or open the named sample and
+MIDI files. See [the audit notes](audit/article-formatting.md) for the scope and
+source references.

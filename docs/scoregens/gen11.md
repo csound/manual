@@ -50,6 +50,6 @@ These are the diagrams of the waveforms of the GEN11 routines, as used in the ex
 <figcaption>f 3 0 16384 11 10 5 2</figcaption>
 </figure>
 
-## See Also
+## See also
 
 [GEN10](../scoregens/gen10.md)

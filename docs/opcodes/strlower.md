@@ -26,7 +26,7 @@ Here is an example of the strlower opcode. It uses the file [strlower.csd](../ex
 --8<-- "examples/strlower.csd"
 ```
 
-## See Also
+## See also
 
 [String Conversion Opcodes](../strings/convert.md)
 

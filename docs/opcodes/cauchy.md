@@ -35,13 +35,15 @@ For more detailed explanation of these distributions, see:
 
 === "Modern"
     Here is an example of the cauchy opcode. It uses the file [cauchy-modern.csd](../examples/cauchy-modern.csd).
-    ``` csound-orc title="Example of the cauchy opcode." linenums="1"
+
+    ``` csound-csd title="Example of the cauchy opcode." linenums="1"
     --8<-- "examples/cauchy-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the cauchy opcode. It uses the file [cauchy.csd](../examples/cauchy.csd).
-    ``` csound-orc title="Example of the cauchy opcode." linenums="1"
+
+    ``` csound-csd title="Example of the cauchy opcode." linenums="1"
     --8<-- "examples/cauchy.csd"
     ```
 

@@ -38,7 +38,7 @@ The _random_ opcode is similar to [linrand](../opcodes/linrand.md) and [trirand]
 
 Here is an example of the random opcode. It uses the file [random.csd](../examples/random.csd).
 
-``` csound-orc title="Example of the random opcode." linenums="1"
+``` csound-csd title="Example of the random opcode." linenums="1"
 --8<-- "examples/random.csd"
 ```
 

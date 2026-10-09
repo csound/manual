@@ -38,7 +38,7 @@ _kcent_ uses the first active sample of each control block.
 
 Here is an example of the use of the _pvscent_ opcode. It uses the file [pvscent.csd](../examples/pvscent.csd).
 
-``` csound-csd title="Example of the _pvscent_ opcode." linenums="1"
+``` csound-csd title="Example of the pvscent opcode." linenums="1"
 --8<-- "examples/pvscent.csd"
 ```
 

@@ -32,7 +32,7 @@ Here is an example of the r2c opcode. It uses the file [r2c.csd](../examples/r2c
 --8<-- "examples/r2c.csd"
 ```
 
-## See Also
+## See also
 
 [Vectorial opcodes](../vectorial/top.md)
 

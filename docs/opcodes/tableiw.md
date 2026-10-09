@@ -73,7 +73,7 @@ Here is an example of the tableiw opcode. It uses the file [tableiw.csd](../exam
 --8<-- "examples/tableiw.csd"
 ```
 
-## See Also
+## See also
 
 [tablew](../opcodes/tablew.md),
 [tablewkt](../opcodes/tablewkt.md)

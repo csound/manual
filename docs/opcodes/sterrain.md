@@ -53,7 +53,7 @@ It uses the file [sterrain2.csd](../examples/sterrain2.csd).
 --8<-- "examples/sterrain2.csd"
 ```
 
-## See Also
+## See also
 
 [Wave Terrain Synthesis](../siggen/waveterr.md)
 

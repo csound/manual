@@ -36,7 +36,7 @@ Here is an example of the shiftout opcode. It uses the file [shiftout.csd](../ex
 --8<-- "examples/shiftout.csd"
 ```
 
-## See Also
+## See also
 
 [Vectorial opcodes](../vectorial/top.md), [array opcodes](../math/array.md)
 

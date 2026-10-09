@@ -38,6 +38,7 @@ _kord3_ -- linear gain of the third order B format.
 ## Example
 
 Here is an example of the bformenc opcode. It uses the file [bformenc.csd](../examples/bformenc.csd).
+
 ``` csound-csd title="Example of the bformenc opcode." linenums="1"
 --8<-- "examples/bformenc.csd"
 ```

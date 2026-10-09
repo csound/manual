@@ -51,11 +51,11 @@ _kvrate_ -- Vibrator rate
 
 Here is an example of the fmpercfl opcode. It uses the file [fmpercfl.csd](../examples/fmpercfl.csd).
 
-``` csound-orc title="Example of the fmpercfl opcode." linenums="1"
+``` csound-csd title="Example of the fmpercfl opcode." linenums="1"
 --8<-- "examples/fmpercfl.csd"
 ```
 
-## See Also
+## See also
 
 [FM Synthesis](../siggen/fmsynth.md)
 

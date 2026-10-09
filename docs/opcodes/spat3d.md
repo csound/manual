@@ -149,7 +149,9 @@ atmp rnd31 1/1e24, 0, 0
 
 aW, aX, aY, aZ spa3di ain + atmp, ...
 ```
+
 or
+
 ``` csound-orc
 aW, aX, aY, aZ spa3di ain + 1/1e24, ...
 ```

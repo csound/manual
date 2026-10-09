@@ -32,6 +32,6 @@ Accumulates the values of successive spectral frames. At each new frame of _wsig
            specdisp    wsig3, 0.1
 ```
 
-## See Also
+## See also
 
 [specaddm](../opcodes/specaddm.md), [specdiff](../opcodes/specdiff.md), [specfilt](../opcodes/specfilt.md), [specscal](../opcodes/specscal.md)

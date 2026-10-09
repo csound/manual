@@ -18,7 +18,7 @@ _strupper_ runs at init time only.
     Sdst strupper Ssrc
     ```
 
-## See Also
+## See also
 
 [String Conversion Opcodes](../strings/convert.md)
 

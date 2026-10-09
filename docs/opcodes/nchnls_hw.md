@@ -30,12 +30,14 @@ On init-pass idacc will contain the number of channels in the output device, and
 
 === "Modern"
     Here is an example of the nchnlshw opcode. It uses the file [nchnlshw.csd](../examples/nchnlshw.csd).
+
     ``` csound-csd title="Example of the nchnlshw opcode." linenums="1"
     --8<-- "examples/nchnlshw.csd"
     ```
 
 === "Classic"
     Here is an example of the nchnls_hw opcode. It uses the file [nchnls_hw.csd](../examples/nchnls_hw.csd).
+
     ``` csound-csd title="Example of the nchnls_hw opcode." linenums="1"
     --8<-- "examples/nchnls_hw.csd"
     ```

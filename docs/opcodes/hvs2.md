@@ -66,13 +66,13 @@ Output values of the HVS are influenced by the motion pointer, a point whose pos
 
 Here is an example of the hvs2 opcode. It uses the file [hvs2.csd](../examples/hvs2.csd).
 
-``` csound-orc title="Example of the hvs2 opcode." linenums="1"
+``` csound-csd title="Example of the hvs2 opcode." linenums="1"
 --8<-- "examples/hvs2.csd"
 ```
 
 Here is second example of the hvs2 opcode. It uses the file [hvs2-2.csd](../examples/hvs2-2.csd).
 
-``` csound-orc title="Second example of the hvs2 opcode." linenums="1"
+``` csound-csd title="Second example of the hvs2 opcode." linenums="1"
 --8<-- "examples/hvs2-2.csd"
 ```
 

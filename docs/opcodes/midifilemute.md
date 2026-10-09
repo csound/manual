@@ -34,7 +34,7 @@ any file passed to the -F flag.
 
 ## Examples
 
-Here is an example of the miditempo opcode. It uses the files [midifilemute.csd](../examples/midifilemute.csd).
+Here is an example of the midifilemute opcode. It uses the files [midifilemute.csd](../examples/midifilemute.csd).
 
 ``` csound-csd title="Example of the midifilemute opcode." linenums="1"
 --8<-- "examples/midifilemute.csd"

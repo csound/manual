@@ -44,12 +44,14 @@ In all these opcodes, the resulting vectors are stored in _ifn_, overriding the 
 
 === "Modern"
     Here is an example of the vaddi opcode. It uses the file [vaddi.csd](../examples/vaddi.csd).
+
     ``` csound-csd title="Example of the vaddi opcode." linenums="1"
     --8<-- "examples/vaddi.csd"
     ```
 
 === "Classic"
     Here is an example of the vadd_i opcode. It uses the file [vadd_i.csd](../examples/vadd_i.csd).
+
     ``` csound-csd title="Example of the vadd_i opcode." linenums="1"
     --8<-- "examples/vadd_i.csd"
     ```

@@ -8,12 +8,12 @@ Generate a vector (one-dimensional k-rate) with an arithmetic sequence at initia
 ## Syntax
 === "Modern"
     ``` csound-orc
-    karray = genarrayi(istart, iend [,inc])
+    karray[] = genarrayi(istart, iend [,inc])
     ```
 
 === "Classic"
     ``` csound-orc
-    karray genarray_i istart, iend [,inc]
+    karray[] genarray_i istart, iend [,inc]
     ```
 
 ### Initialization
@@ -28,17 +28,19 @@ _inc_ -- amount to add to previous value (default 1).
 
 === "Modern"
     Here is an example of the genarrayi opcode. It uses the file [genarrayi.csd](../examples/genarrayi.csd).
+
     ``` csound-csd title="Example of the genarrayi opcode." linenums="1"
     --8<-- "examples/genarrayi.csd"
     ```
 
 === "Classic"
     Here is an example of the genarray_i opcode. It uses the file [genarray_i.csd](../examples/genarray_i.csd).
+
     ``` csound-csd title="Example of the genarray_i opcode." linenums="1"
     --8<-- "examples/genarray_i.csd"
     ```
 
-## See Also
+## See also
 
 [Array opcodes](../math/array.md)
 

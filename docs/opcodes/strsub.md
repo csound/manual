@@ -32,7 +32,7 @@ Here is an example of the strsub opcode. It uses the file [strsub.csd](../exampl
 --8<-- "examples/strsub.csd"
 ```
 
-## See Also
+## See also
 
 [String Manipulation Opcodes](../strings/manipulate.md)
 

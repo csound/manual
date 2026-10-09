@@ -40,7 +40,7 @@ _lpshold_ is similar to [loopseg](../opcodes/loopseg.md), but can generate only 
 
 Here is an example of the lpshold opcode. It uses the file [lpshold.csd](../examples/lpshold.csd).
 
-``` csound-orc title="Example of the lpshold opcode." linenums="1"
+``` csound-csd title="Example of the lpshold opcode." linenums="1"
 --8<-- "examples/lpshold.csd"
 ```
 

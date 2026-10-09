@@ -38,7 +38,7 @@ This opcode will blur a pvstream by smoothing the amplitude and frequency time f
 
 Here is an example of the use of the _pvsblur_ opcode. It uses the file [pvsblur.csd](../examples/pvsblur.csd).
 
-``` csound-csd title="Example of the _pvsblur_ opcode." linenums="1"
+``` csound-csd title="Example of the pvsblur opcode." linenums="1"
 --8<-- "examples/pvsblur.csd"
 ```
 

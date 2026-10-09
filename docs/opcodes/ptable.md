@@ -36,11 +36,12 @@ _ptable_ invokes table lookup on behalf of init, control or audio indices. These
 ## Examples
 
 Here is an example of the ptable opcode. It uses the file [ptable.csd](../examples/ptable.csd).
+
 ``` csound-csd title="Example of the ptable opcode." linenums="1"
 --8<-- "examples/ptable.csd"
 ```
 
-## See Also
+## See also
 
 [table](../opcodes/table.md),
 [tablei](../opcodes/tablei.md),

@@ -36,7 +36,7 @@ Note that _phasor_ is a special kind of integrator, accumulating phase increment
 
 Here is an example of the phasor opcode. It uses the file [phasor.csd](../examples/phasor.csd).
 
-``` csound-orc title="Example of the phasor opcode." linenums="1"
+``` csound-csd title="Example of the phasor opcode." linenums="1"
 --8<-- "examples/phasor.csd"
 ```
 

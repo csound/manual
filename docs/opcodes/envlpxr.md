@@ -54,7 +54,7 @@ Here is an example of the envlpxr opcode. It uses the file [envlpxr.csd](../exam
 --8<-- "examples/envlpxr.csd"
 ```
 
-## See Also
+## See also
 
 [Envelope Generators](../siggen/envelope.md)
 

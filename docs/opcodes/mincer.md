@@ -48,7 +48,7 @@ Here is an example of the mincer opcode. It uses the file [mincer.csd](../exampl
 --8<-- "examples/mincer.csd"
 ```
 
-## See Also
+## See also
 
 [Short-time Fourier Transform (STFT) Resynthesis](../spectral/stft.md)
 

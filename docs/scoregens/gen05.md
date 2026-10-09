@@ -44,6 +44,6 @@ These are the diagrams of the waveforms of the GEN05 routines, as used in the ex
 <figcaption>f 3 0 129 5 0.00001 87 1 22 .5 20 0.0001 - waveform that goes from 0.00001 to 1 in 87 points, then from 1 to .5 in 22 points and then from .5 to 0.0001 in 20 points</figcaption>
 </figure>
 
-## See Also
+## See also
 
 [GEN06](../scoregens/gen06.md), [GEN07](../scoregens/gen07.md), and [GEN08](../scoregens/gen08.md)

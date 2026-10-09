@@ -54,7 +54,7 @@ _slider64table_ is very similar to  [slider64](../opcodes/slider64.md) and _slid
 
 It is possible to use this opcode together with *FLslidBnk2Setk* and *FLslidBnk2*, so you can synchronize the position of the MIDI values to the position of the FLTK valuator widgets of *FLslidBnk2*. Notice that you have to specify the same min/max values as well the linear/exponential responses in both *sliderNtable(f)* and *FLslidBnk2*. The exception is when using table-indexed response instead of a lin/exp response. In this case, in order to achieve a useful result, the table-indexed response and actual min/max values must be set only in *FLslidBnk2*, whereas, in sliderNtable(f), you have to set a linear response and a minimum of zero and a maximum of one in all sliders. The FLTK opcodes are plugin opcodes in widgets from the plugins repository.
 
-## See Also
+## See also
 
 [Slider Banks](../midi/sliderbk.md)
 

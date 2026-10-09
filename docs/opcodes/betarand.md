@@ -41,13 +41,15 @@ For more detailed explanation of these distributions, see:
 
 === "Modern"
     Here is an example of the betarand opcode. It uses the file [betarand-modern.csd](../examples/betarand-modern.csd).
-    ``` csound-orc title="Example of the betarand opcode." linenums="1"
+
+    ``` csound-csd title="Example of the betarand opcode." linenums="1"
     --8<-- "examples/betarand-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the betarand opcode. It uses the file [betarand.csd](../examples/betarand.csd).
-    ``` csound-orc title="Example of the betarand opcode." linenums="1"
+
+    ``` csound-csd title="Example of the betarand opcode." linenums="1"
     --8<-- "examples/betarand.csd"
     ```
 

@@ -176,7 +176,7 @@ i0 ftgen 89, 0, 8192, -20, 9, .8
 <figcaption>Rectangle Window Function</figcaption>
 </figure>
 
-``` csound-sco title="Example F.9a. Sinc window function statement (-3&pi; to +3&pi; and normalized)"
+``` csound-sco title="Example F.9a. Sinc window function statement (-3π to +3π and normalized)"
 f89  0   8192   20   9   1  3
 ```
 

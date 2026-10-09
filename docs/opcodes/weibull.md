@@ -37,7 +37,7 @@ For more detailed explanation of these distributions, see:
 
 Here is an example of the weibull opcode. It uses the file [weibull.csd](../examples/weibull.csd).
 
-``` csound-orc title="Example of the weibull opcode." linenums="1"
+``` csound-csd title="Example of the weibull opcode." linenums="1"
 --8<-- "examples/weibull.csd"
 ```
 

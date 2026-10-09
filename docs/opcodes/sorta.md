@@ -24,7 +24,7 @@ Here is an example of the sorta opcode. It uses the file [sorta.csd](../examples
 --8<-- "examples/sorta.csd"
 ```
 
-## See Also
+## See also
 
 [Array opcodes](../math/array.md)
 

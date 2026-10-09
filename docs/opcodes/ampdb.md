@@ -21,12 +21,14 @@ ampdb(x)  (no rate restriction)
 
 === "Modern"
     Here is an example of the ampdb opcode. It uses the file [ampdb-modern.csd](../examples/ampdb-modern.csd).
+
     ``` csound-csd title="Example of the ampdb opcode." linenums="1"
     --8<-- "examples/ampdb-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the ampdb opcode. It uses the file [ampdb.csd](../examples/ampdb.csd).
+
     ``` csound-csd title="Example of the ampdb opcode." linenums="1"
     --8<-- "examples/ampdb.csd"
     ```

@@ -52,7 +52,7 @@ Here is an example of the filescal opcode. It uses the file [filescal.csd](../ex
 --8<-- "examples/filescal.csd"
 ```
 
-## See Also
+## See also
 
 [Short-time Fourier Transform (STFT) Resynthesis](../spectral/stft.md)
 

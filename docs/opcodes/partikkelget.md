@@ -43,7 +43,7 @@ Here is an example of the partikkelget and partikkelset opcodes. It uses the fil
 --8<-- "examples/partikkelgetset.csd"
 ```
 
-## See Also
+## See also
 
 [partikkel](../opcodes/partikkel.md)
 

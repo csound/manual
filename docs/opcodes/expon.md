@@ -36,7 +36,7 @@ If the note lasts longer than _idur_, the curve continues past _ib_ at the same 
 
 Here is an example of the expon opcode. It uses the file [expon.csd](../examples/expon.csd).
 
-``` csound-orc title="Example of the expon opcode." linenums="1"
+``` csound-csd title="Example of the expon opcode." linenums="1"
 --8<-- "examples/expon.csd"
 ```
 

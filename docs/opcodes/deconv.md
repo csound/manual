@@ -52,7 +52,7 @@ Here is an example of the rfft opcode. It uses the file [ideconv.csd](../example
 ```
 
 
-## See Also
+## See also
 
 [Vectorial opcodes](../vectorial/top.md)
 

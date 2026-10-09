@@ -48,17 +48,19 @@ Note that changing the boundary conditions during playing may lead to glitches a
 
 === "Modern"
     Here is an example of the barmodel opcode. It uses the file [barmodel-modern.csd](../examples/barmodel-modern.csd).
-    ``` csound-orc title="Example of the barmodel opcode." linenums="1"
+
+    ``` csound-csd title="Example of the barmodel opcode." linenums="1"
     --8<-- "examples/barmodel-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the barmodel opcode. It uses the file [barmodel.csd](../examples/barmodel.csd).
-    ``` csound-orc title="Example of the barmodel opcode." linenums="1"
+
+    ``` csound-csd title="Example of the barmodel opcode." linenums="1"
     --8<-- "examples/barmodel.csd"
     ```
 
-## See Also
+## See also
 
 [Models and Emulations](../siggen/models.md)
 

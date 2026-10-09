@@ -52,11 +52,11 @@ _kamp_ -- Amplitude of output.  Note: As these instruments are stochastic, this 
 
 Here is an example of the tambourine opcode. It uses the file [tambourine.csd](../examples/tambourine.csd).
 
-``` csound-orc title="Example of the tambourine opcode." linenums="1"
+``` csound-csd title="Example of the tambourine opcode." linenums="1"
 --8<-- "examples/tambourine.csd"
 ```
 
-## See Also
+## See also
 
 [Models and Emulations](../siggen/models.md)
 

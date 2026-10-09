@@ -72,7 +72,7 @@ _kgsize_ -- grain size in sec.
 
 Here is an example of the granule opcode. It uses the files [granule.csd](../examples/granule.csd), [marimba.aif](../examples/marimba.aif) and [fox.wav](../examples/fox.wav)
 
-``` csound-orc title="Example of the granule opcode." linenums="1"
+``` csound-csd title="Example of the granule opcode." linenums="1"
 --8<-- "examples/granule.csd"
 ```
 
@@ -98,7 +98,7 @@ In the score file for the first note, the parameters are interpreted as:
 | p20 (_iseed_)                 | seed for the random number generator is set to 0.39 |
 | p21 - p24                     | pitches set to 1 which is the original pitch, 1.42 which is a 5th up, 0.29 which is a 7th down and finally 2 which is an octave up. |
 
-## See Also
+## See also
 
 [Granular Synthesis](../siggen/granular.md)
 

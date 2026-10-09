@@ -44,22 +44,26 @@ In all these opcodes, the resulting vectors are stored in _ifn_, overriding the 
 
 === "Modern"
     Here is an example of the vpowi opcode. It uses the file [vpowi.csd](../examples/vpowi.csd).
+
     ``` csound-csd title="Examples of the vpowi opcode." linenums="1"
     --8<-- "examples/vpowi.csd"
     ```
 
     Here is another example of the vpowi opcode. It uses the file [vpowi-2.csd](../examples/vpowi-2.csd).
+
     ``` csound-csd linenums="1"
     --8<-- "examples/vpowi-2.csd"
     ```
 
 === "Classic"
     Here is an example of the vpow_i opcode. It uses the file [vpow_i.csd](../examples/vpow_i.csd).
+
     ``` csound-csd title="Examples of the vpow_i opcode." linenums="1"
     --8<-- "examples/vpow_i.csd"
     ```
 
     Here is another example of the vpow_i opcode. It uses the file [vpow_i-2.csd](../examples/vpow_i-2.csd).
+
     ``` csound-csd linenums="1"
     --8<-- "examples/vpow_i-2.csd"
     ```

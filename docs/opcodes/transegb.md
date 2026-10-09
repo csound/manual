@@ -47,7 +47,7 @@ Here is an example of the transegb opcode. It uses the file [transegb.csd](../ex
 <figcaption>Output of the transegb example.</figcaption>
 </figure>
 
-``` csound-orc title="Example of the transegb opcode." linenums="1"
+``` csound-csd title="Example of the transegb opcode." linenums="1"
 --8<-- "examples/transegb.csd"
 ```
 

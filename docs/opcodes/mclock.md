@@ -34,7 +34,7 @@ Here is an example of the mclock opcode. It uses the file [mclock.csd](../exampl
 --8<-- "examples/mclock.csd"
 ```
 
-## See Also
+## See also
 
 [midiclockin](midiclockin.md) reports incoming MIDI clock pulses.
 [midiclockfreq](midiclockfreq.md) measures incoming MIDI clock frequency.

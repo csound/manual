@@ -32,7 +32,7 @@ Here is an example of the fftinv opcode. It uses the file [ifft.csd](../examples
 --8<-- "examples/ifft.csd"
 ```
 
-## See Also
+## See also
 
 [Vectorial opcodes](../vectorial/top.md)
 

@@ -34,7 +34,7 @@ Here is an example of the strstrip opcode. It uses the file [strstrip.csd](../ex
 --8<-- "examples/strstrip.csd"
 ```
 
-## See Also
+## See also
 
 [String Manipulation Opcodes](../strings/manipulate.md)
 

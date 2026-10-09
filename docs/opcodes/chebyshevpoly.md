@@ -50,12 +50,14 @@ More information about Chebyshev polynomials can be found on Wikipedia at [http:
 
 === "Modern"
     Here is an example of the chebyshevpoly opcode. It uses the file [chebyshevpoly-modern.csd](../examples/chebyshevpoly-modern.csd).
+
     ``` csound-csd title="Example of the chebyshevpoly opcode." linenums="1"
     --8<-- "examples/chebyshevpoly-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the chebyshevpoly opcode. It uses the file [chebyshevpoly.csd](../examples/chebyshevpoly.csd).
+
     ``` csound-csd title="Example of the chebyshevpoly opcode." linenums="1"
     --8<-- "examples/chebyshevpoly.csd"
     ```
