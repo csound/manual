@@ -38,11 +38,11 @@ _tab_ and _tabw_ opcodes are similar to _table_ but are faster, and use rounding
 
 Here is an example of the tab opcode. It uses the file [tab.csd](../examples/tab.csd).
 
-``` csound-orc title="Example of the tab opcode." linenums="1"
+``` csound-csd title="Example of the tab opcode." linenums="1"
 --8<-- "examples/tab.csd"
 ```
 
-## See Also
+## See also
 
 [Table Access](../siggen/tableacc.md)
 

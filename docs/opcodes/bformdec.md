@@ -44,6 +44,7 @@ _ao1 .. ao8_ -- loudspeaker specific output signals.
 ## Example
 
 Here is an example of the bformdec opcode. It uses the file [bformenc.csd](../examples/bformenc.csd).
+
 ``` csound-csd title="Example of the bformdec opcode." linenums="1"
 --8<-- "examples/bformenc.csd"
 ```

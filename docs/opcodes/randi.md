@@ -40,7 +40,7 @@ The remaining units produce band-limited noise: the _kcps_ and _xcps_ parameters
 
 Here is an example of the randi opcode. It uses the file [randi.csd](../examples/randi.csd).
 
-``` csound-orc title="Example of the randi opcode." linenums="1"
+``` csound-csd title="Example of the randi opcode." linenums="1"
 --8<-- "examples/randi.csd"
 ```
 

@@ -42,13 +42,15 @@ Here is an example of the adsynt opcode. These two instruments perform additive 
 
 === "Modern"
     Uses the file [adsynt-modern.csd](../examples/adsynt-modern.csd).
-    ``` csound-orc title="Example of the adsynt opcode." linenums="1"
+
+    ``` csound-csd title="Example of the adsynt opcode." linenums="1"
     --8<-- "examples/adsynt-modern.csd"
     ```
 
 === "Classic"
     Uses the file [adsynt.csd](../examples/adsynt.csd).
-    ``` csound-orc title="Example of the adsynt opcode." linenums="1"
+
+    ``` csound-csd title="Example of the adsynt opcode." linenums="1"
     --8<-- "examples/adsynt.csd"
     ```
 

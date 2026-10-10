@@ -36,7 +36,7 @@ Here is an example of the d statement. It uses the file [d_statement.csd](../exa
 --8<-- "examples/d_statement.csd"
 ```
 
-## See Also
+## See also
 
 [Score Statements](../score/statemnt.md)
 

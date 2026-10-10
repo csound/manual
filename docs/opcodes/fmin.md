@@ -38,7 +38,7 @@ Here is an example of the fmin opcode. It uses the file [fmin.csd](../examples/f
 --8<-- "examples/fmin.csd"
 ```
 
-## See Also
+## See also
 
 [Array opcodes](../math/array.md)
 

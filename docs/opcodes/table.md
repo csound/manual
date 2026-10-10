@@ -44,11 +44,11 @@ _table_ invokes table lookup on behalf of init, control or audio indices. These 
 
 Here is an example of the table opcode. It uses the file [table.csd](../examples/table.csd).
 
-``` csound-orc title="Example of the table opcode." linenums="1"
+``` csound-csd title="Example of the table opcode." linenums="1"
 --8<-- "examples/table.csd"
 ```
 
-## See Also
+## See also
 
 [Table Access](../siggen/tableacc.md)
 

@@ -53,6 +53,6 @@ These are the diagrams of the waveforms of the GEN10 routines, as used in the ex
 <figcaption>f 4 0 16384 10 1 1 1 1 0.7 0.5 0.3 0.1 - pulse wave, with a fundamental and 8 harmonics</figcaption>
 </figure>
 
-## See Also
+## See also
 
 [GEN09](../scoregens/gen09.md), [GEN11](../scoregens/gen11.md), and [GEN19](../scoregens/gen19.md).

@@ -30,7 +30,7 @@ Here is an example of the readscratch opcode. It uses the file [readscratch.csd]
 --8<-- "examples/readscratch.csd"
 ```
 
-## See Also
+## See also
 
 [writescratch](../opcodes/writescratch.md).
 

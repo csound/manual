@@ -35,7 +35,7 @@ where _x<sub>n</sub>_ is the original white noise and _y<sub>n</sub>_ is lowpass
 
 Here is an example of the noise opcode. It uses the file [noise.csd](../examples/noise.csd).
 
-``` csound-orc title="Example of the noise opcode." linenums="1"
+``` csound-csd title="Example of the noise opcode." linenums="1"
 --8<-- "examples/noise.csd"
 ```
 

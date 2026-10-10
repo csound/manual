@@ -33,22 +33,29 @@ _wgts:i[][]_/_wgets:i_ -- (optional) per-loudspeaker weighting factors. If provi
 
 ### Performance
 _sprd:k_ -- spread factor (>= 0) controlling spatial focus. The gain for each loudspeaker is computed as
+
 ```
 g_i = (k * w_i * b_i) / (d_i^a) * exp(-beta d_i)
 ```
+
 where
+
 ```
 beta = spread / (mean_distance + 1e-6)
 ```
+
 The exponential term introduces a soft decay:
+
 ```
 gain *= exp(-beta * distance)
 ```
+
 Increasing sprd results in tighter spatial focus.
 When sprd = 0, the algorithm reduces to the classical DBAP formulation.
 
 ## Examples
 Here is an example of the dbap opcode. It uses the file [dbapgains.csd](../examples/dbapgains.csd).
+
 ``` csound-csd title="Example of the dbapgains opcode." linenums="1"
 --8<-- "examples/dbapgains.csd"
 ```

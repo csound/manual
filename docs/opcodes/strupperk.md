@@ -18,7 +18,7 @@ _strupperk_ runs both at init and performance time.
     Sdst strupperk Ssrc
     ```
 
-## See Also
+## See also
 
 [String Conversion Opcodes](../strings/convert.md)
 

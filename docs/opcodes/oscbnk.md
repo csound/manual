@@ -48,7 +48,7 @@ _ieqmode_ -- Parametric equalizer mode
 * 4: low shelf (interpolation disabled)
 * 5: high shelf (interpolation disabled)
 
-The non-interpolated modes are faster, and in some cases (e.g. high shelf filter at low cutoff frequencies) also more stable; however, interpolation is useful for avoiding <quote>zipper noise</quote> at low control rates.
+The non-interpolated modes are faster, and in some cases (e.g. high shelf filter at low cutoff frequencies) also more stable; however, interpolation is useful for avoiding “zipper noise” at low control rates.
 
 _ilfomode_ -- LFO modulation mode, sum of:
 
@@ -122,25 +122,29 @@ _kfn_ -- Oscillator waveform table. Table number can be changed at k-rate (this 
 
 === "Modern"
     Here is an example of oscilbank opcode. It uses the file [oscilbank.csd](../examples/oscilbank.csd).
-    ``` csound-orc title="Example of the oscilbank opcode." linenums="1"
+
+    ``` csound-csd title="Example of the oscilbank opcode." linenums="1"
     --8<-- "examples/oscilbank.csd"
     ```
 
 === "Classic"
     Here is an example of oscbnk opcode. It uses the file [oscbnk.csd](../examples/oscbnk.csd).
-    ``` csound-orc title="Example of the oscbnk opcode." linenums="1"
+
+    ``` csound-csd title="Example of the oscbnk opcode." linenums="1"
     --8<-- "examples/oscbnk.csd"
     ```
 
 === "Modern"
     Here is an advanced example of oscilbank opcode. It uses the file [oscilbank-advanced.csd](../examples/oscilbank-advanced.csd).
-    ``` csound-orc title="Advanced example of the oscilbank opcode." linenums="1"
+
+    ``` csound-csd title="Advanced example of the oscilbank opcode." linenums="1"
     --8<-- "examples/oscilbank-advanced.csd"
     ```
 
 === "Classic"
     Here is an advanced example of oscbnk opcode. It uses the file [oscbnk-advanced.csd](../examples/oscbnk-advanced.csd).
-    ``` csound-orc title="Advanced example of the oscbnk opcode." linenums="1"
+
+    ``` csound-csd title="Advanced example of the oscbnk opcode." linenums="1"
     --8<-- "examples/oscbnk-advanced.csd"
     ```
 

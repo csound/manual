@@ -60,7 +60,7 @@ ky = tablei(limit(kx, 0, 1.02)*100, itab)
 
 Here is an example of the bpf opcode. It uses the file [bpf.csd](../examples/bpf.csd).
 
-``` csound-orc title="Example of the bpf opcode." linenums="1"
+``` csound-csd title="Example of the bpf opcode." linenums="1"
 --8<-- "examples/bpf.csd"
 ```
 

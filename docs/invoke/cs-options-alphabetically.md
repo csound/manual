@@ -74,21 +74,27 @@ Append VALUE to ';' separated list of search paths in environment variable NAME 
 * Redundant assignment operations are eliminated whenever possible. This means that for example this line `a1 = a2 + a3` will compile as `a1 Add a2, a3` instead of `#a0 Add a2, a3    a1 = #a0` saving a temporary variable and an opcode call. Less opcode calls result in reduced CPU usage (an average orchestra may compile about 10% faster with --expression-opt, but it depends largely on how many expressions are used, what the control rate is (see also below), etc.; thus, the difference may be less, but also much more).
 
 * Number of a- and k-rate temporary variables is significantly reduced. This expression
+
     ```
     (a1 + a2 + a3 + a4)
     ```
+
     will compile as
+
     ```
     #a0 Add a1, a2
     #a0 Add #a0, a3
     #a0 Add #a0, a4       ; (the result is in #a0)
     ```
+
     instead of
+
     ```
     #a0 Add a1, a2
     #a1 Add #a0, a3
     #a2 Add #a1, a4       ; (the result is in #a2)
     ```
+
     The advantages of less temporary variables are:
 
       * less cache memory is used, which may improve performance of orchestras with many a-rate expressions and a low control rate (e.g. ksmps = 100)

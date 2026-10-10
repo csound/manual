@@ -54,7 +54,7 @@ e
 
 See the example for the [m statement](../scoregens/m.md).
 
-## See Also
+## See also
 
 [Score Statements](../score/statemnt.md)
 

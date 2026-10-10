@@ -36,12 +36,14 @@ Makes the array the desired length, either truncating or padding with zero/Null 
 
 === "Modern"
     Here is an example of the trim opcode. It uses the file [trim-modern.csd](../examples/trim-modern.csd).
+
     ``` csound-csd title="Example of the trim opcode." linenums="1"
     --8<-- "examples/trim-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the trim opcode. It uses the file [trim.csd](../examples/trim.csd).
+
     ``` csound-csd title="Example of the trim opcode." linenums="1"
     --8<-- "examples/trim.csd"
     ```

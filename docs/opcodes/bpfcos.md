@@ -68,7 +68,7 @@ The same as the variant above, but for multidimensional points. Given two curves
 
 Here is an example of the bpfcos opcode. It uses the file [bpfcos.csd](../examples/bpfcos.csd).
 
-``` csound-orc title="Example of the bpfcos opcode." linenums="1"
+``` csound-csd title="Example of the bpfcos opcode." linenums="1"
 --8<-- "examples/bpfcos.csd"
 ```
 

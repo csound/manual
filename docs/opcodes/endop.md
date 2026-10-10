@@ -38,7 +38,7 @@ Here is an example of the endop opcode. It uses the file [endop.csd](../examples
 --8<-- "examples/endop.csd"
 ```
 
-## See Also
+## See also
 
 [User Defined Opcodes (UDO)](../orch/user-defined-opcodes.md)
 

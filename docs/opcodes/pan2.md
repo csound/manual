@@ -15,7 +15,7 @@ Distribute an audio signal across two channels with a choice of methods.
 === "Classic"
     ``` csound-orc
     a1, a2 pan2 asig, xp [, imode]
-    aouts[] pan2 asig, xs [, imode]
+    aouts[] pan2 asig, xp [, imode]
     ```
 
 ### Initialization

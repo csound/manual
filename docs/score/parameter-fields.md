@@ -43,6 +43,7 @@ i 1 0 3 0.2 400
 </CsScore> 
 </CsoundSynthesizer> 
 ```
+
 ## Strings in p-fields
 
 One can pass a string as a p-field instead of a number, like this:

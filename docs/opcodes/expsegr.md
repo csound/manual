@@ -45,7 +45,7 @@ You can use other pre-made envelopes which start a release segment upon receivin
 
 Here is an example of the expsegr opcode. It uses the file [expsegr.csd](../examples/expsegr.csd).
 
-``` csound-orc title="Example of the expsegr opcode." linenums="1"
+``` csound-csd title="Example of the expsegr opcode." linenums="1"
 --8<-- "examples/expsegr.csd"
 ```
 

@@ -30,12 +30,14 @@ _isize_ -- FFT size of output (N).
 
 === "Modern"
     Here is an example of the binit opcode. It uses the file [binit-modern.csd](../examples/binit-modern.csd).
+
     ``` csound-csd title="Example of the binit opcode." linenums="1"
     --8<-- "examples/binit-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the binit opcode. It uses the file [binit.csd](../examples/binit.csd).
+
     ``` csound-csd title="Example of the binit opcode." linenums="1"
     --8<-- "examples/binit.csd"
     ```

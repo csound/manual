@@ -68,6 +68,7 @@ ksmps = 64
 0dbfs =  1
 nchnls = 2
 ```
+
 ## Expressions
 
 Expressions may be composed to any depth. Each part of an expression is evaluated at its own proper rate. For instance, if the terms within a sub-expression all change at the control rate or slower, the sub-expression will be evaluated only at the control rate; that result might then be used in an audio-rate evaluation. For example, in

@@ -26,7 +26,7 @@ Here is an example of the strrindex opcode. It uses the file [strrindex.csd](../
 --8<-- "examples/strrindex.csd"
 ```
 
-## See Also
+## See also
 
 [String Manipulation Opcodes](../strings/manipulate.md)
 

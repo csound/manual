@@ -10,12 +10,12 @@ This opcode prints at every cycle, possibly multiple times per cycle. Used insid
 ## Syntax
 === "Modern"
     ``` csound-orc
-    printsk("string", [, xval1] [, xval2] [...])
+    printsk("string" [, xval1] [, xval2] [...])
     ```
 
 === "Classic"
     ``` csound-orc
-    printsk "string", [, xval1] [, xval2] [...]
+    printsk "string" [, xval1] [, xval2] [...]
     ```
 
 ### Initialization

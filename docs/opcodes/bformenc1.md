@@ -40,12 +40,14 @@ _kbeta_ -- altitude angle in degrees.
 
 === "Modern"
     Here is an example of the bformenc1 opcode. It uses the file [bformenc1-modern.csd](../examples/bformenc1-modern.csd).
+
     ``` csound-csd title="Example of the bformenc1 opcode." linenums="1"
     --8<-- "examples/bformenc1-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the bformenc1 opcode. It uses the file [bformenc1.csd](../examples/bformenc1.csd).
+
     ``` csound-csd title="Example of the bformenc1 opcode." linenums="1"
     --8<-- "examples/bformenc1.csd"
     ```

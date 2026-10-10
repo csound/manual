@@ -38,7 +38,7 @@ If several points round to the same update, the output jumps to the last value a
 
 Here is an example of the expsegba opcode. It uses the file [expsegba.csd](../examples/expsegba.csd).
 
-``` csound-orc title="Example of the expsegba opcode." linenums="1"
+``` csound-csd title="Example of the expsegba opcode." linenums="1"
 --8<-- "examples/expsegba.csd"
 ```
 

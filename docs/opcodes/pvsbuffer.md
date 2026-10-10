@@ -36,7 +36,7 @@ _pvsbuffer_ stores _fsig_ in a buffer which can be read by [pvsbufread](../opcod
 
 Here is an example of the use of the _pvsbuffer_ opcode. It uses the file [pvsbuffer.csd](../examples/pvsbuffer.csd).
 
-``` csound-csd title="Example of the _pvsbuffer_ opcode." linenums="1"
+``` csound-csd title="Example of the pvsbuffer opcode." linenums="1"
 --8<-- "examples/pvsbuffer.csd"
 ```
 

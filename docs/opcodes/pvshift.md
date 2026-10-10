@@ -53,7 +53,7 @@ Depending on the input, this will transform a pitched sound into an inharmonic, 
 
 Here is an example of the use of the _pvshift_ opcode. It uses the file [pvshift.csd](../examples/pvshift.csd).
 
-``` csound-csd title="Example of the _pvshift_ opcode." linenums="1"
+``` csound-csd title="Example of the pvshift opcode." linenums="1"
 --8<-- "examples/pvshift.csd"
 ```
 

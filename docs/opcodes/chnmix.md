@@ -30,12 +30,14 @@ _aval_ -- the audio signal to write at performance time.
 
 === "Modern"
     Here is an example of the chnmix opcode. It uses the file [chnmix-modern.csd](../examples/chnmix-modern.csd).
+
     ``` csound-csd title="Example of the chnmix opcode." linenums="1"
     --8<-- "examples/chnmix-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the chnmix opcode. It uses the file [chnmix.csd](../examples/chnmix.csd).
+
     ``` csound-csd title="Example of the chnmix opcode." linenums="1"
     --8<-- "examples/chnmix.csd"
     ```

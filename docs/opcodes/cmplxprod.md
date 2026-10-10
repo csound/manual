@@ -30,7 +30,7 @@ Here is an example of the cmplxprod opcode. It uses the file [cmplxprod.csd](../
 --8<-- "examples/cmplxprod.csd"
 ```
 
-## See Also
+## See also
 
 [Vectorial opcodes](../vectorial/top.md)
 

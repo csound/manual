@@ -58,12 +58,17 @@ _loscil3_ is identical to [loscil](../opcodes/loscil.md) except that it uses cub
 > :memo: **Note**
 >
 > This is mono loscil3:
+>
 > ``` csound-orc
-> a1 loscil3_ 10000, 1, 1, 1, 1
+> a1 loscil3 0.3, 1, 1, 1, 1
+>
 > ```
+>
 > ...and this is stereo loscil3:
+>
 > ``` csound-orc
-> a1, a2 loscil3_ 10000, 1, 1, 1, 1
+> a1, a2 loscil3 0.3, 1, 1, 1, 1
+>
 > ```
 
 ## Examples

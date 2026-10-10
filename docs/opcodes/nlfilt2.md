@@ -27,14 +27,17 @@ described in Dobson and Fitch (ICMC'96) as modified by Risto Holopainen.
 ### Performance
 
 1.   Non-linear effect. The range of parameters are:
+
 ```
 a = b = 0
 d = 0.8, 0.9, 0.7
 C = 0.4, 0.5, 0.6
 L = 20
 ```
+
 This affects the lower register most but there are audible effects over the whole range. We suggest that it may be useful for coloring drums, and for adding arbitrary highlights to notes.
 2.   Low Pass with non-linear. The range of parameters are:
+
 ```
 a = 0.4
 b = 0.2
@@ -42,8 +45,10 @@ d = 0.7
 C = 0.11
 L = 20, ... 200
 ```
+
 There are instability problems with this variant but the effect is more pronounced of the lower register, but is otherwise much like the pure comb. Short values of _L_ can add attack to a sound.
 3.   High Pass with non-linear. The range of parameters are:
+
 ```
 a = 0.35
 b = -0.3
@@ -51,7 +56,9 @@ d = 0.95
 C = 0,2, ... 0.4
 L = 200
 ```
+
 4.   High Pass with non-linear. The range of parameters are:
+
 ```
 a = 0.7
 b = -0.2, ... 0.5

@@ -38,7 +38,7 @@ These units generate control or audio signals whose values can pass through 2 or
 
 Here is an example of the trigexpseg opcode. It uses the file [trigexpseg.csd](../examples/trigexpseg.csd).
 
-``` csound-orc title="Example of the trigexpseg opcode." linenums="1"
+``` csound-csd title="Example of the trigexpseg opcode." linenums="1"
 --8<-- "examples/trigexpseg.csd"
 ```
 

@@ -57,7 +57,7 @@ Here is a complete example of the pvcross opcode. It uses the file [pvcross.csd]
 --8<-- "examples/pvcross.csd"
 ```
 
-## See Also
+## See also
 
 [Short-time Fourier Transform (STFT) Resynthesis](../spectral/stft.md)
 

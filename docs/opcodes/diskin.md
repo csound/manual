@@ -17,10 +17,13 @@ Reads audio data from an external device or stream and can alter its pitch.
     ar1 [, ar2 [, ar3 [, ... arN]]] diskin ifilcod[, kpitch[, iskiptim \
         [, iwraparound[, iformat[, iskipinit]]]]]
     ```
+
 Note the N was 24 in versions before 5.14, and 40 after.
+
 ``` csound-orc
 ar1[] diskin ifilcod[, kpitch[, iskiptim [, iwraparound[, iformat[, iskipinit]]]]]
 ```
+
 (in this version, the number of output channels is not limited.)
 
 ### Initialization

@@ -50,6 +50,7 @@ Please note that since this opcode generates its output using input parameters (
 ## Examples
 
 Here is an example of the fin opcode. It uses the file [fin.csd](../examples/fin.csd) and [fox.wav](../examples/fox.wav).
+
 ``` csound-csd title="Example of the fin opcode." linenums="1"
 --8<-- "examples/fin.csd"
 ```

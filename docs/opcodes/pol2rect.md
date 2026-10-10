@@ -38,7 +38,7 @@ Here is an example of the pol2rect opcode. It uses the file [pol2rect.csd](../ex
 --8<-- "examples/pol2rect.csd"
 ```
 
-## See Also
+## See also
 
 [Vectorial opcodes](../vectorial/top.md),
 [array opcodes](../math/array.md)

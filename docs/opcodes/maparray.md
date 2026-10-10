@@ -12,14 +12,14 @@ Apply a function of one argument to every element of a vector (one-dimensional k
 ## Syntax
 === "Modern"
     ``` csound-orc
-    karray = maparray(kinarray, String)
-    karray = maparrayi(kinarray, String)
+    karray[] = maparray(kinarray[], String)
+    karray[] = maparrayi(kinarray[], String)
     ```
 
 === "Classic"
     ``` csound-orc
-    karray maparray kinarray, String
-    karray maparray_i kinarray, String
+    karray[] maparray kinarray[], String
+    karray[] maparray_i kinarray[], String
     ```
 
 ### Initialization
@@ -34,7 +34,7 @@ _kinarray_ --  array for arguments to the function.
 
 ## Replacing tabmap and tabmap_i
 
-[tabmap](tabmap.md) maps a k-rate array during initialization and on each control cycle. Change `kResult = tabmap(kSource, "abs")` to `kResult = maparray(kSource, "abs")`.
+[tabmap](tabmap.md) maps a k-rate array during initialization and on each control cycle. Change `kResult[] = tabmap(kSource, "abs")` to `kResult[] = maparray(kSource, "abs")`.
 
 [tabmap_i](tabmap_i.md) and its alias [tabmapi](tabmapi.md) run only at initialization. Replace either name with `maparrayi` to keep that timing. `maparray_i` is the older spelling of `maparrayi`.
 
@@ -44,17 +44,19 @@ The source must be initialized and one-dimensional. Use a supported one-input sc
 
 === "Modern"
     Here is an example of the maparray opcode. It uses the file [maparray-modern.csd](../examples/maparray-modern.csd).
+
     ``` csound-csd title="Example of the maparray opcode." linenums="1"
     --8<-- "examples/maparray-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the maparray opcode. It uses the file [maparray.csd](../examples/maparray.csd).
+
     ``` csound-csd title="Example of the maparray opcode." linenums="1"
     --8<-- "examples/maparray.csd"
     ```
 
-## See Also
+## See also
 
 [Array opcodes](../math/array.md)
 

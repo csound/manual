@@ -105,13 +105,13 @@ f1 0 -18 "farey" 7 4
 This generates Farey Sequence F<sub>7</sub>. The table contains all fractions of F<sub>7</sub>,
 same as mode 0, but this time '1' is added to each table element.
 
-``` csound-orc title="A simple example of the GENfarey routine." linenums="1"
+``` csound-csd title="A simple example of the GENfarey routine." linenums="1"
 --8<-- "examples/genfarey.csd"
 ```
 
 Here is a complete example of the GENfarey routine. It uses the files [genfarey-2.csd](../examples/genfarey-2.csd).
 
-``` csound-orc title="Another example of the GENfarey routine." linenums="1"
+``` csound-csd title="Another example of the GENfarey routine." linenums="1"
 --8<-- "examples/genfarey-2.csd"
 ```
 
@@ -127,7 +127,7 @@ These are the diagrams of the waveforms of the GENfarey routines, as used in the
 <figcaption>gimult ftgen 101,0,-18,"farey",7,2 - generate the denominators of fractions of F_7 </figcaption>
 </figure>
 
-## See Also
+## See also
 
 [Models and Emulations](../siggen/models.md)
 

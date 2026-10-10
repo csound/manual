@@ -42,11 +42,11 @@ _imaxshake_ (optional) -- amount of energy to add back into the system. The valu
 
 Here is an example of the crunch opcode. It uses the file [crunch.csd](../examples/crunch.csd).
 
-``` csound-orc title="Example of the crunch opcode." linenums="1"
+``` csound-csd title="Example of the crunch opcode." linenums="1"
 --8<-- "examples/crunch.csd"
 ```
 
-## See Also
+## See also
 
 [Models and Emulations](../siggen/models.md)
 

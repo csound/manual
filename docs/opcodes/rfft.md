@@ -55,7 +55,7 @@ Another example of the rfft opcode, now using a Complex-type array. It uses the 
 ```
 
 
-## See Also
+## See also
 
 [pows](pows.md) calculates the power spectrum from the packed k-array output.
 

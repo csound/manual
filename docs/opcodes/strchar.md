@@ -26,7 +26,7 @@ Here is an example of the strchar opcode. It uses the file [strchar.csd](../exam
 --8<-- "examples/strchar.csd"
 ```
 
-## See Also
+## See also
 
 [String Conversion Opcodes](../strings/convert.md)
 

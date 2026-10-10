@@ -32,7 +32,7 @@ Here is an example of the strget opcode. It uses the file [strget.csd](../exampl
 --8<-- "examples/strget.csd"
 ```
 
-## See Also
+## See also
 
 [String Manipulation Opcodes](../strings/manipulate.md)
 

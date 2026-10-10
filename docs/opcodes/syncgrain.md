@@ -50,11 +50,11 @@ _kprate_ -- readout pointer rate, in grains. The value of 1 will advance the rea
 
 Here is an example of the syncgrain opcode. It uses the file [syncgrain.csd](../examples/syncgrain.csd).
 
-``` csound-orc title="Example of the syncgrain opcode." linenums="1"
+``` csound-csd title="Example of the syncgrain opcode." linenums="1"
 --8<-- "examples/syncgrain.csd"
 ```
 
-## See Also
+## See also
 
 [Granular Synthesis](../siggen/granular.md)
 

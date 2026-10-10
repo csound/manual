@@ -16,14 +16,14 @@ open with id 0 and playback starts immediately.
 ## Syntax
 === "Modern"
     ``` csound-orc
-     midifileplay(loop:i, [id:i])
-     midifileplay(loop:k, [id:i])
+     midifileloop(loop:i[, id:i])
+     midifileloop(loop:k[, id:k])
     ```
 
 === "Classic"
     ``` csound-orc
-    midifileplay iloop, [id]
-    midifileplay kloop, [id]    
+    midifileloop iloop[, iid]
+    midifileloop kloop[, kid]
     ```
 
 ### Initialization
@@ -39,7 +39,7 @@ _loop_ -- playback loop mode: 1 = on, 0 = off
 
 ## Examples
 
-Here is an example of the miditempo opcode. It uses the files [midifileloop.csd](../examples/midifileloop.csd).
+Here is an example of the midifileloop opcode. It uses the files [midifileloop.csd](../examples/midifileloop.csd).
 
 ``` csound-csd title="Example of the midifileloop opcode." linenums="1"
 --8<-- "examples/midifileloop.csd"

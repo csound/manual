@@ -36,7 +36,7 @@ Here is an example of the window opcode. It uses the file [window.csd](../exampl
 --8<-- "examples/window.csd"
 ```
 
-## See Also
+## See also
 
 [Vectorial opcodes](../vectorial/top.md)
 

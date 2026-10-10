@@ -30,7 +30,7 @@ Here is an example of the strfromurl opcode. It uses the file [strfromurl.csd](.
 --8<-- "examples/strfromurl.csd"
 ```
 
-## See Also
+## See also
 
 [String Manipulation Opcodes](../strings/manipulate.md)
 

@@ -76,17 +76,20 @@ _ift_ -- Function table storing room parameters (for free field spatialization, 
 _imode_ -- Output mode
 
 * 0: B format with W output only (mono)
+
 ``` csound-orc
 aout    =  aW
 ```
 
 * 1: B format with W and Y output (stereo)
+
 ``` csound-orc
 aleft   =  aW + 0.7071*aY
 aright  =  aW - 0.7071*aY
 ```
 
 * 2: B format with W, X, and Y output (2D). This can be converted to UHJ:
+
 ``` csound-orc
 aWre, aWim      hilbert aW
 aXre, aXim      hilbert aX
@@ -99,6 +102,7 @@ aright  =  aWXr - aWXiYr
 
 * 3: B format with all outputs (3D)
 * 4: Simulates a pair of microphones (stereo output)
+
 ``` csound-orc
 aW      butterlp aW, ifreq      ; recommended values for ifreq
 aY      butterlp aY, ifreq      ; are around 1000 Hz
@@ -133,12 +137,15 @@ If you encounter very slow performance (up to 100 times slower), it may be cause
 
 * Using the [denorm](../opcodes/denorm.md) opcode on _ain_ before _spat3di_.
 * mixing low level DC or noise to the input signal, e.g.
+
 ``` csound-orc
 atmp rnd31 1/1e24, 0, 0
 
 aW, aX, aY, aZ spat3di ain + atmp, ...
 ```
+
 or
+
 ``` csound-orc
 aW, aX, aY, aZ spa3di ain + 1/1e24, ...
 ```

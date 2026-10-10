@@ -40,7 +40,7 @@ The value _ares_ or _kres_ is within is a half-closed interval which contains _-
 
 Here is an example of the rand opcode. It uses the file [rand.csd](../examples/rand.csd).
 
-``` csound-orc title="Example of the rand opcode." linenums="1"
+``` csound-csd title="Example of the rand opcode." linenums="1"
 --8<-- "examples/rand.csd"
 ```
 

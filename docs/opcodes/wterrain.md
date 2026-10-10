@@ -34,7 +34,7 @@ Here is an example of the wterrain opcode. It uses the file [wterrain.csd](../ex
 --8<-- "examples/wterrain.csd"
 ```
 
-## See Also
+## See also
 
 [Wave Terrain Synthesis](../siggen/waveterr.md)
 

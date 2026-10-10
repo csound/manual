@@ -30,6 +30,6 @@ Here is an example of the e statement. It uses the file [e.csd](../examples/e.cs
 --8<-- "examples/e.csd"
 ```
 
-## See Also
+## See also
 
 [Score Statements](../score/statemnt.md)

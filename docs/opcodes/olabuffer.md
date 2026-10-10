@@ -38,7 +38,7 @@ Here is a simple example of the olabuffer opcode. It uses the file [framebuffer.
 --8<-- "examples/framebuffer.csd"
 ```
 
-## See Also
+## See also
 
 [Array-based spectral opcodes](../spectral/arrays.md)
 

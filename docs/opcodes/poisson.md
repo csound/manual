@@ -71,13 +71,13 @@ For more detailed explanation of these distributions, see:
 
 Here is an example of the poisson opcode. It uses the file [poisson.csd](../examples/poisson.csd). It is written for *NIX systems, and will generate errors on Windows.
 
-``` csound-orc title="Example of the poisson opcode." linenums="1"
+``` csound-csd title="Example of the poisson opcode." linenums="1"
 --8<-- "examples/poisson.csd"
 ```
 
 Here is another example of the poisson opcode. It uses the file [poisson2.csd](../examples/poisson2.csd).
 
-``` csound-orc linenums="1"
+``` csound-csd linenums="1"
 --8<-- "examples/poisson2.csd"
 ```
 

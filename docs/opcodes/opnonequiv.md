@@ -22,12 +22,14 @@ where the arguments $a$ and $b$ may be further expressions.  They are converted 
 
 === "Modern"
     Here is an example for the bitwise-group, comparing the different bitwise opcodes. It uses the file [bitwise-group-modern.csd](../examples/bitwise-group-modern.csd).
+
     ``` csound-csd title="Example of the bitwise group." linenums="1"
     --8<-- "examples/bitwise-group-modern.csd"
     ```
 
 === "Classic"
     Here is an example for the bitwise-group, comparing the different bitwise opcodes. It uses the file [bitwise-group.csd](../examples/bitwise-group.csd).
+
     ``` csound-csd title="Example of the bitwise group." linenums="1"
     --8<-- "examples/bitwise-group.csd"
     ```

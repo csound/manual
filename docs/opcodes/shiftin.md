@@ -32,7 +32,7 @@ Here is an example of the shiftin opcode. It uses the file [shiftin.csd](../exam
 --8<-- "examples/shiftin.csd"
 ```
 
-## See Also
+## See also
 
 [Vectorial opcodes](../vectorial/top.md), [array opcodes](../math/array.md)
 

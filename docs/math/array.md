@@ -159,12 +159,14 @@ kArr2[] = kArr1 + 10    ;(kArr2 is now [11, 12, 13])
 
 === "Modern"
     Here is an example of array/scalar operations. It uses the file [array_scalar_math-modern.csd](../examples/array_scalar_math-modern.csd).
+
     ``` csound-csd title="Example of array operations" linenums="1"
     --8<-- "examples/array_scalar_math-modern.csd"
     ```
 
 === "Classic"
     Here is an example of array/scalar operations. It uses the file [array_scalar_math.csd](../examples/array_scalar_math.csd).
+
     ``` csound-csd title="Example of array operations" linenums="1"
     --8<-- "examples/array_scalar_math.csd"
     ```
@@ -181,12 +183,14 @@ kArr3[] = kArr1 + kArr2    ;(kArr3 is now [11, 22, 33])
 
 === "Modern"
     Here is an example of array operations. It uses the file [array_array_math-modern.csd](../examples/array_array_math-modern.csd).
+
     ``` csound-csd title="Example of array operations" linenums="1"
     --8<-- "examples/array_array_math-modern.csd"
     ```
 
 === "Classic"
     Here is an example of array operations. It uses the file [array_array_math.csd](../examples/array_array_math.csd).
+
     ``` csound-csd title="Example of array operations" linenums="1"
     --8<-- "examples/array_array_math.csd"
     ```
@@ -292,12 +296,14 @@ endop
 
 === "Modern"
     Here is an example of an array in an UDO. It uses the file [array_udo-modern.csd](../examples/array_udo-modern.csd).
+
     ``` csound-csd title="Example of an array in an UDO" linenums="1"
     --8<-- "examples/array_udo-modern.csd"
     ```
 
 === "Classic"
     Here is an example of an array in an UDO. It uses the file [array_udo.csd](../examples/array_udo.csd).
+
     ``` csound-csd title="Example of an array in an UDO" linenums="1"
     --8<-- "examples/array_udo.csd"
     ```

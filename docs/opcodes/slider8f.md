@@ -50,7 +50,7 @@ As the input and output arguments are many, you can split the line using '\' (ba
 >
 > _slider8f_ opcodes do not output the required initial value immediately, but only after some k-cycles because the filter slightly delays the output.
 
-## See Also
+## See also
 
 [Slider Banks](../midi/sliderbk.md)
 

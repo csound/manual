@@ -24,7 +24,7 @@ _kstart_ -- start position in Ssrc, counting from 0. A negative value means the 
 
 _kend_ -- end position in Ssrc, counting from 0. A negative value means the end of the string. If kend is less than kstart, the output is reversed.
 
-## See Also
+## See also
 
 [String Manipulation Opcodes](../strings/manipulate.md)
 

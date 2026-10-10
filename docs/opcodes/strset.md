@@ -38,7 +38,7 @@ Here is an example of the strset opcode. It uses the file [strset.csd](../exampl
 --8<-- "examples/strset.csd"
 ```
 
-## See Also
+## See also
 
 [String Manipulation Opcodes](../strings/manipulate.md)
 

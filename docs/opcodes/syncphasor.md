@@ -10,12 +10,12 @@ Produces a moving phase value between zero and one and an extra impulse output (
 ## Syntax
 === "Modern"
     ``` csound-orc
-    aphase, asyncout = syncphasor(xcps, asyncin, [, iphs])
+    aphase, asyncout = syncphasor(xcps, asyncin [, iphs])
     ```
 
 === "Classic"
     ``` csound-orc
-    aphase, asyncout syncphasor xcps, asyncin, [, iphs]
+    aphase, asyncout syncphasor xcps, asyncin [, iphs]
     ```
 
 ### Initialization
@@ -40,13 +40,13 @@ The phase of _syncphasor_ though can be synced to another phasor (or other signa
 
 Here is an example of the syncphasor opcode. It uses the file [syncphasor.csd](../examples/syncphasor.csd).
 
-``` csound-orc title="Example of the syncphasor opcode." linenums="1"
+``` csound-csd title="Example of the syncphasor opcode." linenums="1"
 --8<-- "examples/syncphasor.csd"
 ```
 
 Here is another example of the syncphasor opcode. It uses the file [syncphasor-CZresonance.csd](../examples/syncphasor-CZresonance.csd).
 
-``` csound-orc title="Another example of the syncphasor opcode." linenums="1"
+``` csound-csd title="Another example of the syncphasor opcode." linenums="1"
 --8<-- "examples/syncphasor-CZresonance.csd"
 ```
 

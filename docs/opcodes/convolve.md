@@ -97,12 +97,14 @@ Accounting for the initial delay:
 
 === "Modern"
     Here is a similar example of the convolve opcode. It uses the file [convolve-modern.csd](../examples/convolve-modern.csd).
+
     ``` csound-csd title="Example of the convolve opcode." linenums="1"
     --8<-- "examples/convolve-modern.csd"
     ```
 
 === "Classic"
     Here is a similar example of the convolve opcode. It uses the file [convolve.csd](../examples/convolve.csd).
+
     ``` csound-csd title="Example of the convolve opcode." linenums="1"
     --8<-- "examples/convolve.csd"
     ```

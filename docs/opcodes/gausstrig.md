@@ -36,13 +36,13 @@ _kdev_ -- random deviation from mean (0 &lt;= dev &lt; 1).
 
 Here is an example of the gausstrig opcode. It uses the file [gausstrig.csd](../examples/gausstrig.csd).
 
-``` csound-orc title="Example of the gausstrig opcode." linenums="1"
+``` csound-csd title="Example of the gausstrig opcode." linenums="1"
 --8<-- "examples/gausstrig.csd"
 ```
 
 Here is an example of the gausstrig opcode with imode = 1. It uses the file [gausstrig-2.csd](../examples/gausstrig-2.csd).
 
-``` csound-orc title="Example of the gausstrig opcode with imode = 1." linenums="1"
+``` csound-csd title="Example of the gausstrig opcode with imode = 1." linenums="1"
 --8<-- "examples/gausstrig-2.csd"
 ```
 

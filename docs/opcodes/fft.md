@@ -33,17 +33,17 @@ with not too many factors.
 === "Modern"
     ``` csound-orc
     out:k[] = fft(in:k[])
-    in:Complex[] = fft(in:Complex[][,inverse:i])
-    in:Complex[] = fft(in:k[]);
-    out:k[] = fft(in:Complex[]);
+    out:Complex[] = fft(in:Complex[][,inverse:i])
+    out:Complex[] = fft(in:k[])
+    out:k[] = fft(in:Complex[])
     ```
 
 === "Classic"
     ``` csound-orc
     kout[] fft kin[]
-    in:Complex[] fft in:Complex[]
-    in:Complex[] fft in:k[] 
-    kout[] fft in:Complex[];
+    out:Complex[] fft in:Complex[][,inverse:i]
+    out:Complex[] fft in:k[]
+    kout[] fft in:Complex[]
     ```
 
 ### Initialisation
@@ -68,12 +68,12 @@ This is example of the fft opcode (k-type array). It uses the file [fft.csd](../
 
 Another example of the fft opcode, now using a Complex-type array. It uses the file [fft_complex_type.csd](../examples/fft_complex_type.csd).
 
-``` csound-csd title="Example of the fft opcode (Complex array." linenums="1"
+``` csound-csd title="Example of the fft opcode (Complex array)." linenums="1"
 --8<-- "examples/fft_complex_type.csd"
 ```
 
 
-## See Also
+## See also
 
 [Vectorial opcodes](../vectorial/top.md)
 

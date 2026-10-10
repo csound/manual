@@ -46,7 +46,7 @@ _jitter2_ can be used to make more natural and &#8220;analog-sounding&#8221; som
 Here is an example of the jitter2 opcode. It uses the file
 [jitter2.csd](../examples/jitter2.csd).
 
-``` csound-orc title="Example of the jitter2 opcode." linenums="1"
+``` csound-csd title="Example of the jitter2 opcode." linenums="1"
 --8<-- "examples/jitter2.csd"
 ```
 

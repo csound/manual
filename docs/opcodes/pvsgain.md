@@ -42,7 +42,7 @@ reinitialize _pvsgain_ too.
 
 Here is an example of the use of the _pvsgain_ opcode. It uses the file [pvsgain.csd](../examples/pvsgain.csd).
 
-``` csound-csd title="Example of the _pvsgain_ opcode." linenums="1"
+``` csound-csd title="Example of the pvsgain opcode." linenums="1"
 --8<-- "examples/pvsgain.csd"
 ```
 

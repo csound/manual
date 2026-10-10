@@ -26,7 +26,7 @@ See the documentation for the [{ statement](../scoregens/leftbrace.md) for furth
 
 See the examples in the entry for the [{ statement](../scoregens/leftbrace.md).
 
-## See Also
+## See also
 
 [Score Statements](../score/statemnt.md)
 

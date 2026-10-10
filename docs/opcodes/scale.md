@@ -42,7 +42,7 @@ value range, defaulting to one.
 
 Here is an example of the scale opcode. It uses the file [scale.csd](../examples/scale.csd).
 
-``` csound-orc title="Example of the scale opcode." linenums="1"
+``` csound-csd title="Example of the scale opcode." linenums="1"
 --8<-- "examples/scale.csd"
 ```
 

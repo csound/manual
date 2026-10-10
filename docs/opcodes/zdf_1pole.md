@@ -44,12 +44,14 @@ _kmode_ -- filter output type. The default value is 0. The output mode may be on
 
 === "Modern"
     Here is an example of the zdf1pole opcode. It uses the file [zdf1pole.csd](../examples/zdf1pole.csd).
+
     ``` csound-csd title="Example of the zdf1pole opcode." linenums="1"
     --8<-- "examples/zdf1pole.csd"
     ```
 
 === "Classic"
     Here is an example of the zdf_1pole opcode. It uses the file [zdf_1pole.csd](../examples/zdf_1pole.csd).
+
     ``` csound-csd title="Example of the zdf_1pole opcode." linenums="1"
     --8<-- "examples/zdf_1pole.csd"
     ```

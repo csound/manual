@@ -32,7 +32,7 @@ _iport_ -- MIDI output port, optional set to 0.
 
 Sends a real-time message once, in init stage of current instrument. _imsgtype_ parameter is a flag to indicate the message type.
 
-## See Also
+## See also
 
 [midicontinue](midicontinue.md) reports incoming Continue messages.
 

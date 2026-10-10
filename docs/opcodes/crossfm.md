@@ -64,11 +64,11 @@ _crossfmpm_ and _crossfmpmi_ implement cross frequency/phase modulation between 
 Here is an example of the crossfm opcode. It uses the file
 [crossfm.csd](../examples/crossfm.csd).
 
-``` csound-orc title="Example of the crossfm opcode." linenums="1"
+``` csound-csd title="Example of the crossfm opcode." linenums="1"
 --8<-- "examples/crossfm.csd"
 ```
 
-## See Also
+## See also
 
 [FM Synthesis](../siggen/fmsynth.md)
 

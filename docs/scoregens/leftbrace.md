@@ -93,7 +93,7 @@ Here is a full example of the _{_ and _} statements_. It uses the file [leftbrac
 --8<-- "examples/leftbrace.csd"
 ```
 
-## See Also
+## See also
 
 [Score Statements](../score/statemnt.md)
 

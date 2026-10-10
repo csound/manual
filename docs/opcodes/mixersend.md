@@ -26,7 +26,7 @@ _isend_ -- The number of the send, for example the number of the instrument send
 
 _ibuss_ -- The number of the buss, for example the number of the instrument receiving the signal.
 
-_ichannel_ -- The number of the channel. Each buss has <literal>nchnls</literal> channels.
+_ichannel_ -- The number of the channel. Each buss has `nchnls` channels.
 
 ### Performance
 
@@ -59,12 +59,14 @@ endin
 
 === "Modern"
     Here is a complete example of the mixersend opcode. It uses the file [Mixer-modern.csd](../examples/Mixer-modern.csd)
+
     ``` csound-csd title="Complete example of the mixersend opcode." linenums="1"
     --8<-- "examples/Mixer-modern.csd"
     ```
 
 === "Classic"
     Here is a complete example of the MixerSend opcode. It uses the file [Mixer.csd](../examples/Mixer.csd)
+
     ``` csound-csd title="Complete example of the MixerSend opcode." linenums="1"
     --8<-- "examples/Mixer.csd"
     ```

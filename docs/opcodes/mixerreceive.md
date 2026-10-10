@@ -67,12 +67,14 @@ endin
 
 === "Modern"
     Here is a complete example of the mixerreceive opcode. It uses the file [Mixer-modern.csd](../examples/Mixer-modern.csd)
+
     ``` csound-csd title="Complete example of the mixerreceive opcode." linenums="1"
     --8<-- "examples/Mixer-modern.csd"
     ```
 
 === "Classic"
     Here is a complete example of the MixerReceive opcode. It uses the file [Mixer.csd](../examples/Mixer.csd)
+
     ``` csound-csd title="Complete example of the MixerReceive opcode." linenums="1"
     --8<-- "examples/Mixer.csd"
     ```

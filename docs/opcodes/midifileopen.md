@@ -13,25 +13,25 @@ event.
 ## Syntax
 === "Modern"
     ``` csound-orc
-     id:i = midfileopen(name:S[,port:i])
+     id:i = midifileopen(name:S[,port:i])
     ```
 
 === "Classic"
     ``` csound-orc
-    id midifileopen Sname[,iport]
+    iid midifileopen Sname[,iport]
     ```
 
 ### Initialization
 
 _name_ -- MIDI file name.
 
-_port_ (optional, default=0) -- MIDI channel port mapping: (port + 1)*channel
+_port_ (optional, default=0) -- MIDI channel port mapping: 16 * port + channel, where channel is 1–16
 
 Returns a MIDI file id to use with other opcodes.
 
 ## Examples
 
-Here is an example of the miditempo opcode. It uses the files [midifileopen.csd](../examples/midifileopen.csd).
+Here is an example of the midifileopen opcode. It uses the files [midifileopen.csd](../examples/midifileopen.csd).
 
 ``` csound-csd title="Example of the midifileopen opcode." linenums="1"
 --8<-- "examples/midifileopen.csd"

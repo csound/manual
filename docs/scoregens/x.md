@@ -22,6 +22,6 @@ Here is an example of the x statement. It uses the file [x.csd](../examples/x.cs
 --8<-- "examples/x.csd"
 ```
 
-## See Also
+## See also
 
 [Score Statements](../score/statemnt.md)

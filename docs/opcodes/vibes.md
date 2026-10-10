@@ -44,13 +44,13 @@ _kvamp_ -- amplitude of the tremolo
 
 Here is an example of the vibes opcode. It uses the file [vibes.csd](../examples/vibes.csd), and [marmstk1.wav](../examples/marmstk1.wav).
 
-``` csound-orc title="Example of the vibes opcode." linenums="1"
+``` csound-csd title="Example of the vibes opcode." linenums="1"
 --8<-- "examples/vibes.csd"
 ```
 
 A musical example featuring the vibes opcode: [Vibes_Pena.csd](../examples/musical/Vibes_Pena.csd), by luis Antunes Pena.
 
-## See Also
+## See also
 
 [Models and Emulations](../siggen/models.md)
 

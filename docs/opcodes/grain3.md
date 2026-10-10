@@ -91,11 +91,11 @@ _kfn_ -- function table containing grain waveform. Table number can be changed a
 
 Here is an example of the grain3 opcode. It uses the file [grain3.csd](../examples/grain3.csd).
 
-``` csound-orc title="Example of the grain3 opcode." linenums="1"
+``` csound-csd title="Example of the grain3 opcode." linenums="1"
 --8<-- "examples/grain3.csd"
 ```
 
-## See Also
+## See also
 
 [Granular Synthesis](../siggen/granular.md)
 

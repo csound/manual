@@ -34,7 +34,7 @@ Here is an example of the hypot opcode. It uses the file [hypot.csd](../examples
 --8<-- "examples/hypot.csd"
 ```
 
-## See Also
+## See also
 
 [Array opcodes](../math/array.md)
 

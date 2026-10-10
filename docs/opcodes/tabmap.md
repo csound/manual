@@ -28,7 +28,7 @@ The function needs both an i-rate and a k-rate form with one numeric input and o
 
 ## Replacement
 
-Change `kResult = tabmap(kSource, "abs")` to `kResult = maparray(kSource, "abs")`. The two names share initialization and performance behavior.
+Change `kResult[] = tabmap(kSource, "abs")` to `kResult[] = maparray(kSource, "abs")`. The two names share initialization and performance behavior.
 
 For initialization-only mapping of a k-rate array, use `maparrayi`. The old names for that operation are [tabmap_i](tabmap_i.md) and [tabmapi](tabmapi.md).
 

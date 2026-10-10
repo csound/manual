@@ -42,12 +42,14 @@ Use of the mixer requires that instruments setting gains have smaller numbers th
 
 === "Modern"
     Here is a complete example of the mixergetlevel opcode. It uses the file [Mixer-modern.csd](../examples/Mixer-modern.csd)
+
     ``` csound-csd title="Complete example of the mixergetlevel opcode." linenums="1"
     --8<-- "examples/Mixer-modern.csd"
     ```
 
 === "Classic"
     Here is a complete example of the MixerGetLevel opcode. It uses the file [Mixer.csd](../examples/Mixer.csd)
+
     ``` csound-csd title="Complete example of the MixerGetLevel opcode." linenums="1"
     --8<-- "examples/Mixer.csd"
     ```

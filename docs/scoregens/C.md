@@ -18,17 +18,19 @@ _p1_ -- Specifies whether to switch off (value 0) or on (non-zero).
 
 === "Modern"
     Here is an example of the C statement. It uses the file [C-modern.csd](../examples/C-modern.csd).
+
     ``` csound-csd title="Example of the C statement." linenums="1"
     --8<-- "examples/C-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the C statement. It uses the file [C.csd](../examples/C.csd).
+
     ``` csound-csd title="Example of the C statement." linenums="1"
     --8<-- "examples/C.csd"
     ```
 
-## See Also
+## See also
 
 [Score Statements](../score/statemnt.md)
 

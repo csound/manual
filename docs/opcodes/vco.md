@@ -56,11 +56,11 @@ _xcps_ -- is the frequency of the wave in cycles per second.
 
 Here is an example of the vco opcode. It uses the file [vco.csd](../examples/vco.csd).
 
-``` csound-orc title="Example of the vco opcode." linenums="1"
+``` csound-csd title="Example of the vco opcode." linenums="1"
 --8<-- "examples/vco.csd"
 ```
 
-## See Also
+## See also
 
 [Dynamic Spectrum Oscillators](../siggen/dynamic.md)
 

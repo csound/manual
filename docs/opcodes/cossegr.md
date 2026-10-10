@@ -45,7 +45,7 @@ You can use other pre-made envelopes which start a release segment upon receivin
 
 Here is an example of the cossegr opcode. It uses the file [cossegr.csd](../examples/cossegr.csd).
 
-``` csound-orc title="Example of the cossegr opcode." linenums="1"
+``` csound-csd title="Example of the cossegr opcode." linenums="1"
 --8<-- "examples/cossegr.csd"
 ```
 

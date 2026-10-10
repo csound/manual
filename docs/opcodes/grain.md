@@ -54,11 +54,11 @@ The grain generator is based primarily on work and writings of Barry Truax and C
 
 This example generates a texture with gradually shorter grains and wider amp and pitch spread. It uses the file [grain.csd](../examples/grain.csd), and [drumsMlp.wav](../examples/drumsMlp.wav).
 
-``` csound-orc title="Example of the grain opcode." linenums="1"
+``` csound-csd title="Example of the grain opcode." linenums="1"
 --8<-- "examples/grain.csd"
 ```
 
-## See Also
+## See also
 
 [Granular Synthesis](../siggen/granular.md)
 

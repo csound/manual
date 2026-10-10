@@ -52,11 +52,11 @@ _klend_ -- loop end in secs.
 
 Here is an example of the syncloop opcode. It uses the file [syncloop.csd](../examples/syncloop.csd).
 
-``` csound-orc title="Example of the syncloop opcode." linenums="1"
+``` csound-csd title="Example of the syncloop opcode." linenums="1"
 --8<-- "examples/syncloop.csd"
 ```
 
-## See Also
+## See also
 
 [Granular Synthesis](../siggen/granular.md)
 

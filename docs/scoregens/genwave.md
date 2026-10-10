@@ -34,7 +34,7 @@ Here is an example of the GENwave routine. It uses the file [genwave.csd](../exa
 --8<-- "examples/genwave.csd"
 ```
 
-## See Also
+## See also
 
 Ingrid Daubechies. Ten Lectures on Wavelets, SIAM 1992.
 

@@ -40,12 +40,14 @@ The actions of compress will depend on the parameter settings given.  A hard-kne
 
 === "Modern"
     Here is an example of the compress opcode. It uses the file [compress-modern.csd](../examples/compress-modern.csd).
+
     ``` csound-csd title="Example of the compress opcode." linenums="1"
     --8<-- "examples/compress-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the compress opcode. It uses the file [compress.csd](../examples/compress.csd).
+
     ``` csound-csd title="Example of the compress opcode." linenums="1"
     --8<-- "examples/compress.csd"
     ```

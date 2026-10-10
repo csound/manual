@@ -71,6 +71,6 @@ table 34):
 <figcaption>f 33 0 8193 -15 1 1 1 180 1 180 .5 180 .9 180 .3 180 .75 180 .2 0 .6 0 .15 0 .5 0 .1 0</figcaption>
 </figure>
 
-## See Also
+## See also
 
 [GEN13](../scoregens/gen13.md), and [GEN14](../scoregens/gen14.md).
