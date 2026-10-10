@@ -1,0 +1,82 @@
+name: Article checks
+
+on:
+  pull_request:
+  push:
+    branches: [develop, master, manual-offline-build]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: article-checks-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  articles:
+    name: Article source and HTML
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: tools/requirements-audit.txt
+      - name: Install audit dependencies
+        run: python -m pip install -r tools/requirements-audit.txt
+      - name: Test the article checker
+        run: python -m unittest discover -s tools -p 'test_*.py'
+      - name: Check article source
+        run: python tools/check_articles.py --json "$RUNNER_TEMP/article-source.json"
+      - name: Build the manual
+        run: mkdocs build --strict -d "$RUNNER_TEMP/manual-site"
+      - name: Check rendered articles
+        run: >-
+          python tools/check_articles.py
+          --site "$RUNNER_TEMP/manual-site"
+          --json "$RUNNER_TEMP/article-html.json"
+      - name: Upload audit reports
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: article-audit
+          path: |
+            ${{ runner.temp }}/article-source.json
+            ${{ runner.temp }}/article-html.json
+          if-no-files-found: ignore
+
+  synopses:
+    name: Csound 7 synopsis syntax
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check out Csound 7
+        uses: actions/checkout@v4
+        with:
+          repository: csound/csound
+          ref: 083c78efa8b5da99bc33e1e8b262e71c467f7f73
+          path: csound-source
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential cmake ninja-build bison flex libsndfile1-dev
+      - name: Configure Csound
+        # Include MP3 and signal-flow-graph opcodes in the library.
+        run: >-
+          cmake -S csound-source -B "$RUNNER_TEMP/csound-build" -G Ninja
+          -DCMAKE_BUILD_TYPE=Release
+          -DBUILD_PLUGINS=OFF
+          -DBUILD_TESTS=OFF
+          -DBUILD_UTILITIES=OFF
+          -DUSE_GETTEXT=OFF
+          -DUSE_CURL=OFF
+          -DUSE_WASMTIME=OFF
+          -DUSE_DEFAULT_OPCODEDIR=OFF
+      - name: Build Csound
+        run: cmake --build "$RUNNER_TEMP/csound-build" --target csound-bin --parallel 2
+      - name: Compile synopsis examples without playing audio
+        run: '"$RUNNER_TEMP/csound-build/csound" --syntax-check-only -n -d tools/synopsis-smoke.csd'
