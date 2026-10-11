@@ -29,6 +29,7 @@ The opcodes that generate linear or exponential curves or segments are:
 * [loopxseg](../opcodes/loopxseg.md)
 * [lpshold](../opcodes/lpshold.md)
 * [lpsholdp](../opcodes/lpsholdp.md)
+* [remap](../opcodes/remap.md)
 * [rspline](../opcodes/rspline.md)
 * [scale](../opcodes/scale.md)
 * [scale2](../opcodes/scale2.md)
