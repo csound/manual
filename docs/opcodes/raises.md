@@ -37,7 +37,7 @@ where the arguments $a$ and $b$ may be further expressions.
 
 Here is an example of the &circ; operator. It uses the file [raises.csd](../examples/raises.csd).
 
-``` csound-csd title="Example of the &circ; operator." linenums="1"
+``` csound-csd title="Example of the ^ operator." linenums="1"
 --8<-- "examples/raises.csd"
 ```
 

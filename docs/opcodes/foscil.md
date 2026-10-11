@@ -43,11 +43,11 @@ The actual formula used for this implementation of FM synthesis is _xamp_ * cos(
 
 Here is an example of the foscil opcode. It uses the file [foscil.csd](../examples/foscil.csd).
 
-``` csound-orc title="Example of the foscil opcode." linenums="1"
+``` csound-csd title="Example of the foscil opcode." linenums="1"
 --8<-- "examples/foscil.csd"
 ```
 
-## See Also
+## See also
 
 [FM Synthesis](../siggen/fmsynth.md)
 

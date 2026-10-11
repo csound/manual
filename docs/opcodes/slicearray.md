@@ -8,12 +8,12 @@ Take a slice of a vector (one-dimensional k-rate array).
 ## Syntax
 === "Modern"
     ``` csound-orc
-    karray = slicearray(kinarray, istart, iend [,istride])
+    karray[] = slicearray(kinarray[], istart, iend [,istride])
     ```
 
 === "Classic"
     ``` csound-orc
-    karray slicearray kinarray, istart, iend [,istride]
+    karray[] slicearray kinarray[], istart, iend [,istride]
     ```
 
 ### Initialization
@@ -26,7 +26,7 @@ _istride_ -- increment for source elements (optional), defaults to 1.
 
 ## Replacing tabslice
 
-[tabslice](tabslice.md) is the deprecated performance-only name for k-rate arrays. Replace `kResult = tabslice(kSource, istart, iend, istride)` with `kResult = slicearray(kSource, istart, iend, istride)`.
+[tabslice](tabslice.md) is the deprecated performance-only name for k-rate arrays. Replace `kResult[] = tabslice(kSource, istart, iend, istride)` with `kResult[] = slicearray(kSource, istart, iend, istride)`.
 
 The indices and stride keep their meaning. The end index is inclusive. `slicearray` also copies at initialization, so the source must be ready then. Account for that earlier result if other initialization code reads it.
 
@@ -38,7 +38,7 @@ Here is an example of the slicearray opcode. It uses the file [slicearray.csd](.
 --8<-- "examples/slicearray.csd"
 ```
 
-## See Also
+## See also
 
 [slicearrayi](slicearrayi.md) and its older spelling `slicearray_i` copy i-rate, k-rate or string arrays at initialization only.
 

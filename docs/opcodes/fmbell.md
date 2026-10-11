@@ -53,11 +53,11 @@ _kvrate_ -- Vibrator rate
 
 Here is an example of the fmbell opcode. It uses the file [fmbell.csd](../examples/fmbell.csd).
 
-``` csound-orc title="Example of the fmbell opcode." linenums="1"
+``` csound-csd title="Example of the fmbell opcode." linenums="1"
 --8<-- "examples/fmbell.csd"
 ```
 
-## See Also
+## See also
 
 [FM Synthesis](../siggen/fmsynth.md)
 

@@ -50,11 +50,11 @@ _kvamp_ -- amplitude of the vibrato
 
 Here is an example of the marimba opcode. It uses the file [marimba.csd](../examples/marimba.csd), and [marmstk1.wav](../examples/marmstk1.wav).
 
-``` csound-orc title="Example of the marimba opcode." linenums="1"
+``` csound-csd title="Example of the marimba opcode." linenums="1"
 --8<-- "examples/marimba.csd"
 ```
 
-## See Also
+## See also
 
 [Models and Emulations](../siggen/models.md)
 

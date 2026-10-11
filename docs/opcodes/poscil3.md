@@ -49,13 +49,13 @@ _poscil3_ works like [poscil](../opcodes/poscil.md), but uses cubic interpolatio
 
 Here is an example of the poscil3 opcode. It uses the file [poscil3.csd](../examples/poscil3.csd).
 
-``` csound-orc title="Example of the poscil3 opcode." linenums="1"
+``` csound-csd title="Example of the poscil3 opcode." linenums="1"
 --8<-- "examples/poscil3.csd"
 ```
 
 Here is another example of the poscil3 opcode, which uses a table filled from a sound file. It uses the file [poscil3-file.csd](../examples/poscil3-file.csd).
 
-``` csound-orc title="Another example of the poscil3 opcode." linenums="1"
+``` csound-csd title="Another example of the poscil3 opcode." linenums="1"
 --8<-- "examples/poscil3-file.csd"
 ```
 

@@ -53,11 +53,11 @@ _ifn_ -- Integer identifying the sequence.
 
 Here is an example of the fareyleni opcode. It uses the file [fareyleni.csd](../examples/fareyleni.csd).
 
-``` csound-orc title="Example of the fareyleni opcode." linenums="1"
+``` csound-csd title="Example of the fareyleni opcode." linenums="1"
 --8<-- "examples/fareyleni.csd"
 ```
 
-## See Also
+## See also
 
 [Models and Emulations](../siggen/models.md)
 

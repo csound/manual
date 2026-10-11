@@ -112,7 +112,7 @@ At k-rate or a-rate, if a table number of &lt; 1 is given, or the table number p
 > Although it may seem this program should print a 10 to the console. It will print 0, because  [tab_i](../opcodes/tab_i.md) will read the value at the initialization of the note, before the first performance pass, when _ptablew_ writes its value.
 >
 
-## See Also
+## See also
 
 [tableiw](../opcodes/tableiw.md),
 [tablewkt](../opcodes/tablewkt.md)

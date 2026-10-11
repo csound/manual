@@ -38,11 +38,11 @@ Special care of index value must be taken into account. Index values out of the 
 
 Here is an example of the tabw opcode. It uses the file [tabw.csd](../examples/tabw.csd).
 
-``` csound-orc title="Example of the tabw opcode." linenums="1"
+``` csound-csd title="Example of the tabw opcode." linenums="1"
 --8<-- "examples/tabw.csd"
 ```
 
-## See Also
+## See also
 
 [Table Access](../siggen/tableacc.md)
 

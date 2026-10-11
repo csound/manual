@@ -41,7 +41,7 @@ The arguments of &percnt; can be scalar values or k-rate one dimensional arrays 
 
 Here is an example of the &percnt; operator. It uses the file [modulus.csd](../examples/modulus.csd).
 
-``` csound-csd title="Example of the &percnt; operator." linenums="1"
+``` csound-csd title="Example of the % operator." linenums="1"
 --8<-- "examples/modulus.csd"
 ```
 

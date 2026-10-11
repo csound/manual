@@ -36,7 +36,7 @@ _indx_ -- table index
 
 _tabwi_ opcode is similar to _tablew_ but is faster, and use rounding of the index.
 
-## See Also
+## See also
 
 [Table Access](../siggen/tableacc.md)
 

@@ -55,11 +55,11 @@ _kvrate_ -- Vibrator rate
 
 Here is an example of the fmmetal opcode. It uses the file [fmmetal.csd](../examples/fmmetal.csd), and [twopeaks.aiff](../examples/twopeaks.aiff).
 
-``` csound-orc title="Example of the fmmetal opcode." linenums="1"
+``` csound-csd title="Example of the fmmetal opcode." linenums="1"
 --8<-- "examples/fmmetal.csd"
 ```
 
-## See Also
+## See also
 
 [FM Synthesis](../siggen/fmsynth.md)
 

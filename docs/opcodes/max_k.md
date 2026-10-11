@@ -46,12 +46,14 @@ This opcode can be useful in several situations, for example to implement a vu-m
 
 === "Modern"
     Here is an example of the maxk opcode. It uses the file [maxk.csd](../examples/maxk.csd).
+
     ``` csound-csd title="Example of the maxk opcode." linenums="1"
     --8<-- "examples/maxk.csd"
     ```
 
 === "Classic"
     Here is an example of the max_k opcode. It uses the file [max_k.csd](../examples/max_k.csd).
+
     ``` csound-csd title="Example of the max_k opcode." linenums="1"
     --8<-- "examples/max_k.csd"
     ```

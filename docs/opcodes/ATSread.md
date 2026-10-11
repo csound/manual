@@ -38,12 +38,14 @@ _ktimepnt_ – The time pointer in seconds used to index the ATS file. Used for 
 
 === "Modern"
     Here is an example of the atsread opcode. It uses the file [atsread-modern.csd](../examples/atsread-modern.csd).
+
     ``` csound-csd title="Example of the atsread opcode." linenums="1"
     --8<-- "examples/atsread-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the ATSread opcode. It uses the file [ATSread.csd](../examples/ATSread.csd).
+
     ``` csound-csd title="Example of the ATSread opcode." linenums="1"
     --8<-- "examples/ATSread.csd"
     ```
@@ -52,12 +54,14 @@ Here we are using _atsread_ to get the 10th partial's frequency and amplitude da
 
 === "Modern"
     Here is a musical example of the atsread opcode. It uses the file [atsread-musical-modern.csd](../examples/atsread-musical-modern.csd).
+
     ``` csound-csd title="Musical example of the atsread opcode." linenums="1"
     --8<-- "examples/atsread-musical-modern.csd"
     ```
 
 === "Classic"
     Here is a musical example of the ATSread opcode. It uses the file [ATSread-musical.csd](../examples/ATSread-musical.csd).
+
     ``` csound-csd title="Musical example of the ATSread opcode." linenums="1"
     --8<-- "examples/ATSread-musical.csd"
     ```

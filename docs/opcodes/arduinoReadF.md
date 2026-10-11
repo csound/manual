@@ -38,17 +38,19 @@ _kval_ -- floating point value read.
 
 === "Modern"
     Here is an example of the arduinoreadf opcode. It uses the file [arduinoreadf-modern.csd](../examples/arduinoreadf-modern.csd).
+
     ``` csound-csd title="Example of the arduinoreadf opcode." linenums="1"
     --8<-- "examples/arduinoreadf-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the arduinoReadF opcode. It uses the file [arduinoReadF.csd](../examples/arduinoReadF.csd).
+
     ``` csound-csd title="Example of the arduinoReadF opcode." linenums="1"
     --8<-- "examples/arduinoReadF.csd"
     ```
 
-## See Also
+## See also
 
 [non-MIDI Devices](../oscnetwork/nonMIDIdevices.md)
 

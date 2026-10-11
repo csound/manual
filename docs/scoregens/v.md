@@ -53,6 +53,6 @@ Here is an example of the v statement. It uses the file [v.csd](../examples/v.cs
 
 In this example, note3 and note5 occur simultaneously, while note4 actually occurs before note3, that is, at its original place. Durations are unaffected.
 
-## See Also
+## See also
 
 [Score Statements](../score/statemnt.md)

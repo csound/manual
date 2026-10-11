@@ -142,12 +142,14 @@ These examples allocate numeric and string arrays, then read and change individu
 
 === "Modern"
     [init-arrays-modern.csd](../examples/init-arrays-modern.csd)
+
     ``` csound-csd title="Initializing arrays" linenums="1"
     --8<-- "examples/init-arrays-modern.csd"
     ```
 
 === "Classic"
     [init-arrays.csd](../examples/init-arrays.csd)
+
     ``` csound-csd title="Initializing arrays" linenums="1"
     --8<-- "examples/init-arrays.csd"
     ```

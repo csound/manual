@@ -43,6 +43,6 @@ These are the diagrams of the waveforms of the GEN08 routines, as used in the ex
 <figcaption>f 3 0 65 8 -1 32 1 2 0 14 0 17 0 - from a negative value,a curve with a smooth hump, going negative creating a small hump then flat at its ends</figcaption>
 </figure>
 
-## See Also
+## See also
 
 [GEN05](../scoregens/gen05.md), [GEN06](../scoregens/gen06.md), and [GEN07](../scoregens/gen07.md)

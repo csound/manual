@@ -40,7 +40,7 @@ Here is an example of the dctinv opcode. It uses the file [dctinv.csd](../exampl
 --8<-- "examples/dctinv.csd"
 ```
 
-## See Also
+## See also
 
 [Vectorial opcodes](../vectorial/top.md), [array opcodes](../math/array.md), [dct](../opcodes/dct.md)
 

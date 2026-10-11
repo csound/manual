@@ -26,7 +26,7 @@ Here is an example of the strcpyk opcode. It uses the file [strcpyk.csd](../exam
 --8<-- "examples/strcpyk.csd"
 ```
 
-## See Also
+## See also
 
 [String Manipulation Opcodes](../strings/manipulate.md)
 

@@ -26,12 +26,14 @@ Instrument 2 plays first in the score, but its `#ifdef FREQ2` selects the `#else
 
 === "Modern"
     The file [undef-modern.csd](../examples/undef-modern.csd) uses modern syntax.
+
     ``` csound-csd title="Example of #undef." linenums="1"
     --8<-- "examples/undef-modern.csd"
     ```
 
 === "Classic"
     The file [undef.csd](../examples/undef.csd) uses classic syntax.
+
     ``` csound-csd title="Example of #undef." linenums="1"
     --8<-- "examples/undef.csd"
     ```

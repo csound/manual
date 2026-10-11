@@ -48,12 +48,14 @@ endin
 
 === "Modern"
     Here is a complete example of the oscsend opcode. It uses the file [oscsend-modern.csd](../examples/oscsend-modern.csd).
+
     ``` csound-csd title="Example of the oscsend opcode." linenums="1"
     --8<-- "examples/oscsend-modern.csd"
     ```
 
 === "Classic"
     Here is a complete example of the OSCsend opcode. It uses the file [OSCsend.csd](../examples/OSCsend.csd).
+
     ``` csound-csd title="Example of the OSCsend opcode." linenums="1"
     --8<-- "examples/OSCsend.csd"
     ```

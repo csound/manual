@@ -35,7 +35,7 @@ For more detailed explanation of these distributions, see:
 
 Here is an example of the pcauchy opcode. It uses the file [pcauchy.csd](../examples/pcauchy.csd).
 
-``` csound-orc title="Example of the pcauchy opcode." linenums="1"
+``` csound-csd title="Example of the pcauchy opcode." linenums="1"
 --8<-- "examples/pcauchy.csd"
 ```
 

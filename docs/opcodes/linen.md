@@ -76,6 +76,6 @@ It uses [linen_endpoint.csd](../examples/linen_endpoint.csd).
 --8<-- "examples/linen_endpoint.csd"
 ```
 
-## See Also
+## See also
 
 [Envelope Generators](../siggen/envelope.md)

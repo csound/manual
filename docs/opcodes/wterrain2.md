@@ -128,7 +128,7 @@ It uses the file [wterrain2_2.csd](../examples/wterrain2_2.csd).
 --8<-- "examples/wterrain2_2.csd"
 ```
 
-## See Also
+## See also
 
 [Wave Terrain Synthesis](../siggen/waveterr.md)
 

@@ -52,6 +52,7 @@ only required in classic UDO syntax
     ``` csound-orc
     opcode name, outtypes, intypes   
     ```
+
 ### Initialization
 
 _name_ -- name of the opcode. It may consist of any combination of letters, digits, and underscore but should not begin with a digit. Opcodes may be overloaded, i.e. use the
@@ -171,7 +172,7 @@ Here is another example of a user-defined opcode. It uses the file
 --8<-- "examples/opcode_f.csd"
 ```
 
-## See Also
+## See also
 
 [User Defined Opcodes (UDO)](../orch/user-defined-opcodes.md)
 

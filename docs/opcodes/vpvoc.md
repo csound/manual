@@ -62,7 +62,7 @@ Here is a complete example of the vpvoc opcode. It uses the file [vpvoc.csd](../
 --8<-- "examples/vpvoc.csd"
 ```
 
-## See Also
+## See also
 
 [Short-time Fourier Transform (STFT) Resynthesis](../spectral/stft.md)
 

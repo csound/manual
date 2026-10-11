@@ -31,7 +31,7 @@ _icvt_out_ -- converter used for output, defaults to the input converter, but ca
 > Calling this opcode in the same UDO as setksmps is not allowed. The opcode can only be used in UDOs. Audio or control rate array arguments are not allowed. Global variables or bus channels should not be used.
 >
 
-## See Also
+## See also
 
 [User Defined Opcodes (UDO)](../orch/user-defined-opcodes.md)
 

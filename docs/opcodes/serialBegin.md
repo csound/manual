@@ -32,12 +32,14 @@ _ibaudrate_ -- serial speed, defaulting to 9600 bps.
 
 === "Modern"
     Here is an example of the serialbegin opcode. It uses the file [serialbegin-modern.csd](../examples/serialbegin-modern.csd).
+
     ``` csound-csd title="Example of the serialbegin opcode." linenums="1"
     --8<-- "examples/serialbegin-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the serialBegin opcode. It uses the file [serialBegin.csd](../examples/serialBegin.csd).
+
     ``` csound-csd title="Example of the serialBegin opcode." linenums="1"
     --8<-- "examples/serialBegin.csd"
     ```
@@ -68,7 +70,7 @@ void loop() {
 .....
 ```
 
-## See Also
+## See also
 
 [non-MIDI Devices](../oscnetwork/nonMIDIdevices.md)
 

@@ -56,7 +56,7 @@ Here is an example of the GENpadsynth routine. It uses the files [padsynth_gen.c
 --8<-- "examples/padsynth_gen.csd"
 ```
 
-## See Also
+## See also
 
 More information on Padsynth: [http://www.paulnasca.com/algorithms-created-by-me](http://www.paulnasca.com/algorithms-created-by-me)
 

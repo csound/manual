@@ -38,12 +38,14 @@ _ival_ -- returned value.
 
 === "Modern"
     Here is an example of the counti opcode. It uses the file [counter-modern.csd](../examples/counter-modern.csd).
+
     ``` csound-csd title="Example of the counti opcode." linenums="1"
     --8<-- "examples/counter-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the count_i opcode. It uses the file [counter.csd](../examples/counter.csd).
+
     ``` csound-csd title="Example of the count_i opcode." linenums="1"
     --8<-- "examples/counter.csd"
     ```

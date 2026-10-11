@@ -39,13 +39,15 @@ _xcps_ -- the frequency which new random numbers are generated.
 
 === "Modern"
     Here is an example of the cauchy opcode. It uses the file [cauchyi-modern.csd](../examples/cauchyi-modern.csd).
-    ``` csound-orc title="Example of the cauchy opcode." linenums="1"
+
+    ``` csound-csd title="Example of the cauchy opcode." linenums="1"
     --8<-- "examples/cauchyi-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the cauchy opcode. It uses the file [cauchyi.csd](../examples/cauchyi.csd).
-    ``` csound-orc title="Example of the cauchy opcode." linenums="1"
+
+    ``` csound-csd title="Example of the cauchy opcode." linenums="1"
     --8<-- "examples/cauchyi.csd"
     ```
 

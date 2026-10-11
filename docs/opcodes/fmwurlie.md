@@ -55,11 +55,11 @@ _kvrate_ -- Vibrator rate
 
 Here is an example of the fmwurlie opcode. It uses the file [fmwurlie.csd](../examples/fmwurlie.csd), and [fwavblnk.aiff](../examples/fwavblnk.aiff).
 
-``` csound-orc title="Example of the fmwurlie opcode." linenums="1"
+``` csound-csd title="Example of the fmwurlie opcode." linenums="1"
 --8<-- "examples/fmwurlie.csd"
 ```
 
-## See Also
+## See also
 
 [FM Synthesis](../siggen/fmsynth.md)
 

@@ -36,12 +36,14 @@ _Sinlet1_ -- String name of the sink inlet in the sink instrument.
 
 === "Modern"
     Here is an example of the connect opcode. It uses the file [connect-modern.csd](../examples/connect-modern.csd).
+
     ``` csound-csd title="Example of the connect opcode." linenums="1"
     --8<-- "examples/connect-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the connect opcode. It uses the file [connect.csd](../examples/connect.csd).
+
     ``` csound-csd title="Example of the connect opcode." linenums="1"
     --8<-- "examples/connect.csd"
     ```

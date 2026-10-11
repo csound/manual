@@ -31,6 +31,7 @@ This opcode is part of a suite of streaming linear prediction opcodes. It takes 
 === "Modern"
     Here is an example of the apoleparams opcode using an audio input
     signal as lpc source. It uses the file [apoleparams-modern.csd](../examples/apoleparams-modern.csd).
+
     ``` csound-csd title="Example of the apoleparams opcode." linenums="1"
     --8<-- "examples/apoleparams-modern.csd"
     ```
@@ -38,6 +39,7 @@ This opcode is part of a suite of streaming linear prediction opcodes. It takes 
 === "Classic"
     Here is an example of the apoleparams opcode using an audio input
     signal as lpc source. It uses the file [apoleparams.csd](../examples/apoleparams.csd).
+
     ``` csound-csd title="Example of the apoleparams opcode." linenums="1"
     --8<-- "examples/apoleparams.csd"
     ```

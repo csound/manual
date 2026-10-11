@@ -36,12 +36,14 @@ _atsinterpread_ takes a frequency value (_kfreq_ in Hz). This frequency is used 
 
 === "Modern"
     Here is an example of the atsinterpread opcode. It uses the file [atsinterpread-modern.csd](../examples/atsinterpread-modern.csd).
+
     ``` csound-csd title="Example of the atsinterpread opcode." linenums="1"
     --8<-- "examples/atsinterpread-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the ATSinterpread opcode. It uses the file [ATSinterpread.csd](../examples/ATSinterpread.csd).
+
     ``` csound-csd title="Example of the ATSinterpread opcode." linenums="1"
     --8<-- "examples/ATSinterpread.csd"
     ```

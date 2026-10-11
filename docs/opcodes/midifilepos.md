@@ -16,17 +16,17 @@ open with id 0 and playback starts immediately.
 === "Modern"
     ``` csound-orc
      pos:i = midifilepos([id:i])
-     pos:k = midifilepos([id:i])
+     pos:k = midifilepos([id:k])
      midifilepos(pos:i[,id:i])
-     midifilepos(pos:k[,id:i])
+     midifilepos(pos:k[,id:k])
     ```
 
 === "Classic"
     ``` csound-orc
-    ipos midifilepos [id]
-    kpos midifilepos [id]
-    midifilepos ipos[,id]
-    midifilepos kpos[,id]
+    ipos midifilepos [iid]
+    kpos midifilepos [kid]
+    midifilepos ipos[,iid]
+    midifilepos kpos[,kid]
     ```
 
 ### Initialization
@@ -39,7 +39,7 @@ any file passed to the -F flag.
 
 ## Examples
 
-Here is an example of the miditempo opcode. It uses the files [midifilepos.csd](../examples/midifilepos.csd).
+Here is an example of the midifilepos opcode. It uses the files [midifilepos.csd](../examples/midifilepos.csd).
 
 ``` csound-csd title="Example of the midifilepos opcode." linenums="1"
 --8<-- "examples/midifilepos.csd"

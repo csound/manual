@@ -39,7 +39,7 @@ _xcps_ -- the frequency which new random numbers are generated.
 
 Here is an example of the exprandi opcode. It uses the file [exprandi.csd](../examples/exprandi.csd).
 
-``` csound-orc title="Example of the exprandi opcode." linenums="1"
+``` csound-csd title="Example of the exprandi opcode." linenums="1"
 --8<-- "examples/exprandi.csd"
 ```
 

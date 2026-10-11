@@ -26,17 +26,19 @@ _kin[]_ -- input array containing the sequence for autocorrelation.
 
 === "Modern"
     Here is an example of the autocorr opcode. It uses the file [autocorr-modern.csd](../examples/autocorr-modern.csd).
+
     ``` csound-csd title="Example of the autocorr opcode." linenums="1"
     --8<-- "examples/autocorr-modern.csd"
     ```
 
 === "classic"
     Here is an example of the autocorr opcode. It uses the file [autocorr.csd](../examples/autocorr.csd).
+
     ``` csound-csd title="Example of the autocorr opcode." linenums="1"
     --8<-- "examples/autocorr.csd"
     ```
 
-## See Also
+## See also
 
 [Vectorial opcodes](../vectorial/top.md), [array opcodes](../math/array.md)
 

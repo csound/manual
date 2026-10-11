@@ -39,7 +39,7 @@ Times round to the nearest whole control period for _kres_ or sample for _ares_.
 
 Here is an example of the linsegb opcode. It uses the file [linsegb.csd](../examples/linsegb.csd).
 
-``` csound-orc title="Example of the linsegb opcode." linenums="1"
+``` csound-csd title="Example of the linsegb opcode." linenums="1"
 --8<-- "examples/linsegb.csd"
 ```
 

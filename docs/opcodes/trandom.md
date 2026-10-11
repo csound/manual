@@ -30,7 +30,7 @@ _trandom_ is almost identical to [random](../opcodes/random.md) opcode, except _
 
 Here is an example of the trandom opcode. It uses the file [trandom.csd](../examples/trandom.csd).
 
-``` csound-orc title="Example of the trandom opcode." linenums="1"
+``` csound-csd title="Example of the trandom opcode." linenums="1"
 --8<-- "examples/trandom.csd"
 ```
 

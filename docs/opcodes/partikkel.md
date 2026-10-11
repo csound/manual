@@ -130,23 +130,23 @@ _kwavekey4_ -- as _kwavekey1_, but for source waveform 4.
 
 Here is an example of the partikkel opcode. It uses the file [partikkel.csd](../examples/partikkel.csd).
 
-``` csound-orc title="Example of the partikkel opcode." linenums="1"
+``` csound-csd title="Example of the partikkel opcode." linenums="1"
 --8<-- "examples/partikkel.csd"
 ```
 
 Here is another example of the partikkel opcode. It uses the file [partikkel-2.csd](../examples/partikkel-2.csd).
 
-``` csound-orc title="Example 2 of the partikkel opcode." linenums="1"
+``` csound-csd title="Example 2 of the partikkel opcode." linenums="1"
 --8<-- "examples/partikkel-2.csd"
 ```
 
 Here is an example of using panning laws with channelmasks in partikkel. It uses the file [partikkel-panlaws.csd](../examples/partikkel-panlaws.csd).
 
-``` csound-orc title="Example with panning laws with channel masks." linenums="1"
+``` csound-csd title="Example with panning laws with channel masks." linenums="1"
 --8<-- "examples/partikkel-panlaws.csd"
 ```
 
-## See Also
+## See also
 
 [Granular Synthesis](../siggen/granular.md)
 

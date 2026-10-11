@@ -42,7 +42,7 @@ Here is an example of the setcol opcode. It uses the file [setcol.csd](../exampl
 --8<-- "examples/setcol.csd"
 ```
 
-## See Also
+## See also
 
 [Vectorial Opcodes](../vectorial/top.md)
 

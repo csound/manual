@@ -41,6 +41,6 @@ zero:
 contin:
 ```
 
-## See Also
+## See also
 
 [specdisp](../opcodes/specdisp.md)

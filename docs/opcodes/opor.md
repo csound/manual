@@ -35,7 +35,7 @@ where the arguments $a$ and $b$ may be further expressions.
 
 Here is an example of the &verbar; operator. It uses the file [logicOR.csd](../examples/logicOR.csd).
 
-``` csound-csd title="Example of the &verbar; operator." linenums="1"
+``` csound-csd title="Example of the || operator." linenums="1"
 --8<-- "examples/logicOR.csd"
 ```
 

@@ -58,13 +58,15 @@ _asource_ -- The audio signal to be cut up. This version runs in real-time witho
 
 === "Modern"
     Here is a simple example of the bbcutm opcode. It uses the file [bbcutm-modern.csd](../examples/bbcutm-modern.csd), and [drumsMlp.wav](../examples/drumsMlp.wav).
-    ``` csound-orc title="A simple example of the bbcutm opcode." linenums="1"
+
+    ``` csound-csd title="A simple example of the bbcutm opcode." linenums="1"
     --8<-- "examples/bbcutm-modern.csd"
     ```
 
 === "Classic"
     Here is a simple example of the bbcutm opcode. It uses the file [bbcutm.csd](../examples/bbcutm.csd), and [drumsMlp.wav](../examples/drumsMlp.wav).
-    ``` csound-orc title="A simple example of the bbcutm opcode." linenums="1"
+
+    ``` csound-csd title="A simple example of the bbcutm opcode." linenums="1"
     --8<-- "examples/bbcutm.csd"
     ```
 

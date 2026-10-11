@@ -43,6 +43,7 @@ This type of filter is often encountered in digital signal processing literature
 === "Modern"
     Here is an example of the biquada opcode. It uses the file
     [biquada-modern.csd](../examples/biquada-modern.csd).
+
     ``` csound-csd title="Example of the biquada opcode." linenums="1"
     --8<-- "examples/biquada-modern.csd"
     ```
@@ -50,6 +51,7 @@ This type of filter is often encountered in digital signal processing literature
 === "Classic"
     Here is an example of the biquada opcode. It uses the file
     [biquada.csd](../examples/biquada.csd).
+
     ``` csound-csd title="Example of the biquada opcode." linenums="1"
     --8<-- "examples/biquada.csd"
     ```

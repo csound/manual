@@ -44,12 +44,14 @@ Maps an input MIDI velocity number to an output gain factor with a maximum value
 
 === "Modern"
     Here is an example of the ampmidicurve opcode. It uses the file [ampmidicurve-modern.csd](../examples/ampmidicurve-modern.csd).
+
     ``` csound-csd title="Example of the ampmidicurve opcode." linenums="1"
     --8<-- "examples/ampmidicurve-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the ampmidicurve opcode. It uses the file [ampmidicurve.csd](../examples/ampmidicurve.csd).
+
     ``` csound-csd title="Example of the ampmidicurve opcode." linenums="1"
     --8<-- "examples/ampmidicurve.csd"
     ```

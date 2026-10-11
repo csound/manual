@@ -36,10 +36,10 @@ _ifilcod_ -- character-string denoting the source file name. A character-string 
 ## Examples
 
 ``` csound-orc
-f_1 0 0 28 &quot;move&quot;
+f_1 0 0 28 "move"
 ```
 
-The file &quot;move&quot; should look like:
+The file "move" should look like:
 
 ```
 0       -1       1

@@ -34,13 +34,13 @@ After the initial delay, an impulse of _kamp_ amplitude is generated as a single
 
 Here is an example of the mpulse opcode. It uses the file [mpulse.csd](../examples/mpulse.csd).
 
-``` csound-orc title="Example of the mpulse opcode." linenums="1"
+``` csound-csd title="Example of the mpulse opcode." linenums="1"
 --8<-- "examples/mpulse.csd"
 ```
 
 Another example of how to use mpulse can be found here: [mode](../opcodes/mode.md)
 
-## See Also
+## See also
 
 [Dynamic Spectrum Oscillators](../siggen/dynamic.md)
 

@@ -12,14 +12,14 @@ Generates a score event from an instrument.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    eventi("scorechar", iinsnum, idelay, idur, [, ip4] [, ip5] [, ...])
-    eventi("scorechar", "insname", idelay, idur, [, ip4] [, ip5] [, ...])
+    eventi("scorechar", iinsnum, idelay, idur [, ip4] [, ip5] [, ...])
+    eventi("scorechar", "insname", idelay, idur [, ip4] [, ip5] [, ...])
     ```
 
 === "Classic"
     ``` csound-orc
-    event_i "scorechar", iinsnum, idelay, idur, [, ip4] [, ip5] [, ...]
-    event_i "scorechar", "insname", idelay, idur, [, ip4] [, ip5] [, ...]
+    event_i "scorechar", iinsnum, idelay, idur [, ip4] [, ip5] [, ...]
+    event_i "scorechar", "insname", idelay, idur [, ip4] [, ip5] [, ...]
     ```
 
 ### Initialization
@@ -48,12 +48,14 @@ The event is added to the queue at initialisation time.
 
 === "Modern"
     Here is an example of the eventi opcode. It uses the file [eventi.csd](../examples/eventi.csd).
+
     ``` csound-csd title="Example of the eventi opcode." linenums="1"
     --8<-- "examples/eventi.csd"
     ```
 
 === "Classic"
     Here is an example of the event_i opcode. It uses the file [event_i.csd](../examples/event_i.csd).
+
     ``` csound-csd title="Example of the event_i opcode." linenums="1"
     --8<-- "examples/event_i.csd"
     ```

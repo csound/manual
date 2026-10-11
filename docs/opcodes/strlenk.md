@@ -16,7 +16,7 @@ Return the length of a string, or zero if it is empty. strlenk runs both at init
     klen strlenk Sstr
     ```
 
-## See Also
+## See also
 
 [String Manipulation Opcodes](../strings/manipulate.md)
 

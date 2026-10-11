@@ -57,7 +57,7 @@ The example above shows a vocal harmoniser. The delay is necessary to time-align
 
 Here is an example of the use of the _pvscale_ opcode. It uses the file [pvscale.csd](../examples/pvscale.csd).
 
-``` csound-csd title="Example of the _pvscale_ opcode." linenums="1"
+``` csound-csd title="Example of the pvscale opcode." linenums="1"
 --8<-- "examples/pvscale.csd"
 ```
 

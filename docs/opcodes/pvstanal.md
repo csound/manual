@@ -16,7 +16,6 @@ _pvstanal_ will also scale pitch, independently of frequency, using a transposit
     ``` csound-orc
     fsig = pvstanal(ktimescal, kamp, kpitch, ktab, [kdetect, kwrap, ioffset, \
                     ifftsize, ihop, idbthresh])
-      )
     ```
 
 === "Classic"

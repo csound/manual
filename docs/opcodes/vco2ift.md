@@ -52,7 +52,7 @@ The example prints each note's frequency and selected table number. Higher notes
 
 See the example for the [vco2](../opcodes/vco2.md) opcode too.
 
-## See Also
+## See also
 
 [Dynamic Spectrum Oscillators](../siggen/dynamic.md)
 

@@ -41,7 +41,7 @@ arguments is an array, so is the value.
 
 Here is an example of the &sol; operator. It uses the file [divides.csd](../examples/divides.csd).
 
-``` csound-csd title="Example of the &sol; operator." linenums="1"
+``` csound-csd title="Example of the / operator." linenums="1"
 --8<-- "examples/divides.csd"
 ```
 

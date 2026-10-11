@@ -52,11 +52,11 @@ _kband_, _kris_, _kdur_, _kdec_ -- grain envelope shape. These parameters determ
 
 Here is an example of the fog opcode. It uses the file [fog.csd](../examples/fog.csd).
 
-``` csound-orc title="Example of the fog opcode." linenums="1"
+``` csound-csd title="Example of the fog opcode." linenums="1"
 --8<-- "examples/fog.csd"
 ```
 
-## See Also
+## See also
 
 [Granular Synthesis](../siggen/granular.md)
 

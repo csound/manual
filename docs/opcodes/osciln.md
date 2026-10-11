@@ -34,10 +34,10 @@ _osciln_ will sample several times through the stored table at a rate of _ifrq_ 
 
 Here is an example of the osciln opcode. It uses the file [osciln.csd](../examples/osciln.csd).
 
-``` csound-orc title="Example of the osciln opcode." linenums="1"
+``` csound-csd title="Example of the osciln opcode." linenums="1"
 --8<-- "examples/osciln.csd"
 ```
 
-## See Also
+## See also
 
 [Table Access](../siggen/tableacc.md)

@@ -38,7 +38,7 @@ For a power-of-two FFT size, use a table size of `ifftsize / 2 + 1` so you can s
 
 Here is an example of the use of the _pvsmaska_ opcode. It uses the file [pvsmaska.csd](../examples/pvsmaska.csd).
 
-``` csound-csd title="Example of the _pvsmaska_ opcode." linenums="1"
+``` csound-csd title="Example of the pvsmaska opcode." linenums="1"
 --8<-- "examples/pvsmaska.csd"
 ```
 

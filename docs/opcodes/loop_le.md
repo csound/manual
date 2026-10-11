@@ -60,12 +60,14 @@ if (kndx <= kmax) kgoto label
 
 === "Modern"
     Here is an example of the loople opcode. It uses the file [loople.csd](../examples/loople.csd).
+
     ``` csound-csd title="Example of the loople opcode." linenums="1"
     --8<-- "examples/loople.csd"
     ```
 
 === "Classic"
     Here is an example of the loop_le opcode. It uses the file [loop_le.csd](../examples/loop_le.csd).
+
     ``` csound-csd title="Example of the loop_le opcode." linenums="1"
     --8<-- "examples/loop_le.csd"
     ```

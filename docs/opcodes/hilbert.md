@@ -50,7 +50,7 @@ The second example is a variation of the first, but with the output being fed ba
 
 Here is the second example of the hilbert opcode. It uses the file [hilbert_barberpole.csd](../examples/hilbert_barberpole.csd).
 
-``` csound-csd title="Example of the hilbert opcode sounding like a &#8220;barberpole phaser&#8221;." linenums="1"
+``` csound-csd title="Example of the hilbert opcode sounding like a “barberpole phaser”." linenums="1"
 --8<-- "examples/hilbert_barberpole.csd"
 ```
 

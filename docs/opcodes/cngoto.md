@@ -22,12 +22,14 @@ where _label_ is in the same instrument block and is not an expression, and wher
 
 === "Modern"
     Here is an example of the cngoto opcode. It uses the file [cngoto-modern.csd](../examples/cngoto-modern.csd).
+
     ``` csound-csd title="Example of the cngoto opcode." linenums="1"
     --8<-- "examples/cngoto-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the cngoto opcode. It uses the file [cngoto.csd](../examples/cngoto.csd).
+
     ``` csound-csd title="Example of the cngoto opcode." linenums="1"
     --8<-- "examples/cngoto.csd"
     ```

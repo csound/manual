@@ -40,6 +40,6 @@ Here is an example of the s statement. It uses the file [s.csd](../examples/s.cs
 --8<-- "examples/s.csd"
 ```
 
-## See Also
+## See also
 
 [Score Statements](../score/statemnt.md)

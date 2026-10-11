@@ -18,7 +18,7 @@ _strlowerk_ runs both at init and performance time.
     Sdst strlowerk Ssrc
     ```
 
-## See Also
+## See also
 
 [String Conversion Opcodes](../strings/convert.md)
 

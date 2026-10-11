@@ -49,7 +49,7 @@ Here is an example of the pvoc opcode. It uses the file [pvoc.csd](../examples/p
 --8<-- "examples/pvoc.csd"
 ```
 
-## See Also
+## See also
 
 [Short-time Fourier Transform (STFT) Resynthesis](../spectral/stft.md)
 

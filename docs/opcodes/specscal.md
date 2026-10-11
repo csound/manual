@@ -42,6 +42,6 @@ Scales an input spectral datablock with spectral envelopes. Function tables _ift
            specdisp    wsig3, 0.1
 ```
 
-## See Also
+## See also
 
 [specaddm](../opcodes/specaddm.md), [specdiff](../opcodes/specdiff.md), [specfilt](../opcodes/specfilt.md), [spechist](../opcodes/spechist.md)

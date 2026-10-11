@@ -107,7 +107,7 @@ Here is a complete example of the pvadd opcode. It uses the file [pvadd.csd](../
 --8<-- "examples/pvadd.csd"
 ```
 
-## See Also
+## See also
 
 [Short-time Fourier Transform (STFT) Resynthesis](../spectral/stft.md)
 

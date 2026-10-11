@@ -36,6 +36,6 @@ Here is a complete example of the GEN17 routine. It uses the files [gen17.csd](.
 --8<-- "examples/gen17.csd"
 ```
 
-## See Also
+## See also
 
 [GEN02](../scoregens/gen02.md)

@@ -40,7 +40,7 @@ Here is an example of the mfb opcode. It uses the file [mfb.csd](../examples/mfb
 --8<-- "examples/mfb.csd"
 ```
 
-## See Also
+## See also
 
 [Vectorial opcodes](../vectorial/top.md),
 [array opcodes](../math/array.md),

@@ -11,7 +11,7 @@ Each element of the source table is put into a different random position, withou
 === "Modern"
     ``` csound-orc
     tableshuffle(ktablenum)
-    tableshufflei itablenum)
+    tableshufflei(itablenum)
     ```
 
 === "Classic"

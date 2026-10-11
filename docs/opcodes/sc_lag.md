@@ -41,12 +41,14 @@ This is essentially the same as one pole except that instead of supplying the co
 
 === "Modern"
     Here is an example of the sclag opcode. It uses the file [sclag.csd](../examples/sclag.csd).
+
     ``` csound-csd title="Example of the sc_lag opcode." linenums="1"
     --8<-- "examples/sclag.csd"
     ```
 
 === "Classic"
     Here is an example of the sc_lag opcode. It uses the file [sc_lag.csd](../examples/sc_lag.csd).
+
     ``` csound-csd title="Example of the sc_lag opcode." linenums="1"
     --8<-- "examples/sc_lag.csd"
     ```

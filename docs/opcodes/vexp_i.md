@@ -46,12 +46,14 @@ In all these opcodes, the resulting vectors are stored in _ifn_, overriding the 
 
 === "Modern"
     Here is an example of the vexpi opcode. It uses the file [vexpi.csd](../examples/vexpi.csd).
+
     ``` csound-csd title="Example of the vexpi opcode." linenums="1"
     --8<-- "examples/vexpi.csd"
     ```
 
 === "Classic"
     Here is an example of the vexp_i opcode. It uses the file [vexp_i.csd](../examples/vexp_i.csd).
+
     ``` csound-csd title="Example of the vexp_i opcode." linenums="1"
     --8<-- "examples/vexp_i.csd"
     ```

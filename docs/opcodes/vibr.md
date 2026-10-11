@@ -32,7 +32,7 @@ _vibr_ is an easier-to-use version of [vibrato](../opcodes/vibrato.md). It has t
 
 Here is an example of the vibr opcode. It uses the file [vibr.csd](../examples/vibr.csd).
 
-``` csound-orc title="Example of the vibr opcode." linenums="1"
+``` csound-csd title="Example of the vibr opcode." linenums="1"
 --8<-- "examples/vibr.csd"
 ```
 

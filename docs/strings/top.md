@@ -34,15 +34,19 @@ Csound 5 also has improvements in parsing string constants. It is possible to sp
 > :memo: **Note**
 >
 > If the user does not want an escaped sequence to be automatically converted, she has to escape it with an additional '\' character so that Csound knows it does not have to interpret the escaped sequence. For example the string `"Not escaped\nline return"` will be converted to
+
     ```
         "Not escaped
          line return"
     ```
+
 >
 > before being used, while the string `"Escaped\\nline return"` will be converted to
+
     ```
         "Escaped\nline return"
     ```
+
 > before being used.
     
 It can be useful together with the [system](../opcodes/system.md) opcode:

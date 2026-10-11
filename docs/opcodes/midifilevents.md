@@ -29,7 +29,7 @@ any file passed to the -F flag.
 
 ## Examples
 
-Here is an example of the miditempo opcode. It uses the files [midifilevents.csd](../examples/midifilevents.csd).
+Here is an example of the midifilevents opcode. It uses the files [midifilevents.csd](../examples/midifilevents.csd).
 
 ``` csound-csd title="Example of the midifilevents opcode." linenums="1"
 --8<-- "examples/midifilevents.csd"

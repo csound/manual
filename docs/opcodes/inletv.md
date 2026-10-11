@@ -10,12 +10,12 @@ Plugin opcode in signalflowgraph
 ## Syntax
 === "Modern"
     ``` csound-orc
-    array = inletv(Sname)
+    array:a[] = inletv(Sname)
     ```
 
 === "Classic"
     ``` csound-orc
-    array inletv Sname
+    aarray[] inletv Sname
     ```
 
 ### Initialization
@@ -26,7 +26,9 @@ _Sname_ -- String name of the inlet port. The name of the inlet is implicitly qu
 
 _array_ -- audio rate array inlet signal
 
-During performance, the arate array inlet signal is received from each instance of an  instrument containing an outlet port to which this inlet has been connected using the [See also](../opcodes/connect.md)e>
+During performance, the arate array inlet signal is received from each instance of an  instrument containing an outlet port to which this inlet has been connected using the [connect](../opcodes/connect.md) opcode.
+
+## See also
 
 [Signal Flow Graph Opcodes](../sigrouting/signalflowgraph.md)
 

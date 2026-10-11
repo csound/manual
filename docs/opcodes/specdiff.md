@@ -34,6 +34,6 @@ Finds the positive difference values between consecutive spectral frames. At eac
            specdisp    wsig3, 0.1
 ```
 
-## See Also
+## See also
 
 [specaddm](../opcodes/specaddm.md), [specfilt](../opcodes/specfilt.md), [spechist](../opcodes/spechist.md), [specscal](../opcodes/specscal.md)

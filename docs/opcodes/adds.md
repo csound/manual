@@ -40,13 +40,15 @@ The arguments of $+$ can be scalar values or k-rate one dimensional arrays (vect
 
 === "Modern"
     Here is an example of the &plus; operator. It uses the file [adds-modern.csd](../examples/adds-modern.csd).
-    ``` csound-csd title="Example of the &plus; operator." linenums="1"
+
+    ``` csound-csd title="Example of the + operator." linenums="1"
     --8<-- "examples/adds-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the &plus; operator. It uses the file [adds.csd](../examples/adds.csd).
-    ``` csound-csd title="Example of the &plus; operator." linenums="1"
+
+    ``` csound-csd title="Example of the + operator." linenums="1"
     --8<-- "examples/adds.csd"
     ```
 

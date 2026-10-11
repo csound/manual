@@ -38,7 +38,7 @@ Note that the result is quite different from the one obtained by filtering white
 
 Here is an example of the rspline opcode. It uses the file [rspline.csd](../examples/rspline.csd).
 
-``` csound-orc title="Example of the rspline opcode." linenums="1"
+``` csound-csd title="Example of the rspline opcode." linenums="1"
 --8<-- "examples/rspline.csd"
 ```
 

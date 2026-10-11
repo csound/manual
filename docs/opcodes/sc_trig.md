@@ -38,17 +38,19 @@ When a nonpositive to positive transition occurs at the input, Trig outputs the 
 ## Examples
 === "Modern"
     Here is an example of the sctrig opcode. It uses the file [sctrig.csd](../examples/sctrig.csd).
+
     ``` csound-csd title="Example of the sctrig opcode." linenums="1"
     --8<-- "examples/sctrig.csd"
     ```
 
 === "Classic"
     Here is an example of the sc_trig opcode. It uses the file [sc_trig.csd](../examples/sc_trig.csd).
+
     ``` csound-csd title="Example of the sc_trig opcode." linenums="1"
     --8<-- "examples/sc_trig.csd"
     ```
 
-## See Also
+## See also
 
 [sc_lag](../opcodes/sc_lag.md),
 [metro](../opcodes/metro.md),

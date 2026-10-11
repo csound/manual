@@ -54,7 +54,7 @@ Csound's _fof_ generator is loosely based on Michael Clarke's C-coding of IRCAM'
 
 Here is an example of the fof opcode. It uses the file [fof.csd](../examples/fof.csd).
 
-``` csound-orc title="Example of the fof opcode." linenums="1"
+``` csound-csd title="Example of the fof opcode." linenums="1"
 --8<-- "examples/fof.csd"
 ```
 
@@ -62,7 +62,7 @@ The formant values for the alto-"a" sound were taken from the [Formant Values Ap
 
 Two musical examples featuring the fof opcode: [TheElectricPriest_Enhus.csd](../examples/musical/TheElectricPriest_Enhus.csd) by Tobias Enhus, and [BuzzFof_Cucchi.csd](../examples/musical/BuzzFof_Cucchi.csd) by Stefano Cucchi.
 
-## See Also
+## See also
 
 [Granular Synthesis](../siggen/granular.md)
 

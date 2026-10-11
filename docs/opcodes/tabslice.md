@@ -28,7 +28,7 @@ The output contains the selected elements in order. For example, indices 1 throu
 
 ## Replacement
 
-Change `kResult = tabslice(kSource, istart, iend, istride)` to `kResult = slicearray(kSource, istart, iend, istride)`. Keep the same indices and stride.
+Change `kResult[] = tabslice(kSource, istart, iend, istride)` to `kResult[] = slicearray(kSource, istart, iend, istride)`. Keep the same indices and stride.
 
 `slicearray` also copies during initialization. Initialize the source before the call and account for that earlier copy if other initialization code reads the result. It also supports i-rate, audio and string arrays. The old name accepts only k-rate arrays.
 

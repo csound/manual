@@ -18,7 +18,7 @@ _strchark_ runs both at init and performance time.
     kchr strchark Sstr [, kpos]
     ```
 
-## See Also
+## See also
 
 [String Conversion Opcodes](../strings/convert.md)
 

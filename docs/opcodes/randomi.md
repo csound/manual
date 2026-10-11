@@ -46,7 +46,7 @@ When _imode_ = 3, two random numbers are generated at initialization as breakpoi
 
 Here is an example of the randomi opcode. It uses the file [randomi.csd](../examples/randomi.csd).
 
-``` csound-orc title="Example of the randomi opcode." linenums="1"
+``` csound-csd title="Example of the randomi opcode." linenums="1"
 --8<-- "examples/randomi.csd"
 ```
 

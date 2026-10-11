@@ -48,6 +48,6 @@ These are the diagrams of the waveforms of the GEN07 routines, as used in the ex
 <figcaption>f 4 0 1024 7 1 1024 -1 - sawtooth down, a straight line from positive to negative</figcaption>
 </figure>
 
-## See Also
+## See also
 
 [GEN05](../scoregens/gen05.md), [GEN06](../scoregens/gen06.md), and [GEN08](../scoregens/gen08.md)

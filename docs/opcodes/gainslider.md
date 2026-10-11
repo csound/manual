@@ -28,7 +28,7 @@ _kout_ -- Scaled output.
 
 Here is an example of the gainslider opcode. It uses the file [gainslider.csd](../examples/gainslider.csd).
 
-``` csound-orc title="Example of the gainslider opcode." linenums="1"
+``` csound-csd title="Example of the gainslider opcode." linenums="1"
 --8<-- "examples/gainslider.csd"
 ```
 

@@ -24,7 +24,7 @@ Here is an example of the sortd opcode. It uses the file [sortd.csd](../examples
 --8<-- "examples/sortd.csd"
 ```
 
-## See Also
+## See also
 
 [Array opcodes](../math/array.md)
 

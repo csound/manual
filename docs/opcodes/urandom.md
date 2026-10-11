@@ -47,13 +47,13 @@ _kx_ -- k-rate output value.
 
 Here is an example of the urandom opcode at a-rate. It uses the file [urandom.csd](../examples/urandom.csd).
 
-``` csound-orc title="An example of the urandom opcode at a-rate." linenums="1"
+``` csound-csd title="An example of the urandom opcode at a-rate." linenums="1"
 --8<-- "examples/urandom.csd"
 ```
 
 Here is an example of the urandom opcode at k-rate. It uses the file [urandom_krate.csd](../examples/urandom_krate.csd).
 
-``` csound-orc title="An example of the urandom opcode at k-rate." linenums="1"
+``` csound-csd title="An example of the urandom opcode at k-rate." linenums="1"
 --8<-- "examples/urandom_krate.csd"
 ```
 

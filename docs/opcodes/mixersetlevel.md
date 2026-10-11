@@ -77,12 +77,14 @@ i 1  0  0  210  220  0.2
 
 === "Modern"
     Here is a complete example of the mixersetlevel opcode. It uses the file [Mixer-modern.csd](../examples/Mixer-modern.csd)
+
     ``` csound-csd title="Complete example of the mixersetlevel opcode." linenums="1"
     --8<-- "examples/Mixer-modern.csd"
     ```
 
 === "Classic"
     Here is a complete example of the MixerSetLevel opcode. It uses the file [Mixer.csd](../examples/Mixer.csd)
+
     ``` csound-csd title="Complete example of the MixerSetLevel opcode." linenums="1"
     --8<-- "examples/Mixer.csd"
     ```

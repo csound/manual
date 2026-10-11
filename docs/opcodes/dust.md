@@ -28,7 +28,7 @@ _kdensity_ -- average number of impulses per second.
 
 Here is an example of the dust opcode. It uses the file [dust.csd](../examples/dust.csd).
 
-``` csound-orc title="Example of the dust opcode." linenums="1"
+``` csound-csd title="Example of the dust opcode." linenums="1"
 --8<-- "examples/dust.csd"
 ```
 

@@ -99,11 +99,11 @@ With asymmetric pulse table there may be some use for negative _kForm_ or negati
 
 Here is an example of the vosim opcode. It uses the file [vosim.csd](../examples/vosim.csd).
 
-``` csound-orc title="Example of the vosim opcode." linenums="1"
+``` csound-csd title="Example of the vosim opcode." linenums="1"
 --8<-- "examples/vosim.csd"
 ```
 
-## See Also
+## See also
 
 [Granular Synthesis](../siggen/granular.md)
 

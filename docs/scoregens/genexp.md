@@ -38,7 +38,7 @@ These are the diagrams of the waveforms of the GENexp routines, as used in the e
 <figcaption>  f 3 0 8192 "exp" 0 3 0</figcaption>
 </figure>
 
-## See Also
+## See also
 
 [GENsone](../scoregens/gensone.md).
 

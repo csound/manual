@@ -44,6 +44,6 @@ Here is an example of the t statement. It uses the file [t.csd](../examples/t.cs
 --8<-- "examples/t.csd"
 ```
 
-## See Also
+## See also
 
 [Score Statements](../score/statemnt.md)

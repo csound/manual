@@ -34,7 +34,7 @@ any file passed to the -F flag.
 
 ## Examples
 
-Here is an example of the miditempo opcode. It uses the files [midifileplay.csd](../examples/midifileplay.csd).
+Here is an example of the midifileplay opcode. It uses the files [midifileplay.csd](../examples/midifileplay.csd).
 
 ``` csound-csd title="Example of the midifileplay opcode." linenums="1"
 --8<-- "examples/midifileplay.csd"

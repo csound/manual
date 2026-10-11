@@ -41,13 +41,13 @@ _mandel_ is an opcode that allows the use of the Mandelbrot set formula to gener
 
 Here is an example of the mandel opcode. It uses the file [mandel.csd](../examples/mandel.csd).
 
-``` csound-orc title="Example of the mandel opcode." linenums="1"
+``` csound-csd title="Example of the mandel opcode." linenums="1"
 --8<-- "examples/mandel.csd"
 ```
 
 Two musical examples featuring the mandel opcode: [Mandel_Daughtrey.csd](../examples/musical/Mandel_Daughtrey.csd) by Scott Daughtrey, and [Mandel_Gogins.csd](../examples/musical/Mandel_Gogins.csd) by Michael Gogins.
 
-## See Also
+## See also
 
 [Models and Emulations](../siggen/models.md)
 

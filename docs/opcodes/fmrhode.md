@@ -55,11 +55,11 @@ _kvrate_ -- Vibrator rate
 
 Here is an example of the fmrhode opcode. It uses the file [fmrhode.csd](../examples/fmrhode.csd), and [fwavblnk.aiff](../examples/fwavblnk.aiff).
 
-``` csound-orc title="Example of the fmrhode opcode." linenums="1"
+``` csound-csd title="Example of the fmrhode opcode." linenums="1"
 --8<-- "examples/fmrhode.csd"
 ```
 
-## See Also
+## See also
 
 [FM Synthesis](../siggen/fmsynth.md)
 

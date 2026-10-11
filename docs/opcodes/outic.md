@@ -13,7 +13,7 @@ Sends MIDI controller output at i-rate.
 
 === "Classic"
     ``` csound-orc
-    outic ichn, inum, ivalue, imin, imax, iport]
+    outic ichn, inum, ivalue, imin, imax [, iport]
     ```
 
 ### Initialization

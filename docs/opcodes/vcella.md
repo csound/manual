@@ -54,7 +54,7 @@ Here is an example of the vcella opcode. It uses the file [vcella.csd](../exampl
 
 The following example uses _vcella_
 
-``` csound-orc title="Example of the vcella opcode." linenums="1"
+``` csound-csd title="Example of the vcella opcode." linenums="1"
 --8<-- "examples/vcella.csd"
 ```
 

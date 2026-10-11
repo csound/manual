@@ -39,7 +39,7 @@ The arguments of &ast; can be scalar values or k-rate one dimensional arrays (ve
 
 Here is an example of the &ast; operator. It uses the file [multiplies.csd](../examples/multiplies.csd).
 
-``` csound-csd title="Example of the &ast; operator." linenums="1"
+``` csound-csd title="Example of the * operator." linenums="1"
 --8<-- "examples/multiplies.csd"
 ```
 

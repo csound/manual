@@ -49,11 +49,11 @@ _tablei_ is a interpolating unit in which the fractional part of index is used t
 
 Here is an example of the tablei opcode. It uses the file [tablei.csd](../examples/tablei.csd).
 
-``` csound-orc title="Example of the tablei opcode." linenums="1"
+``` csound-csd title="Example of the tablei opcode." linenums="1"
 --8<-- "examples/tablei.csd"
 ```
 
-## See Also
+## See also
 
 [Table Access](../siggen/tableacc.md)
 

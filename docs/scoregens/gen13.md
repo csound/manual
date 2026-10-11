@@ -75,7 +75,7 @@ These are the diagrams of the waveforms of the GEN13 routines, as used in the ex
 <figcaption>f13 0 513 13 1 1 0 5 0 3 0 1 - split a sinusoid into 3 odd-harmonic partials of relative strength 5:3:1</figcaption>
 </figure>
 
-## See Also
+## See also
 
 [GEN03](../scoregens/gen03.md), [GEN14](../scoregens/gen14.md), and [GEN15](../scoregens/gen15.md).
 

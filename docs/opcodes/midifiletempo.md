@@ -34,13 +34,13 @@ to 100 sets the tempo at 83.3, etc.
 === "Modern"
     ``` csound-orc
      midifiletempo(tempo:i[,id:i])
-     midifiletempo(tempo:k[,id:i])
+     midifiletempo(tempo:k[,id:k])
     ```
 
 === "Classic"
     ``` csound-orc
-    midifiletempo itempo[,id]
-    midifiletempo ktempo[,id]
+    midifiletempo itempo[,iid]
+    midifiletempo ktempo[,kid]
     ```
 
 ### Initialization
@@ -58,7 +58,7 @@ value is used as a tempo scaling parameter (playback speed).
 
 ## Examples
 
-Here is an example of the miditempo opcode. It uses the files [midifiletempo.csd](../examples/midifiletempo.csd).
+Here is an example of the midifiletempo opcode. It uses the files [midifiletempo.csd](../examples/midifiletempo.csd).
 
 ``` csound-csd title="Example of the midifiletempo opcode." linenums="1"
 --8<-- "examples/midifiletempo.csd"

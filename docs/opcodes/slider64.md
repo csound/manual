@@ -52,7 +52,7 @@ As the input and output arguments are many, you can split the line using '\' (ba
 
 In the i-rate version of _slider64_, there is not an initial value input argument, because the output is gotten directly from current status of internal controller array of Csound.
 
-## See Also
+## See also
 
 [Slider Banks](../midi/sliderbk.md)
 

@@ -18,7 +18,7 @@ _strrindexk_ runs both at init and performance time.
     kpos strrindexk S1, S2
     ```
 
-## See Also
+## See also
 
 [String Manipulation Opcodes](../strings/manipulate.md)
 

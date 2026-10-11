@@ -41,11 +41,11 @@ _foscili_ differs from [foscil](../opcodes/foscil.md) in that the standard proce
 
 Here is an example of the foscili opcode. It uses the file [foscili.csd](../examples/foscili.csd).
 
-``` csound-orc title="Example of the foscili opcode." linenums="1"
+``` csound-csd title="Example of the foscili opcode." linenums="1"
 --8<-- "examples/foscili.csd"
 ```
 
-## See Also
+## See also
 
 [FM Synthesis](../siggen/fmsynth.md)
 

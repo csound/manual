@@ -43,11 +43,11 @@ _kvamp_ -- amplitude of the vibrato
 
 Here is an example of the moog opcode. It uses the file [moog.csd](../examples/moog.csd), [mandpluk.aiff](../examples/mandpluk.aiff), and [impuls20.aiff](../examples/impuls20.aiff).
 
-``` csound-orc title="Example of the moog opcode." linenums="1"
+``` csound-csd title="Example of the moog opcode." linenums="1"
 --8<-- "examples/moog.csd"
 ```
 
-## See Also
+## See also
 
 [Models and Emulations](../siggen/models.md)
 

@@ -40,12 +40,14 @@ _xcf_ -- filter cutoff frequency (i-, k-, or a-rate).
 
 === "Modern"
     Here is an example of the zdf1polemode opcode. It uses the file [zdf1polemode.csd](../examples/zdf1polemode.csd).
+
     ``` csound-csd title="Example of the zdf1polemode opcode." linenums="1"
     --8<-- "examples/zdf1polemode.csd"
     ```
 
 === "Classic"
     Here is an example of the zdf_1pole_mode opcode. It uses the file [zdf_1pole_mode.csd](../examples/zdf_1pole_mode.csd).
+
     ``` csound-csd title="Example of the zdf_1pole_mode opcode." linenums="1"
     --8<-- "examples/zdf_1pole_mode.csd"
     ```

@@ -52,11 +52,11 @@ _kamp_ -- Amplitude of output.  Note: As these instruments are stochastic, this 
 
 Here is an example of the sleighbells opcode. It uses the file [sleighbells.csd](../examples/sleighbells.csd).
 
-``` csound-orc title="Example of the sleighbells opcode." linenums="1"
+``` csound-csd title="Example of the sleighbells opcode." linenums="1"
 --8<-- "examples/sleighbells.csd"
 ```
 
-## See Also
+## See also
 
 [Models and Emulations](../siggen/models.md)
 

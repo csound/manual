@@ -28,7 +28,7 @@ _SPortName_ -- port name number
 
 _ibaudrate_ -- serial speed, defaulting to 9600 bps.
 
-## See Also
+## See also
 
 [non-MIDI Devices](../oscnetwork/nonMIDIdevices.md)
 

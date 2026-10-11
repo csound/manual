@@ -53,11 +53,11 @@ _kfn_ -- Integer identifying the sequence.
 
 Here is an example of the fareylen opcode. It uses the file [fareylen.csd](../examples/fareylen.csd).
 
-``` csound-orc title="Example of the fareylen opcode." linenums="1"
+``` csound-csd title="Example of the fareylen opcode." linenums="1"
 --8<-- "examples/fareylen.csd"
 ```
 
-## See Also
+## See also
 
 [Models and Emulations](../siggen/models.md)
 

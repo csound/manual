@@ -28,7 +28,7 @@ Print to the screen any bytes (up to 32k) in the input buffer. Note that these b
 
 _iPort_ -- port number optained from a *serialbegin* opcode.
 
-## See Also
+## See also
 
 [non-MIDI Devices](../oscnetwork/nonMIDIdevices.md)
 

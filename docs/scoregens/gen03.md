@@ -62,7 +62,7 @@ These are the diagrams of the waveforms of the GEN03 routines, as used in the ex
 <figcaption>f12 0 513 3 -1 1 5 4 3 2 2 1 - a 4th order polynomial function over the x-interval -1 to 1</figcaption>
 </figure>
 
-## See Also
+## See also
 
 [GEN13](../scoregens/gen13.md), [GEN14](../scoregens/gen14.md), and [GEN15](../scoregens/gen15.md).
 

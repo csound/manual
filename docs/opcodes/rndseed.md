@@ -26,7 +26,7 @@ Use of _rndseed_ will provide alternative results from the rnd and birnd opcodes
 
 Here is an example of the rndseed opcode. It uses the file [rndseed.csd](../examples/rndseed.csd).
 
-``` csound-orc title="Example of the rndseed opcode." linenums="1"
+``` csound-csd title="Example of the rndseed opcode." linenums="1"
 --8<-- "examples/rndseed.csd"
 ```
 

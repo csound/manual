@@ -28,7 +28,7 @@ The opcode allocates a one-dimensional k-rate output array and fills it during i
 
 ## Replacement
 
-Change `kArray = tabgen(istart, iend, istep)` to `kArray = genarray(istart, iend, istep)`, keeping the bounds and step at i-rate. The form with i-rate bounds preserves initialization-only generation into a k-rate array.
+Change `kArray[] = tabgen(istart, iend, istep)` to `kArray[] = genarray(istart, iend, istep)`, keeping the bounds and step at i-rate. The form with i-rate bounds preserves initialization-only generation into a k-rate array.
 
 Use `genarrayi` when you want to make that timing explicit. Passing k-rate bounds to `genarray` instead selects performance-time generation. See [genarray](genarray.md) for both rates.
 

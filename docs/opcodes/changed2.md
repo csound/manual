@@ -36,12 +36,14 @@ Unlike the opcode _changed_ this opcode will never report the first cycle as a c
 
 === "Modern"
     Here are two examples of the changed2 opcode. They use the files [changed2-modern.csd](../examples/changed2-modern.csd) and [changed2a-modern.csd](../examples/changed2a-modern.csd).
+
     ``` csound-csd title="Example of the changed2 opcode." linenums="1"
     --8<-- "examples/changed2-modern.csd"
     ```
 
 === "Classic"
     Here are two examples of the changed2 opcode. They use the files [changed2.csd](../examples/changed2.csd) and [changed2a.csd](../examples/changed2a.csd).
+
     ``` csound-csd title="Example of the changed2 opcode." linenums="1"
     --8<-- "examples/changed2.csd"
     ```

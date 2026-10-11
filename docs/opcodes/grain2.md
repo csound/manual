@@ -33,6 +33,7 @@ abs(x) ^ ((1 / irpow) - 1);
 ```
 
 for negative _irpow_ values, it is
+
 ```
 (1 - abs(x)) ^ ((-1 / irpow) - 1)
 ```
@@ -74,11 +75,11 @@ _kfn_ -- function table containing grain waveform. Table number can be changed a
 
 Here is an example of the grain2 opcode. It uses the file [grain2.csd](../examples/grain2.csd).
 
-``` csound-orc title="Example of the grain2 opcode." linenums="1"
+``` csound-csd title="Example of the grain2 opcode." linenums="1"
 --8<-- "examples/grain2.csd"
 ```
 
-## See Also
+## See also
 
 [Granular Synthesis](../siggen/granular.md)
 

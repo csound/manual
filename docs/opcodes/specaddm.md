@@ -35,6 +35,6 @@ magout = mag1in + mag2in * imul2
 
 The operation is performed whenever the input _wsig1_ is sensed to be new. This unit will (at Initialization) verify the consistency of the two spectra (equal size, equal period, equal mag types).
 
-## See Also
+## See also
 
 [specdiff](../opcodes/specdiff.md), [specfilt](../opcodes/specfilt.md), [spechist](../opcodes/spechist.md), [specscal](../opcodes/specscal.md)

@@ -44,12 +44,14 @@ _ksaturation_ (optional, default=1) -- saturation amount to use for non-linear p
 
 === "Modern"
     Here is an example of the k35hpf opcode. It uses the file [k35-modern.csd](../examples/k35-modern.csd).
+
     ``` csound-csd title="Example of the k35hpf opcode." linenums="1"
     --8<-- "examples/k35-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the K35_hpf opcode. It uses the file [k35.csd](../examples/k35.csd).
+
     ``` csound-csd title="Example of the K35_hpf opcode." linenums="1"
     --8<-- "examples/k35.csd"
     ```

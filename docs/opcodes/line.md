@@ -39,7 +39,7 @@ _line_ starts at _ia_ and moves toward _ib_ over _idur_ seconds. The audio form 
 
 Here is an example of the line opcode. It uses the file [line.csd](../examples/line.csd).
 
-``` csound-orc title="Example of the line opcode." linenums="1"
+``` csound-csd title="Example of the line opcode." linenums="1"
 --8<-- "examples/line.csd"
 ```
 

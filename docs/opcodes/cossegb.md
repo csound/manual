@@ -39,7 +39,7 @@ These units generate control or audio signals whose values can pass through 2 or
 
 Here is an example of the cossegb opcode. It uses the file [cossegb.csd](../examples/cossegb.csd).
 
-``` csound-orc title="Example of the cossegb opcode." linenums="1"
+``` csound-csd title="Example of the cossegb opcode." linenums="1"
 --8<-- "examples/cossegb.csd"
 ```
 

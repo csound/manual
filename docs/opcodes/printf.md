@@ -44,12 +44,14 @@ _xarg1, xarg2, ..._ -- input arguments (max. 30) for format.  Integer formats li
 
 === "Modern"
     Here is an example of the printf opcode. It uses the file [printf-modern.csd](../examples/printf-modern.csd).
+
     ``` csound-csd title="Example of the printf opcode." linenums="1"
     --8<-- "examples/printf-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the printf opcode. It uses the file [printf.csd](../examples/printf.csd).
+
     ``` csound-csd title="Example of the printf opcode." linenums="1"
     --8<-- "examples/printf.csd"
     ```

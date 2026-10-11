@@ -42,29 +42,33 @@ N.B. This unit has its analog in [GEN11](../scoregens/gen11.md), in which the sa
 
 === "Modern"
     Here is an example of the buzz opcode. It uses the file [buzz-modern.csd](../examples/buzz-modern.csd).
-    ``` csound-orc title="Example of the buzz opcode." linenums="1"
+
+    ``` csound-csd title="Example of the buzz opcode." linenums="1"
     --8<-- "examples/buzz-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the buzz opcode. It uses the file [buzz.csd](../examples/buzz.csd).
-    ``` csound-orc title="Example of the buzz opcode." linenums="1"
+
+    ``` csound-csd title="Example of the buzz opcode." linenums="1"
     --8<-- "examples/buzz.csd"
     ```
 
 === "Modern"
     A musical example featuring the buzz opcode: [BuzzFof_Cucchi-modern.csd](../examples/musical/BuzzFof_Cucchi-modern.csd) by Stefano Cucchi.
-    ``` csound-orc title="Musical example of the buzz opcode." linenums="1"
+
+    ``` csound-csd title="Musical example of the buzz opcode." linenums="1"
     --8<-- "examples//musical/BuzzFof_Cucchi-modern.csd"
     ```
 
 === "Classic"
     A musical example featuring the buzz opcode: [BuzzFof_Cucchi.csd](../examples/musical/BuzzFof_Cucchi.csd) by Stefano Cucchi.
-    ``` csound-orc title="Musical example of the buzz opcode." linenums="1"
+
+    ``` csound-csd title="Musical example of the buzz opcode." linenums="1"
     --8<-- "examples//musical/BuzzFof_Cucchi.csd"
     ```
 
-## See Also
+## See also
 
 [Dynamic Spectrum Oscillators](../siggen/dynamic.md)
 

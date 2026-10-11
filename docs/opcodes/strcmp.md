@@ -26,7 +26,7 @@ Here is an example of the strcmp opcode. It uses the file [strcmp.csd](../exampl
 --8<-- "examples/strcmp.csd"
 ```
 
-## See Also
+## See also
 
 [String Manipulation Opcodes](../strings/manipulate.md)
 

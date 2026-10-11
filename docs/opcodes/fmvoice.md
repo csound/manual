@@ -49,12 +49,11 @@ _kvibrate_ -- Rate of vibrato in Hz.
 
 Here is an example of the fmvoice opcode. It uses the file [fmvoice.csd](../examples/fmvoice.csd).
 
-``` csound-orc title="Example of the fmvoice opcode." linenums="1"
+``` csound-csd title="Example of the fmvoice opcode." linenums="1"
 --8<-- "examples/fmvoice.csd"
 ```
-```
 
-## See Also
+## See also
 
 [FM Synthesis](../siggen/fmsynth.md)
 

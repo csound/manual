@@ -42,7 +42,7 @@ For a tutorial about random distribution histograms and functions see:
 
 Here is an example of the duserrnd opcode. It uses the file [duserrnd.csd](../examples/duserrnd.csd).
 
-``` csound-orc title="Example of the duserrnd opcode." linenums="1"
+``` csound-csd title="Example of the duserrnd opcode." linenums="1"
 --8<-- "examples/duserrnd.csd"
 ```
 

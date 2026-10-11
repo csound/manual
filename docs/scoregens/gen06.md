@@ -45,6 +45,6 @@ These are the diagrams of the waveforms of the GEN06 routines, as used in the ex
 <figcaption>f 3 0 513 6 0 128 0.5 128 1 128 0 129 -1 - a curve running 0 to 1 to -1, with a minimum, maximum and minimum at these values respectively. Inflexions are at .5 and 0 and are relatively smooth</figcaption>
 </figure>
 
-## See Also
+## See also
 
 [GEN05](../scoregens/gen05.md), [GEN07](../scoregens/gen07.md), and [GEN08](../scoregens/gen08.md)

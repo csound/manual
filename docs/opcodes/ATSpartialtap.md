@@ -40,12 +40,14 @@ _atspartialtap_ takes a partial number and returns a frequency, amplitude pair. 
 
 === "Modern"
     Here is an example of the atspartialtap opcode. It uses the file [atspartialtap-modern.csd](../examples/atspartialtap-modern.csd).
+
     ``` csound-csd title="Example of the atspartialtap opcode." linenums="1"
     --8<-- "examples/atspartialtap-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the ATSpartialtap opcode. It uses the file [ATSpartialtap.csd](../examples/ATSpartialtap.csd).
+
     ``` csound-csd title="Example of the ATSpartialtap opcode." linenums="1"
     --8<-- "examples/ATSpartialtap.csd"
     ```

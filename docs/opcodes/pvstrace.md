@@ -46,7 +46,7 @@ When amplitudes tie, lower bin numbers take priority. Sorting the bin list does 
 
 Here is an example of the use of the _pvstrace_ opcode. It uses the file [pvstrace.csd](../examples/pvstrace.csd).
 
-``` csound-csd title="Example of the _pvstrace_ opcode." linenums="1"
+``` csound-csd title="Example of the pvstrace opcode." linenums="1"
 --8<-- "examples/pvstrace.csd"
 ```
 

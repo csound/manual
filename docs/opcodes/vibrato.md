@@ -50,7 +50,7 @@ In order to have a total control of these random variations, several input argum
 
 Here is an example of the vibrato opcode. It uses the file [vibrato.csd](../examples/vibrato.csd).
 
-``` csound-orc title="Example of the vibrato opcode." linenums="1"
+``` csound-csd title="Example of the vibrato opcode." linenums="1"
 --8<-- "examples/vibrato.csd"
 ```
 

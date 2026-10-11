@@ -44,7 +44,7 @@ _table3_ is identical to [tablei](../opcodes/tablei.md), except that it uses cub
 > 
 > Reading tables which contain stereo- or multichannel-information probably causes unwanted noise as the opcode interpolates between subsequent positions of the table regardless of the origin of its content. Usually just the content of one channel is expected. Consider using _loscilx_ instead.
 
-## See Also
+## See also
 
 [table3kt](table3kt.md) allows the table number to change at control rate.
 

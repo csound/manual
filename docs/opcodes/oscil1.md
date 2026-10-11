@@ -34,7 +34,7 @@ _oscil1_ accesses values by sampling once through the function table at a rate d
 
 Here is an example of the oscil1 opcode. It uses the file [oscil1.csd](../examples/oscil1.csd).
 
-``` csound-orc title="Example of the oscil1 opcode." linenums="1"
+``` csound-csd title="Example of the oscil1 opcode." linenums="1"
 --8<-- "examples/oscil1.csd"
 ```
 
@@ -51,6 +51,6 @@ i1     1.00000
 i1     0.50000
 ```
 
-## See Also
+## See also
 
 [Table Access](../siggen/tableacc.md)

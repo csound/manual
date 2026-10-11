@@ -45,7 +45,7 @@ The file name is: 'impuls20.aiff'
 soundin: opened 'impuls20.aiff'
 ```
 
-## See Also
+## See also
 
 [String Manipulation Opcodes](../strings/manipulate.md)
 

@@ -52,11 +52,11 @@ _xresample_ -- the factor by which to change the pitch of the sound. For example
 
 Here is an example of the sndwarp opcode. It uses the file [sndwarp.csd](../examples/sndwarp.csd).
 
-``` csound-orc title="Example of the sndwarp opcode." linenums="1"
+``` csound-csd title="Example of the sndwarp opcode." linenums="1"
 --8<-- "examples/sndwarp.csd"
 ```
 
-<title>Other examples</title>
+### Other examples
 
 The below example shows a slowing down or stretching of the sound stored in the stored table (_ifn1_). Over the duration of the note, the stretching will grow from no change from the original to a sound which is ten times &#8220;slower&#8221; than the original. At the same time the overall pitch will move upward over the duration by an octave.
 
@@ -105,7 +105,7 @@ In the above two examples notice the use of the _balance_ unit. The output of _b
 > Only use the stereo version when you really need to be processing a stereo file. It is somewhat slower than the mono version and if you use the _balance_ function it is slower again. There is nothing wrong with using a mono _sndwarp_ in a stereo orchestra and sending the result to one or both channels of the stereo output!
 
 
-## See Also
+## See also
 
 [Granular Synthesis](../siggen/granular.md)
 

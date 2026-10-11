@@ -47,7 +47,7 @@ These are the diagrams of the waveforms of the GEN02 routines, as used in the ex
 <figcaption>f 4 0 9 2 0 2 10 100 0</figcaption>
 </figure>
 
-## See Also
+## See also
 
 [GEN17](../scoregens/gen17.md)
 

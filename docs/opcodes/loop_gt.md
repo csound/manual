@@ -60,12 +60,14 @@ if (kndx > kmin) kgoto label
 
 === "Modern"
     Here is an example of the loopgt opcode. It uses the file [loopgt.csd](../examples/loopgt.csd).
+
     ``` csound-csd title="Example of the loopgt opcode." linenums="1"
     --8<-- "examples/loopgt.csd"
     ```
 
 === "Classic"
     Here is an example of the loop_gt opcode. It uses the file [loop_gt.csd](../examples/loop_gt.csd).
+
     ``` csound-csd title="Example of the loop_gt opcode." linenums="1"
     --8<-- "examples/loop_gt.csd"
     ```

@@ -36,7 +36,7 @@ _lpsholdp_ opcode is similar to [lpshold](../opcodes/lpshold.md); the only diffe
 
 Here is an example of the lpsholdp opcode. It uses the file [lpsholdp.csd](../examples/lpsholdp.csd).
 
-``` csound-orc title="Example of the lpsholdp opcode." linenums="1"
+``` csound-csd title="Example of the lpsholdp opcode." linenums="1"
 --8<-- "examples/lpsholdp.csd"
 ```
 

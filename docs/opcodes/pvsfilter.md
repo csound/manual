@@ -59,7 +59,7 @@ In the example above the filter curve will depend on the spectral envelope of af
 
 Here is an example of the use of the _pvsfilter_ opcode. It uses the file [pvsfilter.csd](../examples/pvsfilter.csd).
 
-``` csound-csd title="Example of the _pvsfilter_ opcode." linenums="1"
+``` csound-csd title="Example of the pvsfilter opcode." linenums="1"
 --8<-- "examples/pvsfilter.csd"
 ```
 

@@ -49,7 +49,7 @@ For more detailed explanation of these distributions, see:
 
 Here is an example of the gauss opcode. It uses the file [gauss.csd](../examples/gauss.csd).
 
-``` csound-orc title="Example of the gauss opcode." linenums="1"
+``` csound-csd title="Example of the gauss opcode." linenums="1"
 --8<-- "examples/gauss.csd"
 ```
 

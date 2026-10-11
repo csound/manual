@@ -42,11 +42,11 @@ _ksize_ -- The size of the body of the mandolin. Range 0 to 2.
 
 Here is an example of the mandol opcode. It uses the file [mandol.csd](../examples/mandol.csd), and [mandpluk.aiff](../examples/mandpluk.aiff).
 
-``` csound-orc title="Example of the mandol opcode." linenums="1"
+``` csound-csd title="Example of the mandol opcode." linenums="1"
 --8<-- "examples/mandol.csd"
 ```
 
-## See Also
+## See also
 
 [Models and Emulations](../siggen/models.md)
 

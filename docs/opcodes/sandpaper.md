@@ -42,11 +42,11 @@ _imaxshake_ (optional) -- amount of energy to add back into the system. The valu
 
 Here is an example of the sandpaper opcode. It uses the file [sandpaper.csd](../examples/sandpaper.csd).
 
-``` csound-orc title="Example of the sandpaper opcode." linenums="1"
+``` csound-csd title="Example of the sandpaper opcode." linenums="1"
 --8<-- "examples/sandpaper.csd"
 ```
 
-## See Also
+## See also
 
 [Models and Emulations](../siggen/models.md)
 

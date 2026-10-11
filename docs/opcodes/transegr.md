@@ -54,7 +54,7 @@ _transegr_ extends the note long enough to output the release endpoint. A zero-l
 
 Here is an example of the transegr opcode. It uses the file [transegr.csd](../examples/transegr.csd).
 
-``` csound-orc title="Example of the transegr opcode." linenums="1"
+``` csound-csd title="Example of the transegr opcode." linenums="1"
 --8<-- "examples/transegr.csd"
 ```
 

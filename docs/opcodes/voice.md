@@ -52,11 +52,11 @@ _kvamp_ -- amplitude of the vibrato
 
 Here is an example of the voice opcode. It uses the file [voice.csd](../examples/voice.csd), and [impuls20.aiff](../examples/impuls20.aiff).
 
-``` csound-orc title="Example of the voice opcode." linenums="1"
+``` csound-csd title="Example of the voice opcode." linenums="1"
 --8<-- "examples/voice.csd"
 ```
 
-## See Also
+## See also
 
 [Models and Emulations](../siggen/models.md)
 

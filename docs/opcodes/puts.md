@@ -45,7 +45,7 @@ frequency in Hertz : 459
 frequency in Hertz : 460
 ```
 
-## See Also
+## See also
 
 [String Manipulation Opcodes](../strings/manipulate.md)
 

@@ -42,7 +42,7 @@ The example below shows the use _pvread_ to synthesize a single component at a t
 --8<-- "examples/pvread.csd"
 ```
 
-## See Also
+## See also
 
 [Short-time Fourier Transform (STFT) Resynthesis](../spectral/stft.md)
 

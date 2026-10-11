@@ -34,7 +34,7 @@ For ordinary analysis frames, the output updates when _fsrc_ supplies a new fram
 
 Here is an example of the use of the _pvscross_ opcode. It uses the file [pvscross.csd](../examples/pvscross.csd).
 
-``` csound-csd title="Example of the _pvscross_ opcode." linenums="1"
+``` csound-csd title="Example of the pvscross opcode." linenums="1"
 --8<-- "examples/pvscross.csd"
 ```
 

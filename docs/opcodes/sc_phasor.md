@@ -38,12 +38,14 @@ If one wants Phasor to output a signal with frequency _freq_ oscillating between
 ## Examples
 === "Modern"
     Here is an example of the scphasor opcode. It uses the file [scphasor.csd](../examples/scphasor.csd).
+
     ``` csound-csd title="Example of the scphasor opcode." linenums="1"
     --8<-- "examples/scphasor.csd"
     ```
 
 === "Classic"
     Here is an example of the sc_phasor opcode. It uses the file [sc_phasor.csd](../examples/sc_phasor.csd).
+
     ``` csound-csd title="Example of the sc_phasor opcode." linenums="1"
     --8<-- "examples/sc_phasor.csd"
     ```

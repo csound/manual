@@ -8,12 +8,12 @@ Prints at k-rate using a printf() style syntax like [printks](../opcodes/printks
 ## Syntax
 === "Modern"
     ``` csound-orc
-    println("string", [, xval1] [, xval2] [...])
+    println("string" [, xval1] [, xval2] [...])
     ```
 
 === "Classic"
     ``` csound-orc
-    println "string", [, xval1] [, xval2] [...]
+    println "string" [, xval1] [, xval2] [...]
     ```
 
 ### Initialization

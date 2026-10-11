@@ -26,7 +26,7 @@ These are _operators_ not _opcodes_. Therefore, they can be used within orchestr
 
 Here is an example of the &gt;= operator. It uses the file [greaterequal.csd](../examples/greaterequal.csd).
 
-``` csound-csd title="Example of the &gt;= operator." linenums="1"
+``` csound-csd title="Example of the >= operator." linenums="1"
 --8<-- "examples/greaterequal.csd"
 ```
 

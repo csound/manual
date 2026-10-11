@@ -82,12 +82,14 @@ endin
 
 === "Modern"
     Here is another example of the chnset opcode. It uses the file [chnset-modern.csd](../examples/chnset-modern.csd).
+
     ``` csound-csd title="Example of the chnset opcode." linenums="1"
     --8<-- "examples/chnset-modern.csd"
     ```
 
 === "Classic"
     Here is another example of the chnset opcode. It uses the file [chnset.csd](../examples/chnset.csd).
+
     ``` csound-csd title="Example of the chnset opcode." linenums="1"
     --8<-- "examples/chnset.csd"
     ```

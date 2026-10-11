@@ -35,7 +35,7 @@ For more detailed explanation of these distributions, see:
 
 Here is an example of the trirand opcode. It uses the file [trirand.csd](../examples/trirand.csd).
 
-``` csound-orc title="Example of the trirand opcode." linenums="1"
+``` csound-csd title="Example of the trirand opcode." linenums="1"
 --8<-- "examples/trirand.csd"
 ```
 

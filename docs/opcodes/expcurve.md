@@ -38,7 +38,7 @@ _kout_ -- Scaled output.
 
 Here is an example of the expcurve opcode. It uses the file [expcurve.csd](../examples/expcurve.csd).
 
-``` csound-orc title="Example of the expcurve opcode." linenums="1"
+``` csound-csd title="Example of the expcurve opcode." linenums="1"
 --8<-- "examples/expcurve.csd"
 ```
 

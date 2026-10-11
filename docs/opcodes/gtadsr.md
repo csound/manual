@@ -52,7 +52,7 @@ Here is an example of the gtadsr opcode. It uses the file [gtadsr.csd](../exampl
 --8<-- "examples/gtadsr.csd"
 ```
 
-## See Also
+## See also
 
 [Envelope Generators](../siggen/envelope.md)
 

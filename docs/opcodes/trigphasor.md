@@ -46,7 +46,7 @@ In the case of phasor being used at k-rate, use _kr_ instead of _sr_ in the abov
 
 Here is an example of the trigphasor opcode. It uses the file [trigphasor.csd](../examples/trigphasor.csd).
 
-``` csound-orc title="Example of the trigphasor opcode." linenums="1"
+``` csound-csd title="Example of the trigphasor opcode." linenums="1"
 --8<-- "examples/trigphasor.csd"
 ```
 

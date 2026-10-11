@@ -36,6 +36,6 @@ Filters each channel of an input spectrum. At each new frame of _wsigin_, each m
            specdisp    wsig3, 0.1
 ```
 
-## See Also
+## See also
 
 [specaddm](../opcodes/specaddm.md), [specdiff](../opcodes/specdiff.md), [spechist](../opcodes/spechist.md), [specscal](../opcodes/specscal.md)

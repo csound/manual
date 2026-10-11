@@ -60,11 +60,11 @@ This opcode is a variation on the [syncgrain](../opcodes/syncgrain.md) opcode.
 
 Here is an example of the diskgrain opcode. It uses the file [diskgrain.csd](../examples/diskgrain.csd).
 
-``` csound-orc title="Example of the diskgrain opcode." linenums="1"
+``` csound-csd title="Example of the diskgrain opcode." linenums="1"
 --8<-- "examples/diskgrain.csd"
 ```
 
-## See Also
+## See also
 
 [Granular Synthesis](../siggen/granular.md)
 

@@ -26,7 +26,9 @@ _Sname_ -- String name of the outlet port. The name of the outlet is implicitly 
 
 _array_ -- arate array output signal
 
-During performance, the arate array output signal is sent to each instance of an instrument containing an inlet port to which this outlet has been connected using the [See also](../opcodes/connect.md)e>
+During performance, the arate array output signal is sent to each instance of an instrument containing an inlet port to which this outlet has been connected using the [connect](../opcodes/connect.md) opcode.
+
+## See also
 
 [Signal Flow Graph Opcodes](../sigrouting/signalflowgraph.md)
 

@@ -8,7 +8,7 @@ Sends MIDI program change messages at i-rate.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    outipc(ichn, iprog, imin, imax, [, iport])
+    outipc(ichn, iprog, imin, imax [, iport])
     ```
 
 === "Classic"

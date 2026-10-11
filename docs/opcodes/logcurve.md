@@ -38,7 +38,7 @@ _kout_ -- Scaled output.
 
 Here is an example of the logcurve opcode. It uses the file [logcurve.csd](../examples/logcurve.csd).
 
-``` csound-orc title="Example of the logcurve opcode." linenums="1"
+``` csound-csd title="Example of the logcurve opcode." linenums="1"
 --8<-- "examples/logcurve.csd"
 ```
 

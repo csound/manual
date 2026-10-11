@@ -22,17 +22,19 @@ p1 is the number of beats by which p2 values of subsequent _i statements_ are mo
 
 === "Modern"
     Here is an example of the C statement. It uses the file [b-modern.csd](../examples/b-modern.csd).
+
     ``` csound-csd title="Example of the C statement." linenums="1"
     --8<-- "examples/b-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the C statement. It uses the file [b.csd](../examples/b.csd).
+
     ``` csound-csd title="Example of the C statement." linenums="1"
     --8<-- "examples/b.csd"
     ```
 
-## See Also
+## See also
 
 [Score Statements](../score/statemnt.md)
 

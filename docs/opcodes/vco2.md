@@ -75,11 +75,11 @@ _kphs_ (optional) -- oscillator phase (depending on _imode_, this can be either 
 
 Here is an example of the vco2 opcode. It uses the file [vco2.csd](../examples/vco2.csd).
 
-``` csound-orc title="Example of the vco2 opcode." linenums="1"
+``` csound-csd title="Example of the vco2 opcode." linenums="1"
 --8<-- "examples/vco2.csd"
 ```
 
-## See Also
+## See also
 
 [Dynamic Spectrum Oscillators](../siggen/dynamic.md)
 

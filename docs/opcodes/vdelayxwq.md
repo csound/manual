@@ -56,7 +56,7 @@ The multichannel opcodes (eg. _vdelayxq_) allow delaying 2 or 4 variables at onc
 
 Here is an example of the use of the _vdelayxwq_ opcode. It uses the file [vdelayxwq.csd](../examples/vdelayxwq.csd).
 
-``` csound-csd title="Example of the _vdelayxwq_ opcode." linenums="1"
+``` csound-csd title="Example of the vdelayxwq opcode." linenums="1"
 --8<-- "examples/vdelayxwq.csd"
 ```
 

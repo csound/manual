@@ -30,7 +30,7 @@ _indx_ -- index of string set by strset
 
 _ir_ -- Value of string as float.
 
-## See Also
+## See also
 
 [String Conversion Opcodes](../strings/convert.md)
 

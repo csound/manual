@@ -32,12 +32,14 @@ These examples copy a literal into a source variable, then copy it with both `st
 
 === "Modern"
     [strcpy-modern.csd](../examples/strcpy-modern.csd)
+
     ``` csound-csd title="Copy strings at initialization" linenums="1"
     --8<-- "examples/strcpy-modern.csd"
     ```
 
 === "Classic"
     [strcpy.csd](../examples/strcpy.csd)
+
     ``` csound-csd title="Copy strings at initialization" linenums="1"
     --8<-- "examples/strcpy.csd"
     ```
@@ -50,7 +52,7 @@ Copy = Hello, world!
 Assignment = Hello, world!
 ```
 
-## See Also
+## See also
 
 [strcpyk](strcpyk.md), [String Manipulation Opcodes](../strings/manipulate.md)
 

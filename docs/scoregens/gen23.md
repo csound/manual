@@ -7,12 +7,12 @@ Reads numeric values from an external ASCII file.
 
 ## Syntax
 ``` csound-orc
-f # time size -23 &quot;filename.txt&quot;
+f # time size -23 "filename.txt"
 ```
 
 ### Initialization
 
-_&quot;filename.txt&quot;_ -- numeric values contained in &quot;filename.txt&quot; (which indicates the complete pathname of the character file to be read), can be separated by spaces, tabs, newline characters or commas.
+_"filename.txt"_ -- numeric values contained in "filename.txt" (which indicates the complete pathname of the character file to be read), can be separated by spaces, tabs, newline characters or commas.
 
 _size_ -- number of points in the table. Must be a power of 2 , power of 2 + 1, or zero.  If _size_ = 0, table size is determined by the number of numeric values in _filename.txt_. (New in Csound version 3.57)
 

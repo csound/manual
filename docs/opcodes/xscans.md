@@ -32,13 +32,14 @@ _kfreq_ -- frequency of the scan rate
 ## Examples
 
 Here is an example of the xscans opcode. It uses the file [xscans.csd](../examples/xscans.csd).
+
 ``` csound-csd title="Example of the xscans opcode." linenums="1"
 --8<-- "examples/xscans.csd"
 ```
 
 For similar examples, see the documentation on [scans](../opcodes/scans.md).
 
-## See Also
+## See also
 
 More information on Scanned Synthesis (as well as several other matrices) is available on the [Scanned Synthesis page](http://www.csounds.com/scanned/) at cSounds.com.
 

@@ -32,7 +32,7 @@ Here is an example of the mags opcode. It uses the file [mags.csd](../examples/m
 --8<-- "examples/mags.csd"
 ```
 
-## See Also
+## See also
 
 [pows](pows.md) returns squared magnitudes from the same packed input format.
 

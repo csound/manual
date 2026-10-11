@@ -38,7 +38,7 @@ Here is an example of the fmod opcode. It uses the file [fmod.csd](../examples/f
 --8<-- "examples/fmod.csd"
 ```
 
-## See Also
+## See also
 
 [Array opcodes](../math/array.md)
 

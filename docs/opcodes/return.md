@@ -43,7 +43,7 @@ It uses the file [return.csd](../examples/return.csd).
 --8<-- "examples/return.csd"
 ```
 
-## See Also
+## See also
 
 [evalstr](evalstr.md), [String Manipulation Opcodes](../strings/manipulate.md)
 

@@ -9,19 +9,19 @@ Returns a generic MIDI message from a MIDI file.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    status:i,chan:i,data1:i,data2:i,time:i = midifilein(index:i,[id:i])
-    status:k, chan:k, data1:k, data2:k, time:k = midifilein(index:k,[id:k])
+    status:i,chan:i,data1:i,data2:i,time:i = midifilein(index:i[, id:i])
+    status:k, chan:k, data1:k, data2:k, time:k = midifilein(index:k[, id:i])
     ```
 
 === "Classic"
     ``` csound-orc
-    istatus, ichan, idata1, idata2, itime midifilein iindex, id
-    kstatus, kchan, kdata1, kdata2, ktime midifilein kindex, kid
+    istatus, ichan, idata1, idata2, itime midifilein iindex[, iid]
+    kstatus, kchan, kdata1, kdata2, ktime midifilein kindex[, iid]
     ```
 
-### Initiatialization 
+### Initialization
 
-_index_ -- MIDI event index in MIDI file (0 - midifilevents()].
+_index_ -- zero-based MIDI event index, from 0 to [midifilevents](midifilevents.md) minus 1.
 
 _id_ (optional, default=0) -- MIDI file id, defaults to 0, the id of
 any file passed to the -F flag.
@@ -35,12 +35,14 @@ _status_ -- the type of MIDI message. Can be:
 * 192 (program change)
 * 208 (channel aftertouch)
 * 224 (pitch bend)
-* 0 if no MIDI message are pending in the MIDI IN buffer
+* 0 if the file ID or event index is invalid. In this case, all five outputs are zero.
 
 _chan_ -- MIDI channel (1-16 if only one input port is used, higher
 if channel is port mapped.)
 
 _data1, data2_ -- message-dependent data values
+
+_time_ -- event time in seconds from the start of the MIDI file.
 
 ### Performance
 

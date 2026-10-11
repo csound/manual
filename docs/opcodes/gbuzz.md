@@ -42,11 +42,11 @@ N.B. This unit has its analog in [GEN11](../scoregens/gen11.md), in which the sa
 
 Here is an example of the gbuzz opcode. It uses the file [gbuzz.csd](../examples/gbuzz.csd).
 
-``` csound-orc title="Example of the gbuzz opcode." linenums="1"
+``` csound-csd title="Example of the gbuzz opcode." linenums="1"
 --8<-- "examples/gbuzz.csd"
 ```
 
-## See Also
+## See also
 
 [Dynamic Spectrum Oscillators](../siggen/dynamic.md)
 

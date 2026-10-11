@@ -50,7 +50,7 @@ Here is an example of the temposcal opcode. It uses the file [temposcal.csd](../
 --8<-- "examples/temposcal.csd"
 ```
 
-## See Also
+## See also
 
 [Short-time Fourier Transform (STFT) Resynthesis](../spectral/stft.md)
 

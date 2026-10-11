@@ -99,6 +99,7 @@ Here is an example of the space opcode. It uses the file [space_quad.csd](../exa
 ``` csound-csd title="Example of the space opcode." linenums="1"
 --8<-- "examples/space_quad.csd"
 ```
+
 In the above example, the signal, _asig_, is moved according to the data in Function #1 indexed by _ktime_. _space_ sends the appropriate amount of the signal internally to _spsend_. The outputs of the _spsend_ are added to global accumulators in a common Csound style and the global signals are used as inputs to the reverb units in a separate instrument.
 
 _space_ can be useful for quad and stereo panning as well as fixed placed of sounds anywhere between two loudspeakers. Below is an example of the fixed placement of sounds in a stereo field using xy values from the score instead of a function table. It uses the file [space_stereo.csd](../examples/space_stereo.csd).

@@ -32,7 +32,7 @@ any file passed to the -F flag.
 
 ## Examples
 
-Here is an example of the miditempo opcode. It uses the files [midifilepause.csd](../examples/midifilepause.csd).
+Here is an example of the midifilepause opcode. It uses the files [midifilepause.csd](../examples/midifilepause.csd).
 
 ``` csound-csd title="Example of the midifilepause opcode." linenums="1"
 --8<-- "examples/midifilepause.csd"

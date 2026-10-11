@@ -28,6 +28,6 @@ Here is an example of the q statement. It uses the file [q.csd](../examples/q.cs
 --8<-- "examples/q.csd"
 ```
 
-## See Also
+## See also
 
 [Score Statements](../score/statemnt.md)

@@ -37,7 +37,7 @@ This is the diagram of the waveforms of the GENsone routine, as used in the exam
 <figcaption>f 2 0 16385 "sone" 0 32000 32000 0</figcaption>
 </figure>
 
-## See Also
+## See also
 
 More information on Sone: [http://en.wikipedia.org/wiki/Sone](http://en.wikipedia.org/wiki/Sone)
 

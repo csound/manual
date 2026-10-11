@@ -44,7 +44,7 @@ Smoothing starts from zero each time the opcode initializes. The output can ther
 
 Here is an example of the scale2 opcode. It uses the file [scale2.csd](../examples/scale2.csd).
 
-``` csound-orc title="Example of the scale2 opcode." linenums="1"
+``` csound-csd title="Example of the scale2 opcode." linenums="1"
 --8<-- "examples/scale2.csd"
 ```
 

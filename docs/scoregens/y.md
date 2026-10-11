@@ -29,7 +29,7 @@ Here is an example of the y statement. It uses the file [y_statement.csd](../exa
 
 Each time this example is run, different values between 1 and 10 will be displayed. The seed used will be displayed as well.
 
-## See Also
+## See also
 
 [Score Statements](../score/statemnt.md)
 

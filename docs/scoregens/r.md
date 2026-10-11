@@ -33,7 +33,7 @@ Here is an example of the r statement. It uses the file [r.csd](../examples/r.cs
 --8<-- "examples/r.csd"
 ```
 
-## See Also
+## See also
 
 [Score Statements](../score/statemnt.md)
 

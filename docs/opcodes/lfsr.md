@@ -34,7 +34,7 @@ _knum_ -- integer output
 
 Here is an example of the lfsr opcode. It uses the file [lfsr.csd](../examples/lfsr.csd).
 
-``` csound-orc title="Example of the lfsr opcode." linenums="1"
+``` csound-csd title="Example of the lfsr opcode." linenums="1"
 --8<-- "examples/lfsr.csd"
 ```
 

@@ -35,7 +35,7 @@ For more detailed explanation of these distributions, see:
 
 Here is an example of the unirand opcode. It uses the file [unirand.csd](../examples/unirand.csd).
 
-``` csound-orc title="Example of the unirand opcode." linenums="1"
+``` csound-csd title="Example of the unirand opcode." linenums="1"
 --8<-- "examples/unirand.csd"
 ```
 

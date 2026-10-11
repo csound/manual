@@ -36,12 +36,14 @@ _iByte_ -- a byte of data to write.
 
 === "Modern"
     Here is an example of the serialwrite opcode. It uses the file [serialwrite-modern.csd](../examples/serialwrite-modern.csd).
+
     ``` csound-csd title="Example of the serialwrite opcode." linenums="1"
     --8<-- "examples/serialwrite-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the serialWrite opcode. It uses the file [serialWrite.csd](../examples/serialWrite.csd).
+
     ``` csound-csd title="Example of the serialWrite opcode." linenums="1"
     --8<-- "examples/serialWrite.csd"
     ```
@@ -72,7 +74,7 @@ void loop() {
 .....
 ```
 
-## See Also
+## See also
 
 [non-MIDI Devices](../oscnetwork/nonMIDIdevices.md)
 

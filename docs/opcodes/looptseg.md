@@ -10,14 +10,14 @@ The entire envelope is looped at _kfreq_ rate. Each parameter can be varied at k
 ## Syntax
 === "Modern"
     ``` csound-orc
-    ksig = looptseg(kfreq, ktrig, iphase, kvalue0, ktype0, ktime0, [, kvalue1] \
+    ksig = looptseg(kfreq, ktrig, iphase, kvalue0, ktype0, ktime0 [, kvalue1] \
                     [,ktype1] [, ktime1] [, kvalue2] [,ktype2] [, ktime2] [...] \
                     [, kvalueN] [,ktypeN] [, ktimeN])
     ```
 
 === "Classic"
     ``` csound-orc
-    ksig looptseg kfreq, ktrig, iphase, kvalue0, ktype0, ktime0, [, kvalue1] \
+    ksig looptseg kfreq, ktrig, iphase, kvalue0, ktype0, ktime0 [, kvalue1] \
                   [,ktype1] [, ktime1] [, kvalue2] [,ktype2] [, ktime2] [...] \
                   [, kvalueN] [,ktypeN] [, ktimeN]
     ```
@@ -52,7 +52,7 @@ All parameters can be varied at k-rate.  Negative frequency values are allowed, 
 
 Here is an example of the looptseg opcode. It uses the file [looptseg.csd](../examples/looptseg.csd).
 
-``` csound-orc title="Example of the looptseg opcode." linenums="1"
+``` csound-csd title="Example of the looptseg opcode." linenums="1"
 --8<-- "examples/looptseg.csd"
 ```
 

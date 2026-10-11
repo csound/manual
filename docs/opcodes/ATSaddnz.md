@@ -49,24 +49,28 @@ In the example above we are synthesizing all 25 noise bands from the data contai
 
 === "Modern"
     Here is a complete example of the atsaddnz opcode. It uses the file [atsaddnz-modern.csd](../examples/atsaddnz-modern.csd).
+
     ``` csound-csd title="Example of the atsaddnz opcode." linenums="1"
     --8<-- "examples/atsaddnz-modern.csd"
     ```
 
 === "Classic"
     Here is a complete example of the ATSaddnz opcode. It uses the file [ATSaddnz.csd](../examples/ATSaddnz.csd).
+
     ``` csound-csd title="Example of the ATSaddnz opcode." linenums="1"
     --8<-- "examples/ATSaddnz.csd"
     ```
 
 === "Modern"
     Here is another example of the atsaddnz opcode. It uses the file [atsaddnz-2-modern.csd](../examples/atsaddnz-2-modern.csd).
+
     ``` csound-csd title="Example 2 of the atsaddnz opcode." linenums="1"
     --8<-- "examples/atsaddnz-2-modern.csd"
     ```
 
 === "Classic"
     Here is another example of the ATSaddnz opcode. It uses the file [ATSaddnz-2.csd](../examples/ATSaddnz-2.csd).
+
     ``` csound-csd title="Example 2 of the ATSaddnz opcode." linenums="1"
     --8<-- "examples/ATSaddnz-2.csd"
     ```

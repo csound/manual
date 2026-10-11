@@ -46,7 +46,7 @@ In the example above the input signal will be regularly 'frozen' for a short whi
 
 Here is an example of the use of the _pvsfreeze_ opcode. It uses the file [pvsfreeze.csd](../examples/pvsfreeze.csd).
 
-``` csound-csd title="Example of the _pvsfreeze_ opcode." linenums="1"
+``` csound-csd title="Example of the pvsfreeze opcode." linenums="1"
 --8<-- "examples/pvsfreeze.csd"
 ```
 

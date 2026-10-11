@@ -44,7 +44,7 @@ _kcps_ -- frequency in Hz, returned at k-rate. Zero and negative values are allo
 
 See the example for the [vco2](../opcodes/vco2.md) opcode.
 
-## See Also
+## See also
 
 [Dynamic Spectrum Oscillators](../siggen/dynamic.md)
 

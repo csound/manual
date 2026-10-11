@@ -94,7 +94,7 @@ Here is an example of the i statement. It uses the file [i_statement.csd](../exa
 --8<-- "examples/i_statement.csd"
 ```
 
-## See Also
+## See also
 
 [Score Statements](../score/statemnt.md)
 

@@ -31,7 +31,7 @@ _kvamp_ -- amount to amplify the _kvel_ value.
 
 The internal state of a node is read. This includes its position and velocity. They are amplified by the _kamp_ and _kvamp_ values.
 
-## See Also
+## See also
 
 More information on Scanned Synthesis (as well as several other matrices) is available on the [Scanned Synthesis page](http://www.csounds.com/scanned/) at cSounds.com.
 

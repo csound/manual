@@ -26,7 +26,7 @@ Here is an example of the strcat opcode. It uses the file [strcat.csd](../exampl
 --8<-- "examples/strcat.csd"
 ```
 
-## See Also
+## See also
 
 [String Manipulation Opcodes](../strings/manipulate.md)
 

@@ -60,7 +60,7 @@ It is possible to use this opcode together with *FLslidBnk2Setk* and *FLslidBnk2
 >
 > _slider16tablef_ does not output the required initial value immediately, but only after some k-cycles because the filter slightly delays the output.
 
-## See Also
+## See also
 
 [Slider Banks](../midi/sliderbk.md)
 

@@ -38,7 +38,7 @@ Here is an example of the unwrap opcode. It uses the file [unwrap.csd](../exampl
 --8<-- "examples/unwrap.csd"
 ```
 
-## See Also
+## See also
 
 [Vectorial opcodes](../vectorial/top.md), [array opcodes](../math/array.md)
 

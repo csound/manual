@@ -40,7 +40,7 @@ Each k-rate call outputs the selected phase, then advances it by _kcps_ / _kr_. 
 
 Here is an example of the phasorbnk opcode. It uses the file [phasorbnk.csd](../examples/phasorbnk.csd).
 
-``` csound-orc title="Example of the phasorbnk opcode." linenums="1"
+``` csound-csd title="Example of the phasorbnk opcode." linenums="1"
 --8<-- "examples/phasorbnk.csd"
 ```
 

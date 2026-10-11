@@ -37,7 +37,7 @@ This is the diagram of the waveform of the GEN25 routine, as used in the example
 <figcaption>f 2 0 1025 25 0 0.01 200 1 400 1 513 0.01 - a function which begins at 0.01, rises to 1 at the 200th table location, makes a straight line to the 400th location, and returns to 0.01 by the end of the table</figcaption>
 </figure>
 
-## See Also
+## See also
 
 [f statement](../scoregens/f.md), [GEN27](../scoregens/gen27.md)
 

@@ -43,7 +43,7 @@ y  = y0 + ((y1 - y0) * (1 + cos(dx)) / 2.0);
 
 Here is an example of the lincos opcode. It uses the file [lincos.csd](../examples/lincos.csd).
 
-``` csound-orc title="Example of the lincos opcode." linenums="1"
+``` csound-csd title="Example of the lincos opcode." linenums="1"
 --8<-- "examples/lincos.csd"
 ```
 

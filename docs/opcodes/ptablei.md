@@ -36,11 +36,12 @@ _ptablei_ is a interpolating unit in which the fractional part of index is used 
 ## Examples
 
 Here is an example of the ptablei opcode. It uses the file [ptablei.csd](../examples/ptablei.csd).
+
 ``` csound-csd title="Example of the ptablei opcode." linenums="1"
 --8<-- "examples/ptablei.csd"
 ```
 
-## See Also
+## See also
 
 [table](../opcodes/table.md),
 [tablei](../opcodes/tablei.md),

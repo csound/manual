@@ -64,12 +64,17 @@ If you want to loop the whole file, specify a looping mode in _imod1_ and do not
 > :memo: **Note**
 >
 > This is mono _loscil_:
+>
 > ``` csound-orc
-> a1 loscil_ 10000, 1, 1, 1 ,1
+> a1 loscil 0.3, 1, 1, 1 ,1
+>
 > ```
+>
 > ...and this is stereo _loscil_:
+>
 > ``` csound-orc
-> a1, a2 loscil_ 10000, 1, 1, 1 ,1
+> a1, a2 loscil 0.3, 1, 1, 1 ,1
+>
 > ```
 
 ## Examples

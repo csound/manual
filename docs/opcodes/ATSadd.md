@@ -57,24 +57,28 @@ In the example above, _ipartials_ is 20 and _ipartialoffset_ is 2. This will syn
 
 === "Modern"
     Here is a complete example of the atsadd opcode. It uses the file [atsadd-modern.csd](../examples/atsadd-modern.csd).
+
     ``` csound-csd title="Example of the atsadd opcode." linenums="1"
     --8<-- "examples/atsadd-modern.csd"
     ```
 
 === "Classic"
     Here is a complete example of the ATSadd opcode. It uses the file [ATSadd.csd](../examples/ATSadd.csd).
+
     ``` csound-csd title="Example of the ATSadd opcode." linenums="1"
     --8<-- "examples/ATSadd.csd"
     ```
 
 === "Modern"
     Here is another example of the atsadd opcode. It uses the file [atsadd-2-modern.csd](../examples/atsadd-2-modern.csd).
+
     ``` csound-csd title="Example 2 of the atsadd opcode." linenums="1"
     --8<-- "examples/atsadd-2-modern.csd"
     ```
 
 === "Classic"
     Here is another example of the ATSadd opcode. It uses the file [ATSadd-2.csd](../examples/ATSadd-2.csd).
+
     ``` csound-csd title="Example 2 of the ATSadd opcode." linenums="1"
     --8<-- "examples/ATSadd-2.csd"
     ```

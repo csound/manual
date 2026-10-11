@@ -41,12 +41,14 @@ This is essentially the same as sc_lag except that you can supply a different 60
 ## Examples
 === "Modern"
     Here is an example of the sclagud opcode. It uses the file [sclagud.csd](../examples/sclagud.csd).
+
     ``` csound-csd title="Example of the sclagud opcode." linenums="1"
     --8<-- "examples/sclagud.csd"
     ```
 
 === "Classic"
     Here is an example of the sc_lagud opcode. It uses the file [sc_lagud.csd](../examples/sc_lagud.csd).
+
     ``` csound-csd title="Example of the sc_lagud opcode." linenums="1"
     --8<-- "examples/sc_lagud.csd"
     ```

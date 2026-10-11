@@ -30,12 +30,14 @@ _&#8220;Sin&#8221;_ --  a string (in double-quotes or enclosed by {{ }}) contain
 
 === "Modern"
     Here is an example of the scorelinei opcode. It uses the file [scorelinei.csd](../examples/scorelinei.csd).
+
     ``` csound-csd title="Example of the scorelinei opcode." linenums="1"
     --8<-- "examples/scorelinei.csd"
     ```
 
 === "Classic"
     Here is an example of the scoreline_i opcode. It uses the file [scoreline_i.csd](../examples/scoreline_i.csd).
+
     ``` csound-csd title="Example of the scoreline_i opcode." linenums="1"
     --8<-- "examples/scoreline_i.csd"
     ```

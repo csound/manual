@@ -61,7 +61,7 @@ Here is an example for the adsr-group, comparing the different adsr opcodes. It 
 --8<-- "examples/adsr-group.csd"
 ```
 
-## See Also
+## See also
 
 [Envelope Generators](../siggen/envelope.md)
 

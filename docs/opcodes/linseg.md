@@ -38,7 +38,7 @@ Segment durations round to the nearest whole control period for _kres_ or sample
 
 Here is an example of the linseg opcode. It uses the file [linseg.csd](../examples/linseg.csd).
 
-``` csound-orc title="Example of the linseg opcode." linenums="1"
+``` csound-csd title="Example of the linseg opcode." linenums="1"
 --8<-- "examples/linseg.csd"
 ```
 

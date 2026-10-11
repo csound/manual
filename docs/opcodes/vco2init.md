@@ -71,7 +71,7 @@ _isrcft_ (optional, default=-1) -- source ftable number for user-defined wavefor
 
 Here is an example of the vco2init opcode. It uses the file [vco2init.csd](../examples/vco2init.csd).
 
-``` csound-orc title="Example of the vco2init opcode." linenums="1"
+``` csound-csd title="Example of the vco2init opcode." linenums="1"
 --8<-- "examples/vco2init.csd"
 ```
 
@@ -93,7 +93,7 @@ i   1 time     5.00000:   138.00000
 
 See the example for the [vco2](../opcodes/vco2.md) opcode too.
 
-## See Also
+## See also
 
 [Dynamic Spectrum Oscillators](../siggen/dynamic.md)
 

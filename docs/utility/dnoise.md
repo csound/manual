@@ -74,7 +74,7 @@ where _avg_ and _nref_ are the mean squared signal and noise respectively for th
 
 The critical parameters _th_ and _g0_ are specified in dB and internally converted to decimal values.  The _nref_ values are computed at the start of the program on the basis of a noise_soundfile (specified in the command line) which contains noise without signal.
 
-The _avg_ values are computed over a rectangular window of m FFT frames looking both ahead and behind the current time.  This corresponds to a temporal extent of m*D/R (which is typically (m*N/8)/R).  The default settings&namerasmus; of N, M, and D should be appropriate for most uses.  A higher sample rate than 16 Khz might indicate a higher N.
+The _avg_ values are computed over a rectangular window of m FFT frames looking both ahead and behind the current time.  This corresponds to a temporal extent of m*D/R (which is typically (m*N/8)/R).  The default settings of N, M, and D should be appropriate for most uses.  A higher sample rate than 16 Khz might indicate a higher N.
 
 ## Examples
 

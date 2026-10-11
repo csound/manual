@@ -37,7 +37,7 @@ This is the diagram of the waveform of the GEN27 routine, as used in the example
 <figcaption>f 2 0 1025 27 0 0 200 1 400 -1 513 0 - a function which begins at 0, rises to 1 at the 200th table location, falls to -1, by the 400th location, and returns to 0 by the end of the table. The interpolation is linear</figcaption>
 </figure>
 
-## See Also
+## See also
 
 [f statement](../scoregens/f.md), [GEN25](../scoregens/gen25.md)
 

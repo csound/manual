@@ -53,7 +53,7 @@ Here is an example of the envlpx opcode. It uses the file [envlpx.csd](../exampl
 --8<-- "examples/envlpx.csd"
 ```
 
-## See Also
+## See also
 
 [Envelope Generators](../siggen/envelope.md)
 

@@ -64,7 +64,7 @@ The new opcode can then be used with the usual syntax:
 
 See the example for the [opcode](../opcodes/opcode.md) opcode.
 
-## See Also
+## See also
 
 [User Defined Opcodes (UDO)](../orch/user-defined-opcodes.md)
 

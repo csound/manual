@@ -25,7 +25,7 @@ numeric or string values.
 The following expression can also be used,
 
 ```
-array:{i,k} = [val1, val2, ..., valN]
+array:{i,k}[] = [val1, val2, ..., valN]
 ```
 
 where _val1_ etc are as above for `fillarray`.

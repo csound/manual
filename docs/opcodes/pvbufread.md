@@ -58,7 +58,7 @@ Here is a complete example of the pvbufread opcode. It uses the file [pvbufread.
 --8<-- "examples/pvbufread.csd"
 ```
 
-## See Also
+## See also
 
 [Short-time Fourier Transform (STFT) Resynthesis](../spectral/stft.md)
 

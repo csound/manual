@@ -57,7 +57,7 @@ These are the diagrams of the waveforms of the GEN09 routines, as used in the ex
 <figcaption>gi4 ftgen 4,0,2^10,9,  1,2,180,   3,2,0, 9,0.333,0 - same ratio as gi3, except with less artefacts</figcaption>
 </figure>
 
-## See Also
+## See also
 
 [GEN10](../scoregens/gen10.md),
 [GEN19](../scoregens/gen19.md)

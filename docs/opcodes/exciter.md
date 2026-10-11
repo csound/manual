@@ -18,8 +18,6 @@ Plugin opcode in exciter. "Filtered distortion to add brilliance to a signal"
     ares exciter asig, kfreq, kceil, kharmonics, kblend
     ```
 
-### Initialization
-
 ### Performance
 
 _asig_ -- input signal

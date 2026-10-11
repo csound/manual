@@ -29,7 +29,9 @@ _SinstanceID_ -- String name of the outlet port's instance ID. This enables the 
 _ksignal_ -- krate input signal
 
 During performance, the krate inlet signal is received from each instance of an instrument containing an outlet port to which this inlet has been connected using the
-[See also](../opcodes/connect.md)e>
+[connect](../opcodes/connect.md) opcode.
+
+## See also
 
 [Signal Flow Graph Opcodes](../sigrouting/signalflowgraph.md)
 

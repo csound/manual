@@ -30,7 +30,7 @@ With an unmodified sliding [pvsanal](../opcodes/pvsanal.md) stream, the delay is
 
 ## Examples
 
-``` csound-orc title="Example (using score-supplied f-table, assuming fsig _fftsize = 1024_)"
+``` csound-orc title="Example (using score-supplied f-table, assuming fsig fftsize = 1024)"
 ; score f-table using cubic spline to define shaped peaks
 f1 0 513 8 0 2 1 3 0 4 1 6 0 10 1 12 0 16 1 32 0 1 0 436 0
 

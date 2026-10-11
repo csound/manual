@@ -59,12 +59,14 @@ endin
 
 === "Modern"
     Here is a complete example of the mixerclear opcode. It uses the file [Mixer-modern.csd](../examples/Mixer-modern.csd)
+
     ``` csound-csd title="Complete example of the mixerclear opcode." linenums="1"
     --8<-- "examples/Mixer-modern.csd"
     ```
 
 === "Classic"
     Here is a complete example of the MixerClear opcode. It uses the file [Mixer.csd](../examples/Mixer.csd)
+
     ``` csound-csd title="Complete example of the MixerClear opcode." linenums="1"
     --8<-- "examples/Mixer.csd"
     ```

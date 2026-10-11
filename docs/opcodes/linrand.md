@@ -35,7 +35,7 @@ For more detailed explanation of these distributions, see:
 
 Here is an example of the linrand opcode. It uses the file [linrand.csd](../examples/linrand.csd).
 
-``` csound-orc title="Example of the linrand opcode." linenums="1"
+``` csound-csd title="Example of the linrand opcode." linenums="1"
 --8<-- "examples/linrand.csd"
 ```
 

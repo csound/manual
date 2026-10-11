@@ -48,7 +48,7 @@ If you need to change the oscillator table with a k-rate signal, you can use [os
 
 Here is an example of the oscil opcode. It uses the file [oscil.csd](../examples/oscil.csd).
 
-``` csound-orc title="Example of the oscil opcode." linenums="1"
+``` csound-csd title="Example of the oscil opcode." linenums="1"
 --8<-- "examples/oscil.csd"
 ```
 

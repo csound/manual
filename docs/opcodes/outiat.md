@@ -8,7 +8,7 @@ Sends MIDI aftertouch messages at i-rate.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    outiat(ichn, ivalue, imin, imax, [, iport])
+    outiat(ichn, ivalue, imin, imax [, iport])
     ```
 
 === "Classic"

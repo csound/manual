@@ -44,11 +44,11 @@ _kvamp_ -- amplitude of the vibrato
 
 Here is an example of the gogobel opcode. It uses the file [gogobel.csd](../examples/gogobel.csd), and [marmstk1.wav](../examples/marmstk1.wav),
 
-``` csound-orc title="Example of the gogobel opcode." linenums="1"
+``` csound-csd title="Example of the gogobel opcode." linenums="1"
 --8<-- "examples/gogobel.csd"
 ```
 
-## See Also
+## See also
 
 [Models and Emulations](../siggen/models.md)
 

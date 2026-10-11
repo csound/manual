@@ -8,12 +8,12 @@ Similar to [printks](../opcodes/printks.md) but prints to a file.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    fprintks("filename", "string", [, kval1] [, kval2] [...])
+    fprintks("filename", "string" [, kval1] [, kval2] [...])
     ```
 
 === "Classic"
     ``` csound-orc
-    fprintks "filename", "string", [, kval1] [, kval2] [...]
+    fprintks "filename", "string" [, kval1] [, kval2] [...]
     ```
 
 ### Initialization

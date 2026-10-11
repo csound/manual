@@ -58,13 +58,15 @@ _asource_ -- The audio signal to be cut up. This version runs in real-time witho
 
 === "Modern"
     Here is an example of the bbcuts opcode. It uses the file [bbcuts-modern.csd](../examples/bbcuts-modern.csd).
-    ``` csound-orc title="Example of the bbcuts opcode." linenums="1"
+
+    ``` csound-csd title="Example of the bbcuts opcode." linenums="1"
     --8<-- "examples/bbcuts-modern.csd"
     ```
 
 === "Classic"
     Here is an example of the bbcuts opcode. It uses the file [bbcuts.csd](../examples/bbcuts.csd).
-    ``` csound-orc title="Example of the bbcuts opcode." linenums="1"
+
+    ``` csound-csd title="Example of the bbcuts opcode." linenums="1"
     --8<-- "examples/bbcuts.csd"
     ```
 

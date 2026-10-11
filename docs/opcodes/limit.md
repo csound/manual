@@ -13,7 +13,6 @@ Sets the lower and upper limits of the value it processes.
     kres = limit(ksig, klow, khigh)
     ires[] = limit(isig[], ilow, ihigh)
     kres[] = limit(ksig[], klow, khigh)
-      )
     ```
 
 === "Classic"
