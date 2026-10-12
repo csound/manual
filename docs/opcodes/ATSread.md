@@ -5,9 +5,9 @@ category:Spectral Processing:ATS
 # atsread
 Reads data from an ATS file.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *ATSread*.
+> `ATSread` is a deprecated alias of `atsread` in Csound 7. Use `atsread` in new code. The old name still works for compatibility.
 
 _atsread_ returns the amplitude (_kamp_) and frequency (_kfreq_) information of a user specified partial contained in the ATS analysis file at the time indicated by the time pointer _ktimepnt_.
 

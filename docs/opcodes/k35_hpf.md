@@ -5,9 +5,9 @@ category:Signal Modifiers:Standard Filters
 # k35hpf
 Zero-delay feedback implementation of Korg35 resonant high-pass filter.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *K35_hpf*.
+> `K35_hpf` is a deprecated alias of `k35hpf` in Csound 7. Use `k35hpf` in new code. The old name still works for compatibility.
 
 This filter design is found in the Korg MS10 early MS20.
 

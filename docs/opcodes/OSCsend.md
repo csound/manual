@@ -5,9 +5,9 @@ category:OSC
 # oscsend
 Sends data to other listening processes using the OSC protocol.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *OSCsend*.
+> `OSCsend` is a deprecated alias of `oscsend` in Csound 7. Use `oscsend` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

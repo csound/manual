@@ -6,6 +6,10 @@ status:deprecated
 # specsum
 Sums the magnitudes across all channels of the spectrum.
 
+> :warning: **Deprecated**
+>
+> This opcode belongs to the deprecated constant-Q spectral family that uses `w` signals. Csound keeps it for compatibility and does not name a direct replacement.
+
 ## Syntax
 === "Modern"
     ``` csound-orc

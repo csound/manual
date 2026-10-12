@@ -5,9 +5,9 @@ category:Vectorial:Vectorial operations
 # vsubvi
 Performs subtraction between two vectorial control signals at init time.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *vsubv_i*.
+> `vsubv_i` is a deprecated alias of `vsubvi` in Csound 7. Use `vsubvi` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

@@ -1,9 +1,14 @@
 <!--
 id:outq4
 category:Signal I/O:Signal Output
+status:deprecated
 -->
 # outq4
 Writes samples to quad channel 4 of an external device or stream.
+
+> :warning: **Deprecated**
+>
+> This opcode is deprecated. Use [outch](outch.md) with an explicit channel number. For example, replace `outq4 asig` with `outch 4, asig`. The old opcode remains available for compatibility.
 
 ## Syntax
 === "Modern"

@@ -5,9 +5,9 @@ category:Vectorial:Vectorial operations
 # vexpvi
 Performs exponential operations between two vectorial control signals at init time.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *vexpv_i*.
+> `vexpv_i` is a deprecated alias of `vexpvi` in Csound 7. Use `vexpvi` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

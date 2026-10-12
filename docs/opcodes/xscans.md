@@ -8,7 +8,9 @@ Fast scanned synthesis waveform and the wavetable generator.
 
 Plugin opcode in scansyn.
 
-Experimental version of [scans](../opcodes/scans.md).  Allows much larger matrices and is faster and smaller but removes some (unused?) flexibility.  If liked, it will replace the older opcode as it is syntax compatible but extended.
+> :warning: **Deprecated**
+>
+> This opcode is deprecated. Use [scans](scans.md) with the `scanu` and `scans` family in new code. Check the replacement's setup and table requirements when adapting an existing score. `xscans` remains available for compatibility.
 
 ## Syntax
 ``` csound-orc

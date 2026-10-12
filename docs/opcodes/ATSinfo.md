@@ -5,9 +5,9 @@ category:Spectral Processing:ATS
 # atsinfo
 Reads data out of the header of an ATS file.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *ATSinfo*.
+> `ATSinfo` is a deprecated alias of `atsinfo` in Csound 7. Use `atsinfo` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

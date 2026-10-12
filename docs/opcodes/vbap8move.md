@@ -1,9 +1,14 @@
 <!--
 id:vbap8move
 category:Signal Modifiers:Panning and Spatialization
+status:deprecated
 -->
 # vbap8move
 Distributes an audio signal among 8 channels with moving virtual sources.
+
+> :warning: **Deprecated**
+>
+> This opcode is deprecated. Use [vbapmove](vbapmove.md) with the number of outputs you need. `vbap8move` remains available for compatibility.
 
 ## Syntax
 === "Modern"

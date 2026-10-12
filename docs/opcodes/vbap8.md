@@ -1,9 +1,14 @@
 <!--
 id:vbap8
 category:Signal Modifiers:Panning and Spatialization
+status:deprecated
 -->
 # vbap8
 Distributes an audio signal among 8 channels.
+
+> :warning: **Deprecated**
+>
+> This opcode is deprecated. Use [vbap](vbap.md) with the number of outputs you need. `vbap8` remains available for compatibility.
 
 ## Syntax
 === "Modern"

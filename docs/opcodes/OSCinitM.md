@@ -5,9 +5,9 @@ category:OSC
 # oscinitm
 Start a multicast listening process to a particular port, which can be used by *osclisten*.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *OSCinitM*.
+> `OSCinitM` is a deprecated alias of `oscinitm` in Csound 7. Use `oscinitm` in new code. The old name still works for compatibility.
 
 Plugin opcode in osc.
 ## Syntax

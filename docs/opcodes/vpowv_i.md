@@ -5,9 +5,9 @@ category:Vectorial:Vectorial operations
 # vpowvi
 Performs power-of operations between two vectorial control signals at init time.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *vpowv_i*.
+> `vpowv_i` is a deprecated alias of `vpowvi` in Csound 7. Use `vpowvi` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

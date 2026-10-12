@@ -5,9 +5,9 @@ category:Vectorial:Vectorial operations
 # vmultvi
 Performs mutiplication between two vectorial control signals at init time.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *vmultv_i*.
+> `vmultv_i` is a deprecated alias of `vmultvi` in Csound 7. Use `vmultvi` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

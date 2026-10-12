@@ -5,9 +5,9 @@ category:Instrument Control:Sensing and Control
 # cntstate
 Gives the range and increment of a counter.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *cntState*.
+> `cntState` is a deprecated alias of `cntstate` in Csound 7. Use `cntstate` in new code. The old name still works for compatibility.
 
 Plugin opcode in counter.
 

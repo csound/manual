@@ -1,9 +1,14 @@
 <!--
 id:mp3len
 category:Signal I/O:Soundfile Queries
+status:deprecated
 -->
 # mp3len
 Returns the length of an MP3 sound file.
+
+> :warning: **Deprecated**
+>
+> This opcode is deprecated. Use [filelen](filelen.md) to read the duration of an audio file. `mp3len` remains available for compatibility.
 
 ## Syntax
 === "Modern"

@@ -5,9 +5,9 @@ category:Spectral Processing:ATS
 # atsinterpread
 Allows a user to determine the frequency envelope of any [atsbufread](../opcodes/ATSbufread.md).
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *ATSinterpread*.
+> `ATSinterpread` is a deprecated alias of `atsinterpread` in Csound 7. Use `atsinterpread` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

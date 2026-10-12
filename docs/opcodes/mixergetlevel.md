@@ -5,9 +5,9 @@ category:Mixer Opcodes
 # mixergetlevel
 Gets the level at which signals from the send are being added to the buss.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *MixerGetLevel*.
+> `MixerGetLevel` is a deprecated alias of `mixergetlevel` in Csound 7. Use `mixergetlevel` in new code. The old name still works for compatibility.
 
 Plugin opcode in mixer
 

@@ -1,9 +1,14 @@
 <!--
 id:xyin
 category:Instrument Control:Sensing and Control
+status:deprecated
 -->
 # xyin
 Sense the cursor position in an output window.
+
+> :warning: **Deprecated**
+>
+> This opcode is deprecated and remains available for compatibility. Csound does not name a direct replacement. For new code, choose an input method that suits your host or user interface.
 
 When _xyin_ is called the position of the mouse within the output window is used to reply to the request.  This simple mechanism does mean that only one _xyin_ can be used accurately at once.  The position of the mouse is reported in the output window.
 

@@ -5,9 +5,9 @@ category:Signal Generators:Table Access
 # tabwi
 Fast table opcodes.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *tabw_i*.
+> `tabw_i` is a deprecated alias of `tabwi` in Csound 7. Use `tabwi` in new code. The old name still works for compatibility.
 
 Faster than [tablew](../opcodes/tablew.md) because it does not allow wrap-around and limit. Has been implemented in order to provide fast access to arrays.
 

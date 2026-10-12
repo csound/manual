@@ -5,9 +5,9 @@ category:Signal Modifiers:Standard Filters
 # zdfladder
 Zero-delay feedback implementation of a 4 pole (24 dB/oct) low-pass filter based on the Moog ladder filter.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *zdf_ladder*.
+> `zdf_ladder` is a deprecated alias of `zdfladder` in Csound 7. Use `zdfladder` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

@@ -5,9 +5,9 @@ category:Array Opcodes
 # trim
 Adjust size of a one-dimensional array.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, *trimi* was called *trim_i*.
+> `trim_i` is a deprecated alias of `trimi` in Csound 7. Use `trimi` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

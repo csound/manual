@@ -5,9 +5,9 @@ category:Spectral Processing:ATS
 # atsreadnz
 reads data from an ATS file.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *ATSreadnz*.
+> `ATSreadnz` is a deprecated alias of `atsreadnz` in Csound 7. Use `atsreadnz` in new code. The old name still works for compatibility.
 
 _atsreadnz_ returns the energy (_kenergy_) of a user specified noise band (1-25 bands) at the time indicated by the time pointer _ktimepnt_.
 

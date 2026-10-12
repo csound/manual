@@ -7,9 +7,9 @@ Returns the number of audio channels in the underlying hardware.
 
 This does not necessarily correspond to the number of channels used by Csound (set by nchnls and nchnls_i).
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *nchnls_hw*.
+> `nchnls_hw` is a deprecated alias of `nchnlshw` in Csound 7. Use `nchnlshw` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

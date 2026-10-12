@@ -5,9 +5,9 @@ category:Spectral Processing:ATS
 # atsbufread
 Reads an ATS data file and stores frequency and amplitude pairs in an internal table.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *ATSbufread*.
+> `ATSbufread` is a deprecated alias of `atsbufread` in Csound 7. Use `atsbufread` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

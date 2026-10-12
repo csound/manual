@@ -5,9 +5,9 @@ category:Serial I/O
 # arduinostop
 Close a serial port using Arduino protocol.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *arduinoStop*.
+> `arduinoStop` is a deprecated alias of `arduinostop` in Csound 7. Use `arduinostop` in new code. The old name still works for compatibility.
 
 Plugin opcode in serial.
 

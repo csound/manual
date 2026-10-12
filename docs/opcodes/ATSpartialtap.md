@@ -5,9 +5,9 @@ category:Spectral Processing:ATS
 # atspartialtap
 Returns a frequency, amplitude pair from an [atsbufread](../opcodes/ATSbufread.md) opcode.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *ATSpartialtap*.
+> `ATSpartialtap` is a deprecated alias of `atspartialtap` in Csound 7. Use `atspartialtap` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

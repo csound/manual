@@ -5,9 +5,9 @@ category:OSC
 # oscbundle
 Sends data to other processes using the OSC protocol by packing messages in a bundle.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *OSCbundle*.
+> `OSCbundle` is a deprecated alias of `oscbundle` in Csound 7. Use `oscbundle` in new code. The old name still works for compatibility.
 
 Unlike *oscsend*, it can be used to send multiple messages at the same time, but only standard OSC numeric types are allowed.
 

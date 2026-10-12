@@ -1,9 +1,14 @@
 <!--
 id:vbap4
 category:Signal Modifiers:Panning and Spatialization
+status:deprecated
 -->
 # vbap4
 Distributes an audio signal among 4 channels.
+
+> :warning: **Deprecated**
+>
+> This opcode is deprecated. Use [vbap](vbap.md) with the number of outputs you need. `vbap4` remains available for compatibility.
 
 ## Syntax
 === "Modern"

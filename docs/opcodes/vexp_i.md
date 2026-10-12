@@ -5,9 +5,9 @@ category:Vectorial:Scalar operations
 # vexpi
 Performs power-of operations between a vector and a scalar.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *vexp_i*.
+> `vexp_i` is a deprecated alias of `vexpi` in Csound 7. Use `vexpi` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

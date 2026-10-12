@@ -1,9 +1,14 @@
 <!--
 id:mp3in
 category:Signal I/O:Signal Input
+status:deprecated
 -->
 # mp3in
 Reads mono or stereo audio data from an external MP3 file.
+
+> :warning: **Deprecated**
+>
+> This opcode is deprecated. Use [diskin2](diskin2.md) for new code and follow its input arguments. `mp3in` remains available for compatibility.
 
 ## Syntax
 === "Modern"

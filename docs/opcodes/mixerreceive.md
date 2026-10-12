@@ -5,9 +5,9 @@ category:Mixer Opcodes
 # mixerreceive
 Receives an arate signal that has been mixed onto a channel of a buss.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *MixerReceive*.
+> `MixerReceive` is a deprecated alias of `mixerreceive` in Csound 7. Use `mixerreceive` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

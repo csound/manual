@@ -5,9 +5,9 @@ category:Signal I/O:Printing and Display
 # printf
 printf-style formatted output.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, *printfi* was called *printf_i*.
+> `printf_i` is a deprecated alias of `printfi` in Csound 7. Use `printfi` in new code. The old name still works for compatibility.
 
 _printf_ and _printfi_ write formatted output, similarly to the C function printf(). _printfi_ runs at i-time only, while _printf_ runs both at initialization and performance time.
 

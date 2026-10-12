@@ -5,9 +5,9 @@ category:Table Control:Table Queries
 # maparray
 Apply a function of one argument to every element of a vector (one-dimensional k-rate array).
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, *maparrayi* was called *maparray_i*.
+> `maparray_i` is a deprecated alias of `maparrayi` in Csound 7. Use `maparrayi` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

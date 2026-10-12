@@ -5,9 +5,9 @@ category:Instrument Control:Invocation
 # scorelinei
 Issues one or more score line events from an instrument at i-time.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *scoreline_i*.
+> `scoreline_i` is a deprecated alias of `scorelinei` in Csound 7. Use `scorelinei` in new code. The old name still works for compatibility.
 
 It can handle strings in the same conditions as the standard score. Multi-line strings are accepted, using {{  }} to enclose the string.
 

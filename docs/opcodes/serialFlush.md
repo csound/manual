@@ -5,9 +5,9 @@ category:Serial I/O
 # serialflush
 Flush data from a serial port.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *serialFlush*.
+> `serialFlush` is a deprecated alias of `serialflush` in Csound 7. Use `serialflush` in new code. The old name still works for compatibility.
 
 Plugin opcode in serial.
 

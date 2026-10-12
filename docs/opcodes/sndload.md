@@ -6,9 +6,9 @@ status:deprecated
 # sndload
 Loads a sound file into memory for use by *loscilx*.
 
-> :memo: **Note**
+> :warning: **Deprecated**
 >
-> This opcode loads the file into memory but it is not available for use adfterwards.  In effect it just wastes memory.
+> This opcode is deprecated. It loads a file into memory but does not make the data available for later use. Csound keeps it for compatibility and does not name a direct replacement.
 
 ## Syntax
 === "Modern"

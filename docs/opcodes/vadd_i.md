@@ -5,9 +5,9 @@ category:Vectorial:Scalar operations
 # vaddi
 Adds a scalar value to a vector in a table.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *vadd_i*.
+> `vadd_i` is a deprecated alias of `vaddi` in Csound 7. Use `vaddi` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

@@ -1,11 +1,14 @@
 <!--
 id:chnclear_array
 category:Signal I/O:Software Bus
+status:deprecated
 -->
 # chnclear_array
 Sets the contents of one or more array channels to zero.
 
-This is the older spelling of [chncleararray](chncleararray.md). See that page for the shared reference and example. Use `chncleararray` in new Csound 7 code.
+> :warning: **Deprecated alias**
+>
+> `chnclear_array` is a deprecated alias of [chncleararray](chncleararray.md) in Csound 7. Use `chncleararray` in new code. See that page for the shared reference and example.
 
 ## Syntax
 

@@ -5,9 +5,9 @@ category:Instrument Control:Program Flow Control
 # loople
 Construction of looping operations.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *loop_le*.
+> `loop_le` is a deprecated alias of `loople` in Csound 7. Use `loople` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

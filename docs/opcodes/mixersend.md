@@ -5,9 +5,9 @@ category:Mixer Opcodes
 # mixersend
 Mixes an arate signal into a channel of a buss.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *MixerSend*.
+> `MixerSend` is a deprecated alias of `mixersend` in Csound 7. Use `mixersend` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

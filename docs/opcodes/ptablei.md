@@ -6,6 +6,10 @@ status:deprecated
 # ptablei
 Accesses table values by direct indexing with linear interpolation.
 
+> :warning: **Deprecated**
+>
+> This opcode is deprecated. Use [tablei](tablei.md) in new code. `ptablei` remains available for compatibility.
+
 ## Syntax
 ``` csound-orc
 ares ptablei andx, ifn [, ixmode] [, ixoff] [, iwrap]

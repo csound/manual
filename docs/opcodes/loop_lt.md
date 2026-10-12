@@ -5,9 +5,9 @@ category:Instrument Control:Program Flow Control
 # looplt
 Construction of looping operations.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *loop_lt*.
+> `loop_lt` is a deprecated alias of `looplt` in Csound 7. Use `looplt` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

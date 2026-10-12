@@ -5,9 +5,9 @@ category:Real-time MIDI:Slider Banks
 # sliderkawai
 Creates a bank of 16 different MIDI control message numbers from a KAWAI MM-16 midi mixer.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *sliderKawai*.
+> `sliderKawai` is a deprecated alias of `sliderkawai` in Csound 7. Use `sliderkawai` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

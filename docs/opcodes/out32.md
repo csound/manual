@@ -1,9 +1,14 @@
 <!--
 id:out32
 category:Signal I/O:Signal Output
+status:deprecated
 -->
 # out32
 Writes 32-channel audio data to an external device or stream.
+
+> :warning: **Deprecated**
+>
+> This opcode is deprecated. Use [out](out.md), which accepts multiple audio signals and writes them to successive output channels. Existing scores can still use `out32`.
 
 ## Syntax
 === "Modern"

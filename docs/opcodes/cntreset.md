@@ -5,9 +5,9 @@ category:Instrument Control:Sensing and Control
 # cntreset
 Resets a counter object to its initial state.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *cntReset*.
+> `cntReset` is a deprecated alias of `cntreset` in Csound 7. Use `cntreset` in new code. The old name still works for compatibility.
 
 Plugin opcode in counter.
 

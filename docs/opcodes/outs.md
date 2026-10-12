@@ -1,9 +1,14 @@
 <!--
 id:outs
 category:Signal I/O:Signal Output
+status:deprecated
 -->
 # outs
 Writes stereo audio data to an external device or stream.
+
+> :warning: **Deprecated**
+>
+> This opcode is deprecated. Use [out](out.md), which accepts multiple audio signals and writes them to successive output channels. Existing scores can still use `outs`.
 
 ## Syntax
 === "Modern"

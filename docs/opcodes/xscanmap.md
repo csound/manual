@@ -6,6 +6,10 @@ status:deprecated
 # xscanmap
 Allows the position and velocity of a node in a scanned process to be read.
 
+> :warning: **Deprecated**
+>
+> This opcode is deprecated. Use [scanmap](scanmap.md) with the `scanu` and `scans` family in new code. Check the replacement's setup and table requirements when adapting an existing score. `xscanmap` remains available for compatibility.
+
 Plugin opcode in scansyn.
 
 ## Syntax

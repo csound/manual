@@ -5,9 +5,9 @@ category:Spectral Processing:ATS
 # atssinnoi
 _atssinnoi_ reads data from an ATS data file and uses the information to synthesize sines and noise together.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *ATSsinnoi*.
+> `ATSsinnoi` is a deprecated alias of `atssinnoi` in Csound 7. Use `atssinnoi` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

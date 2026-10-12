@@ -5,9 +5,9 @@ category:Serial I/O
 # arduinoreadf
 Read integer data from an arduino port using the Csound-Arduino protocol.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *arduinoReadF*.
+> `arduinoReadF` is a deprecated alias of `arduinoreadf` in Csound 7. Use `arduinoreadf` in new code. The old name still works for compatibility.
 
 Plugin opcode in serial.
 
