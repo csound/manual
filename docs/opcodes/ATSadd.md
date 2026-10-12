@@ -5,9 +5,9 @@ category:Spectral Processing:ATS
 # atsadd
 Uses the data from an ATS analysis file to perform additive synthesis using an internal array of interpolating oscillators.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *ATSadd*.
+> `ATSadd` is a deprecated alias of `atsadd` in Csound 7. Use `atsadd` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

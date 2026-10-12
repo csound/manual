@@ -5,9 +5,9 @@ category:Spectral Processing:ATS
 # atsaddnz
 Uses the data from an ATS analysis file to perform noise resynthesis using a modified randi function.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *ATSaddnz*.
+> `ATSaddnz` is a deprecated alias of `atsaddnz` in Csound 7. Use `atsaddnz` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

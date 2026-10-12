@@ -1,9 +1,14 @@
 <!--
 id:outs2
 category:Signal I/O:Signal Output
+status:deprecated
 -->
 # outs2
 Writes samples to stereo channel 2 of an external device or stream.
+
+> :warning: **Deprecated**
+>
+> This opcode is deprecated. Use [outch](outch.md) with an explicit channel number. For example, replace `outs2 asig` with `outch 2, asig`. The old opcode remains available for compatibility.
 
 ## Syntax
 === "Modern"

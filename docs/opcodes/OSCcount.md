@@ -5,9 +5,9 @@ category:OSC
 # osccount
 Gives the Count of OSC messages currently unread but received by the current listeners.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *OSCcount*.
+> `OSCcount` is a deprecated alias of `osccount` in Csound 7. Use `osccount` in new code. The old name still works for compatibility.
 
 Plugin opcode in osc.
 

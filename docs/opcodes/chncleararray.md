@@ -5,7 +5,7 @@ category:Signal I/O:Software Bus
 # chncleararray
 Sets the contents of one or more array channels to zero.
 
-Use `chncleararray` after reading an array channel when its contents should not carry over to the next control cycle. The older spelling [chnclear_array](chnclear_array.md) calls the same implementation. Use `chncleararray` in new code.
+Use `chncleararray` after reading an array channel when its contents should not carry over to the next control cycle. The older spelling [chnclear_array](chnclear_array.md) is deprecated in Csound 7 and calls the same implementation. Use `chncleararray` in new code.
 
 ## Syntax
 

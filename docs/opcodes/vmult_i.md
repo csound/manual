@@ -5,9 +5,9 @@ category:Vectorial:Scalar operations
 # vmulti
 Multiplies a vector in a table by a scalar value.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *vmult_i*.
+> `vmult_i` is a deprecated alias of `vmulti` in Csound 7. Use `vmulti` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

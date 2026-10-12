@@ -5,9 +5,9 @@ category:Instrument Control:Duration Control
 # turnoff2
 Turn off instance(s) of other instruments at performance time.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, *turnoff2i* was called *turnoff2_i*.
+> `turnoff2_i` is a deprecated alias of `turnoff2i` in Csound 7. Use `turnoff2i` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

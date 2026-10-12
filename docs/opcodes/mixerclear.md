@@ -5,9 +5,9 @@ category:Mixer Opcodes
 # mixerclear
 Resets all channels of a buss to 0.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *MixerClear*.
+> `MixerClear` is a deprecated alias of `mixerclear` in Csound 7. Use `mixerclear` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

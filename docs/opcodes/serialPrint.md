@@ -5,9 +5,9 @@ category:Serial I/O
 # serialprint
 Print data from a serial port.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *serialPrint*.
+> `serialPrint` is a deprecated alias of `serialprint` in Csound 7. Use `serialprint` in new code. The old name still works for compatibility.
 
 Plugin opcode in serial.
 

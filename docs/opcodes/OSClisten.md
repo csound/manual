@@ -5,9 +5,9 @@ category:OSC
 # osclisten
 Listen for OSC messages to a particular path, either from a custom-defined OSC server or from the Csound UDP server.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *OSClisten*.
+> `OSClisten` is a deprecated alias of `osclisten` in Csound 7. Use `osclisten` in new code. The old name still works for compatibility.
 
 Plugin opcode in osc; internal opcode (for UDP server)
 

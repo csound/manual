@@ -5,9 +5,9 @@ category:Signal I/O:Software Bus
 # chn
 Declare a channel of the named software bus.
 
-> :memo: **Note**
+> :warning: **Deprecated aliases**
 >
-> Up to Csound 6, *chnk*, *chna*, *chnS*, and *chnarray* were called *chn_k*, *chn_a*, *chn_S*, and *chn_array*.
+> `chn_k`, `chn_a`, `chn_S`, and `chn_array` are deprecated aliases in Csound 7. Use `chnk`, `chna`, `chnS`, and `chnarray` in new code. The old names still work for compatibility.
 
 Optional parameters can be set in the case of a control channel. If the channel does not exist yet, it is created, with an inital value of zero or empty string. Otherwise, the type (control, audio, or string) of the existing channel must match the declaration, or an init error occurs. The input/output mode of an existing channel is updated so that it becomes the bitwise OR of the previous and the newly specified value.
 

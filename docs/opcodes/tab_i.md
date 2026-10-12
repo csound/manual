@@ -5,9 +5,9 @@ category:Signal Generators:Table Access
 # tabi
 Fast table opcodes.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *tab_i*.
+> `tab_i` is a deprecated alias of `tabi` in Csound 7. Use `tabi` in new code. The old name still works for compatibility.
 
 Faster than [table](../opcodes/table.md) because it does not allow wrap-around and limit. Has been implemented in order to provide fast access to arrays.
 

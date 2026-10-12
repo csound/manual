@@ -5,9 +5,9 @@ category:Instrument Control:Sensing and Control
 # cntcycles
 Get the number of times a counter has cycled.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *cntCycles*.
+> `cntCycles` is a deprecated alias of `cntcycles` in Csound 7. Use `cntcycles` in new code. The old name still works for compatibility.
 
 Plugin opcode in counter.
 

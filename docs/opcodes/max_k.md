@@ -5,9 +5,9 @@ category:Signal Modifiers:Comparators and Accumulators
 # maxk
 Local maximum (or minimum) value of an incoming asig signal, checked in the time interval between ktrig has become true twice.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *max_k*.
+> `max_k` is a deprecated alias of `maxk` in Csound 7. Use `maxk` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

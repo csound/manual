@@ -5,9 +5,9 @@ category:Miscellaneous
 # system
 Call an external program via the system call.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, *systemi* was called *system_i*.
+> `system_i` is a deprecated alias of `systemi` in Csound 7. Use `systemi` in new code. The old name still works for compatibility.
 
 Plugin opcode in system_call.
 

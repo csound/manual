@@ -5,9 +5,9 @@ category:Spectral Processing:ATS
 # atscross
 _atscross_ uses data from an ATS analysis file and data from an [atsbufread](../opcodes/ATSbufread.md) to perform cross synthesis.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *ATScross*.
+> `ATScross` is a deprecated alias of `atscross` in Csound 7. Use `atscross` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

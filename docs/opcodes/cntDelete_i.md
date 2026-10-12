@@ -5,9 +5,9 @@ category:Instrument Control:Sensing and Control
 # cntdeletei
 Delete a counter.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *cntDelete_i*.
+> `cntDelete_i` is a deprecated alias of `cntdeletei` in Csound 7. Use `cntdeletei` in new code. The old name still works for compatibility.
 
 Plugin opcode in counter and render any memory used.
 

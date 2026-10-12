@@ -5,9 +5,9 @@ category:Instrument Control:Sensing and Control
 # cntread
 Read current value of a counter object without changing it.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *cntRead*.
+> `cntRead` is a deprecated alias of `cntread` in Csound 7. Use `cntread` in new code. The old name still works for compatibility.
 
 Plugin opcode in counter.
 

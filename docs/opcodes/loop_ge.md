@@ -5,9 +5,9 @@ category:Instrument Control:Program Flow Control
 # loopge
 Construction of looping operations.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *loop_ge*.
+> `loop_ge` is a deprecated alias of `loopge` in Csound 7. Use `loopge` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

@@ -1,11 +1,14 @@
 <!--
 id:print_type
 category:Signal I/O:Printing and Display
+status:deprecated
 -->
 # print_type
 Prints the type of a variable or expression.
 
-This is the older spelling of [printtype](printtype.md). See that page for the shared reference and example. Use `printtype` in new Csound 7 code.
+> :warning: **Deprecated alias**
+>
+> `print_type` is a deprecated alias of [printtype](printtype.md) in Csound 7. Use `printtype` in new code. See that page for the shared reference and example.
 
 ## Syntax
 

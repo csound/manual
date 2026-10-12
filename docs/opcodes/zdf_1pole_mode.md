@@ -5,9 +5,9 @@ category:Signal Modifiers:Standard Filters
 # zdf1polemode
 Zero-delay feedback implementation of 1 pole (6 dB/oct) filter with multimode output.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *zdf_1pole_mode*.
+> `zdf_1pole_mode` is a deprecated alias of `zdf1polemode` in Csound 7. Use `zdf1polemode` in new code. The old name still works for compatibility.
 
 Offers low-pass and high-pass output.
 

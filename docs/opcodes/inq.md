@@ -1,9 +1,14 @@
 <!--
 id:inq
 category:Signal I/O:Signal Input
+status:deprecated
 -->
 # inq
 Reads quad audio data from an external device or stream.
+
+> :warning: **Deprecated**
+>
+> This opcode is deprecated. Use [in](in.md), which can read more than one channel. Existing scores can still use `inq`.
 
 > :warning: **Warning**
 >

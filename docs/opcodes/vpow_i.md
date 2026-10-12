@@ -5,9 +5,9 @@ category:Vectorial:Scalar operations
 # vpowi
 Raises each element of a vector to a scalar power.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *vpow_i*.
+> `vpow_i` is a deprecated alias of `vpowi` in Csound 7. Use `vpowi` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

@@ -5,9 +5,9 @@ category:Signal Generators:Basic Oscillators
 # oscilbank
 Mixes the output of any number of oscillators.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *oscbnk*.
+> `oscbnk` is a deprecated alias of `oscilbank` in Csound 7. Use `oscilbank` in new code. The old name still works for compatibility.
 
 This unit generator mixes the output of any number of oscillators. The frequency, phase, and amplitude of each oscillator can be modulated by two LFOs (all oscillators have a separate set of LFOs, with different phase and frequency); additionally, the output of each oscillator can be filtered through an optional parametric equalizer (also controlled by the LFOs).  This opcode is most useful for rendering ensemble (strings, choir, etc.) instruments.
 

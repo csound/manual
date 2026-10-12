@@ -5,9 +5,9 @@ category:Serial I/O
 # arduinoread
 Read integer data from an arduino port using the Csound-Arduino protocol.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *arduinoRead*.
+> `arduinoRead` is a deprecated alias of `arduinoread` in Csound 7. Use `arduinoread` in new code. The old name still works for compatibility.
 
 Plugin opcode in serial.
 

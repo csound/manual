@@ -5,9 +5,9 @@ category:Instrument Control:Sensing and Control
 # cntcreate
 Create a counter object.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *cntCreate*.
+> `cntCreate` is a deprecated alias of `cntcreate` in Csound 7. Use `cntcreate` in new code. The old name still works for compatibility.
 
 Plugin opcode in counter.
 

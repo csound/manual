@@ -6,6 +6,10 @@ status:deprecated
 # ptable3
 Accesses table values by direct indexing with cubic interpolation.
 
+> :warning: **Deprecated**
+>
+> This opcode is deprecated. Use [table3](table3.md) in new code. `ptable3` remains available for compatibility.
+
 ## Syntax
 ``` csound-orc
 ares ptable3 andx, ifn [, ixmode] [, ixoff] [, iwrap]

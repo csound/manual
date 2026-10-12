@@ -5,9 +5,9 @@ category:Serial I/O
 # serialwritei
 Write data to a serial port for arduino.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *serialWrite_i*.
+> `serialWrite_i` is a deprecated alias of `serialwritei` in Csound 7. Use `serialwritei` in new code. The old name still works for compatibility.
 
 Plugin opcode in serial.
 

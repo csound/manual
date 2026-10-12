@@ -5,9 +5,9 @@ category:Signal Modifiers:Standard Filters
 # k35lpf
 Zero-delay feedback implementation of Korg35 resonant low-pass filter.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *K35_lpf*.
+> `K35_lpf` is a deprecated alias of `k35lpf` in Csound 7. Use `k35lpf` in new code. The old name still works for compatibility.
 
 This filter design is found in the Korg MS10, early MS20, and Monotron series.
 

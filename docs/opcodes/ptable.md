@@ -6,6 +6,10 @@ status:deprecated
 # ptable
 Accesses table values by direct indexing.
 
+> :warning: **Deprecated**
+>
+> This opcode is deprecated. Use [table](table.md) in new code. `ptable` remains available for compatibility.
+
 ## Syntax
 ``` csound-orc
 ares ptable andx, ifn [, ixmode] [, ixoff] [, iwrap]

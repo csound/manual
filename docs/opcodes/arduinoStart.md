@@ -5,9 +5,9 @@ category:Serial I/O
 # arduinostart
 Open a serial port for use with the Arduino protocol.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *arduinoStart*.
+> `arduinoStart` is a deprecated alias of `arduinostart` in Csound 7. Use `arduinostart` in new code. The old name still works for compatibility.
 
 Plugin opcode in serial.
 

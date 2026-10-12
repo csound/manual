@@ -5,9 +5,9 @@ category:Serial I/O
 # serialbegin
 Open a serial port for arduino.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *serialBegin*.
+> `serialBegin` is a deprecated alias of `serialbegin` in Csound 7. Use `serialbegin` in new code. The old name still works for compatibility.
 
 Plugin opcode in serial.
 

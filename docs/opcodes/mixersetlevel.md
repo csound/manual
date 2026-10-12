@@ -5,9 +5,9 @@ category:Mixer Opcodes
 # mixersetlevel
 Sets the level at which signals from the send are added to the buss.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *MixerSetLevel*.
+> `MixerSetLevel` is a deprecated alias of `mixersetlevel` in Csound 7. Use `mixersetlevel` in new code. The old name still works for compatibility.
 
 Plugin opcode in mixer
 

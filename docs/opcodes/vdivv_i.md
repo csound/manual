@@ -5,9 +5,9 @@ category:Vectorial:Vectorial operations
 # vdivvi
 Performs division between two vectorial control signals at init time.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *vdivv_i*.
+> `vdivv_i` is a deprecated alias of `vdivvi` in Csound 7. Use `vdivvi` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

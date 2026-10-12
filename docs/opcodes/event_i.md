@@ -5,9 +5,9 @@ category:Instrument Control:Invocation
 # eventi
 Generates a score event from an instrument.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *event_i*.
+> `event_i` is a deprecated alias of `eventi` in Csound 7. Use `eventi` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

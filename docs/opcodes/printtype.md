@@ -7,7 +7,7 @@ Prints the type of a variable or expression.
 
 Use `printtype` to inspect types while debugging an orchestra or a user-defined opcode. It prints the type name through Csound's message output. It has no output arguments and does not print the argument's value.
 
-`print_type` is the older spelling and performs the same operation. Use `printtype` in new Csound 7 code.
+`print_type` is a deprecated alias in Csound 7 and performs the same operation. Use `printtype` in new Csound 7 code.
 
 ## Syntax
 

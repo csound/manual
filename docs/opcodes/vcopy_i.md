@@ -5,9 +5,9 @@ category:Vectorial:Vectorial operations
 # vcopyi
 Copies a vector from one table to another.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *vcopy_i*.
+> `vcopy_i` is a deprecated alias of `vcopyi` in Csound 7. Use `vcopyi` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

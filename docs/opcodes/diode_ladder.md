@@ -6,9 +6,9 @@ category:Signal Modifiers:Standard Filters
 
 Zero-delay feedback implementation of a 4 pole (24 dB/oct) diode low-pass filter.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *diode_ladder*.
+> `diode_ladder` is a deprecated alias of `diodeladder` in Csound 7. Use `diodeladder` in new code. The old name still works for compatibility.
 
 This filter design was originally used in the EMS VCS3 and was the resonant filter in the Roland TB-303.
 

@@ -5,9 +5,9 @@ category:Instrument Control:Sensing and Control
 # counti
 Get the next value from a counter.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *count_i*.
+> `count_i` is a deprecated alias of `counti` in Csound 7. Use `counti` in new code. The old name still works for compatibility.
 
 Plugin opcode in counter.
 

@@ -5,9 +5,9 @@ category:OSC
 # oscinit
 Start a listening process for OSC messages to a particular port.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *OSCinit*.
+> `OSCinit` is a deprecated alias of `oscinit` in Csound 7. Use `oscinit` in new code. The old name still works for compatibility.
 
 Plugin opcode in osc.
 

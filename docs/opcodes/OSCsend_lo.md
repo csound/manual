@@ -1,6 +1,7 @@
 <!--
 id:OSCsend_lo
 category:OSC
+status:deprecated
 -->
 # OSCsend_lo
 Sends OSC messages using the older name for oscsendlo.

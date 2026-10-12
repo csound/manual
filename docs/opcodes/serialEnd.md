@@ -5,9 +5,9 @@ category:Serial I/O
 # serialend
 Close a serial port for arduino.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *serialEnd*.
+> `serialEnd` is a deprecated alias of `serialend` in Csound 7. Use `serialend` in new code. The old name still works for compatibility.
 
 Plugin opcode in serial.
 

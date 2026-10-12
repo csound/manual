@@ -5,9 +5,9 @@ category:Vectorial:Vectorial operations
 # vaddvi
 Performs addition between two vectorial control signals at init time.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *vaddv_i*.
+> `vaddv_i` is a deprecated alias of `vaddvi` in Csound 7. Use `vaddvi` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

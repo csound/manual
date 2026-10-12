@@ -1,9 +1,14 @@
 <!--
 id:vbap16
 category:Signal Modifiers:Panning and Spatialization
+status:deprecated
 -->
 # vbap16
 Distributes an audio signal among 16 channels.
+
+> :warning: **Deprecated**
+>
+> This opcode is deprecated. Use [vbap](vbap.md) with the number of outputs you need. `vbap16` remains available for compatibility.
 
 ## Syntax
 === "Modern"

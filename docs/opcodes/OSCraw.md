@@ -5,9 +5,9 @@ category:OSC
 # oscraw
 Listen for all OSC messages at a given port.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *OSCraw*.
+> `OSCraw` is a deprecated alias of `oscraw` in Csound 7. Use `oscraw` in new code. The old name still works for compatibility.
 
 On each k-cycle looks to see if an OSC message has been received at a given port and copies its contents to a string array. All messages are copied. If a bundle of messages is received, the output array will contain all of the messages in it.
 

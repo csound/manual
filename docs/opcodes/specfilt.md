@@ -6,6 +6,10 @@ status:deprecated
 # specfilt
 Filters each channel of an input spectrum.
 
+> :warning: **Deprecated**
+>
+> This opcode belongs to the deprecated constant-Q spectral family that uses `w` signals. Csound keeps it for compatibility and does not name a direct replacement.
+
 ## Syntax
 === "Modern"
     ``` csound-orc

@@ -5,9 +5,9 @@ category:Signal Modifiers:Standard Filters
 # zdf2pole
 Zero-delay feedback implementation of a 2 pole (12 dB/oct) filter.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *zdf_2pole*.
+> `zdf_2pole` is a deprecated alias of `zdf2pole` in Csound 7. Use `zdf2pole` in new code. The old name still works for compatibility.
 
 Offers low-pass (default), high-pass, and allpass output modes.
 

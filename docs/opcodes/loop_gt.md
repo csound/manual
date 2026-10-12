@@ -5,9 +5,9 @@ category:Instrument Control:Program Flow Control
 # loopgt
 Construction of looping operations.
 
-> :memo: **Note**
+> :warning: **Deprecated alias**
 >
-> Up to Csound 6, this opcode was called *loop_gt*.
+> `loop_gt` is a deprecated alias of `loopgt` in Csound 7. Use `loopgt` in new code. The old name still works for compatibility.
 
 ## Syntax
 === "Modern"

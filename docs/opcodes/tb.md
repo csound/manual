@@ -6,8 +6,9 @@ status:deprecated
 # tb
 Table Read Access inside expressions.
 
-> :memo: **Note**
-> These opcodes have been largely superceded by the functional form of the opcode tab.
+> :warning: **Deprecated**
+>
+> The `tb0` to `tb15` readers and their setup opcodes, `tb0init` to `tb15init` and `tb0_init` to `tb15_init`, are deprecated. Use [tab](tab.md) directly in expressions. The old table-slot setup is not needed.
 
 Allow to read tables in function fashion, to be used inside expressions. At earlier times Csound only supported functions with a single input argument. However, to access table elements, user must provide two numbers, i.e. the number of table and the index of element. So, in order to allow to access a table element with a function, a previous preparation step should be done.
 

@@ -5,6 +5,10 @@ category:Table Control:Table Queries
 # genarrayi
 Generate a vector (one-dimensional k-rate) with an arithmetic sequence at initialisation time.
 
+> :warning: **Deprecated alias**
+>
+> `genarray_i` is a deprecated alias of `genarrayi` in Csound 7. Use `genarrayi` in new code. The old name still works for compatibility.
+
 ## Syntax
 === "Modern"
     ``` csound-orc
