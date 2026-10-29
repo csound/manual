@@ -260,7 +260,7 @@ All messages can be suppressed by using message level 16.
 
 The default is 135 (128+4+2+1), which means all messages, raw amplitude values, and printing elapsed time at the end of performance.  The coloring of raw amplitudes was introduced in version 5.04. The supression of deprecated messages new in 6.14. Suppression of all messages is new in 6.17.
 
-Deprecation warnings can also be suppressed with [--no-deprecated-warnings](#--no-deprecated-warnings), which leaves all other warnings unaffected. Note that setting the 1024 bit with *-m1024* replaces the whole message-level mask and therefore also disables ordinary warnings; use *-m1159* (the default 135 plus 1024) to add it while keeping the default message bits.
+Deprecation warnings can also be suppressed with [--no-deprecated-warnings](#-no-deprecated-warnings), which leaves all other warnings unaffected. Note that setting the 1024 bit with *-m1024* replaces the whole message-level mask and therefore also disables ordinary warnings; use *-m1159* (the default 135 plus 1024) to add it while keeping the default message bits.
 
 #### --m-amps=NUM
 Message level for amplitudes on standard (terminal) output.
