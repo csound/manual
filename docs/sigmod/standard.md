@@ -34,8 +34,8 @@
 
 ### Standard filters
 
-* Hi-pass filters: [atone](../opcodes/atone.md), [atonex](../opcodes/atonex.md), [mvchpf](../opcodes/mvchpf.md)
-* Low-pass filters: [tone](../opcodes/tone.md), [tonex](../opcodes/tonex.md)
+* Hi-pass filters: [atone](../opcodes/atone.md), [atonela](../opcodes/atonela.md), [atonex](../opcodes/atonex.md), [mvchpf](../opcodes/mvchpf.md)
+* Low-pass filters: [tone](../opcodes/tone.md), [tonela](../opcodes/tonela.md), [tonex](../opcodes/tonex.md)
 * Biquad filters: [biquad](../opcodes/biquad.md) and [biquada](../opcodes/biquada.md).
 * Butterworth filters: [butterbp](../opcodes/butterbp.md), [butterbr](../opcodes/butterbr.md), [butterhp](../opcodes/butterhp.md), [butterlp](../opcodes/butterlp.md) (which are also called [butbp](../opcodes/butbp.md), [butbr](../opcodes/butbr.md), [buthp](../opcodes/buthp.md), [butlp](../opcodes/butlp.md))
 * General filters: [clfilt](../opcodes/clfilt.md)
