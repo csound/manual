@@ -23,4 +23,6 @@
 * [mvmfilter](../opcodes/mvmfilter.md)
 * [nlalp](../opcodes/nlalp.md)
 * [nlfilt](../opcodes/nlfilt.md)
+* [savgol](../opcodes/savgol.md)
+* [savgolmat](../opcodes/savgolmat.md)
 * [zfilter2](../opcodes/zfilter2.md)

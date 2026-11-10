@@ -20,7 +20,7 @@ Assigns a MIDI channel number to a Csound instrument.
 
 ### Initialization
 
-_ichnl_ -- MIDI channel number (1-16).
+_ichnl_ -- MIDI channel number. A single MIDI port has channels 1 to 16. Csound also accepts channel numbers up to 1024 for input mapped from multiple ports: port _N_, counting from 0, has channels 16 &times; _N_ + 1 to 16 &times; _N_ + 16. A number above 1024 causes an initialization error. Zero selects every channel of every port.
 
 _insnum_ -- Csound orchestra instrument number. If zero or negative, the channel is muted (i.e. it does not trigger a csound instrument, though information will still be received by opcodes like [midiin](../opcodes/midiin.md)).
 
@@ -30,9 +30,9 @@ _ireset_ -- If non-zero resets the controllers; default is to reset.
 
 ### Performance
 
-Assigns a MIDI channel number to a Csound instrument. Also useful to make sure a certain instrument (if its number is from 1 to 16) will not be triggered by midi noteon messages (if using something [midiin](../opcodes/midiin.md) to interpret midi information). In this case set _insnum_ to 0 or a negative number.
+Assigns a MIDI channel number to a Csound instrument. Also useful to make sure a certain instrument (if its number is a channel's: from 1 to 16, or up to 1024 with input mapped from multiple ports) will not be triggered by midi noteon messages (if using something [midiin](../opcodes/midiin.md) to interpret midi information). In this case set _insnum_ to 0 or a negative number.
 
-If _ichan_ is set to 0, the value of _insnum_ is used for all channels. This way you can route all MIDI channels to a single Csound instrument. You can also disable triggering of instruments from MIDI note events from all channels with the following line:
+If _ichnl_ is set to 0, the value of _insnum_ is used for all channels, of every port. This way you can route all MIDI channels to a single Csound instrument. You can also disable triggering of instruments from MIDI note events from all channels with the following line:
 
 ``` csound-orc
 massign 0,0
