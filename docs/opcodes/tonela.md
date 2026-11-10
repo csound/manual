@@ -7,9 +7,9 @@ A look-ahead first-order recursive low-pass filter equivalent to [tone](../opcod
 
 _tonela_ implements the same first-order low-pass response as _tone_, but uses an
 algebraically equivalent form that computes four output samples at a time. For a
-constant cutoff it produces the same output as _tone_ without adding latency. The
-form is intended for implementations that can take advantage of SIMD or parallel
-sample processing.
+constant cutoff it matches _tone_ within floating-point rounding, without
+adding latency. The form is intended for implementations that can take
+advantage of SIMD or parallel sample processing.
 
 The direct first-order recurrence used by [tone](../opcodes/tone.md) is:
 
@@ -48,13 +48,15 @@ _ares_ -- the output audio signal.
 
 _asig_ -- the input audio signal.
 
-_khp_ -- the response curve's half-power point, in Hertz. Half power is defined as peak power / root 2. The cutoff is k-rate.
+_khp_ -- the response curve's half-power point, in Hertz. Half power is defined
+as peak power divided by two, corresponding to peak amplitude divided by the
+square root of two. The cutoff is k-rate.
 
-_tonela_ implements the same response as [tone](../opcodes/tone.md), but its
-four-sample look-ahead form evaluates four output samples together. It has no
-additional latency. When _khp_ changes, the direct recurrence is used for four
-samples so that the filter output is not disturbed, after which the look-ahead
-form resumes.
+_tonela_ implements the same response as [tone](../opcodes/tone.md) within
+floating-point rounding, but its four-sample look-ahead form evaluates four
+output samples together. It has no additional latency. When _khp_ changes, the
+direct recurrence is used for four samples so that the filter output is not
+disturbed, after which the look-ahead form resumes.
 
 The look-ahead form performs more arithmetic per sample than _tone_, since each
 output is formed from four input taps and one delayed output. It is intended for
