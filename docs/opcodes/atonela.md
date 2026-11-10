@@ -6,9 +6,9 @@ category:Signal Modifiers:Standard Filters
 A look-ahead first-order high-pass filter equivalent to [atone](../opcodes/atone.md).
 
 _atonela_ is the high-pass complement of [tonela](../opcodes/tonela.md). For a
-constant cutoff it produces the same output as [atone](../opcodes/atone.md),
-without adding latency. Its output is the input signal minus the low-pass output
-of _tonela_:
+constant cutoff it matches [atone](../opcodes/atone.md) within floating-point
+rounding, without adding latency. Its output is the input signal minus the
+low-pass output of _tonela_:
 
 a<sub>hp</sub> = x<sub>n</sub> - y<sub>n</sub>
 
@@ -37,11 +37,14 @@ _ares_ -- the output signal at audio rate.
 
 _asig_ -- the input signal at audio rate.
 
-_khp_ -- the response curve's half-power point, in Hertz. Half power is defined as peak power / root 2. The cutoff is k-rate.
+_khp_ -- the response curve's half-power point, in Hertz. Half power is defined
+as peak power divided by two, corresponding to peak amplitude divided by the
+square root of two. The cutoff is k-rate.
 
 _atonela_ uses the same four-sample look-ahead form as [tonela](../opcodes/tonela.md)
 and subtracts its low-pass output from the input. It therefore tracks
-[atone](../opcodes/atone.md) for a constant cutoff and adds no latency. When
+[atone](../opcodes/atone.md) within floating-point rounding for a constant cutoff
+and adds no latency. When
 _khp_ changes, the direct recurrence is used for four samples before the
 look-ahead form resumes.
 
