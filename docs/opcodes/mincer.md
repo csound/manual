@@ -29,7 +29,9 @@ _ifftsize_ -- FFT size (power-of-two), defaults to 2048.
 _idecim_ -- decimation, defaults to 4 (meaning hopsize = fftsize/4)
 
 _ibeta_ -- scaling exponent for Laroche–Dolson phase locking, used only when
-_klock_ is 3. A value of 1 (the default) selects identity phase locking.
+_klock_ is 3. A value of 1 (the default) selects identity phase locking. Scaled
+locking is applied within the current frame's peak regions; peaks are not
+matched across frames as in the full Laroche–Dolson scaled algorithm.
 
 ### Performance
 
