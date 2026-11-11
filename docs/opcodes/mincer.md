@@ -14,12 +14,12 @@ _mincer_ will also scale pitch, independently of frequency, using a transpositio
 ## Syntax
 === "Modern"
     ``` csound-orc
-    asig = mincer(atimpt, kamp, kpitch, ktab, klock [ ,ifftsize, idecim])
+    asig = mincer(atimpt, kamp, kpitch, ktab, klock [ ,ifftsize, idecim, ibeta])
     ```
 
 === "Classic"
     ``` csound-orc
-    asig mincer atimpt, kamp, kpitch, ktab, klock [ ,ifftsize, idecim]
+    asig mincer atimpt, kamp, kpitch, ktab, klock [ ,ifftsize, idecim, ibeta]
     ```
 
 ### Initialization
@@ -27,6 +27,9 @@ _mincer_ will also scale pitch, independently of frequency, using a transpositio
 _ifftsize_ -- FFT size (power-of-two), defaults to 2048.
 
 _idecim_ -- decimation, defaults to 4 (meaning hopsize = fftsize/4)
+
+_ibeta_ -- scaling exponent for Laroche–Dolson phase locking, used only when
+_klock_ is 3. A value of 1 (the default) selects identity phase locking.
 
 ### Performance
 
@@ -36,7 +39,10 @@ _kamp_ -- amplitude scaling
 
 _kpitch_ -- grain pitch scaling (1=normal pitch, &lt; 1 lower, > 1 higher; negative, backwards)
 
-_klock_ -- 0 or 1, to switch phase-locking on/off
+_klock_ -- phase-locking mode: 0 disables locking; 1 selects the legacy
+phase-locking algorithm; 2 selects Laroche–Dolson identity phase locking; 3
+selects Laroche–Dolson scaled phase locking. Other non-zero values use the
+legacy algorithm.
 
 _ktab_ -- source signal function table. Deferred-allocation tables (see [GEN01](../scoregens/gen01.md)) are accepted, but the opcode expects a mono source. Tables can be switched at k-rate.
 
