@@ -8,13 +8,17 @@ Sends a stream of the MIDI notes.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    moscil(kchn, knum, kvel, kdur, kpause)
+    moscil(kchn, knum, kvel, kdur, kpause [, iport])
     ```
 
 === "Classic"
     ``` csound-orc
-    moscil kchn, knum, kvel, kdur, kpause
+    moscil kchn, knum, kvel, kdur, kpause [, iport]
     ```
+
+### Initialization
+
+_iport_ -- MIDI output port, optional set to 0.
 
 ### Performance
 
@@ -28,7 +32,11 @@ _kdur_ -- note duration in seconds
 
 _kpause_ -- pause duration after each noteoff and before new note in seconds
 
-_moscil_ and [midion](../opcodes/midion.md) are the most powerful MIDI OUT opcodes. _moscil_ (MIDI oscil) plays a stream of notes of _kdur_ duration. Channel, pitch, velocity, duration and pause can be controlled at k-rate, allowing very complex algorithmically generated melodic lines. When current instrument is deactivated, the note played by current instance of _moscil_ is forcedly truncated.
+_moscil_ and [midion](../opcodes/midion.md) are the most powerful MIDI OUT opcodes. _moscil_ (MIDI oscil) plays a stream of notes of _kdur_ duration. Channel, pitch, velocity, duration and pause can be controlled at k-rate, allowing very complex algorithmically generated melodic lines. When current instrument is deactivated, the note played by current instance of _moscil_ is forcedly truncated, also when the instrument ends without a release, for instance through [turnoff2](../opcodes/turnoff2.md) with _krelease_ 0, or the performance stops. A noteoff always goes to the port of its noteon.
+
+When a note is [tied](../scoregens/i.md) onto a held note, or at a [reinit](../opcodes/reinit.md) pass, the note still sounding is turned off and the stream of notes starts again.
+
+Csound 7.0.0 and earlier played the first note for one control cycle with no pause after it, and left a note sounding at a tie, a reinit, or when its instrument ended without a release.
 
 Any number of _moscil_ opcodes can appear in the same Csound instrument, allowing a counterpoint-style polyphony within a single instrument.
 
