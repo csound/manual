@@ -34,6 +34,12 @@ _noteondur_ (i-rate note on with duration) sends a noteon and a noteoff MIDI mes
 
 _noteondur_ differs from _noteondur2_ in that _noteondur_ truncates note duration when current instrument is deactivated by score or by real-time playing, while _noteondur2_ will extend performance time of current instrument until _idur_ seconds have elapsed. In real-time playing, it is suggested to use _noteondur_ also for undefined durations, giving a large _idur_ value.
 
+When the instrument ends without a release, for instance through [turnoff2](../opcodes/turnoff2.md) with _krelease_ 0, or the performance stops, the note still sounding is turned off at once. The noteoff goes to the port of the noteon.
+
+When a note is [tied](../scoregens/i.md) onto a held note, a note with the same channel, number, velocity and port goes on sounding, and its duration starts again from the tie; a different one is turned off first. A [reinit](../opcodes/reinit.md) pass turns the note off and sends it again.
+
+Csound 7.0.0 and earlier sent the new note at a tie or a reinit without turning off the one still sounding, and left a note sounding when its instrument ended without a release.
+
 Any number of _noteondur_ opcodes can appear in the same Csound instrument, allowing chords to be played by a single instrument.
 
 ## Examples

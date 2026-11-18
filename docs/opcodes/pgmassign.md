@@ -28,7 +28,7 @@ _inst_ -- instrument number. If set to zero, or negative, MIDI program changes t
 
 _&#8220;insname&#8221;_ -- A string (in double-quotes) representing a named instrument.
 
-_&#8220;ichn&#8221;_ (optional, defaults to zero) -- channel number. If zero, program changes are assigned on all channels.
+_&#8220;ichn&#8221;_ (optional, defaults to zero) -- channel number. If zero, program changes are assigned on all channels, of every port. A single MIDI port has channels 1 to 16. Csound also accepts channel numbers up to 1024 for input mapped from multiple ports. A number above 1024 causes an initialization error.
 
 You can disable the turning on of any instruments by using the following in the header:
 

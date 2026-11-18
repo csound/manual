@@ -44,7 +44,21 @@ The `Opcode` form creates one object from the chosen overload. The array form cr
 
 Arrange [delete](delete.md) in the owning instrument for cleanup. The [object guide](../orch/instrument-and-opcode-objects.md) explains lifetimes and gives examples of each form.
 
+### Instrument definition numbers
+
+Each call to `create(code)` compiles a new definition in a free instrument-number slot. Assigning the result to the same `InstrDef` variable changes which definition the variable refers to; it does not replace or remove the previous definition. The variable's name does not name the compiled instrument. Use [nstrnum](nstrnum.md) to get the number of the definition it currently holds.
+
+Removing an unused definition can free its number, but a later `create` call does not guarantee reuse of that number. Keep references to definitions that still need cleanup. [delete](delete.md) runs when the containing instrument ends; ensure all notes using the definition have finished first.
+
+If you need to replace an instrument while keeping its number, use [compilestr](compilestr.md) with a complete `instr`/`endin` definition using the existing number or instrument name. Do not rely on repeated `create` calls preserving [instrument performance order](../orch/instruments.md), for example when one instrument writes an audio bus that another reads.
+
 ## Examples
+
+This example assigns two definitions to the same variable. Their numbers differ, and a saved reference still refers to the first definition. Both definitions are removed when instrument 1 ends. It uses [create-instrdef-numbers.csd](../examples/create-instrdef-numbers.csd) and produces no audio.
+
+``` csound-csd title="Creating a new definition does not replace the old one" linenums="1"
+--8<-- "examples/create-instrdef-numbers.csd"
+```
 
 Here is an example of the create opcode. It uses the file [create.csd](../examples/create.csd).
 

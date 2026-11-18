@@ -29,6 +29,10 @@ Here `Tone` identifies the definition. The two scheduled notes are separate inst
 
 You can also compile an instrument body with [create](../opcodes/create.md). The result is an `InstrDef`, and Csound assigns its instrument number. Pass the body without `instr` and `endin`.
 
+Every `create(code)` call creates a new definition in a free number slot. Assigning it to the same variable changes the reference, not the previous definition. The variable's name does not name the compiled instrument. Removing the old definition does not guarantee that the next call will reuse its number.
+
+To replace an instrument while keeping its number, use [compilestr](../opcodes/compilestr.md) with a complete `instr`/`endin` definition using its existing number or instrument name. Repeated `create` calls can change the [performance order](instruments.md) of scheduled instruments, which matters when routing audio between them. See [Instrument definition numbers](../opcodes/create.md#instrument-definition-numbers) for an example.
+
 The following example creates a definition, schedules two notes, and removes the definition when its containing instrument ends. Both notes finish first. It uses [delete.csd](../examples/delete.csd).
 
 ``` csound-csd title="Create and use an instrument definition" linenums="1"

@@ -3,7 +3,7 @@ id:midichn
 category:Real-time MIDI:MIDI/Score Interoperability
 -->
 # midichn
-Returns the MIDI channel number (1 - 16) from which the note was activated.
+Returns the MIDI channel number from which the note was activated: 1 to 16, or up to 1024 for input mapped from multiple ports.
 
 In the case of score notes, it returns 0.
 

@@ -12,7 +12,7 @@ You can find out the available devices by running Csound with --midi-devices opt
 csound --midi-devices
 ```
  
-Starting from version 6.14, the PortMIDI module (see below for a listof all modules) allows multiple ports to be mapped to higher-orderchannels. By using the 'm' device name, Csound will take inputs fromany existing MIDI device in the system and map it according to(N+1)*channel, where N is the device number as listed by PortMIDI andchannel is the original device input channel. Alternatively, the 'a'device name listens to all inputs but does not map to higher-orderchannels.
+Starting from version 6.14, the PortMIDI module (see below for a list of all modules) allows multiple ports to be mapped to higher-order channels. By using the 'm' device name, Csound will take inputs from any existing MIDI device in the system and map it according to 16 &times; N + channel, where N is the device number as listed by PortMIDI, counting from 0, and channel is the original device input channel: the first device has channels 1 to 16, the second 17 to 32, and so on, up to 1024. Alternatively, the 'a' device name listens to all inputs but does not map to higher-order channels.
   
 Realtime MIDI output is activated using [-Q](../invoke/cs-options-by-category.md#-q-device), using device number or names as shown above.
   
