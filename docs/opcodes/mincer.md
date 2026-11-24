@@ -11,15 +11,17 @@ This opcode allows for time and frequency-independent scaling. Time is controlle
 
 _mincer_ will also scale pitch, independently of frequency, using a transposition factor (k-rate).
 
+_mincer_ can also preserve the spectral envelope while pitch is shifted, using either a one-pass cepstral estimate or an iterative true-envelope estimate. This is enabled with the optional _kkeepform_ and _kcoefs_ arguments.
+
 ## Syntax
 === "Modern"
     ``` csound-orc
-    asig = mincer(atimpt, kamp, kpitch, ktab, klock [ ,ifftsize, idecim, ibeta])
+    asig = mincer(atimpt, kamp, kpitch, ktab, klock [ ,ifftsize, idecim, ibeta, kkeepform, kcoefs])
     ```
 
 === "Classic"
     ``` csound-orc
-    asig mincer atimpt, kamp, kpitch, ktab, klock [ ,ifftsize, idecim, ibeta]
+    asig mincer atimpt, kamp, kpitch, ktab, klock [ ,ifftsize, idecim, ibeta, kkeepform, kcoefs]
     ```
 
 ### Initialization
@@ -32,6 +34,9 @@ _ibeta_ -- scaling exponent for Laroche–Dolson phase locking, used only when
 _klock_ is 3. A value of 1 (the default) selects identity phase locking. Scaled
 locking is applied within the current frame's peak regions; peaks are not
 matched across frames as in the full Laroche–Dolson scaled algorithm.
+
+The optional arguments are positional, so supplying a later argument requires
+supplying all earlier ones as well.
 
 ### Performance
 
@@ -47,6 +52,15 @@ selects Laroche–Dolson scaled phase locking. Other non-zero values use the
 legacy algorithm.
 
 _ktab_ -- source signal function table. Deferred-allocation tables (see [GEN01](../scoregens/gen01.md)) are accepted, but the opcode expects a mono source. Tables can be switched at k-rate.
+
+_kkeepform_ -- formant-preservation mode (default 0): 0 disables preservation,
+1 uses a liftered cepstral envelope, and 2 uses an iterative true envelope.
+Values below 0 are treated as 0 and values above 2 as 2. Preservation is
+bypassed when the effective pitch (`kpitch`, multiplied by any source resampling
+ratio) is within a quarter tone of 1.
+
+_kcoefs_ -- number of cepstral coefficients used by modes 1 and 2 (default 80,
+maximum half the FFT size). This is read at k-rate.
 
 ## Examples
 
