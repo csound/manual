@@ -24,7 +24,7 @@ Formant preservation is optional. When _kkeepform_ is non-zero and the pitch or 
 
 _ifftsize_ -- FFT size (power-of-two), defaults to 2048. The opcode reports a latency of _ifftsize/sr_ seconds in _idel_.
 
-_idecim_ -- decimation, defaults to 4 (meaning hopsize = ifftsize/4).
+_idecim_ -- decimation, defaults to 4 (meaning hopsize = ifftsize/4). Valid values are 2 to _ifftsize_.
 
 _ibeta_ -- scaling exponent for identity phase locking, used only when _klock_ is 3. A value of 1 (the default) selects identity phase locking.
 
