@@ -94,4 +94,5 @@ timescaling:
 * [filescal](../opcodes/filescal.md)
 * [mincer](../opcodes/mincer.md)
 * [mp3scal](../opcodes/mp3scal.md)
+* [pshifter](../opcodes/pshifter.md)
 * [temposcal](../opcodes/temposcal.md)
