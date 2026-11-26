@@ -8,7 +8,7 @@ Generates a stationary wavelet transform (SWT) stream from a mono audio signal.
 ## Syntax
 === "Modern"
     ``` csound-orc
-    wswt = swtanal(asig, iN, iH, ifamily, iorder [, ilevels [, iboundary [, iwindow [, iola]]]])
+    w:swt = swtanal(asig, iN, iH, ifamily, iorder [, ilevels [, iboundary [, iwindow [, iola]]]])
     ```
 
 === "Classic"
@@ -40,11 +40,9 @@ The coefficients are stored in one flat vector per frame. The layout is `[cA_J |
 
 ### Performance
 
-`swtanal` fills one frame every `iH` samples after the first `iN` samples have been collected. Each frame covers the input interval `[m * iH, m * iH + iN)`.
+`swtanal` fills one frame every `iH` samples after the first `iN` samples have been collected. Each frame covers the input interval `[m * iH, m * iH + iN)`. Frames are stored in a self-describing `wst` signal.
 
 `swtsynth` begins output for frame `m` at sample `m * iH + iN`. The first `iN` output samples therefore contain the startup latency. With direct reconstruction and no coefficient edits, the steady-state output reproduces the input delayed by `iN` samples. With overlap-add, matching analysis and synthesis windows are applied and normalised by the accumulated window power.
-
-Each new frame increments the stream's frame count and revision. Host code can inspect the frame, metadata, and layout through the `csoundGetSwtData()` and `csoundSwtData*()` accessors declared in `swtdat.h`.
 
 Invalid frame or hop sizes, unsupported wavelet families or orders, unsupported boundary modes, missing windows for overlap-add, and direct mode with `iH != iN` are reported as initialisation errors.
 
